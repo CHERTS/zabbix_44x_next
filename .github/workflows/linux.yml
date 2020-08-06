@@ -26,7 +26,7 @@ jobs:
     - name: Install database dependencies
       run: sudo apt-get install -y libmysqlclient-dev
     - name: Set exec bit
-      run: chmod a+x ./bootstrap.sh && chmod a+x ./create/bin/*.{sh,pl} && ./frontends/php/locale/*.sh
+      run: chmod a+x ./bootstrap.sh && chmod a+x ./create/bin/*.{sh,pl} && chmod a+x ./frontends/php/locale/*.sh
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
@@ -53,7 +53,7 @@ jobs:
     - name: Install database dependencies
       run: sudo apt-get install -y libpq-dev
     - name: Set exec bit
-      run: chmod a+x ./bootstrap.sh && chmod a+x ./create/bin/*.{sh,pl} && ./frontends/php/locale/*.sh
+      run: chmod a+x ./bootstrap.sh && chmod a+x ./create/bin/*.{sh,pl} && chmod a+x ./frontends/php/locale/*.sh
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
