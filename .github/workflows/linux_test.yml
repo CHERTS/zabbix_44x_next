@@ -25,6 +25,8 @@ jobs:
       run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
     - name: Install database dependencies
       run: sudo apt-get install -y libmysqlclient-dev
+    - name: Set exec bit
+      run: chmod a+x ./bootstrap.sh && chmod a+x ./create/bin/*.{sh,pl}
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
