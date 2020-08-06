@@ -566,10 +566,9 @@ int	zbx_db_connect(char *host, char *user, char *password, char *dbname, char *d
 
 	zbx_vector_ptr_create(&oracle.db_results);
 
-	/* connection string format: [//]host[:port][/service name] */
-
-	if ('\0' != *host)
+	if (NULL != host && '\0' != *host)
 	{
+		/* connection string format: [//]host[:port][/service name] */
 		connect = zbx_strdcatf(connect, "//%s", host);
 		if (0 != port)
 			connect = zbx_strdcatf(connect, ":%d", port);
@@ -577,7 +576,15 @@ int	zbx_db_connect(char *host, char *user, char *password, char *dbname, char *d
 			connect = zbx_strdcatf(connect, "/%s", dbname);
 	}
 	else
-		ret = ZBX_DB_FAIL;
+	{
+		if (NULL != dbname && '\0' != *dbname)
+		{
+			/* use tnsname */
+			connect = strdup(dbname);
+		}
+		else
+			ret = ZBX_DB_FAIL;
+	}
 
 	while (ZBX_DB_OK == ret)
 	{

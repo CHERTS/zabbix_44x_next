@@ -113,6 +113,8 @@ function DBconnect(&$error) {
 					if ($DB['DATABASE']) {
 						$connect .= '/'.$DB['DATABASE'];
 					}
+				} else {
+					$connect = $DB['DATABASE'];
 				}
 
 				$DB['DB'] = @oci_connect($DB['USER'], $DB['PASSWORD'], $connect, 'UTF8');
