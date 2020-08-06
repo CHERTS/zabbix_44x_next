@@ -1,6 +1,6 @@
 # Продолжение развития Zabbix версии 4.4.x
 
-![Everyone](https://github.com/CHERTS/zabbix_dbmon/workflows/LinuxTest/badge.svg)
+![Linux](https://github.com/CHERTS/zabbix_dbmon/workflows/Linux/badge.svg)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
 
 [In English / По-английски](README.md)
