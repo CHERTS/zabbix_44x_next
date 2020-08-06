@@ -1,6 +1,7 @@
 # Продолжение развития Zabbix версии 4.4.x
 
-[![Build Status](https://travis-ci.org/CHERTS/zabbix_44x_next.svg?branch=master)](https://travis-ci.org/CHERTS/zabbix_44x_next) [![Build status](https://ci.appveyor.com/api/projects/status/oq6c61rk2kl04nfo?svg=true)](https://ci.appveyor.com/project/CHERTS/zabbix-44x-next)
+![Everyone](https://github.com/CHERTS/zabbix_dbmon/workflows/LinuxTest/badge.svg)
+[![License: GPL v2](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
 
 [In English / По-английски](README.md)
 
