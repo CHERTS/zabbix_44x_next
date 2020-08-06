@@ -1,3 +1,12 @@
+Changes for 4.4.11rc1 (unofficial)
+
+New features:
+..F....PS. [ZBXNEXT-435] add Oracle TNSNAMES connect support (mgrigorev)
+..F....PS. [ZBXNEXT-5554] added webhook through proxy (mgrigorev)
+
+Bug fixes:
+
+--------------------------------------------------------------------------------
 Changes for 4.4.10
 
 4.4.10rc1 was released as 4.4.10 without any changes
