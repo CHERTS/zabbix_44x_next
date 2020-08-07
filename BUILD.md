@@ -8,6 +8,8 @@
 
 [Build on Ubuntu 18.04 LTS (Bionic Beaver) with MySQL (MariaDB) support](#ubuntu)
 
+[Build on Debian 10 (Buster) with MySQL (MariaDB) support](#debian)
+
 # Oracle Linux 7
 ## Build on Oracle Linux 7 with MySQL (MariaDB) support
 
@@ -32,7 +34,7 @@ cd zabbix-4.4.11
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-jabber --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
 make
 make gettext
 ~~~~
@@ -51,11 +53,11 @@ Check for the presence of binary files:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root 1631312 Oct  9 21:28 zabbix_agentd_v4.4.11
--rwxr-xr-x  1 root root  556912 Oct  9 21:28 zabbix_get_v4.4.11
--rwxr-xr-x  1 root root 5029608 Oct  9 21:28 zabbix_proxy_mysql_v4.4.11
--rwxr-xr-x  1 root root  651216 Oct  9 21:28 zabbix_sender_v4.4.11
--rwxr-xr-x  1 root root 6405704 Oct  9 21:28 zabbix_server_mysql_v4.4.11
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.11
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.11
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
 Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
@@ -104,11 +106,11 @@ Check for the presence of binary files:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root 1631312 Aug  9 21:28 zabbix_agentd_v4.4.11
--rwxr-xr-x  1 root root  556912 Aug  9 21:28 zabbix_get_v4.4.11
--rwxr-xr-x  1 root root 5029608 Aug  9 21:28 zabbix_proxy_mysql_v4.4.11
--rwxr-xr-x  1 root root  651216 Aug  9 21:28 zabbix_sender_v4.4.11
--rwxr-xr-x  1 root root 6405704 Aug  9 21:28 zabbix_server_mysql_v4.4.11
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.11
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.11
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
 Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
@@ -120,7 +122,7 @@ Congratulations! Now you can stop your zabbix components version 4.4.11 and repl
 
 ~~~~
 sudo apt-get update
-sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libiksemel-dev libmariadbclient-dev-compat libopenipmi-dev unixodbc-dev libldap2-dev
+sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libmariadbclient-dev-compat
 ~~~~
 
 ### 2. Download and unzip the latest version of the source code:
@@ -134,7 +136,7 @@ cd zabbix-4.4.11
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-jabber --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
 make
 make gettext
 ~~~~
@@ -153,11 +155,60 @@ Check for the presence of binary files:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root 1631312 Aug  9 21:28 zabbix_agentd_v4.4.11
--rwxr-xr-x  1 root root  556912 Aug  9 21:28 zabbix_get_v4.4.11
--rwxr-xr-x  1 root root 5029608 Aug  9 21:28 zabbix_proxy_mysql_v4.4.11
--rwxr-xr-x  1 root root  651216 Aug  9 21:28 zabbix_sender_v4.4.11
--rwxr-xr-x  1 root root 6405704 Aug  9 21:28 zabbix_server_mysql_v4.4.11
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.11
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.11
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
+~~~~
+
+Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
+
+# Debian
+## Build on Debian 10 (Buster) with MySQL (MariaDB) support
+
+### 1. To prepare for build on Debian 10, you need to install additional packages:
+
+~~~~
+sudo apt-get update
+sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre3-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libmariadbclient-dev-compat
+~~~~
+
+### 2. Download and unzip the latest version of the source code:
+
+~~~~
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.11/zabbix-4.4.11.tar.gz
+tar -zxf zabbix-4.4.11.tar.gz
+cd zabbix-4.4.11
+~~~~
+
+### 3. Build all Zabbix components with MySQL (MariaDB) support:
+
+~~~~
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+make
+make gettext
+~~~~
+
+### 4. After successful build, in step 3 you can use zabbix binaries, copy them to the current directory:
+
+~~~~
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.11
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.11
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.11
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.11
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
+~~~~
+
+Check for the presence of binary files:
+
+~~~~
+# ls -l | grep 'zabbix_'
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.11
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.11
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
 Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
