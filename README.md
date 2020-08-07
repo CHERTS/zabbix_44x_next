@@ -1,6 +1,6 @@
 # Continued development of Zabbix version 4.4.x
 
-![Release](https://github.com/CHERTS/zabbix_dbmon/workflows/Release/badge.svg)
+![Release](https://github.com/CHERTS/zabbix_44x_next/workflows/Release/badge.svg)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
 
 [По-русски / In Russian](README.ru.md)
