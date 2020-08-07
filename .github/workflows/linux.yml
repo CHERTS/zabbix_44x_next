@@ -22,11 +22,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install base dependencies
-      run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
+      run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
     - name: Install database dependencies
       run: sudo apt-get install -y libmysqlclient-dev
-    - name: Set exec bit
-      run: chmod a+x ./bootstrap.sh && chmod a+x ./create/bin/*.{sh,pl} && chmod a+x ./frontends/php/locale/*.sh
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
@@ -37,23 +35,33 @@ jobs:
       run: make dbschema
     - name: Run make gettext
       run: make gettext
+    - name: Run create bin, img and styles directory
+      run: mkdir -p ./bin/win32/dev ./bin/win64/dev ./frontends/php/assets/img ./frontends/php/assets/styles
+    - name: Run make css
+      run: make css
     - name: Run make dist
       run: make dist
     - uses: actions/upload-artifact@v2
       with:
         name: zabbix_server ubuntu-18.04 mysql
         path: src/zabbix_server/zabbix_server
+        name: zabbix_proxy ubuntu-18.04 pgsql
+        path: src/zabbix_proxy/zabbix_proxy
+        name: zabbix_agentd ubuntu-18.04 pgsql
+        path: src/zabbix_agent/zabbix_agentd
+        name: zabbix_get ubuntu-18.04 pgsql
+        path: src/zabbix_get/zabbix_get
+        name: zabbix_sender ubuntu-18.04 pgsql
+        path: src/zabbix_sender/zabbix_sender
   github-job-pgsql:
     name: Ubuntu (PgSQL)
     runs-on: [ubuntu-18.04]
     steps:
     - uses: actions/checkout@v2
     - name: Install base dependencies
-      run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
+      run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
     - name: Install database dependencies
       run: sudo apt-get install -y libpq-dev
-    - name: Set exec bit
-      run: chmod a+x ./bootstrap.sh && chmod a+x ./create/bin/*.{sh,pl} && chmod a+x ./frontends/php/locale/*.sh
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
@@ -64,9 +72,21 @@ jobs:
       run: make dbschema
     - name: Run make gettext
       run: make gettext
+    - name: Run create bin, img and styles directory
+      run: mkdir -p ./bin/win32/dev ./bin/win64/dev ./frontends/php/assets/img ./frontends/php/assets/styles
+    - name: Run make css
+      run: make css
     - name: Run make dist
       run: make dist
     - uses: actions/upload-artifact@v2
       with:
         name: zabbix_server ubuntu-18.04 pgsql
         path: src/zabbix_server/zabbix_server
+        name: zabbix_proxy ubuntu-18.04 pgsql
+        path: src/zabbix_proxy/zabbix_proxy
+        name: zabbix_agentd ubuntu-18.04 pgsql
+        path: src/zabbix_agent/zabbix_agentd
+        name: zabbix_get ubuntu-18.04 pgsql
+        path: src/zabbix_get/zabbix_get
+        name: zabbix_sender ubuntu-18.04 pgsql
+        path: src/zabbix_sender/zabbix_sender

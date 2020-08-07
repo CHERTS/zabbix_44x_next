@@ -1,0 +1,47 @@
+name: Release
+
+on:
+#  schedule:
+#    - cron: "0 18 * * 1-5"
+#  push:
+#    branches:
+#      - master
+#    tags:
+#      - 'v*'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Update all binary'
+
+jobs:
+  github-job-release:
+    name: Ubuntu
+    runs-on: [ubuntu-18.04]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install base dependencies
+      run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
+    - name: Install database dependencies
+      run: sudo apt-get install -y libmysqlclient-dev
+    - name: Run bootstrap
+      run: ./bootstrap.sh
+    - name: Run configure
+      run: ./configure --sysconfdir=/etc/zabbix
+    - name: Run make
+      run: make
+    - name: Run make dbschema
+      run: make dbschema
+    - name: Run make gettext
+      run: make gettext
+    - name: Run create bin, img and styles directory
+      run: mkdir -p ./bin/win32/dev ./bin/win64/dev ./frontends/php/assets/img ./frontends/php/assets/styles
+    - name: Run make css
+      run: make css
+    - name: Run make dist
+      run: make dist
+    - uses: actions/upload-artifact@v2
+      with:
+        name: zabbix-4.4.11rc1
+        path: zabbix-4.4.11rc1.tar.gz
