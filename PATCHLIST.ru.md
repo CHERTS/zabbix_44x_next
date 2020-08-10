@@ -11,6 +11,7 @@
 [ZBX-18024] added ODBC empty query check (https://support.zabbix.com/browse/ZBX-18024)
 [ZBX-18069] fixed server exit when trying to execute IPMI script without IPMI pollers (https://support.zabbix.com/browse/ZBX-18069)
 [ZBX-18105] fixed use on uninitialised variable (https://support.zabbix.com/browse/ZBX-18105)
+[ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)
 [ZBXNEXT-435] Добавлена поддержка подключения к Oracle RDBMS с указанием tns-имени (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-5554] Добавлена поддержка работы веб-хуков через http/socks5 прокси (https://support.zabbix.com/browse/ZBXNEXT-5554)
 [DBS-001] На странице "Проблемы" реализована возможность отображения 4-х тегов
