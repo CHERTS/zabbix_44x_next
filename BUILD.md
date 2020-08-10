@@ -4,6 +4,8 @@
 
 [Build on Oracle Linux 7 with MySQL (MariaDB) support](#oracle-linux-7)
 
+[Build on Oracle Linux 7 with Oracle (RDBMS)](#oracle-linux-7-oracle-rdbms)
+
 [Build on Red Hat Enterprise Linux 8 with MySQL (MariaDB) support](#red-hat-enterprise-linux-8)
 
 [Build on Ubuntu 18.04 LTS (Bionic Beaver) with MySQL (MariaDB) support](#ubuntu)
@@ -19,7 +21,7 @@
 yum group install "Development Tools"
 yum-config-manager --enable ol7_optional_latest
 yum-config-manager --enable ol7_developer
-yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel iksemel-devel OpenIPMI-devel unixODBC-devel openldap-devel
+yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
 yum install -y MariaDB-client MariaDB-devel MariaDB-shared
 ~~~~
 
@@ -58,6 +60,61 @@ Check for the presence of binary files:
 -rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
 -rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
+~~~~
+
+Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
+
+
+
+# Oracle Linux 7 Oracle RDBMS
+## Build on Oracle Linux 7 with Oracle 19c RDBMS support
+
+### 1. To prepare for build on Oracle Linux 7, you need to install additional packages:
+
+~~~~
+yum group install "Development Tools"
+yum-config-manager --enable ol7_optional_latest
+yum-config-manager --enable ol7_developer
+yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
+yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
+yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-devel-linuxx64.rpm
+~~~~
+
+### 2. Download and unzip the latest version of the source code:
+
+~~~~
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.11/zabbix-4.4.11.tar.gz
+tar -zxf zabbix-4.4.11.tar.gz
+cd zabbix-4.4.11
+~~~~
+
+### 3. Build all Zabbix components with Oracle 19c support:
+
+~~~~
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-oracle --with-oracle-lib=/usr/lib/oracle/19.8/client64/lib --with-oracle-include=/usr/include/oracle/19.8/client64
+make
+make gettext
+~~~~
+
+### 4. After successful build, in step 3 you can use zabbix binaries, copy them to the current directory:
+
+~~~~
+cp src/zabbix_server/zabbix_server zabbix_server_oracle_v4.4.11
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_oracle_v4.4.11
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.11
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.11
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
+~~~~
+
+Check for the presence of binary files:
+
+~~~~
+# ls -l | grep 'zabbix_'
+-rwxr-xr-x  1 root root 1894312 Aug 10 16:02 zabbix_agentd_v4.4.11
+-rwxr-xr-x  1 root root  629984 Aug 10 16:02 zabbix_get_v4.4.11
+-rwxr-xr-x  1 root root 8351184 Aug 10 16:02 zabbix_proxy_oracle_v4.4.11
+-rwxr-xr-x  1 root root  963680 Aug 10 16:02 zabbix_sender_v4.4.11
+-rwxr-xr-x  1 root root 9835920 Aug 10 16:02 zabbix_server_oracle_v4.4.11
 ~~~~
 
 Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.

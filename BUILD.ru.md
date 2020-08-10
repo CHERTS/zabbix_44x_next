@@ -4,11 +4,14 @@
 
 [Сборка на Oracle Linux 7 с поддержкой MySQL (MariaDB)](#oracle-linux-7)
 
+[Сборка на Oracle Linux 7 с поддержкой Oracle (RDBMS)](#oracle-linux-7-oracle-rdbms)
+
 [Сборка на Red Hat Enterprise Linux 8 с поддержкой MySQL (MariaDB)](#red-hat-enterprise-linux-8)
 
 [Сборка на Ubuntu 18.04 LTS (Bionic Beaver) с поддержкой MySQL (MariaDB)](#ubuntu)
 
 [Сборка на Debian 10 (Buster) с поддержкой (MariaDB)](#debian)
+
 
 # Oracle Linux 7
 ## Сборка на Oracle Linux 7 с поддержкой MySQL (MariaDB)
@@ -19,7 +22,7 @@
 yum group install "Development Tools"
 yum-config-manager --enable ol7_optional_latest
 yum-config-manager --enable ol7_developer
-yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel iksemel-devel OpenIPMI-devel unixODBC-devel openldap-devel
+yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
 yum install -y MariaDB-client MariaDB-devel MariaDB-shared
 ~~~~
 
@@ -34,7 +37,7 @@ cd zabbix-4.4.11
 ### 3. Сборка всех компонентов Zabbix с поддержкой (MariaDB) MySQL:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-jabber --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
 make
 make gettext
 ~~~~
@@ -58,6 +61,59 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
 -rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
 -rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
+~~~~
+
+Теперь Вы можете остановить свои компоненты zabbix версии 4.4.11 и заменить их данной сборкой.
+
+# Oracle Linux 7 Oracle RDBMS
+## Сборка на Oracle Linux 7 с поддержкой Oracle 19c RDBMS
+
+### 1. Для подготовки к сборки на Oracle Linux 7 нужно установить дополнительные пакеты:
+
+~~~~
+yum group install "Development Tools"
+yum-config-manager --enable ol7_optional_latest
+yum-config-manager --enable ol7_developer
+yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
+yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
+yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-devel-linuxx64.rpm
+~~~~
+
+### 2. Скачать и распаковать свежую версию исходного кода:
+
+~~~~
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.11/zabbix-4.4.11.tar.gz
+tar -zxf zabbix-4.4.11.tar.gz
+cd zabbix-4.4.11
+~~~~
+
+### 3. Сборка всех компонентов Zabbix с поддержкой Oracle 19c:
+
+~~~~
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-oracle --with-oracle-lib=/usr/lib/oracle/19.8/client64/lib --with-oracle-include=/usr/include/oracle/19.8/client64
+make
+make gettext
+~~~~
+
+### 4. После успешной сборки на шаге 3 можно использовать бинарные файлы zabbix, скопируем их в текущий каталог:
+
+~~~~
+cp src/zabbix_server/zabbix_server zabbix_server_oracle_v4.4.11
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_oracle_v4.4.11
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.11
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.11
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
+~~~~
+
+Проверим наличие бинарных файлов:
+
+~~~~
+# ls -l | grep 'zabbix_'
+-rwxr-xr-x  1 root root 1894312 Aug 10 16:02 zabbix_agentd_v4.4.11
+-rwxr-xr-x  1 root root  629984 Aug 10 16:02 zabbix_get_v4.4.11
+-rwxr-xr-x  1 root root 8351184 Aug 10 16:02 zabbix_proxy_oracle_v4.4.11
+-rwxr-xr-x  1 root root  963680 Aug 10 16:02 zabbix_sender_v4.4.11
+-rwxr-xr-x  1 root root 9835920 Aug 10 16:02 zabbix_server_oracle_v4.4.11
 ~~~~
 
 Теперь Вы можете остановить свои компоненты zabbix версии 4.4.11 и заменить их данной сборкой.
@@ -136,7 +192,7 @@ cd zabbix-4.4.11
 ### 3. Сборка всех компонентов Zabbix с поддержкой (MariaDB) MySQL:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-jabber --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
 make
 make gettext
 ~~~~
