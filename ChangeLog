@@ -12,6 +12,7 @@ New features:
 
 Bug fixes:
 ........S. [ZBX-18014] fixed memory leak when action message does not have to be sent (viktors)
+........S. [ZBX-18024] added ODBC empty query check (viktors)
 ........S. [ZBX-18105] fixed use on uninitialised variable (viktors)
 
 --------------------------------------------------------------------------------
