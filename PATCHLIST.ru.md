@@ -3,12 +3,12 @@
 [In English / По-английски](PATCHLIST.md)
 
 ~~~~
-[ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
-[ZBXNEXT-5554] Added webhook through proxy (https://support.zabbix.com/browse/ZBXNEXT-5554)
-[DBS-001] Added the ability to display 4 tags on the Problems page
-[DBS-002] Added space between tags on Problems page
-[DBS-003] Added a quick jump to the "Latest data" page from the Configuration -> Hosts page
-[DBS-004] Change default setting: ZBX_UNITS_ROUNDOFF_MIDDLE_LIMIT - 4 => 2 and ZBX_DEFAULT_URL - zabbix.php?action=dashboard.view => zabbix.php?action=problem.view
-[DBS-005] Increased the width of the pop-up window on the Problems page
-[DBS-006] Tag column has been moved before the Problem column. The width of the Tag column has also been increased
+[ZBXNEXT-435] Добавлена поддержка подключения к Oracle RDBMS с указанием tns-имени (https://support.zabbix.com/browse/ZBXNEXT-435)
+[ZBXNEXT-5554] Добавлена поддержка работы веб-хуков через http/socks5 прокси (https://support.zabbix.com/browse/ZBXNEXT-5554)
+[DBS-001] На странице "Проблемы" реализована возможность отображения 4-х тегов
+[DBS-002] На странице "Проблемы" в колонке "Теги" добавлен пробол для разделения тегов при выделении и копировани их в буфер обмена
+[DBS-003] Добавлен переход на страницу "Последние данные" со страницы Конфигурация -> Хосты
+[DBS-004] Изменены некоторые настройки по-умолчанию в веб-интерфейса: ZBX_UNITS_ROUNDOFF_MIDDLE_LIMIT - 4 => 2 и ZBX_DEFAULT_URL - zabbix.php?action=dashboard.view => zabbix.php?action=problem.view
+[DBS-005] Увеличина ширина всплывающего окна на странице "Проблемы" при клике на аларм
+[DBS-006] На странице "Проблемы" колонка "Теги" перемещена в позицию после корлонки "Проблема", так же увеличена ширина колонки "Теги"
 ~~~~
