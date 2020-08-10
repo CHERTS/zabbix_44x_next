@@ -45,14 +45,6 @@ jobs:
       with:
         name: zabbix_server ubuntu-18.04 mysql
         path: src/zabbix_server/zabbix_server
-        name: zabbix_proxy ubuntu-18.04 pgsql
-        path: src/zabbix_proxy/zabbix_proxy
-        name: zabbix_agentd ubuntu-18.04 pgsql
-        path: src/zabbix_agent/zabbix_agentd
-        name: zabbix_get ubuntu-18.04 pgsql
-        path: src/zabbix_get/zabbix_get
-        name: zabbix_sender ubuntu-18.04 pgsql
-        path: src/zabbix_sender/zabbix_sender
   github-job-pgsql:
     name: Ubuntu (PgSQL)
     runs-on: [ubuntu-18.04]
@@ -82,11 +74,3 @@ jobs:
       with:
         name: zabbix_server ubuntu-18.04 pgsql
         path: src/zabbix_server/zabbix_server
-        name: zabbix_proxy ubuntu-18.04 pgsql
-        path: src/zabbix_proxy/zabbix_proxy
-        name: zabbix_agentd ubuntu-18.04 pgsql
-        path: src/zabbix_agent/zabbix_agentd
-        name: zabbix_get ubuntu-18.04 pgsql
-        path: src/zabbix_get/zabbix_get
-        name: zabbix_sender ubuntu-18.04 pgsql
-        path: src/zabbix_sender/zabbix_sender
