@@ -817,12 +817,12 @@ function makeTags(array $list, $html = true, $key = 'eventid', $list_tag_count =
 function getTagString(array $tag, $tag_name_format = PROBLEMS_TAG_NAME_FULL) {
 	switch ($tag_name_format) {
 		case PROBLEMS_TAG_NAME_NONE:
-			return $tag['value'];
+			return $tag['value'] . '&nbsp;';
 
 		case PROBLEMS_TAG_NAME_SHORTENED:
-			return substr($tag['tag'], 0, 3).(($tag['value'] === '') ? '' : ': '.$tag['value']);
+			return substr($tag['tag'], 0, 3).(($tag['value'] === '') ? '' : ': '.$tag['value'] . '&nbsp;');
 
 		default:
-			return $tag['tag'].(($tag['value'] === '') ? '' : ': '.$tag['value']);
+			return $tag['tag'].(($tag['value'] === '') ? '' : ': '.$tag['value'] . '&nbsp;');
 	}
 }
