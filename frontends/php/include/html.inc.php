@@ -363,6 +363,13 @@ function get_header_host_table($current_element, $hostid, $lld_ruleid = 0) {
 	 * the count of rows
 	 */
 	if ($lld_ruleid == 0) {
+		// latest data
+		if (!$is_template) {
+			$content_menu->addItem(
+			new CSpan(new CLink(_('Latest data'), 'latest.php?filter_set=1&hostids[]=' . $db_host['hostid']))
+			);
+		}
+
 		// applications
 		$applications = new CSpan([
 			new CLink(_('Applications'), 'applications.php?hostid='.$db_host['hostid']),
