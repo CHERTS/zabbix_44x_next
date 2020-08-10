@@ -62,7 +62,7 @@ Check for the presence of binary files:
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
-Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
+Congratulations! Now you can stop your zabbix components version 4.4.x and replace them with this build.
 
 
 
@@ -170,7 +170,7 @@ Check for the presence of binary files:
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
-Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
+Congratulations! Now you can stop your zabbix components version 4.4.x and replace them with this build.
 
 # Ubuntu
 ## Build on Ubuntu 18.04 LTS (Bionic Beaver) with MySQL (MariaDB) support
@@ -219,7 +219,7 @@ Check for the presence of binary files:
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
-Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
+Congratulations! Now you can stop your zabbix components version 4.4.x and replace them with this build.
 
 # Debian
 ## Build on Debian 10 (Buster) with MySQL (MariaDB) support
@@ -268,4 +268,4 @@ Check for the presence of binary files:
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
-Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
+Congratulations! Now you can stop your zabbix components version 4.4.x and replace them with this build.

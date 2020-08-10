@@ -63,7 +63,7 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
-Теперь Вы можете остановить свои компоненты zabbix версии 4.4.11 и заменить их данной сборкой.
+Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
 
 # Oracle Linux 7 Oracle RDBMS
 ## Сборка на Oracle Linux 7 с поддержкой Oracle 19c RDBMS
@@ -116,7 +116,7 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
 -rwxr-xr-x  1 root root 9835920 Aug 10 16:02 zabbix_server_oracle_v4.4.11
 ~~~~
 
-Теперь Вы можете остановить свои компоненты zabbix версии 4.4.11 и заменить их данной сборкой.
+Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
 
 # Red Hat Enterprise Linux 8
 ## Сборка на Red Hat Enterprise Linux 8 с поддержкой MySQL (MariaDB)
@@ -169,7 +169,7 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
-Теперь Вы можете остановить свои компоненты zabbix версии 4.4.11 и заменить их данной сборкой.
+Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
 
 # Ubuntu
 ## Сборка на Ubuntu 18.04 LTS (Bionic Beaver) с поддержкой MariaDB
@@ -218,7 +218,7 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
-Теперь Вы можете остановить свои компоненты zabbix версии 4.4.11 и заменить их данной сборкой.
+Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
 
 
 # Debian
@@ -268,5 +268,5 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
 -rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
 ~~~~
 
-Теперь Вы можете остановить свои компоненты zabbix версии 4.4.11 и заменить их данной сборкой.
+Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
 
