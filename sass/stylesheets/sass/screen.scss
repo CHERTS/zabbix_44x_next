@@ -945,15 +945,15 @@ output {
 				max-width: 40px;
 
 				@media screen and (min-width: 1200px) {
-					max-width: 71px;
+					max-width: 231px;
 				}
 
 				@media screen and (min-width: 1400px) {
-					max-width: 102px;
+					max-width: 262px;
 				}
 
 				@media screen and (min-width: 1600px) {
-					max-width: 133px;
+					max-width: 293px;
 				}
 			}
 
@@ -5658,7 +5658,7 @@ a.link-action {
 	margin: 1px 3px 1px 0;
 	padding: 2px 3px;
 	line-height: 1em;
-	max-width: 133px;
+	max-width: 293px;
 	vertical-align: middle;
 	@extend %overflow-ellipsis;
 	@include border-radius(2px);

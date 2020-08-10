@@ -909,10 +909,10 @@ class CScreenProblem extends CScreenBase {
 							->addStyle('width: 42%;'),
 						make_sorting_header(_('Problem'), 'name', $this->data['sort'], $this->data['sortorder'], $link)
 							->addStyle('width: 58%;'),
+						$tags_header,
 						(new CColHeader(_('Duration')))->addStyle('width: 73px;'),
 						(new CColHeader(_('Ack')))->addStyle('width: 36px;'),
-						(new CColHeader(_('Actions')))->addStyle('width: 64px;'),
-						$tags_header
+						(new CColHeader(_('Actions')))->addStyle('width: 64px;')
 					]))
 						->addClass(ZBX_STYLE_COMPACT_VIEW)
 						->addClass(ZBX_STYLE_OVERFLOW_ELLIPSIS);
@@ -934,10 +934,10 @@ class CScreenProblem extends CScreenBase {
 						($show_opdata == OPERATIONAL_DATA_SHOW_SEPARATELY)
 							? _('Operational data')
 							: null,
+						$this->data['filter']['show_tags'] ? _('Tags') : null,
 						_('Duration'),
 						_('Ack'),
-						_('Actions'),
-						$this->data['filter']['show_tags'] ? _('Tags') : null
+						_('Actions')
 					]));
 			}
 
@@ -1152,14 +1152,14 @@ class CScreenProblem extends CScreenBase {
 						? (new CDiv($description))->addClass('action-container')
 						: $description,
 					($show_opdata == OPERATIONAL_DATA_SHOW_SEPARATELY) ? $opdata : null,
+					$this->data['filter']['show_tags'] ? $tags[$problem['eventid']] : null,
 					($problem['r_eventid'] != 0)
 						? zbx_date2age($problem['clock'], $problem['r_clock'])
 						: zbx_date2age($problem['clock']),
 					$problem_update_link,
 					makeEventActionsIcons($problem['eventid'], $data['actions'], $data['mediatypes'], $data['users'],
 						$this->config
-					),
-					$this->data['filter']['show_tags'] ? $tags[$problem['eventid']] : null
+					)
 				]), ($this->data['filter']['highlight_row'] && $value == TRIGGER_VALUE_TRUE)
 					? getSeverityFlhStyle($problem['severity'])
 					: null
@@ -1189,10 +1189,10 @@ class CScreenProblem extends CScreenBase {
 			_('Host'),
 			_('Problem'),
 			($show_opdata == OPERATIONAL_DATA_SHOW_SEPARATELY) ? _('Operational data') : null,
+			_('Tags'),
 			_('Duration'),
 			_('Ack'),
-			_('Actions'),
-			_('Tags')
+			_('Actions')
 		]);
 
 		$tags = makeTags($data['problems'], false);
@@ -1270,12 +1270,12 @@ class CScreenProblem extends CScreenBase {
 				$row[] = $opdata;
 			}
 
+			$row[] = implode(', ', $tags[$problem['eventid']]);
 			$row[] = ($problem['r_eventid'] != 0)
 				? zbx_date2age($problem['clock'], $problem['r_clock'])
 				: zbx_date2age($problem['clock']);
 			$row[] = ($problem['acknowledged'] == EVENT_ACKNOWLEDGED) ? _('Yes') : _('No');
 			$row[] = implode(', ', $actions_performed);
-			$row[] = implode(', ', $tags[$problem['eventid']]);
 
 			$csv[] = $row;
 		}
