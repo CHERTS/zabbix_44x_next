@@ -12,3 +12,5 @@ I decided to continue the development of version 4.4.x by backporting (transferr
 Zabbix version numbers in this repository will continue under 4.4.11 and so on, but these are unofficial versions and should not be confused with those versions located on the official website.<br>
 
 [How-to build from source code](BUILD.md)
+
+[List of addition patches](PATCHLIST.md)
