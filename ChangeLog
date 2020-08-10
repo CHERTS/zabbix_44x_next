@@ -12,6 +12,7 @@ New features:
 
 Bug fixes:
 .......PS. [ZBX-17252] fixed building of Zabbix daemons with link time optimization (vso)
+A.F....... [ZBX-17468] fixed excess audit log record being added on host status update (talbergs)
 .......PS. [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (MVekslers)
 ...G...... [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (wiper)
 ........S. [ZBX-18014] fixed memory leak when action message does not have to be sent (viktors)
