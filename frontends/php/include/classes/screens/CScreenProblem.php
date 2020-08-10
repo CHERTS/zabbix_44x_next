@@ -890,6 +890,9 @@ class CScreenProblem extends CScreenBase {
 						case PROBLEMS_SHOW_TAGS_3:
 							$tags_header->addClass(ZBX_STYLE_COLUMN_TAGS_3);
 							break;
+						case PROBLEMS_SHOW_TAGS_4:
+							$tags_header->addClass(ZBX_STYLE_COLUMN_TAGS_4);
+							break;
 					}
 				}
 

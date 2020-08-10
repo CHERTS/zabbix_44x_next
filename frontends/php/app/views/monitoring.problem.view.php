@@ -266,6 +266,7 @@ if ($data['action'] == 'problem.view') {
 				->addValue(PROBLEMS_SHOW_TAGS_1, PROBLEMS_SHOW_TAGS_1)
 				->addValue(PROBLEMS_SHOW_TAGS_2, PROBLEMS_SHOW_TAGS_2)
 				->addValue(PROBLEMS_SHOW_TAGS_3, PROBLEMS_SHOW_TAGS_3)
+				->addValue(PROBLEMS_SHOW_TAGS_4, PROBLEMS_SHOW_TAGS_4)
 				->setModern(true)
 		)
 		->addItem((new CDiv())->addClass(ZBX_STYLE_FORM_INPUT_MARGIN))

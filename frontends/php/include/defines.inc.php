@@ -197,7 +197,7 @@ define('ZBX_SORT_UP',	'ASC');
 define('ZBX_SORT_DOWN',	'DESC');
 
 // Maximum number of tags to display.
-define('ZBX_TAG_COUNT_DEFAULT', 3);
+define('ZBX_TAG_COUNT_DEFAULT', 4);
 
 define('ZBX_TCP_HEADER_DATA',		"ZBXD");
 define('ZBX_TCP_HEADER_VERSION',	"\1");
@@ -1564,6 +1564,7 @@ define('ZBX_STYLE_COLOR_PREVIEW_BOX', 'color-preview-box');
 define('ZBX_STYLE_COLUMN_TAGS_1', 'column-tags-1');
 define('ZBX_STYLE_COLUMN_TAGS_2', 'column-tags-2');
 define('ZBX_STYLE_COLUMN_TAGS_3', 'column-tags-3');
+define('ZBX_STYLE_COLUMN_TAGS_4', 'column-tags-4');
 define('ZBX_STYLE_COMPACT_VIEW', 'compact-view');
 define('ZBX_STYLE_CURSOR_POINTER', 'cursor-pointer');
 define('ZBX_STYLE_DASHBRD_GRID_CONTAINER', 'dashbrd-grid-container');
@@ -1839,6 +1840,7 @@ define('PROBLEMS_SHOW_TAGS_NONE', 0);
 define('PROBLEMS_SHOW_TAGS_1', 1);
 define('PROBLEMS_SHOW_TAGS_2', 2);
 define('PROBLEMS_SHOW_TAGS_3', 3);
+define('PROBLEMS_SHOW_TAGS_4', 4);
 
 // Tag name format to display in Problems widget and Monitoring > Problems.
 define('PROBLEMS_TAG_NAME_FULL',      0);

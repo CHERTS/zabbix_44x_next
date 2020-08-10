@@ -51,7 +51,7 @@ class CControllerProblemView extends CController {
 			'filter_inventory' =>		'array',
 			'filter_evaltype' =>		'in '.TAG_EVAL_TYPE_AND_OR.','.TAG_EVAL_TYPE_OR,
 			'filter_tags' =>			'array',
-			'filter_show_tags' =>		'in '.PROBLEMS_SHOW_TAGS_NONE.','.PROBLEMS_SHOW_TAGS_1.','.PROBLEMS_SHOW_TAGS_2.','.PROBLEMS_SHOW_TAGS_3,
+			'filter_show_tags' =>		'in '.PROBLEMS_SHOW_TAGS_NONE.','.PROBLEMS_SHOW_TAGS_1.','.PROBLEMS_SHOW_TAGS_2.','.PROBLEMS_SHOW_TAGS_3.','.PROBLEMS_SHOW_TAGS_4,
 			'filter_show_suppressed' =>	'in 1',
 			'filter_unacknowledged' =>	'in 1',
 			'filter_compact_view' =>	'in 1',
@@ -170,7 +170,7 @@ class CControllerProblemView extends CController {
 			CProfile::updateArray('web.problem.filter.tags.value', $filter_tags['values'], PROFILE_TYPE_STR);
 			CProfile::updateArray('web.problem.filter.tags.operator', $filter_tags['operators'], PROFILE_TYPE_INT);
 
-			CProfile::update('web.problem.filter.show_tags', $this->getInput('filter_show_tags', PROBLEMS_SHOW_TAGS_3),
+			CProfile::update('web.problem.filter.show_tags', $this->getInput('filter_show_tags', PROBLEMS_SHOW_TAGS_4),
 				PROFILE_TYPE_INT
 			);
 			CProfile::update('web.problem.filter.tag_name_format', $this->getInput('filter_tag_name_format',
@@ -317,7 +317,7 @@ class CControllerProblemView extends CController {
 				'inventory' => $filter_inventory,
 				'evaltype' => CProfile::get('web.problem.filter.evaltype', TAG_EVAL_TYPE_AND_OR),
 				'tags' => $filter_tags,
-				'show_tags' => CProfile::get('web.problem.filter.show_tags', PROBLEMS_SHOW_TAGS_3),
+				'show_tags' => CProfile::get('web.problem.filter.show_tags', PROBLEMS_SHOW_TAGS_4),
 				'tag_name_format' => CProfile::get('web.problem.filter.tag_name_format', PROBLEMS_TAG_NAME_FULL),
 				'tag_priority' => CProfile::get('web.problem.filter.tag_priority', ''),
 				'show_suppressed' => CProfile::get('web.problem.filter.show_suppressed', 0),
