@@ -75,7 +75,7 @@ define('ZBX_MAX_IMAGE_SIZE', ZBX_MEBIBYTE);
 
 define('ZBX_UNITS_ROUNDOFF_THRESHOLD',		0.01);
 define('ZBX_UNITS_ROUNDOFF_UPPER_LIMIT',	2);
-define('ZBX_UNITS_ROUNDOFF_MIDDLE_LIMIT',	4);
+define('ZBX_UNITS_ROUNDOFF_MIDDLE_LIMIT',	2);
 define('ZBX_UNITS_ROUNDOFF_LOWER_LIMIT',	6);
 
 define('ZBX_PRECISION_10',	10);
@@ -1459,7 +1459,7 @@ define('THEME_DEFAULT', 'default');
 // the default theme
 define('ZBX_DEFAULT_THEME', 'blue-theme');
 
-define('ZBX_DEFAULT_URL', 'zabbix.php?action=dashboard.view');
+define('ZBX_DEFAULT_URL', 'zabbix.php?action=problem.view');
 
 // date format context, usable for translators
 define('DATE_FORMAT_CONTEXT', 'Date format (see http://php.net/date)');
