@@ -11,6 +11,7 @@ New features:
 ..F....... [DBS-006] tag column has been moved before the Problem column. The width of the Tag column has also been increased (mgrigorev)
 
 Bug fixes:
+........S. [ZBX-18105] fixed use on uninitialised variable (viktors)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.10

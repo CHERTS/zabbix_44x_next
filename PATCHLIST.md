@@ -3,6 +3,7 @@
 [По-русски / In Russian](PATCHLIST.ru.md)
 
 ~~~~
+[ZBX-18105] fixed use on uninitialised variable (https://support.zabbix.com/browse/ZBX-18105)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-5554] Added webhook through proxy (https://support.zabbix.com/browse/ZBXNEXT-5554)
 [DBS-001] Added the ability to display 4 tags on the Problems page

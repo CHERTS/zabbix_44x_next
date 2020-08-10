@@ -3,6 +3,7 @@
 [In English / По-английски](PATCHLIST.md)
 
 ~~~~
+[ZBX-18105] fixed use on uninitialised variable (https://support.zabbix.com/browse/ZBX-18105)
 [ZBXNEXT-435] Добавлена поддержка подключения к Oracle RDBMS с указанием tns-имени (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-5554] Добавлена поддержка работы веб-хуков через http/socks5 прокси (https://support.zabbix.com/browse/ZBXNEXT-5554)
 [DBS-001] На странице "Проблемы" реализована возможность отображения 4-х тегов
