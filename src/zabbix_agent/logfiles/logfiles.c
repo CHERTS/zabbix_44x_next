@@ -720,13 +720,6 @@ static int	is_same_file_logrt(const struct st_logfile *old_file, const struct st
 		return ZBX_SAME_FILE_NO;
 	}
 
-	if (old_file->size > new_file->size)
-	{
-		/* File size cannot decrease. Truncating or replacing a file with a smaller one */
-		/* counts as 2 different files. */
-		return ZBX_SAME_FILE_NO;
-	}
-
 	if (old_file->size == new_file->size && old_file->mtime < new_file->mtime)
 	{
 		/* Depending on file system it's possible that stat() was called */
