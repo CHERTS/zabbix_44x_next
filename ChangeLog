@@ -14,6 +14,7 @@ Bug fixes:
 .......PS. [ZBX-17252] fixed building of Zabbix daemons with link time optimization (vso)
 ........S. [ZBX-18014] fixed memory leak when action message does not have to be sent (viktors)
 ........S. [ZBX-18024] added ODBC empty query check (viktors)
+........S. [ZBX-18069] fixed server exit when trying to execute IPMI script without IPMI pollers (wiper)
 ........S. [ZBX-18105] fixed use on uninitialised variable (viktors)
 
 --------------------------------------------------------------------------------
