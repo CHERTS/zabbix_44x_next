@@ -1,4 +1,4 @@
-# List of backported patches from version 5.0/5.2
+# List of backported patches from version 5.0/5.2 and list of my patches
 
 [По-русски / In Russian](PATCHLIST.ru.md)
 
