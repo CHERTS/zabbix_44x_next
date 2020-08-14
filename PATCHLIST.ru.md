@@ -13,6 +13,7 @@
 [ZBX-18024] added ODBC empty query check (https://support.zabbix.com/browse/ZBX-18024)
 [ZBX-18046] imporved error message generation performance of user macro and item key parser (https://support.zabbix.com/browse/ZBX-18046)
 [ZBX-18069] fixed server exit when trying to execute IPMI script without IPMI pollers (https://support.zabbix.com/browse/ZBX-18069)
+[ZBX-18075] fixed runtime error when creating a host via API (https://support.zabbix.com/browse/ZBX-18075)
 [ZBX-18076] fixed PHP notice and multiple undefined index errors in hostinterface API (https://support.zabbix.com/browse/ZBX-18076)
 [ZBX-18105] fixed use on uninitialised variable (https://support.zabbix.com/browse/ZBX-18105)
 [ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)
