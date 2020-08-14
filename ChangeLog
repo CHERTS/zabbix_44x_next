@@ -17,6 +17,7 @@ A.F....... [ZBX-17468] fixed excess audit log record being added on host status 
 ...G...... [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (wiper)
 ........S. [ZBX-18014] fixed memory leak when action message does not have to be sent (viktors)
 ........S. [ZBX-18024] added ODBC empty query check (viktors)
+A......... [ZBX-18046] imporved error message generation performance of user macro and item key parser (vmurzins)
 ........S. [ZBX-18069] fixed server exit when trying to execute IPMI script without IPMI pollers (wiper)
 ........S. [ZBX-18105] fixed use on uninitialised variable (viktors)
 ..F....PS. [ZBX-18147] fixed wrong character set detection logic for Oracle DB (yurii)
