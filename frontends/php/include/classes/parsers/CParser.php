@@ -26,12 +26,12 @@ abstract class CParser {
 
 	protected $length = 0;
 	protected $match = '';
-    protected $error_source = false;
-    protected $error_pos = 0;
-    protected $error_msgs = [
-        'empty' => 'string is empty',
-        'unexpected_end' => 'unexpected end of string'
-    ];
+	protected $error_source = false;
+	protected $error_pos = 0;
+	protected $error_msgs = [
+		'empty' => 'string is empty',
+		'unexpected_end' => 'unexpected end of string'
+	];
 
 	/**
 	 * Try to parse the string starting from the given position.
