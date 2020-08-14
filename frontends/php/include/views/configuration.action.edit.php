@@ -757,8 +757,9 @@ if (!empty($data['new_operation'])) {
 						->setAttribute('style', 'min-width: '.ZBX_TEXTAREA_STANDARD_WIDTH.'px;')
 				);
 
-			$mediaTypeComboBox = (new CComboBox('new_operation[opmessage][mediatypeid]', $data['new_operation']['opmessage']['mediatypeid']))
-				->addItem(0, '- '._('All').' -');
+			$media_type_combobox = (new CComboBox('new_operation[opmessage][mediatypeid]',
+				$data['new_operation']['opmessage']['mediatypeid']
+			))->addItem(0, '- '._('All').' -');
 
 			$db_mediatypes = API::MediaType()->get([
 				'output' => ['name'],
@@ -766,12 +767,14 @@ if (!empty($data['new_operation'])) {
 			]);
 			order_result($db_mediatypes, 'name');
 
-			foreach ($db_mediatypes as $mediatypeid => $db_mediatype) {
-				$mediaTypeComboBox->addItem($mediatypeid, $db_mediatype['name']);
+			foreach ($data['available_mediatypes'] as $value) {
+				$media_type_combobox->addItem($value['mediatypeid'], $value['name'], null, true,
+					($value['status'] == MEDIA_TYPE_STATUS_DISABLED) ? ZBX_STYLE_RED : null
+				);
 			}
 
 			$new_operation_formlist
-				->addRow(_('Send only to'), $mediaTypeComboBox)
+				->addRow(_('Send only to'), $media_type_combobox)
 				->addRow(_('Default message'),
 					(new CCheckBox('new_operation[opmessage][default_msg]'))
 						->setChecked($data['new_operation']['opmessage']['default_msg'] == 1)
@@ -1506,22 +1509,18 @@ if ($data['eventsource'] == EVENT_SOURCE_TRIGGERS || $data['eventsource'] == EVE
 							->setAttribute('style', 'min-width: '.ZBX_TEXTAREA_STANDARD_WIDTH.'px;')
 					);
 
-				$mediaTypeComboBox = (new CComboBox('new_recovery_operation[opmessage][mediatypeid]',
-					$data['new_recovery_operation']['opmessage']['mediatypeid'])
-				)->addItem(0, '- '._('All').' -');
-
-				$db_mediatypes = API::MediaType()->get([
-					'output' => ['name'],
-					'preservekeys' => true
-				]);
-				order_result($db_mediatypes, 'name');
-
-				foreach ($db_mediatypes as $mediatypeid => $db_mediatype) {
-					$mediaTypeComboBox->addItem($mediatypeid, $db_mediatype['name']);
+				$media_type_combobox = new CComboBox('new_recovery_operation[opmessage][mediatypeid]',
+					$data['new_recovery_operation']['opmessage']['mediatypeid']
+				);
+				$media_type_combobox->addItem(0, '- '._('All').' -');
+				foreach ($data['available_mediatypes'] as $value) {
+					$media_type_combobox->addItem($value['mediatypeid'], $value['name'], null, true,
+						($value['status'] == MEDIA_TYPE_STATUS_DISABLED) ? ZBX_STYLE_RED : null
+					);
 				}
 
 				$new_operation_formlist
-					->addRow(_('Send only to'), $mediaTypeComboBox)
+					->addRow(_('Send only to'), $media_type_combobox)
 					->addRow(_('Default message'),
 						(new CCheckBox('new_recovery_operation[opmessage][default_msg]'))
 							->setChecked($data['new_recovery_operation']['opmessage']['default_msg'] == 1)
@@ -2275,22 +2274,24 @@ if ($data['eventsource'] == EVENT_SOURCE_TRIGGERS) {
 
 		if (array_key_exists('opmessage', $data['new_ack_operation'])
 				&& $data['new_ack_operation']['operationtype'] != OPERATION_TYPE_COMMAND) {
-			$mediatype_cbox = (new CComboBox('new_ack_operation[opmessage][mediatypeid]',
-				$data['new_ack_operation']['opmessage']['mediatypeid'])
-			)->addItem(0, '- '._('All').' -');
-
-			foreach ($data['available_mediatypes'] as $mediatype) {
-				$mediatype_cbox->addItem($mediatype['mediatypeid'], $mediatype['name']);
+			$media_type_combobox = new CComboBox('new_ack_operation[opmessage][mediatypeid]',
+				$data['new_ack_operation']['opmessage']['mediatypeid']
+			);
+			$media_type_combobox->addItem(0, '- '._('All').' -');
+			foreach ($data['available_mediatypes'] as $value) {
+				$media_type_combobox->addItem($value['mediatypeid'], $value['name'], null, true,
+					($value['status'] == MEDIA_TYPE_STATUS_DISABLED) ? ZBX_STYLE_RED : null
+				);
 			}
+
+			$label = ($data['new_ack_operation']['operationtype'] == OPERATION_TYPE_ACK_MESSAGE)
+				? _('Default media type')
+				: _('Send only to');
+
+			$new_operation_formlist->addRow($label, $media_type_combobox);
+
 			$is_default_msg = (array_key_exists('default_msg', $data['new_ack_operation']['opmessage'])
 				&& $data['new_ack_operation']['opmessage']['default_msg'] == 1);
-
-			if ($data['new_ack_operation']['operationtype'] == OPERATION_TYPE_ACK_MESSAGE) {
-				$new_operation_formlist->addRow(_('Default media type'), $mediatype_cbox);
-			}
-			else {
-				$new_operation_formlist->addRow(_('Send only to'), $mediatype_cbox);
-			}
 
 			$new_operation_formlist
 				->addRow(_('Default message'),
