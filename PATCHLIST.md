@@ -13,6 +13,7 @@
 [ZBX-18014] fixed memory leak when action message does not have to be sent (https://support.zabbix.com/browse/ZBX-18014)
 [ZBX-18024] added ODBC empty query check (https://support.zabbix.com/browse/ZBX-18024)
 [ZBX-18046] imporved error message generation performance of user macro and item key parser (https://support.zabbix.com/browse/ZBX-18046)
+[ZBX-18060] fixed inaccessible user be displayed as accessible in slide show properties screen (https://support.zabbix.com/browse/ZBX-18060)
 [ZBX-18063] fixed usage of unsupported parameter in API call (https://support.zabbix.com/browse/ZBX-18063)
 [ZBX-18069] fixed server exit when trying to execute IPMI script without IPMI pollers (https://support.zabbix.com/browse/ZBX-18069)
 [ZBX-18075] fixed runtime error when creating a host via API (https://support.zabbix.com/browse/ZBX-18075)
