@@ -794,12 +794,26 @@ function getSelementsInfo(array $sysmap, array $options = []) {
 
 	$allHosts = zbx_toHash($allHosts, 'hostid');
 
-	// Get triggers data, triggers from current map, select all.
-	if ($triggerIdToSelementIds) {
+
+	// Get triggers data, triggers from current map and from submaps, select all.
+	if ($triggerIdToSelementIds || $subSysmapTriggerIdToSelementIds) {
+		$all_triggerid_to_selementids = [];
+
+		foreach ([$triggerIdToSelementIds, $subSysmapTriggerIdToSelementIds] as $triggerid_to_selementids) {
+			foreach ($triggerid_to_selementids as $triggerid => $selementids) {
+				if (!array_key_exists($triggerid, $all_triggerid_to_selementids)) {
+					$all_triggerid_to_selementids[$triggerid] = $selementids;
+				}
+				else {
+					$all_triggerid_to_selementids[$triggerid] += $selementids;
+				}
+			}
+		}
+
 		$triggers = API::Trigger()->get([
 			'output' => ['triggerid', 'status', 'value', 'priority', 'description', 'expression'],
 			'selectHosts' => ['maintenance_status', 'maintenanceid'],
-			'triggerids' => array_keys($triggerIdToSelementIds),
+			'triggerids' => array_keys($all_triggerid_to_selementids),
 			'filter' => ['state' => null],
 			'preservekeys' => true
 		]);
@@ -808,36 +822,7 @@ function getSelementsInfo(array $sysmap, array $options = []) {
 			'output' => [],
 			'triggerids' => array_keys($triggers),
 			'monitored' => true,
-			'preservekeys' => true
-		]);
-
-		foreach ($triggers as $trigger) {
-			if (!array_key_exists($trigger['triggerid'], $monitored_triggers)) {
-				$trigger['status'] = TRIGGER_STATUS_DISABLED;
-			}
-
-			foreach ($triggerIdToSelementIds[$trigger['triggerid']] as $belongs_to_sel) {
-				$selements[$belongs_to_sel]['triggers'][$trigger['triggerid']] = $trigger;
-			}
-		}
-		unset($triggers, $monitored_triggers);
-	}
-
-	// triggers from submaps, skip dependent
-	if ($subSysmapTriggerIdToSelementIds) {
-		$triggers = API::Trigger()->get([
-			'output' => ['triggerid', 'status', 'value', 'priority', 'description', 'expression'],
-			'triggerids' => array_keys($subSysmapTriggerIdToSelementIds),
-			'filter' => ['state' => null],
 			'skipDependent' => true,
-			'only_true' => true,
-			'preservekeys' => true
-		]);
-
-		$monitored_triggers = API::Trigger()->get([
-			'output' => [],
-			'triggerids' => array_keys($triggers),
-			'monitored' => true,
 			'preservekeys' => true
 		]);
 
@@ -846,7 +831,7 @@ function getSelementsInfo(array $sysmap, array $options = []) {
 				$trigger['status'] = TRIGGER_STATUS_DISABLED;
 			}
 
-			foreach ($subSysmapTriggerIdToSelementIds[$trigger['triggerid']] as $belongs_to_sel) {
+			foreach ($all_triggerid_to_selementids[$trigger['triggerid']] as $belongs_to_sel) {
 				$selements[$belongs_to_sel]['triggers'][$trigger['triggerid']] = $trigger;
 			}
 		}
