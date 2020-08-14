@@ -3,6 +3,7 @@
 [In English / По-английски](PATCHLIST.md)
 
 ~~~~
+[ZBX-13383] improved performance of the trigger and trigger prototype inheritance (https://support.zabbix.com/browse/ZBX-13383)
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
 [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (https://support.zabbix.com/browse/ZBX-17624)
