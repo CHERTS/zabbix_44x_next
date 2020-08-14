@@ -940,7 +940,7 @@ else {
 	// Select writable templates:
 	$linked_template_ids = [];
 	$writable_templates = [];
-	$linked_hosts_ids = [];
+	$linked_hostids = [];
 	$writable_hosts = [];
 	foreach ($templates as $template) {
 		$linked_template_ids = array_merge(
@@ -950,8 +950,8 @@ else {
 			zbx_objectValues($template['hosts'], 'hostid')
 		);
 
-		$linked_hosts_ids = array_merge(
-			$linked_hosts_ids,
+		$linked_hostids = array_merge(
+			$linked_hostids,
 			zbx_objectValues($template['hosts'], 'hostid')
 		);
 	}
@@ -964,11 +964,12 @@ else {
 			'preservekeys' => true
 		]);
 	}
-	if ($linked_hosts_ids) {
-		$linked_hosts_ids = array_unique($linked_hosts_ids);
+
+	if ($linked_hostids) {
+		$linked_hostids = array_unique($linked_hostids);
 		$writable_hosts = API::Host()->get([
 			'output' => ['hostid'],
-			'hostsids' => $linked_hosts_ids,
+			'hostids' => $linked_hostids,
 			'editable' => true,
 			'preservekeys' => true
 		]);
