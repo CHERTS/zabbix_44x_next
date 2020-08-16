@@ -467,7 +467,7 @@ class CHost extends CHostGeneral {
 		$sqlParts = $this->applyQueryFilterOptions($this->tableName(), $this->tableAlias(), $options, $sqlParts);
 		$sqlParts = $this->applyQueryOutputOptions($this->tableName(), $this->tableAlias(), $options, $sqlParts);
 		$sqlParts = $this->applyQuerySortOptions($this->tableName(), $this->tableAlias(), $options, $sqlParts);
-		$res = DBselect($this->createSelectQueryFromParts($sqlParts), $sqlParts['limit']);
+		$res = DBselect(self::createSelectQueryFromParts($sqlParts), $sqlParts['limit']);
 		while ($host = DBfetch($res)) {
 			if ($options['countOutput']) {
 				if ($options['groupCount']) {
@@ -534,11 +534,8 @@ class CHost extends CHostGeneral {
 
 		if ((!$options['countOutput'] && $this->outputIsRequested('inventory_mode', $options['output']))
 				|| ($options['filter'] && array_key_exists('inventory_mode', $options['filter']))) {
-			$sqlParts['left_join'][] = [
-				'from' => 'host_inventory hinv',
-				'on' => $this->tableAlias().'.'.$this->pk().'=hinv.hostid'
-			];
-			$sqlParts['left_table'] = $this->tableName();
+			$sqlParts['left_join'][] = ['alias' => 'hinv', 'table' => 'host_inventory', 'using' => 'hostid'];
+			$sqlParts['left_table'] = ['alias' => $this->tableAlias, 'table' => $this->tableName];
 		}
 
 		return $sqlParts;
