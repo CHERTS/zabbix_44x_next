@@ -796,7 +796,7 @@ function makeTags(array $list, $html = true, $key = 'eventid', $list_tag_count =
 			// Show all and uncut for CSV.
 
 			foreach ($element['tags'] as $tag) {
-				$tags[$element[$key]][] = getTagString($tag);
+				$tags[$element[$key]][] = getTagString($tag, PROBLEMS_TAG_NAME_FULL, true);
 			}
 		}
 	}
@@ -811,18 +811,21 @@ function makeTags(array $list, $html = true, $key = 'eventid', $list_tag_count =
  * @param string $tag['tag']
  * @param string $tag['value']
  * @param int    $tag_name_format  PROBLEMS_TAG_NAME_*
+ * @param bool   $is_csv
  *
  * @return string
  */
-function getTagString(array $tag, $tag_name_format = PROBLEMS_TAG_NAME_FULL) {
+function getTagString(array $tag, $tag_name_format = PROBLEMS_TAG_NAME_FULL, $is_csv = false) {
+	$tag_delim = $is_csv ? '' : '&nbsp;';
+
 	switch ($tag_name_format) {
 		case PROBLEMS_TAG_NAME_NONE:
-			return $tag['value'] . '&nbsp;';
+			return $tag['value'] . $tag_delim;
 
 		case PROBLEMS_TAG_NAME_SHORTENED:
-			return substr($tag['tag'], 0, 3).(($tag['value'] === '') ? '' : ': '.$tag['value'] . '&nbsp;');
+			return substr($tag['tag'], 0, 3).(($tag['value'] === '') ? '' : ': '.$tag['value'] . $tag_delim);
 
 		default:
-			return $tag['tag'].(($tag['value'] === '') ? '' : ': '.$tag['value'] . '&nbsp;');
+			return $tag['tag'].(($tag['value'] === '') ? '' : ': '.$tag['value'] . $tag_delim);
 	}
 }
