@@ -6,6 +6,7 @@
 [ZBX-8081] fixed 'cmdline' parameter truncation on Solaris 11.3 and later (https://support.zabbix.com/browse/ZBX-8081)
 [ZBX-13383] improved performance of the trigger and trigger prototype inheritance (https://support.zabbix.com/browse/ZBX-13383)
 [ZBX-13789] improved performance of "Problems" widget with MySQL backend by removing DISTINCT modifier from SQL statements with tables joined by primary keys (https://support.zabbix.com/browse/ZBX-13789)
+[ZBX-15117] fixed graph configuration with large amount of items (https://support.zabbix.com/browse/ZBX-15117)
 [ZBX-15927] removed problem calculation for dependent triggers when master trigger is in problem state (https://support.zabbix.com/browse/ZBX-15927)
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)

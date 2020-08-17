@@ -14,6 +14,7 @@ Bug fixes:
 ...G...... [ZBX-8081] fixed 'cmdline' parameter truncation on Solaris 11.3 and later (viktors, wiper)
 A......... [ZBX-13383] improved performance of the trigger and trigger prototype inheritance (Sasha)
 A......... [ZBX-13789] improved performance of "Problems" widget with MySQL backend by removing DISTINCT modifier from SQL statements with tables joined by primary keys (Sasha)
+..F....... [ZBX-15117] fixed graph configuration with large amount of items (talbergs)
 ..F....... [ZBX-15927] removed problem calculation for dependent triggers when master trigger is in problem state (kustalovs)
 .......PS. [ZBX-17252] fixed building of Zabbix daemons with link time optimization (vso)
 A.F....... [ZBX-17468] fixed excess audit log record being added on host status update (talbergs)
