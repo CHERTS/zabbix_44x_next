@@ -3,6 +3,7 @@ Changes for 4.4.11rc1 (unofficial)
 New features:
 ..F....PS. [ZBXNEXT-435] add Oracle TNSNAMES connect support (mgrigorev)
 ..F....PS. [ZBXNEXT-5554] added webhook through proxy (mgrigorev)
+.......PS. [ZBXNEXT-6004] added host info to vmware event message log (asestakovs)
 ..F....... [DBS-001] added the ability to display 4 tags on the Problems page (mgrigorev)
 ..F....... [DBS-002] added space between tags on Problems page (mgrigorev)
 ..F....... [DBS-003] added a quick jump to the "Latest data" page from the Configuration -> Hosts page (mgrigorev)
