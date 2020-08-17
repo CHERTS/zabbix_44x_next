@@ -20,6 +20,7 @@ A......... [ZBX-13789] improved performance of "Problems" widget with MySQL back
 A.F....... [ZBX-17468] fixed excess audit log record being added on host status update (talbergs)
 .......PS. [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (MVekslers)
 ...G...... [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (wiper)
+A......... [ZBX-17960] fixed undefined index in trends API (talbergs)
 ..F....... [ZBX-18000] added red label for disabled media types in user profile (rlataria)
 ........S. [ZBX-18014] fixed memory leak when action message does not have to be sent (viktors)
 ........S. [ZBX-18024] added ODBC empty query check (viktors)
