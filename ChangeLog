@@ -11,6 +11,7 @@ New features:
 ..F....... [DBS-006] tag column has been moved before the Problem column. The width of the Tag column has also been increased (mgrigorev)
 
 Bug fixes:
+...G...... [ZBX-8081] fixed 'cmdline' parameter truncation on Solaris 11.3 and later (viktors, wiper)
 A......... [ZBX-13383] improved performance of the trigger and trigger prototype inheritance (Sasha)
 A......... [ZBX-13789] improved performance of "Problems" widget with MySQL backend by removing DISTINCT modifier from SQL statements with tables joined by primary keys (Sasha)
 ..F....... [ZBX-15927] removed problem calculation for dependent triggers when master trigger is in problem state (kustalovs)

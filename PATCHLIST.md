@@ -3,6 +3,7 @@
 [По-русски / In Russian](PATCHLIST.ru.md)
 
 ~~~~
+[ZBX-8081] fixed 'cmdline' parameter truncation on Solaris 11.3 and later (https://support.zabbix.com/browse/ZBX-8081)
 [ZBX-13383] improved performance of the trigger and trigger prototype inheritance (https://support.zabbix.com/browse/ZBX-13383)
 [ZBX-13789] improved performance of "Problems" widget with MySQL backend by removing DISTINCT modifier from SQL statements with tables joined by primary keys (https://support.zabbix.com/browse/ZBX-13789)
 [ZBX-15927] removed problem calculation for dependent triggers when master trigger is in problem state (https://support.zabbix.com/browse/ZBX-15927)
