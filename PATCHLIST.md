@@ -33,6 +33,7 @@
 [ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-5554] Added webhook through proxy (https://support.zabbix.com/browse/ZBXNEXT-5554)
+[ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
 [DBS-001] Added the ability to display 4 tags on the Problems page
 [DBS-002] Added space between tags on Problems page

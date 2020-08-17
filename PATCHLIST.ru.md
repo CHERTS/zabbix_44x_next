@@ -33,6 +33,7 @@
 [ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)
 [ZBXNEXT-435] Добавлена поддержка подключения к Oracle RDBMS с указанием tns-имени (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-5554] Добавлена поддержка работы веб-хуков через http/socks5 прокси (https://support.zabbix.com/browse/ZBXNEXT-5554)
+[ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
 [DBS-001] На странице "Проблемы" реализована возможность отображения 4-х тегов
 [DBS-002] На странице "Проблемы" в колонке "Теги" добавлен пробел для разделения тегов при выделении и копировани их в буфер обмена
