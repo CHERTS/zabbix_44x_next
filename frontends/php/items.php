@@ -1401,8 +1401,13 @@ elseif (hasRequest('action') && getRequest('action') === 'item.massclearhistory'
 
 	if ($items) {
 		// Check items belong only to hosts.
-		$hosts_status = array_column(array_column(array_column($items, 'hosts'), 0), 'status');
-		if (in_array(HOST_STATUS_TEMPLATE, $hosts_status)) {
+		$hosts_status = [];
+		foreach (zbx_objectValues($items, 'hosts') as $value) {
+			// Item can contain only one host.
+			$hosts_status[] = $value[0]['status'];
+		}
+
+		if (in_array(HOST_STATUS_TEMPLATE, array_unique($hosts_status))) {
 			$result = false;
 		}
 		else {

@@ -31,6 +31,7 @@
 [ZBX-18076] fixed PHP notice and multiple undefined index errors in hostinterface API (https://support.zabbix.com/browse/ZBX-18076)
 [ZBX-18105] fixed use on uninitialised variable (https://support.zabbix.com/browse/ZBX-18105)
 [ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)
+[ZBX-18160] fixed fatal error in items.php and host_discovery.php (https://support.zabbix.com/browse/ZBX-18160)
 [ZBXNEXT-435] Добавлена поддержка подключения к Oracle RDBMS с указанием tns-имени (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-5554] Добавлена поддержка работы веб-хуков через http/socks5 прокси (https://support.zabbix.com/browse/ZBXNEXT-5554)
 [ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)

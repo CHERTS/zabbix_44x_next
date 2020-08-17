@@ -787,8 +787,12 @@ else {
 
 	// Set is_template false, when one of hosts is not template.
 	if ($data['discoveries']) {
-		$hosts_status = array_column(array_column(array_column($data['discoveries'], 'hosts'), 0), 'status');
-		foreach ($hosts_status as $value) {
+		$hosts_status = [];
+		foreach (zbx_objectValues($data['discoveries'], 'hosts') as $value) {
+			// Discovery can contain only one host.
+			$hosts_status[] = $value[0]['status'];
+		}
+		foreach (array_unique($hosts_status) as $value) {
 			if ($value != HOST_STATUS_TEMPLATE) {
 				$data['is_template'] = false;
 				break;
