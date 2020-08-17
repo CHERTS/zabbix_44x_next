@@ -20,6 +20,7 @@ A......... [ZBX-13789] improved performance of "Problems" widget with MySQL back
 A.F....... [ZBX-17468] fixed excess audit log record being added on host status update (talbergs)
 .......PS. [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (MVekslers)
 ..F....... [ZBX-17682] fixed button disable state in template item list and discovery list (rlataria)
+..F....... [ZBX-17820] fixed classic graph widget default header (talbergs)
 ...G...... [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (wiper)
 A......... [ZBX-17960] fixed undefined index in trends API (talbergs)
 ..F....... [ZBX-18000] added red label for disabled media types in user profile (rlataria)

@@ -13,6 +13,7 @@
 [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (https://support.zabbix.com/browse/ZBX-17624)
 [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (https://support.zabbix.com/browse/ZBX-17922)
 [ZBX-17682] fixed button disable state in template item list and discovery list (https://support.zabbix.com/browse/ZBX-17682)
+[ZBX-17820] fixed classic graph widget default header (https://support.zabbix.com/browse/ZBX-17820)
 [ZBX-17960] fixed undefined index in trends API (https://support.zabbix.com/browse/ZBX-17960)
 [ZBX-18000] added red label for disabled media types in user profile (https://support.zabbix.com/browse/ZBX-18000)
 [ZBX-18014] fixed memory leak when action message does not have to be sent (https://support.zabbix.com/browse/ZBX-18014)
