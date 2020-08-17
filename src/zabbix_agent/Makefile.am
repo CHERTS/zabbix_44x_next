@@ -20,6 +20,7 @@ libzbxagent_a_SOURCES = \
 	zbxconf.c zbxconf.h \
 	listener.c listener.h \
 	procstat.c procstat.h \
+	zbxkstat.c zbxkstat.h \
 	metrics.h
 
 libzbxagent_a_CFLAGS = \
