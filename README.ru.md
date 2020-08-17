@@ -2,6 +2,7 @@
 
 ![Release](https://github.com/CHERTS/zabbix_44x_next/workflows/Release/badge.svg)
 [![License: GPL v2](https://img.shields.io/badge/License-GPLv2-blue.svg)](https://www.gnu.org/licenses/gpl-2.0)
+[![Официальная группа в Telegram](https://img.shields.io/badge/Chat%20on-Telegram-brightgreen.svg)](https://t.me/zabbixnext)
 
 [In English / По-английски](README.md)
 
