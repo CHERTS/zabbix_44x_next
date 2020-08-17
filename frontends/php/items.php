@@ -1395,34 +1395,41 @@ elseif (hasRequest('action') && getRequest('action') === 'item.massclearhistory'
 	$items = API::Item()->get([
 		'output' => ['itemid', 'key_'],
 		'itemids' => $itemIds,
-		'selectHosts' => ['name'],
+		'selectHosts' => ['name', 'status'],
 		'editable' => true
 	]);
 
 	if ($items) {
-		DBstart();
-
-		$result = Manager::History()->deleteHistory($itemIds);
-
-		if ($result) {
-			foreach ($items as $item) {
-				$host = reset($item['hosts']);
-
-				add_audit(AUDIT_ACTION_UPDATE, AUDIT_RESOURCE_ITEM,
-					_('Item').' ['.$item['key_'].'] ['.$item['itemid'].'] '. _('Host').' ['.$host['name'].'] '.
-						_('History cleared')
-				);
-			}
+		// Check items belong only to hosts.
+		$hosts_status = array_column(array_column(array_column($items, 'hosts'), 0), 'status');
+		if (in_array(HOST_STATUS_TEMPLATE, $hosts_status)) {
+			$result = false;
 		}
+		else {
+			DBstart();
 
-		$result = DBend($result);
+			$result = Manager::History()->deleteHistory($itemIds);
 
-		if ($result) {
-			uncheckTableRows(getRequest('checkbox_hash'));
+			if ($result) {
+				foreach ($items as $item) {
+					$host = reset($item['hosts']);
+
+					add_audit(AUDIT_ACTION_UPDATE, AUDIT_RESOURCE_ITEM,
+						_('Item').' ['.$item['key_'].'] ['.$item['itemid'].'] '. _('Host').' ['.$host['name'].'] '.
+							_('History cleared')
+					);
+				}
+			}
+
+			$result = DBend($result);
+			
+			if ($result) {
+				uncheckTableRows(getRequest('hostid'));
+			}
 		}
 	}
 
-	show_messages($result, _('History cleared'), _('Cannot clear history'));
+	show_messages($result, _('History cleared'), _('Cannot clear history: at least one of the selected items doesn\'t belong to any monitored host'));
 }
 elseif (hasRequest('action') && getRequest('action') === 'item.massdelete' && hasRequest('group_itemid')) {
 	$group_itemid = getRequest('group_itemid');
@@ -1826,7 +1833,8 @@ else {
 		'sort' => $sortField,
 		'sortorder' => $sortOrder,
 		'config' => select_config(),
-		'hostid' => $hostid
+		'hostid' => $hostid,
+		'is_template' => true
 	];
 
 	// items
@@ -2114,7 +2122,19 @@ else {
 			order_result($data['items'], $sortField, $sortOrder);
 	}
 
+	// Set is_template false, when one of hosts is not template.
+	if ($data['items']) {
+		$hosts_status = array_column(array_column(array_column($data['items'], 'hosts'), 0), 'status');
+		foreach ($hosts_status as $value) {
+			if ($value != HOST_STATUS_TEMPLATE) {
+				$data['is_template'] = false;
+				break;
+			}
+		}
+	}
+
 	$data['paging'] = getPagingLine($data['items'], $sortOrder, new CUrl('items.php'));
+
 	$data['parent_templates'] = getItemParentTemplates($data['items'], ZBX_FLAG_DISCOVERY_NORMAL);
 
 	$itemTriggerIds = [];

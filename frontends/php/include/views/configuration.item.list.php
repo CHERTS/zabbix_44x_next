@@ -233,6 +233,12 @@ foreach ($data['items'] as $item) {
 	]);
 }
 
+$massclearhistory = [
+	'name' => _('Clear history'),
+	'confirm' => _('Delete history of selected items?'),
+	'disabled' => $data['is_template']
+];
+
 // append table to form
 $itemForm->addItem([
 	$itemTable,
@@ -241,10 +247,8 @@ $itemForm->addItem([
 		[
 			'item.massenable' => ['name' => _('Enable'), 'confirm' => _('Enable selected items?')],
 			'item.massdisable' => ['name' => _('Disable'), 'confirm' => _('Disable selected items?')],
-			'item.masscheck_now' => ['name' => _('Check now')],
-			'item.massclearhistory' => ['name' => _('Clear history'),
-				'confirm' => _('Delete history of selected items?')
-			],
+			'item.masscheck_now' => ['name' => _('Check now'), 'disabled' => $data['is_template']],
+			'item.massclearhistory' => $massclearhistory,
 			'item.masscopyto' => ['name' => _('Copy')],
 			'item.massupdateform' => ['name' => _('Mass update')],
 			'item.massdelete' => ['name' => _('Delete'), 'confirm' => _('Delete selected items?')]
