@@ -194,7 +194,7 @@ systemctl restart zabbix-server zabbix-agent
 
 Если был настроен Nginx: http://server_ip_or_name
 
-Настройте веб-интерфейс по официальной документации: [Установка веб-интерфейса](https://www.zabbix.com/documentation/4.4/manual/installation/install#installing_frontend)
+Настройте веб-интерфейс по официальной документации: [Установка веб-интерфейса](https://www.zabbix.com/documentation/4.4/ru/manual/installation/install#installing_frontend)
 
 # RedHat 8
 ## Новая устанока из пакетов для RedHat / CentOS / Oracle Linux 8
@@ -341,4 +341,4 @@ systemctl start php-fpm
 
 Откройте в веб-браузере интерфейс Zabbix: http://server_ip_or_name/zabbix
 
-Настройте веб-интерфейс по официальной документации: [Установка веб-интерфейса](https://www.zabbix.com/documentation/4.4/manual/installation/install#installing_frontend)
+Настройте веб-интерфейс по официальной документации: [Установка веб-интерфейса](https://www.zabbix.com/documentation/4.4/ru/manual/installation/install#installing_frontend)
