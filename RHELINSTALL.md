@@ -256,13 +256,6 @@ firewall-cmd --permanent --add-port=10051/tcp
 firewall-cmd --reload
 ~~~~
 
-Enable php-fpm and start
-
-~~~~
-systemctl enable php-fpm
-systemctl start php-fpm
-~~~~
-
 ### 4. Create and initial Zabbix database
 
 Run the following on your database host:
@@ -296,6 +289,13 @@ Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for y
 
 ~~~~
 ; php_value[date.timezone] = Europe/Riga
+~~~~
+
+Start php-fpm processes and make it start at system boot.
+
+~~~~
+systemctl enable php-fpm
+systemctl start php-fpm
 ~~~~
 
 ### 7. Start Zabbix server and agent processes
