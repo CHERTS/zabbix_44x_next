@@ -200,7 +200,11 @@ systemctl restart zabbix-server zabbix-agent
 
 ### 8. Configure Zabbix frontend
 
-Connect to your newly installed Zabbix frontend: http://server_ip_or_name/zabbix
+Connect to your newly installed Zabbix frontend: 
+
+If use Apache: http://server_ip_or_name/zabbix
+
+If use Nginx: http://server_ip_or_name
 
 Follow steps described in official Zabbix documentation: [Installing frontend](https://www.zabbix.com/documentation/4.4/manual/installation/install#installing_frontend)
 
