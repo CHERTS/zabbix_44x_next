@@ -2,24 +2,22 @@
 
 [По-русски / In Russian](RHELINSTALL.ru.md)
 
-[Installing from packages for RedHat/CentOS/OracleLinux 7](#redhat-7)
+[New installation from packages for RedHat/CentOS/OracleLinux 7](#redhat-7)
 
-[Installing from packages for RedHat/CentOS/OracleLinux 8](#redhat-8)
+[New installation from packages for RedHat/CentOS/OracleLinux 8](#redhat-8)
 
 # RedHat 7
-## Installing from packages for RedHat / CentOS / Oracle Linux 7
+## New installation from packages for RedHat / CentOS / Oracle Linux 7
 
 ### 1. Install DBService repository
 
 If you are using Oracle Linux 7, then enable ol7_optional_latest and ol7_developer_EPEL repository
-
 ~~~~
 yum-config-manager --enable ol7_optional_latest
 yum-config-manager --enable ol7_developer_EPEL
 ~~~~
 
 If you are using RedHat 7, then enable rhel-7-server-optional-rpms repository
-
 ~~~~
 yum-config-manager --enable rhel-7-server-optional-rpms
 ~~~~
@@ -34,7 +32,6 @@ yum makecache fast
 
 
 ### 2. Install Zabbix server (with MySQL support), agent
-
 ~~~~
 yum install zabbix-server-mysql zabbix-agent
 ~~~~
@@ -58,16 +55,14 @@ systemctl start nginx.service
 ~~~~
 
 You need to execute these commands, If you have enabled SELinux in "enforcing" mode
-
 ~~~~
 setsebool -P httpd_can_connect_zabbix on
 setsebool -P httpd_can_network_connect_db on
 ~~~~
 
 Create SELinux rules for Zabbix-server:
-
 ~~~~
-dnf install policycoreutils-devel
+yum install policycoreutils-devel
 
 (cat <<-EOF
 module zabbixserver 1.0;
@@ -107,7 +102,6 @@ semodule -i /root/zabbixserver.pp
 ~~~~
 
 Allow port 80 for Apache/Nginx service and allow port 10050/10051 for Zabbix agent and Zabbix server through out the system firewall
-
 ~~~~
 firewall-cmd --permanent --add-service=http
 firewall-cmd --permanent --add-service=https
@@ -121,7 +115,6 @@ firewall-cmd --reload
 ### 4. Create and initial Zabbix database
 
 Run the following on your database host:
-
 ~~~~
 # mysql -uroot -p
 password: *******
@@ -133,7 +126,6 @@ mysql> quit;
 ~~~~
 
 On Zabbix server host import initial schema and data.
-
 ~~~~
 # zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
@@ -150,13 +142,11 @@ DBPassword=password
 If use Apache web-server:
 
 Edit file /etc/httpd/conf.d/zabbix.conf, uncomment and set the right timezone for you.
-
 ~~~~
 # php_value date.timezone Europe/Riga
 ~~~~
 
 Restart Apache web-server
-
 ~~~~
 systemctl restart httpd
 ~~~~
@@ -164,27 +154,23 @@ systemctl restart httpd
 If use Nginx + PHP-FPM:
 
 Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for you.
-
 ~~~~
 ; php_value[date.timezone] = Europe/Riga
 ~~~~
 
 Start php-fpm processes and make it start at system boot.
-
 ~~~~
 systemctl enable php-fpm
 systemctl start php-fpm
 ~~~~
 
 Edit Nginx config file /etc/nginx/conf.d/zabbix.conf and change listen and server_name settings
-
 ~~~~
 listen          80;
 server_name     <enter your domain>;
 ~~~~
 
 Restart Nginx web-server
-
 ~~~~
 nginx -t && nginx -s reload
 ~~~~
@@ -192,7 +178,6 @@ nginx -t && nginx -s reload
 ### 7. Start Zabbix server and agent processes
 
 Start Zabbix server and agent processes and make it start at system boot.
-
 ~~~~
 systemctl enable zabbix-server zabbix-agent
 systemctl restart zabbix-server zabbix-agent
@@ -209,10 +194,9 @@ If use Nginx: http://server_ip_or_name
 Follow steps described in official Zabbix documentation: [Installing frontend](https://www.zabbix.com/documentation/4.4/manual/installation/install#installing_frontend)
 
 # RedHat 8
-## Installing from packages for RedHat / CentOS / Oracle Linux 8
+## New installation from packages for RedHat / CentOS / Oracle Linux 8
 
 ### 1. Install DBService repository
-
 ~~~~
 rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.el8.noarch.rpm
 dnf clean all
@@ -220,7 +204,6 @@ dnf makecache
 ~~~~
 
 ### 2. Install Zabbix server (with MySQL support), agent
-
 ~~~~
 dnf install zabbix-server-mysql zabbix-agent
 ~~~~
@@ -246,14 +229,12 @@ systemctl start nginx.service
 ~~~~
 
 You need to execute these commands, If you have enabled SELinux in "enforcing" mode
-
 ~~~~
 setsebool -P httpd_can_connect_zabbix on
 setsebool -P httpd_can_network_connect_db on
 ~~~~
 
 Create SELinux rules for Zabbix-server:
-
 ~~~~
 dnf install policycoreutils-devel
 
@@ -295,7 +276,6 @@ semodule -i /root/zabbixserver.pp
 ~~~~
 
 Allow port 80 for Apache/Nginx service and allow port 10050/10051 for Zabbix agent and Zabbix server through out the system firewall
-
 ~~~~
 firewall-cmd --permanent --add-service=http
 firewall-cmd --permanent --add-service=https
@@ -309,7 +289,6 @@ firewall-cmd --reload
 ### 4. Create and initial Zabbix database
 
 Run the following on your database host:
-
 ~~~~
 # mysql -uroot -p
 password: *******
@@ -321,7 +300,6 @@ mysql> quit;
 ~~~~
 
 On Zabbix server host import initial schema and data.
-
 ~~~~
 # zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
@@ -336,13 +314,11 @@ DBPassword=password
 ### 6. Configure PHP for Zabbix frontend
 
 Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for you.
-
 ~~~~
 ; php_value[date.timezone] = Europe/Riga
 ~~~~
 
 Start php-fpm processes and make it start at system boot.
-
 ~~~~
 systemctl enable php-fpm
 systemctl start php-fpm
@@ -351,7 +327,6 @@ systemctl start php-fpm
 ### 7. Start Zabbix server and agent processes
 
 Start Zabbix server and agent processes and make it start at system boot.
-
 ~~~~
 # systemctl enable zabbix-server zabbix-agent
 # systemctl restart zabbix-server zabbix-agent
