@@ -216,6 +216,7 @@ Create SELinux rules for Zabbix-server:
 
 ~~~~
 dnf install policycoreutils-devel
+
 (cat <<-EOF
 module zabbixserver 1.0;
 
@@ -224,24 +225,33 @@ require {
         type zabbix_t;
         type zabbix_var_run_t;
         class capability dac_override;
-        class sock_file { create write };
+        class sock_file { create write unlink };
+	class unix_stream_socket connectto;
 }
 
 #============= zabbix_t ==============
 
 #!!!! This avc is allowed in the current policy
-allow zabbix_t mysqld_db_t:sock_file write;
+allow zabbix_t self:capability dac_override;
 
 #!!!! This avc is allowed in the current policy
-allow zabbix_t self:capability dac_override;
+allow zabbix_t mysqld_db_t:sock_file write;
+
+#!!!! This avc can be allowed using the boolean 'daemons_enable_cluster_mode'
+allow zabbix_t self:unix_stream_socket connectto;
+
+#!!!! This avc is allowed in the current policy
 allow zabbix_t zabbix_var_run_t:sock_file create;
+allow zabbix_t zabbix_var_run_t:sock_file write;
+allow zabbix_t zabbix_var_run_t:sock_file unlink;
 EOF
 )>/root/zabbixserver.te
-semodule -r zabbixserver 2>/dev/null
-rm -f zabbixserver.mod zabbixserver.pp
-checkmodule -M -m -o zabbixserver.mod zabbixserver.te
-semodule_package -o zabbixserver.pp -m zabbixserver.mod
-semodule -i zabbixserver.pp
+
+semodule -r zabbixserver
+rm -f /root/zabbixserver.mod /root/zabbixserver.pp
+checkmodule -M -m -o /root/zabbixserver.mod /root/zabbixserver.te
+semodule_package -o /root/zabbixserver.pp -m /root/zabbixserver.mod
+semodule -i /root/zabbixserver.pp
 ~~~~
 
 Allow port 80 for Apache/Nginx service and allow port 10050/10051 for Zabbix agent and Zabbix server through out the system firewall
