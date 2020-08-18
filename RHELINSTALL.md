@@ -34,13 +34,14 @@ password: *******
 mysql> create database zabbix character set utf8 collate utf8_bin;
 mysql> create user zabbix@localhost identified by 'password';
 mysql> grant all privileges on zabbix.* to zabbix@localhost;
+mysql> flush privileges;
 mysql> quit;
 ~~~~
 
-On Zabbix server host import initial schema and data. You will be prompted to enter your newly created password.
+On Zabbix server host import initial schema and data.
 
 ~~~~
-# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
 
 ### 4. Configure the database for Zabbix server
@@ -78,18 +79,47 @@ Follow steps described in official Zabbix documentation: [Installing frontend](h
 
 ### 1. Install DBService repository
 
+If you are using Oracle Linux 7, then enable ol7_optional_latest and ol7_developer_EPEL repository
+
+~~~~
+yum-config-manager --enable ol7_optional_latest
+yum-config-manager --enable ol7_developer_EPEL
+~~~~
+
+If you are using RedHat 7, then enable rhel-7-server-optional-rpms repository
+
+~~~~
+yum-config-manager --enable rhel-7-server-optional-rpms
+~~~~
+
+Install DBService repository
+
 ~~~~
 rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/7/x86_64/dbs-release-4.4-1.el7.noarch.rpm
 yum clean all
+yum makecache fast
 ~~~~
 
-### 2. Install Zabbix server, frontend, agent
+
+### 2. Install Zabbix server (with MySQL support), agent
 
 ~~~~
-yum install zabbix-server-mysql zabbix-web-mysql zabbix-agent
+yum install zabbix-server-mysql zabbix-agent
 ~~~~
 
-### 3. Create and initial Zabbix database
+### 3. Install web-frontend
+
+with Apache support
+~~~~
+yum install zabbix-web-mysql
+~~~~
+
+with Nginx support
+~~~~
+yum install zabbix-web-mysql zabbix-nginx-conf
+~~~~
+
+### 4. Create and initial Zabbix database
 
 Run the following on your database host:
 
@@ -99,30 +129,31 @@ password: *******
 mysql> create database zabbix character set utf8 collate utf8_bin;
 mysql> create user zabbix@localhost identified by 'password';
 mysql> grant all privileges on zabbix.* to zabbix@localhost;
+mysql> flush privileges;
 mysql> quit;
 ~~~~
 
-On Zabbix server host import initial schema and data. You will be prompted to enter your newly created password.
+On Zabbix server host import initial schema and data.
 
 ~~~~
-# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
 
-### 4. Configure the database for Zabbix server
+### 5. Configure the database for Zabbix server
 
 Edit file /etc/zabbix/zabbix_server.conf
 ~~~~
 DBPassword=password
 ~~~~
 
-### 5. Configure PHP for Zabbix frontend
+### 6. Configure PHP for Zabbix frontend
 
 Edit file /etc/httpd/conf.d/zabbix.conf, uncomment and set the right timezone for you.
 ~~~~
 # php_value date.timezone Europe/Riga
 ~~~~
 
-### 6. Start Zabbix server and agent processes
+### 7. Start Zabbix server and agent processes
 
 Start Zabbix server and agent processes and make it start at system boot.
 
@@ -131,7 +162,7 @@ Start Zabbix server and agent processes and make it start at system boot.
 # systemctl restart zabbix-server zabbix-agent httpd
 ~~~~
 
-### 7. Configure Zabbix frontend
+### 8. Configure Zabbix frontend
 
 Connect to your newly installed Zabbix frontend: http://server_ip_or_name/zabbix
 
@@ -145,15 +176,94 @@ Follow steps described in official Zabbix documentation: [Installing frontend](h
 ~~~~
 rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.el8.noarch.rpm
 dnf clean all
+dnf makecache
 ~~~~
 
-### 2. Install Zabbix server, frontend, agent
+### 2. Install Zabbix server (with MySQL support), agent
 
 ~~~~
-yum install zabbix-server-mysql zabbix-web-mysql zabbix-agent
+dnf install zabbix-server-mysql zabbix-agent
 ~~~~
 
-### 3. Create and initial Zabbix database
+### 3. Install web-frontend
+
+with Apache support
+~~~~
+dnf install httpd httpd-tools
+systemctl enable httpd.service
+dnf install zabbix-web-mysql zabbix-apache-conf
+systemctl start httpd.service
+sed -i 's/listen.owner = nginx/listen.owner = apache/g' /etc/php-fpm.d/zabbix.conf
+~~~~
+
+with Nginx support
+~~~~
+dnf install epel-release
+dnf install nginx
+systemctl enable nginx.service
+dnf install zabbix-web-mysql zabbix-nginx-conf
+systemctl start nginx.service
+~~~~
+
+You need to execute these commands, If you have enabled SELinux in "enforcing" mode
+
+~~~~
+setsebool -P httpd_can_connect_zabbix on
+setsebool -P httpd_can_network_connect_db on
+~~~~
+
+Create SELinux rules for Zabbix-server:
+
+~~~~
+dnf install policycoreutils-devel
+(cat <<-EOF
+module zabbixserver 1.0;
+
+require {
+        type mysqld_db_t;
+        type zabbix_t;
+        type zabbix_var_run_t;
+        class capability dac_override;
+        class sock_file { create write };
+}
+
+#============= zabbix_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow zabbix_t mysqld_db_t:sock_file write;
+
+#!!!! This avc is allowed in the current policy
+allow zabbix_t self:capability dac_override;
+allow zabbix_t zabbix_var_run_t:sock_file create;
+EOF
+)>/root/zabbixserver.te
+semodule -r zabbixserver 2>/dev/null
+rm -f zabbixserver.mod zabbixserver.pp
+checkmodule -M -m -o zabbixserver.mod zabbixserver.te
+semodule_package -o zabbixserver.pp -m zabbixserver.mod
+semodule -i zabbixserver.pp
+~~~~
+
+Allow port 80 for Apache/Nginx service and allow port 10050/10051 for Zabbix agent and Zabbix server through out the system firewall
+
+~~~~
+firewall-cmd --permanent --add-service=http
+firewall-cmd --permanent --add-service=https
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=443/tcp
+firewall-cmd --permanent --add-port=10050/tcp
+firewall-cmd --permanent --add-port=10051/tcp
+firewall-cmd --reload
+~~~~
+
+Enable php-fpm and start
+
+~~~~
+systemctl enable php-fpm
+systemctl start php-fpm
+~~~~
+
+### 4. Create and initial Zabbix database
 
 Run the following on your database host:
 
@@ -163,23 +273,24 @@ password: *******
 mysql> create database zabbix character set utf8 collate utf8_bin;
 mysql> create user zabbix@localhost identified by 'password';
 mysql> grant all privileges on zabbix.* to zabbix@localhost;
+mysql> flush privileges;
 mysql> quit;
 ~~~~
 
-On Zabbix server host import initial schema and data. You will be prompted to enter your newly created password.
+On Zabbix server host import initial schema and data.
 
 ~~~~
-# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -p zabbix
+# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
 
-### 4. Configure the database for Zabbix server
+### 5. Configure the database for Zabbix server
 
 Edit file /etc/zabbix/zabbix_server.conf
 ~~~~
 DBPassword=password
 ~~~~
 
-### 5. Configure PHP for Zabbix frontend
+### 6. Configure PHP for Zabbix frontend
 
 Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for you.
 
@@ -187,16 +298,16 @@ Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for y
 ; php_value[date.timezone] = Europe/Riga
 ~~~~
 
-### 6. Start Zabbix server and agent processes
+### 7. Start Zabbix server and agent processes
 
 Start Zabbix server and agent processes and make it start at system boot.
 
 ~~~~
-# systemctl enable zabbix-server zabbix-agent httpd php-fpm
-# systemctl restart zabbix-server zabbix-agent httpd php-fpm
+# systemctl enable zabbix-server zabbix-agent
+# systemctl restart zabbix-server zabbix-agent
 ~~~~
 
-### 7. Configure Zabbix frontend
+### 8. Configure Zabbix frontend
 
 Connect to your newly installed Zabbix frontend: http://server_ip_or_name/zabbix
 
