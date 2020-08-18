@@ -119,6 +119,67 @@ with Nginx support
 yum install zabbix-web-mysql zabbix-nginx-conf
 ~~~~
 
+You need to execute these commands, If you have enabled SELinux in "enforcing" mode
+
+~~~~
+setsebool -P httpd_can_connect_zabbix on
+setsebool -P httpd_can_network_connect_db on
+~~~~
+
+Create SELinux rules for Zabbix-server:
+
+~~~~
+dnf install policycoreutils-devel
+
+(cat <<-EOF
+module zabbixserver 1.0;
+
+require {
+        type mysqld_db_t;
+        type zabbix_t;
+        type zabbix_var_run_t;
+        class capability dac_override;
+        class sock_file { create write unlink };
+	class unix_stream_socket connectto;
+}
+
+#============= zabbix_t ==============
+
+#!!!! This avc is allowed in the current policy
+allow zabbix_t self:capability dac_override;
+
+#!!!! This avc is allowed in the current policy
+allow zabbix_t mysqld_db_t:sock_file write;
+
+#!!!! This avc can be allowed using the boolean 'daemons_enable_cluster_mode'
+allow zabbix_t self:unix_stream_socket connectto;
+
+#!!!! This avc is allowed in the current policy
+allow zabbix_t zabbix_var_run_t:sock_file create;
+allow zabbix_t zabbix_var_run_t:sock_file write;
+allow zabbix_t zabbix_var_run_t:sock_file unlink;
+EOF
+)>/root/zabbixserver.te
+
+semodule -r zabbixserver
+rm -f /root/zabbixserver.mod /root/zabbixserver.pp
+checkmodule -M -m -o /root/zabbixserver.mod /root/zabbixserver.te
+semodule_package -o /root/zabbixserver.pp -m /root/zabbixserver.mod
+semodule -i /root/zabbixserver.pp
+~~~~
+
+Allow port 80 for Apache/Nginx service and allow port 10050/10051 for Zabbix agent and Zabbix server through out the system firewall
+
+~~~~
+firewall-cmd --permanent --add-service=http
+firewall-cmd --permanent --add-service=https
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --permanent --add-port=443/tcp
+firewall-cmd --permanent --add-port=10050/tcp
+firewall-cmd --permanent --add-port=10051/tcp
+firewall-cmd --reload
+~~~~
+
 ### 4. Create and initial Zabbix database
 
 Run the following on your database host:
