@@ -176,6 +176,19 @@ systemctl enable php-fpm
 systemctl start php-fpm
 ~~~~
 
+Edit Nginx config file /etc/nginx/conf.d/zabbix.conf and change listen and server_name settings
+
+~~~~
+listen          80;
+server_name     <enter your domain>;
+~~~~
+
+Restart Nginx web-server
+
+~~~~
+nginx -t && nginx -s reload
+~~~~
+
 ### 7. Start Zabbix server and agent processes
 
 Start Zabbix server and agent processes and make it start at system boot.
