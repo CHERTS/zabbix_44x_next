@@ -2,77 +2,9 @@
 
 [По-русски / In Russian](RHELINSTALL.ru.md)
 
-[Installing from packages for RedHat/CentOS/OracleLinux 6](#redhat-6)
-
 [Installing from packages for RedHat/CentOS/OracleLinux 7](#redhat-7)
 
 [Installing from packages for RedHat/CentOS/OracleLinux 8](#redhat-8)
-
-# RedHat 6
-## Installing from packages for RedHat / CentOS / Oracle Linux 6
-
-### 1. Install DBService repository
-
-~~~~
-rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/6/x86_64/dbs-release-4.4-1.el6.noarch.rpm
-yum clean all
-~~~~
-
-### 2. Install Zabbix server, frontend, agent
-
-~~~~
-yum install zabbix-server-mysql zabbix-web-mysql zabbix-agent
-~~~~
-
-### 3. Create and initial Zabbix database
-
-Run the following on your database host:
-
-~~~~
-# mysql -uroot -p
-password: *******
-mysql> create database zabbix character set utf8 collate utf8_bin;
-mysql> create user zabbix@localhost identified by 'password';
-mysql> grant all privileges on zabbix.* to zabbix@localhost;
-mysql> flush privileges;
-mysql> quit;
-~~~~
-
-On Zabbix server host import initial schema and data.
-
-~~~~
-# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
-~~~~
-
-### 4. Configure the database for Zabbix server
-
-Edit file /etc/zabbix/zabbix_server.conf
-~~~~
-DBPassword=password
-~~~~
-
-### 5. Configure PHP for Zabbix frontend
-
-Edit file /etc/httpd/conf.d/zabbix.conf, uncomment and set the right timezone for you.
-~~~~
-# php_value date.timezone Europe/Riga
-~~~~
-
-### 6. Start Zabbix server and agent processes
-
-Start Zabbix server and agent processes and make it start at system boot.
-
-~~~~
-# systemctl enable zabbix-server zabbix-agent httpd
-# systemctl restart zabbix-server zabbix-agent httpd
-~~~~
-
-### 7. Configure Zabbix frontend
-
-Connect to your newly installed Zabbix frontend: http://server_ip_or_name/zabbix
-
-Follow steps described in official Zabbix documentation: [Installing frontend](https://www.zabbix.com/documentation/4.4/manual/installation/install#installing_frontend)
-
 
 # RedHat 7
 ## Installing from packages for RedHat / CentOS / Oracle Linux 7
@@ -111,12 +43,18 @@ yum install zabbix-server-mysql zabbix-agent
 
 with Apache support
 ~~~~
+yum install httpd httpd-tools
 yum install zabbix-web-mysql
+systemctl enable httpd.service
+systemctl start httpd.service
 ~~~~
 
-with Nginx support
+with Nginx + PHP-FPM support
 ~~~~
-yum install zabbix-web-mysql zabbix-nginx-conf
+yum install nginx
+yum install zabbix-web-mysql zabbix-nginx-conf php-fpm
+systemctl enable nginx.service
+systemctl start nginx.service
 ~~~~
 
 You need to execute these commands, If you have enabled SELinux in "enforcing" mode
@@ -209,9 +147,33 @@ DBPassword=password
 
 ### 6. Configure PHP for Zabbix frontend
 
+If use Apache web-server:
+
 Edit file /etc/httpd/conf.d/zabbix.conf, uncomment and set the right timezone for you.
+
 ~~~~
 # php_value date.timezone Europe/Riga
+~~~~
+
+Restart Apache web-server
+
+~~~~
+systemctl restart httpd
+~~~~
+
+If use Nginx + PHP-FPM:
+
+Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for you.
+
+~~~~
+; php_value[date.timezone] = Europe/Riga
+~~~~
+
+Start php-fpm processes and make it start at system boot.
+
+~~~~
+systemctl enable php-fpm
+systemctl start php-fpm
 ~~~~
 
 ### 7. Start Zabbix server and agent processes
@@ -219,8 +181,8 @@ Edit file /etc/httpd/conf.d/zabbix.conf, uncomment and set the right timezone fo
 Start Zabbix server and agent processes and make it start at system boot.
 
 ~~~~
-# systemctl enable zabbix-server zabbix-agent httpd
-# systemctl restart zabbix-server zabbix-agent httpd
+systemctl enable zabbix-server zabbix-agent
+systemctl restart zabbix-server zabbix-agent
 ~~~~
 
 ### 8. Configure Zabbix frontend
@@ -251,8 +213,8 @@ dnf install zabbix-server-mysql zabbix-agent
 with Apache support
 ~~~~
 dnf install httpd httpd-tools
-systemctl enable httpd.service
 dnf install zabbix-web-mysql zabbix-apache-conf
+systemctl enable httpd.service
 systemctl start httpd.service
 sed -i 's/listen.owner = nginx/listen.owner = apache/g' /etc/php-fpm.d/zabbix.conf
 ~~~~
@@ -261,8 +223,8 @@ with Nginx support
 ~~~~
 dnf install epel-release
 dnf install nginx
-systemctl enable nginx.service
 dnf install zabbix-web-mysql zabbix-nginx-conf
+systemctl enable nginx.service
 systemctl start nginx.service
 ~~~~
 
