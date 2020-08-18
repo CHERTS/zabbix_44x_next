@@ -14,4 +14,8 @@
 
 [Инструкция по сборке из исходного кода](BUILD.ru.md)
 
+[Новая установка из пакетов для RedHat/CentOS/OracleLinux](RHELINSTALL.ru.md)
+
+[Обновление из пакетов для RedHat/CentOS/OracleLinux](RHELUPDATE.ru.md)
+
 [Список дополнительных патчей](PATCHLIST.ru.md)

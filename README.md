@@ -14,4 +14,8 @@ Zabbix version numbers in this repository will continue under 4.4.11 and so on, 
 
 [How-to build from source code](BUILD.md)
 
+[New installation from packages for RedHat/CentOS/OracleLinux](RHELINSTALL.md)
+
+[Upgrading from packages for RedHat/CentOS/OracleLinux](RHELUPDATE.md)
+
 [List of addition patches](PATCHLIST.md)
