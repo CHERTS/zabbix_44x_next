@@ -1,3 +1,3 @@
-# Новая устанока из пакетов для RedHat/CentOS/OracleLinux
+# РќРѕРІР°СЏ СѓСЃС‚Р°РЅРѕРєР° РёР· РїР°РєРµС‚РѕРІ РґР»СЏ RedHat/CentOS/OracleLinux
 
-[In English / По-английски](RHELINSTALL.md)
+[In English / РџРѕ-Р°РЅРіР»РёР№СЃРєРё](RHELINSTALL.md)

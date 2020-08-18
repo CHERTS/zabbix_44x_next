@@ -1,3 +1,3 @@
-# Обновление из пакетов для RedHat/CentOS/OracleLinux
+# РћР±РЅРѕРІР»РµРЅРёРµ РёР· РїР°РєРµС‚РѕРІ РґР»СЏ RedHat/CentOS/OracleLinux
 
-[In English / По-английски](RHELUPDATE.md)
+[In English / РџРѕ-Р°РЅРіР»РёР№СЃРєРё](RHELUPDATE.md)

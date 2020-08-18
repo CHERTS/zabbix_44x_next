@@ -1,6 +1,6 @@
 # New installation from packages for RedHat/CentOS/OracleLinux
 
-[По-русски / In Russian](RHELINSTALL.ru.md)
+[РџРѕ-СЂСѓСЃСЃРєРё / In Russian](RHELINSTALL.ru.md)
 
 [Installing from packages for RedHat/CentOS/OracleLinux 6](#redhat-6)
 
