@@ -397,18 +397,14 @@ class CWidgetHelper {
 
 	/**
 	 * @param CWidgetFieldSeverities $field
-	 * @param array $config
 	 *
-	 * @return CList
+	 * @return CSeverityCheckBoxList
 	 */
-	public static function getSeverities($field, $config) {
-		$severities = [];
-
-		for ($severity = TRIGGER_SEVERITY_NOT_CLASSIFIED; $severity < TRIGGER_SEVERITY_COUNT; $severity++) {
-			$severities[$severity] = getSeverityName($severity, $config);
-		}
-
-		return self::getCheckBoxList($field, $severities);
+	public static function getSeverities($field) {
+		return (new CSeverityCheckBoxList($field->getName()))
+			->setChecked($field->getValue())
+			->setEnabled(!($field->getFlags() & CWidgetField::FLAG_DISABLED))
+			->setWidth(ZBX_TEXTAREA_STANDARD_WIDTH);
 	}
 
 	/**

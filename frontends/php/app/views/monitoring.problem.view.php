@@ -36,7 +36,7 @@ $options = [
 			'application' => $data['filter']['application'],
 			'triggerids' => $data['filter']['triggerids'],
 			'name' => $data['filter']['name'],
-			'severity' => $data['filter']['severity'],
+			'severities' => $data['filter']['severities'],
 			'inventory' => $data['filter']['inventory'],
 			'evaltype' => $data['filter']['evaltype'],
 			'tags' => $data['filter']['tags'],
@@ -163,8 +163,8 @@ if ($data['action'] == 'problem.view') {
 		->addRow(_('Problem'),
 			(new CTextBox('filter_name', $data['filter']['name']))->setWidth(ZBX_TEXTAREA_FILTER_STANDARD_WIDTH)
 		)
-		->addRow(_('Minimum severity'),
-			new CComboBox('filter_severity', $data['filter']['severity'], null, $data['filter']['severities'])
+		->addRow(_('Severity'),
+			(new CSeverityCheckBoxList('filter_severities'))->setChecked($data['filter']['severities'])
 		);
 
 	$filter_age = (new CNumericBox('filter_age', $data['filter']['age'], 3, false, false, false))
