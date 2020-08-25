@@ -1025,6 +1025,10 @@ output {
 			width: 173px;
 		}
 
+		&.column-tags-4 {
+			width: 222px;
+		}
+
 		@media screen and (min-width: 1200px) {
 			&.column-tags-1 {
 				width: 106px;
@@ -1036,6 +1040,10 @@ output {
 
 			&.column-tags-3 {
 				width: 266px;
+			}
+
+			&.column-tags-4 {
+				width: 346px;
 			}
 		}
 
@@ -1051,6 +1059,10 @@ output {
 			&.column-tags-3 {
 				width: 359px;
 			}
+
+			&.column-tags-4 {
+				width: 470px;
+			}
 		}
 
 		@media screen and (min-width: 1600px) {
@@ -1064,6 +1076,10 @@ output {
 
 			&.column-tags-3 {
 				width: 452px;
+			}
+
+			&.column-tags-4 {
+				width: 594px;
 			}
 		}
 
