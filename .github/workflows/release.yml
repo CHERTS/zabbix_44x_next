@@ -32,9 +32,7 @@ jobs:
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
-      run: ./configure --sysconfdir=/etc/zabbix
-    - name: Run make
-      run: make
+      run: ./configure
     - name: Run make dbschema
       run: make dbschema
     - name: Run make gettext
@@ -47,5 +45,5 @@ jobs:
       run: make dist
     - uses: actions/upload-artifact@v2
       with:
-        name: zabbix-4.4.11rc1
-        path: zabbix-4.4.11rc1.tar.gz
+        name: zabbix-4.4.12rc1
+        path: zabbix-4.4.12rc1.tar.gz
