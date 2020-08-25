@@ -2,7 +2,7 @@
 
 [In English / По-английски](RHELUPDATE.md)
 
-## Обновление из пакетов для RedHat / CentOS / Oracle Linux 6/7/8
+## Обновление из пакетов для RedHat / CentOS / Oracle Linux 7/8
 
 ### 1. Отключение официального репозитария Zabbix
 ~~~~

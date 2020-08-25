@@ -2,7 +2,7 @@
 
 [По-русски / In Russian](RHELUPDATE.ru.md)
 
-## Upgrading from packages for RedHat / CentOS / Oracle Linux 6/7/8
+## Upgrading from packages for RedHat / CentOS / Oracle Linux 7/8
 
 ### 1. Disable Zabbix repository
 ~~~~
