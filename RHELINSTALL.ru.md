@@ -2,9 +2,9 @@
 
 [In English / По-английски](RHELINSTALL.md)
 
-[Новая устанока из пакетов для RedHat/CentOS/OracleLinux 7](#redhat-7)
+[Новая установка из пакетов для RedHat/CentOS/OracleLinux 7](#redhat-7)
 
-[Новая устанока из пакетов для RedHat/CentOS/OracleLinux 8](#redhat-8)
+[Новая установка из пакетов для RedHat/CentOS/OracleLinux 8](#redhat-8)
 
 # RedHat 7
 ## Новая устанока из пакетов для RedHat / CentOS / Oracle Linux 7
