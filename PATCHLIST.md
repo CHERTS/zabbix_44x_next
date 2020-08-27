@@ -25,6 +25,7 @@
 [ZBX-18024] added ODBC empty query check (https://support.zabbix.com/browse/ZBX-18024)
 [ZBX-18029] fixed cpu counter wraparound handling on Solaris (https://support.zabbix.com/browse/ZBX-18029)
 [ZBX-18046] imporved error message generation performance of user macro and item key parser (https://support.zabbix.com/browse/ZBX-18046)
+[ZBX-18050] removed proxy name from host breadcrumbs (https://support.zabbix.com/browse/ZBX-18050)
 [ZBX-18060] fixed inaccessible user be displayed as accessible in slide show properties screen (https://support.zabbix.com/browse/ZBX-18060)
 [ZBX-18063] fixed usage of unsupported parameter in API call (https://support.zabbix.com/browse/ZBX-18063)
 [ZBX-18069] fixed server exit when trying to execute IPMI script without IPMI pollers (https://support.zabbix.com/browse/ZBX-18069)
