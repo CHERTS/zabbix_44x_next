@@ -221,7 +221,6 @@ dnf install httpd httpd-tools
 dnf install zabbix-web-mysql zabbix-apache-conf
 systemctl enable httpd.service
 systemctl start httpd.service
-sed -i 's/listen.owner = nginx/listen.owner = apache/g' /etc/php-fpm.d/zabbix.conf
 ~~~~
 
 Если будет использоваться веб-сервер Nginx + PHP-FPM, то выполните
@@ -229,6 +228,7 @@ sed -i 's/listen.owner = nginx/listen.owner = apache/g' /etc/php-fpm.d/zabbix.co
 dnf install epel-release
 dnf install nginx
 dnf install zabbix-web-mysql zabbix-nginx-conf
+sed -i 's/listen.owner = nginx/listen.owner = apache/g' /etc/php-fpm.d/zabbix.conf
 systemctl enable nginx.service
 systemctl start nginx.service
 ~~~~
