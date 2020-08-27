@@ -35,6 +35,7 @@
 [ZBX-18124] fixed discovered host group prototype saving during import (https://support.zabbix.com/browse/ZBX-18124)
 [ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)
 [ZBX-18160] fixed fatal error in items.php and host_discovery.php (https://support.zabbix.com/browse/ZBX-18160)
+[ZBX-18181] fixed undefined index when importing host with non-existing interface (https://support.zabbix.com/browse/ZBX-18181)
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
