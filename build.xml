@@ -22,9 +22,9 @@
 		<property name="dbhost" value="${DBHOST}"/>
 		<property name="dbname" value="${DBNAME}"/>
 		<property name="dbuser" value="${DBUSER}"/>
-	 	<property name="dbpassword" value="${DBPASSWORD}"/>
-	 	<property name="phpunit_error_log" value="${PHPUNIT_ERROR_LOG}"/>
-	 	<property name="phpunit_port_prefix" value="${PHPUNIT_PORT_PREFIX}"/>
+		<property name="dbpassword" value="${DBPASSWORD}"/>
+		<property name="phpunit_error_log" value="${PHPUNIT_ERROR_LOG}"/>
+		<property name="phpunit_port_prefix" value="${PHPUNIT_PORT_PREFIX}"/>
 		<property name="screenshot_references_dir" value="${SCREENSHOT_REFERENCES_DIR}"/>
 		<condition property="phpunit_driver_address" value="${PHPUNIT_DRIVER_ADDRESS}" else="localhost">
 			<and>
@@ -82,6 +82,29 @@
 			<arg line="-j4"/>
 			<arg line="-s"/>
 			<arg line="gettext"/>
+		</exec>
+	</target>
+
+	<target name="make-binaries-postgresql">
+		<!-- Binaries for integration tests -->
+		<exec executable="./bootstrap.sh" failonerror="on"/>
+		<exec executable="./configure" failonerror="on">
+			<arg line="--quiet"/>
+			<arg line="--enable-server"/>
+			<arg line="--enable-proxy"/>
+			<arg line="--enable-agent"/>
+			<arg line="--with-postgresql"/>
+			<arg line="--prefix=${basedir}"/>
+		</exec>
+		<exec executable="make" failonerror="on">
+			<arg line="-j4"/>
+			<arg line="-s"/>
+			<arg line="dbschema"/>
+		</exec>
+		<exec executable="make" failonerror="on">
+			<arg line="-j4"/>
+			<arg line="-s"/>
+			<arg line="install"/>
 		</exec>
 	</target>
 
