@@ -1,0 +1,65 @@
+name: Ant
+
+on:
+#  schedule:
+#    - cron: "0 18 * * 1-5"
+#  push:
+#    branches:
+#      - master
+#    tags:
+#      - 'v*'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Run unit test'
+
+jobs:
+  test-phpunit:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install dependencies
+      run: |
+        sudo apt-get update -y
+        sudo apt install -y ant phpunit
+    - name: run test-phpunit
+      run: |
+        ant test-phpunit
+
+  test-frontend:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install dependencies
+      run: |
+        sudo apt-get update -y
+        sudo apt install -y ant phpunit
+    - name: run test-frontend
+      run: |
+        ant test-frontend
+
+  test-api:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install dependencies
+      run: |
+        sudo apt-get update -y
+        sudo apt install -y ant phpunit
+    - name: run test-api
+      run: |
+        ant test-api
+
+  test-integration:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: install dependencies
+      run: |
+        sudo apt-get update -y
+        sudo apt install -y ant phpunit
+    - name: run test-integration
+      run: |
+        ant test-integration
