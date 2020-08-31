@@ -44,7 +44,7 @@ const char	*usage_message[] = {
 	NULL,
 	"[-v]", "-c config-file", "[-z server]", "[-p port]", "[-I IP-address]", "[-s host]", "[-T]", "[-r]",
 	"-i input-file", NULL,
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	"[-v]", "-z server", "[-p port]", "[-I IP-address]", "-s host", "--tls-connect cert", "--tls-ca-file CA-file",
 	"[--tls-crl-file CRL-file]", "[--tls-server-cert-issuer cert-issuer]",
 	"[--tls-server-cert-subject cert-subject]", "--tls-cert-file cert-file", "--tls-key-file key-file",
@@ -180,7 +180,7 @@ const char	*help_message[] = {
 	"  -V --version               Display version number",
 	"",
 	"TLS connection options:",
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	"  --tls-connect value        How to connect to server or proxy. Values:",
 	"                               unencrypted - connect without encryption",
 	"                                             (default)",
@@ -230,7 +230,7 @@ const char	*help_message[] = {
 	"",
 	"Example(s):",
 	"  zabbix_sender -z 127.0.0.1 -s \"Linux DB3\" -k db.connections -o 43",
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	"",
 	"  zabbix_sender -z 127.0.0.1 -s \"Linux DB3\" -k db.connections -o 43 \\",
 	"    --tls-connect cert --tls-ca-file /home/zabbix/zabbix_ca_file \\",
@@ -369,7 +369,7 @@ typedef struct
 	char		*server;
 	unsigned short	port;
 	struct zbx_json	json;
-#if defined(_WINDOWS) && (defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
+#if defined(_WINDOWS) && (defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
 	ZBX_THREAD_SENDVAL_TLS_ARGS	tls_vars;
 #endif
 	int		sync_timestamp;
@@ -594,7 +594,7 @@ static	ZBX_THREAD_ENTRY(send_value, args)
 	char			*tls_arg1, *tls_arg2;
 	zbx_socket_t		sock;
 
-#if defined(_WINDOWS) && (defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
+#if defined(_WINDOWS) && (defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
 	if (ZBX_TCP_SEC_UNENCRYPTED != configured_tls_connect_mode)
 	{
 		/* take TLS data passed from 'main' thread */
@@ -616,7 +616,7 @@ static	ZBX_THREAD_ENTRY(send_value, args)
 			tls_arg1 = NULL;
 			tls_arg2 = NULL;
 			break;
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 		case ZBX_TCP_SEC_TLS_CERT:
 			tls_arg1 = CONFIG_TLS_SERVER_CERT_ISSUER;
 			tls_arg2 = CONFIG_TLS_SERVER_CERT_SUBJECT;
@@ -707,7 +707,7 @@ static int	perform_data_sending(ZBX_THREAD_SENDVAL_ARGS *sendval_args, int old_s
 		if (0 != i)
 		{
 			sendval_args[i].json = sendval_args[0].json;
-#if defined(_WINDOWS) && (defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
+#if defined(_WINDOWS) && (defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
 			sendval_args[i].tls_vars = sendval_args[0].tls_vars;
 #endif
 			sendval_args[i].sync_timestamp = sendval_args[0].sync_timestamp;
@@ -932,7 +932,7 @@ static void	parse_commandline(int argc, char **argv)
 				else if (LOG_LEVEL_DEBUG > CONFIG_LOG_LEVEL)
 					CONFIG_LOG_LEVEL = LOG_LEVEL_DEBUG;
 				break;
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 			case '1':
 				CONFIG_TLS_CONNECT = zbx_strdup(CONFIG_TLS_CONNECT, zbx_optarg);
 				break;
@@ -967,20 +967,10 @@ static void	parse_commandline(int argc, char **argv)
 				zbx_error("parameter \"--tls-cipher13\" can be used with OpenSSL 1.1.1 or newer."
 						" Zabbix sender was compiled with GnuTLS");
 				exit(EXIT_FAILURE);
-#elif defined(HAVE_POLARSSL)
-				zbx_error("parameter \"--tls-cipher13\" can be used with OpenSSL 1.1.1 or newer."
-						" Zabbix sender was compiled with mbedTLS (PolarSSL)");
-				exit(EXIT_FAILURE);
 #endif
 				break;
 			case 'B':
-#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 				CONFIG_TLS_CIPHER_CMD = zbx_strdup(CONFIG_TLS_CIPHER_CMD, zbx_optarg);
-#elif defined(HAVE_POLARSSL)
-				zbx_error("parameter \"--tls-cipher\" requires GnuTLS or OpenSSL."
-						" Zabbix sender was compiled with mbedTLS (PolarSSL)");
-				exit(EXIT_FAILURE);
-#endif
 				break;
 #else
 			case '1':
@@ -1326,7 +1316,7 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 #endif
-#if !defined(_WINDOWS) && (defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
+#if !defined(_WINDOWS) && (defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
 	if (SUCCEED != zbx_coredump_disable())
 	{
 		zabbix_log(LOG_LEVEL_CRIT, "cannot disable core dump, exiting...");
@@ -1347,7 +1337,7 @@ int	main(int argc, char **argv)
 			NULL != CONFIG_TLS_CIPHER_PSK13 || NULL != CONFIG_TLS_CIPHER_PSK ||
 			NULL != CONFIG_TLS_CIPHER_CMD13 || NULL != CONFIG_TLS_CIPHER_CMD)
 	{
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 		zbx_tls_validate_config();
 
 		if (ZBX_TCP_SEC_UNENCRYPTED != configured_tls_connect_mode)
@@ -1367,7 +1357,7 @@ int	main(int argc, char **argv)
 	sendval_args = (ZBX_THREAD_SENDVAL_ARGS *)zbx_calloc(sendval_args, destinations_count,
 			sizeof(ZBX_THREAD_SENDVAL_ARGS));
 
-#if defined(_WINDOWS) && (defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
+#if defined(_WINDOWS) && (defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
 	if (ZBX_TCP_SEC_UNENCRYPTED != configured_tls_connect_mode)
 	{
 		/* prepare to pass necessary TLS data to 'send_value' thread (to be started soon) */
@@ -1607,7 +1597,7 @@ exit:
 				" Use option -vv for more detailed output." : "");
 	}
 
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	if (ZBX_TCP_SEC_UNENCRYPTED != configured_tls_connect_mode)
 	{
 		zbx_tls_free();

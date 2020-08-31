@@ -35,7 +35,7 @@ const char	title_message[] = "zabbix_get";
 const char	syslog_app_name[] = "zabbix_get";
 const char	*usage_message[] = {
 	"-s host-name-or-IP", "[-p port-number]", "[-I IP-address]", "-k item-key", NULL,
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	"-s host-name-or-IP", "[-p port-number]", "[-I IP-address]", "--tls-connect cert", "--tls-ca-file CA-file",
 	"[--tls-crl-file CRL-file]", "[--tls-agent-cert-issuer cert-issuer]", "[--tls-agent-cert-subject cert-subject]",
 	"--tls-cert-file cert-file", "--tls-key-file key-file",
@@ -78,7 +78,7 @@ const char	*help_message[] = {
 	"  -V --version               Display version number",
 	"",
 	"TLS connection options:",
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	"  --tls-connect value        How to connect to agent. Values:",
 	"                               unencrypted - connect without encryption",
 	"                                             (default)",
@@ -128,7 +128,7 @@ const char	*help_message[] = {
 	"",
 	"Example(s):",
 	"  zabbix_get -s 127.0.0.1 -p " ZBX_DEFAULT_AGENT_PORT_STR " -k \"system.cpu.load[all,avg1]\"",
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	"",
 	"  zabbix_get -s 127.0.0.1 -p " ZBX_DEFAULT_AGENT_PORT_STR " -k \"system.cpu.load[all,avg1]\" \\",
 	"    --tls-connect cert --tls-ca-file /home/zabbix/zabbix_ca_file \\",
@@ -226,7 +226,7 @@ static void	get_signal_handler(int sig)
 	if (SIGALRM == sig)
 		zbx_error("Timeout while executing operation");
 
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	if (ZBX_TCP_SEC_UNENCRYPTED != configured_tls_connect_mode)
 		zbx_tls_free_on_signal();
 #endif
@@ -259,7 +259,7 @@ static int	get_value(const char *source_ip, const char *host, unsigned short por
 			tls_arg1 = NULL;
 			tls_arg2 = NULL;
 			break;
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 		case ZBX_TCP_SEC_TLS_CERT:
 			tls_arg1 = CONFIG_TLS_SERVER_CERT_ISSUER;
 			tls_arg2 = CONFIG_TLS_SERVER_CERT_SUBJECT;
@@ -336,7 +336,7 @@ int	main(int argc, char **argv)
 	char		*error = NULL;
 #endif
 
-#if !defined(_WINDOWS) && (defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
+#if !defined(_WINDOWS) && (defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL))
 	if (SUCCEED != zbx_coredump_disable())
 	{
 		zbx_error("cannot disable core dump, exiting...");
@@ -375,7 +375,7 @@ int	main(int argc, char **argv)
 				version();
 				exit(EXIT_SUCCESS);
 				break;
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 			case '1':
 				CONFIG_TLS_CONNECT = zbx_strdup(CONFIG_TLS_CONNECT, zbx_optarg);
 				break;
@@ -410,20 +410,10 @@ int	main(int argc, char **argv)
 				zbx_error("parameter \"--tls-cipher13\" can be used with OpenSSL 1.1.1 or newer."
 						" zabbix_get was compiled with GnuTLS");
 				exit(EXIT_FAILURE);
-#elif defined(HAVE_POLARSSL)
-				zbx_error("parameter \"--tls-cipher13\" can be used with OpenSSL 1.1.1 or newer."
-						" zabbix_get was compiled with mbedTLS (PolarSSL)");
-				exit(EXIT_FAILURE);
 #endif
 				break;
 			case 'B':
-#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 				CONFIG_TLS_CIPHER_CMD = zbx_strdup(CONFIG_TLS_CIPHER_CMD, zbx_optarg);
-#elif defined(HAVE_POLARSSL)
-				zbx_error("parameter \"--tls-cipher\" requires GnuTLS or OpenSSL."
-						" zabbix_get was compiled with mbedTLS (PolarSSL)");
-				exit(EXIT_FAILURE);
-#endif
 				break;
 #else
 			case '1':
@@ -506,7 +496,7 @@ int	main(int argc, char **argv)
 			NULL != CONFIG_TLS_PSK_IDENTITY || NULL != CONFIG_TLS_PSK_FILE ||
 			NULL != CONFIG_TLS_CIPHER_CMD13 || NULL != CONFIG_TLS_CIPHER_CMD)
 	{
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 		zbx_tls_validate_config();
 
 		if (ZBX_TCP_SEC_UNENCRYPTED != configured_tls_connect_mode)
@@ -531,7 +521,7 @@ out:
 	zbx_free(host);
 	zbx_free(key);
 	zbx_free(source_ip);
-#if defined(HAVE_POLARSSL) || defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
+#if defined(HAVE_GNUTLS) || defined(HAVE_OPENSSL)
 	if (ZBX_TCP_SEC_UNENCRYPTED != configured_tls_connect_mode)
 	{
 		zbx_tls_free();
