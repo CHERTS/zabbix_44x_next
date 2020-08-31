@@ -16,50 +16,17 @@ on:
         default: 'Run unit test'
 
 jobs:
-  test-phpunit:
-    runs-on: ubuntu-latest
+  ant-build-backend:
+    runs-on: [ubuntu-18.04]
     steps:
     - uses: actions/checkout@v2
-    - name: install dependencies
+    - name: Install base dependencies
       run: |
         sudo apt-get update -y
-        sudo apt install -y ant phpunit
-    - name: run test-phpunit
+        sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
+        sudo apt-get install -y ant ant-contrib phpunit
+    - name: Install database dependencies
+      run: sudo apt-get install -y libmysqlclient-dev
+    - name: Run build backend
       run: |
-        ant test-phpunit
-
-  test-frontend:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: install dependencies
-      run: |
-        sudo apt-get update -y
-        sudo apt install -y ant phpunit
-    - name: run test-frontend
-      run: |
-        ant test-frontend
-
-  test-api:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: install dependencies
-      run: |
-        sudo apt-get update -y
-        sudo apt install -y ant phpunit
-    - name: run test-api
-      run: |
-        ant test-api
-
-  test-integration:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: install dependencies
-      run: |
-        sudo apt-get update -y
-        sudo apt install -y ant phpunit
-    - name: run test-integration
-      run: |
-        ant test-integration
+        ant -DDBTYPE=MYSQL -f build-backend.xml
