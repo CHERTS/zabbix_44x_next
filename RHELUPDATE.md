@@ -2,7 +2,7 @@
 
 [По-русски / In Russian](RHELUPDATE.ru.md)
 
-## Upgrading from packages for RedHat / CentOS / Oracle Linux 7/8
+## Upgrading from packages for RedHat / CentOS / Oracle Linux 6/7/8
 
 ### 1. Disable Zabbix repository
 ~~~~
@@ -13,6 +13,11 @@ yum-config-manager --disable zabbix-non-supported
 ~~~~
 
 ### 2. Install DBService repository
+
+From RHEL/CentOS/OracleLinux 6
+~~~~
+rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/6/x86_64/dbs-release-4.4-1.el6.noarch.rpm
+~~~~
 
 From RHEL/CentOS/OracleLinux 7
 ~~~~
@@ -26,7 +31,7 @@ rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.
 
 ### 3. Upgrade zabbix packages
 
-From RHEL/CentOS/OracleLinux 7
+From RHEL/CentOS/OracleLinux 6/7
 ~~~~
 yum clean all
 yum makecache fast
