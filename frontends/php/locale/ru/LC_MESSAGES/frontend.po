@@ -2429,6 +2429,11 @@ msgstr "Не удалось найти узел сети \"%1$s\" использ
 msgid "Cannot find interface \"%1$s\" used for item \"%2$s\" on \"%3$s\"."
 msgstr "Не удалось найти интерфейс \"%1$s\" для элемента данных \"%2$s\" на \"%3$s\"."
 
+#: include/classes/import/CConfigurationImport.php:760
+#, c-format
+msgid "Cannot find value map \"%1$s\" used for item \"%2$s\" on \"%3$s\"."
+msgstr "Не удалось найти преобразование значений \"%1$s\" используемое в элементе данных \"%2$s\" на \"%3$s\"."
+
 #: include/classes/import/CConfigurationImport.php:959
 #, c-format
 msgid "Cannot find interface \"%1$s\" used for discovery rule \"%2$s\" on \"%3$s\"."
@@ -2522,16 +2527,6 @@ msgstr "Не удалось найти шаблон \"%1$s\" для протот
 #, c-format
 msgid "Cannot find trigger \"%1$s\" used in map \"%2$s\"."
 msgstr "Не удалось найти триггер \"%1$s\" используемый на карте сети \"%2$s\"."
-
-#: include/classes/import/CConfigurationImport.php:749
-#, c-format
-msgid "Cannot find value map \"%1$s\" used for item \"%2$s\" on \"%3$s\"."
-msgstr "Не удалось найти преобразование значений \"%1$s\" используемое в элементе данных \"%2$s\" на \"%3$s\"."
-
-#: include/classes/import/CConfigurationImport.php:1077
-#, c-format
-msgid "Cannot find value map \"%1$s\" used for item prototype \"%2$s\" of discovery rule \"%3$s\" on \"%4$s\"."
-msgstr "Не удалось найти преобразование значений \"%1$s\" используемое в прототипу элементов данных \"%2$s\" в правиле обнаружения \"%3$s\" на \"%4$s\"."
 
 #: srv_status.php:181
 msgid "Cannot format Tree. Check logic structure in service links."
