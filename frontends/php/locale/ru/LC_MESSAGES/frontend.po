@@ -866,8 +866,20 @@ msgid "Aggregate"
 msgstr "Агрегация"
 
 #: include/classes/items/CHelpItems.php:677
-msgid "Aggregate checks do not require any agent running on a host being monitored. Zabbix server collects aggregate information by doing direct database queries. See Zabbix Manual."
-msgstr "Агрегативные проверки не требуют наличия агента на наблюдаемом узле сети. Zabbix сервер собирает агрегативную информацию с помощью прямых запросов в базу данных. Смотрите документацию по Zabbix."
+msgid "Calculates the average value, based on the various parameters supplied. Zabbix server collects aggregate information by doing direct database queries."
+msgstr "Вычисление среднего значения на основе различных заданных параметров. Zabbix сервер собирает агрегированную информацию выполняя прямые запросы в базу данных."
+
+#: include/classes/items/CHelpItems.php:681
+msgid "Calculates the maximum value, based on the various parameters supplied. Zabbix server collects aggregate information by doing direct database queries."
+msgstr "Вычисление максимального значения на основе различных заданных параметров. Zabbix сервер собирает агрегированную информацию выполняя прямые запросы в базу данных."
+
+#: include/classes/items/CHelpItems.php:685
+msgid "Calculates the minimum value, based on the various parameters supplied. Zabbix server collects aggregate information by doing direct database queries."
+msgstr "Вычисление минимального значения на основе различных заданных параметров. Zabbix сервер собирает агрегированную информацию выполняя прямые запросы в базу данных."
+
+#: include/classes/items/CHelpItems.php:689
+msgid "Calculates the sum of values, based on the various parameters supplied. Zabbix server collects aggregate information by doing direct database queries."
+msgstr "Вычисление суммы значений на основе различных заданных параметров. Zabbix сервер собирает агрегированную информацию выполняя прямые запросы в базу данных."
 
 #: include/classes/widgets/CWidgetHelper.php:1082
 msgid "Aggregation function"
@@ -1607,6 +1619,10 @@ msgstr "Вычисляемое"
 #: jsLoader.php:152
 msgid "Calendar"
 msgstr "Календарь"
+
+#: items.php:1437
+msgid "Cannot clear history: at least one of the selected items doesn't belong to any monitored host"
+msgstr "Не удалось очистить историю: по крайней мере один из выбранных элементов данных не принадлежит к какому-либо узлу сети под наблюдением"
 
 #: include/hosts.inc.php:60
 msgid "Callback"
@@ -2408,7 +2424,27 @@ msgstr "Не удалось найти узел сети \"%1$s\" использ
 msgid "Cannot find host \"%1$s\" used in screen \"%2$s\"."
 msgstr "Не удалось найти узел сети \"%1$s\" используемый в комплексном экране \"%2$s\"."
 
-#: include/classes/import/CConfigurationImport.php:1155
+#: include/classes/import/CConfigurationImport.php:749
+#, c-format
+msgid "Cannot find interface \"%1$s\" used for item \"%2$s\" on \"%3$s\"."
+msgstr "Не удалось найти интерфейс \"%1$s\" для элемента данных \"%2$s\" на \"%3$s\"."
+
+#: include/classes/import/CConfigurationImport.php:959
+#, c-format
+msgid "Cannot find interface \"%1$s\" used for discovery rule \"%2$s\" on \"%3$s\"."
+msgstr "Не удалось найти интерфейс \"%1$s\" для правила обнаружения \"%2$s\" на \"%3$s\"."
+
+#: include/classes/import/CConfigurationImport.php:1097
+#, c-format
+msgid "Cannot find interface \"%1$s\" used for item prototype \"%2$s\" of discovery rule \"%3$s\" on \"%4$s\"."
+msgstr "Не удалось найти интерфейс \"%1$s\" для прототипа элемента данных \"%2$s\" правила обнаружения \"%3$s\" на \"%4$s\"."
+
+#: include/classes/import/CConfigurationImport.php:1111
+#, c-format
+msgid "Cannot find value map "%1$s" used for item prototype "%2$s" of discovery rule "%3$s" on "%4$s"."
+msgstr "Не удалось найти преобразование значений \"%1$s\" для прототипа элемента данных \"%2$s\" правила обнаружения \"%3$s\" на \"%4$s\"."
+
+#: include/classes/import/CConfigurationImport.php:1189
 #, c-format
 msgid "Cannot find host group \"%1$s\" for host prototype \"%2$s\" of discovery rule \"%3$s\" on \"%4$s\"."
 msgstr "Не удалось найти группу узлов сети \"%1$s\" для прототипа узлов сети \"%2$s\" правила обнаружения \"%3$s\" на \"%4$s\"."
