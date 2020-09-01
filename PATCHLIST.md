@@ -46,6 +46,7 @@
 [ZBXNEXT-5725] added ability to select specific severities in Monitoring->Problems (https://support.zabbix.com/browse/ZBXNEXT-5725)
 [ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
+[ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (https://support.zabbix.com/browse/ZBXNEXT-6139)
 [DBS-001] Added the ability to display 4 tags on the Problems page
 [DBS-002] Added space between tags on Problems page
 [DBS-003] Added a quick jump to the "Latest data" page from the Configuration -> Hosts page

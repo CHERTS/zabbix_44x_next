@@ -46,6 +46,7 @@
 [ZBXNEXT-5725] added ability to select specific severities in Monitoring->Problems (https://support.zabbix.com/browse/ZBXNEXT-5725)
 [ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
+[ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (https://support.zabbix.com/browse/ZBXNEXT-6139)
 [DBS-001] На странице "Проблемы" реализована возможность отображения 4-х тегов
 [DBS-002] На странице "Проблемы" в колонке "Теги" добавлен пробел для разделения тегов при выделении и копировани их в буфер обмена
 [DBS-003] Добавлен переход на страницу "Последние данные" со страницы Конфигурация -> Хосты
