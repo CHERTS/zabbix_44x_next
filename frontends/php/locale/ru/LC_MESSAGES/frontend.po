@@ -2441,7 +2441,7 @@ msgstr "Не удалось найти интерфейс \"%1$s\" для про
 
 #: include/classes/import/CConfigurationImport.php:1111
 #, c-format
-msgid "Cannot find value map "%1$s" used for item prototype "%2$s" of discovery rule "%3$s" on "%4$s"."
+msgid "Cannot find value map \"%1$s\" used for item prototype \"%2$s\" of discovery rule \"%3$s\" on \"%4$s\"."
 msgstr "Не удалось найти преобразование значений \"%1$s\" для прототипа элемента данных \"%2$s\" правила обнаружения \"%3$s\" на \"%4$s\"."
 
 #: include/classes/import/CConfigurationImport.php:1189
