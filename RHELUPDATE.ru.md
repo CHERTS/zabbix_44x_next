@@ -2,7 +2,7 @@
 
 [In English / По-английски](RHELUPDATE.md)
 
-## Обновление из пакетов для RedHat / CentOS / Oracle Linux 7/8
+## Обновление из пакетов для RedHat / CentOS / Oracle Linux 6/7/8
 
 ### 1. Отключение официального репозитария Zabbix
 ~~~~
@@ -13,6 +13,11 @@ yum-config-manager --disable zabbix-non-supported
 ~~~~
 
 ### 2. Установка репозитория DBService
+
+Для RHEL/CentOS/OracleLinux 6
+~~~~
+rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/6/x86_64/dbs-release-4.4-1.el6.noarch.rpm
+~~~~
 
 Для RHEL/CentOS/OracleLinux 7
 ~~~~
@@ -26,7 +31,7 @@ rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.
 
 ### 3. Обновление пакетов zabbix
 
-Для RHEL/CentOS/OracleLinux 7
+Для RHEL/CentOS/OracleLinux 6/7
 ~~~~
 yum clean all
 yum makecache fast
