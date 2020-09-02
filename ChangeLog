@@ -10,6 +10,7 @@ A.F.I..PS. [ZBXNEXT-5592] dropped IBM DB2 database support for Zabbix server (ta
 
 Bug fixes:
 ..F....... [DBS-001] fixed css style for the ability to display 4 tags on the Problems page (mgrigorev)
+.......PS. [ZBX-15904] added check of required cache size for vmware event messages (asestakovs)
 ..F....... [ZBX-18050] removed proxy name from host breadcrumbs (rlataria)
 ........S. [ZBX-18024] fixed error message and coding style (viktors)
 .......PS. [ZBX-18121] fixed SSH monitoring when compiled with libssh; thanks to MATSUDA Daiki for the patch (Andris, viktors)

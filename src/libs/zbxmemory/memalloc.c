@@ -738,7 +738,7 @@ void	zbx_mem_dump_stats(int level, zbx_mem_info_t *info)
 {
 	void		*chunk;
 	int		index;
-	zbx_uint64_t	counter, total, total_free = 0;
+	zbx_uint64_t	counter, total, overhead, total_free = 0;
 	zbx_uint64_t	min_size = __UINT64_C(0xffffffffffffffff), max_size = __UINT64_C(0);
 
 	zabbix_log(level, "=== memory statistics for %s ===", info->mem_descr);
@@ -768,13 +768,15 @@ void	zbx_mem_dump_stats(int level, zbx_mem_info_t *info)
 	zabbix_log(level, "min chunk size: %10llu bytes", (unsigned long long)min_size);
 	zabbix_log(level, "max chunk size: %10llu bytes", (unsigned long long)max_size);
 
-	total = (info->total_size - info->used_size - info->free_size) / (2 * MEM_SIZE_FIELD) + 1;
+	overhead = info->total_size - info->used_size - info->free_size;
+	total = overhead / (2 * MEM_SIZE_FIELD) + 1;
 	zabbix_log(level, "memory of total size %llu bytes fragmented into %llu chunks",
 			(unsigned long long)info->total_size, (unsigned long long)total);
 	zabbix_log(level, "of those, %10llu bytes are in %8llu free chunks",
 			(unsigned long long)info->free_size, (unsigned long long)total_free);
 	zabbix_log(level, "of those, %10llu bytes are in %8llu used chunks",
 			(unsigned long long)info->used_size, (unsigned long long)(total - total_free));
+	zabbix_log(level, "of those, %10llu bytes are used by allocation overhead", (unsigned long long)overhead);
 
 	zabbix_log(level, "================================");
 }
@@ -805,4 +807,12 @@ size_t	zbx_mem_required_size(int chunks_num, const char *descr, const char *para
 	zabbix_log(LOG_LEVEL_DEBUG, "End of %s() size:" ZBX_FS_SIZE_T, __func__, (zbx_fs_size_t)size);
 
 	return size;
+}
+
+zbx_uint64_t	zbx_mem_required_chunk_size(zbx_uint64_t size)
+{
+	if (0 == size)
+		return 0;
+
+	return mem_proper_alloc_size(size) + MEM_SIZE_FIELD * 2;
 }
