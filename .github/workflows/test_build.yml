@@ -32,19 +32,25 @@ jobs:
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
-      run: ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+      run: ./configure
     - name: Run make
       run: make
     - name: Run make dbschema
       run: make dbschema
     - name: Run make gettext
       run: make gettext
-    - name: Run create bin, img and styles directory
-      run: mkdir -p ./bin/win32/dev ./bin/win64/dev ./frontends/php/assets/img ./frontends/php/assets/styles
     - name: Run make css
       run: make css
     - name: Run make dist
       run: make dist
+    - name: Extract distr
+      run: tar -zxf zabbix-4.4.12rc1.tar.gz
+    - name: Change directory
+      run: cd zabbix-4.4.12rc1/
+    - name: Run configure
+      run: ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+    - name: Build
+      run: make
     - uses: actions/upload-artifact@v2
       with:
         name: zabbix_server ubuntu-18.04 mysql
@@ -65,19 +71,25 @@ jobs:
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
-      run: ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-postgresql
+      run: ./configure
     - name: Run make
       run: make
     - name: Run make dbschema
       run: make dbschema
     - name: Run make gettext
       run: make gettext
-    - name: Run create bin, img and styles directory
-      run: mkdir -p ./bin/win32/dev ./bin/win64/dev ./frontends/php/assets/img ./frontends/php/assets/styles
     - name: Run make css
       run: make css
     - name: Run make dist
       run: make dist
+    - name: Extract distr
+      run: tar -zxf zabbix-4.4.12rc1.tar.gz
+    - name: Change directory
+      run: cd zabbix-4.4.12rc1/
+    - name: Run configure
+      run: ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-postgresql
+    - name: Build
+      run: make
     - uses: actions/upload-artifact@v2
       with:
         name: zabbix_server ubuntu-18.04 pgsql

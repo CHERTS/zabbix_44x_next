@@ -1,0 +1,29 @@
+name: Ant-OL7
+
+on:
+#  schedule:
+#    - cron: "0 18 * * 1-5"
+#  push:
+#    branches:
+#      - master
+#    tags:
+#      - 'v*'
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Run unit test'
+
+jobs:
+  ol7-oracle-job:
+    name: Oracle Linux 7
+    runs-on: [self-hosted, linux, ol7]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run backend tests...
+      run: |
+        ant -f build-backend.xml
+        ant -f build-backend.xml cmocka-tests
+        ant -f build-backend.xml cmocka-ora-tests
+        ant -f build-backend.xml cppcheck-static-analyzer
