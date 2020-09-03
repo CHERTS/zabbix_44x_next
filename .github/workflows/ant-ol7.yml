@@ -21,9 +21,11 @@ jobs:
     runs-on: [self-hosted, linux, ol7]
     steps:
     - uses: actions/checkout@v2
+    - name: Run backend test cppcheck-static-analyzer...
+      run: ant -f build-backend.xml cppcheck-static-analyzer
     - name: Run backend tests...
-      run: |
-        ant -f build-backend.xml cppcheck-static-analyzer
-        ant -f build-backend.xml
-        ant -f build-backend.xml cmocka-tests
-        ant -f build-backend.xml cmocka-ora-tests
+      run: ant -f build-backend.xml
+    - name: Run backend test cmocka-tests...
+      run: ant -f build-backend.xml cmocka-tests
+    - name: Run backend test cmocka-ora-tests...
+      run: ant -f build-backend.xml cmocka-ora-tests
