@@ -23,8 +23,17 @@ jobs:
     - name: Install base dependencies
       run: |
         sudo apt-get update -y
-        sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libgnutls28-dev libpcre3-dev
+        sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libgnutls28-dev libpcre3-dev libssh-dev
         sudo apt-get install -y ant ant-contrib phpunit cppcheck golang clang clang-tools lcov libcmocka-dev libyaml-dev
+    - name: Installing Golang
+      run: |
+        sudo curl -O https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
+        sudo tar -xf go1.15.1.linux-amd64.tar.gz -C /usr/local
+	sudo rm -f go1.15.1.linux-amd64.tar.gz 2>/dev/null
+        sudo chown -R root:root /usr/local/go
+        export GOPATH=$HOME/go
+        export PATH=$PATH:$GOPATH/bin
+	export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
     - name: Install database dependencies
       run: sudo apt-get install -y libmysqlclient-dev libpq-dev
     - name: Run backend build tests with MySQL...
