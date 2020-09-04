@@ -29,11 +29,10 @@ jobs:
       run: |
         sudo curl -O https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
         sudo tar -xf go1.15.1.linux-amd64.tar.gz -C /usr/local
-	sudo rm -f go1.15.1.linux-amd64.tar.gz
         sudo chown -R root:root /usr/local/go
-        export GOPATH=$HOME/go
-        export PATH=$PATH:$GOPATH/bin
-	export PATH=$PATH:$GOPATH/bin:/usr/local/go/bin
+        echo '::set-env name=GOPATH::${{ runner.workspace }}/go'
+        echo '::add-path::${{ runner.workspace }}/go/bin'
+        echo '::add-path::/usr/local/go/bin'
     - name: Install database dependencies
       run: sudo apt-get install -y libmysqlclient-dev libpq-dev
     - name: Run backend build tests with MySQL...
