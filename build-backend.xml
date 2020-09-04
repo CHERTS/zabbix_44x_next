@@ -10,7 +10,9 @@
 			<property name="with.postgresql" value="true"/>
 		</case>
 		<case value="ORACLE">
-			<property name="with.db" value="--with-oracle"/>
+			<property name="ORA_INCLUDE" value="/usr/include/oracle/12.2/client64"/>
+			<property name="ORA_LIB" value="/usr/lib/oracle/12.2/client64/lib"/>
+			<property name="with.db" value="--with-oracle --with-oracle-include=${ORA_INCLUDE} --with-oracle-lib=${ORA_LIB}"/>
 			<property name="with.oracle" value="true"/>
 		</case>
 		<default>
@@ -166,9 +168,6 @@
 	</target>
 
 	<target name="make-db-oracle" if="${with.oracle}">
-		<property name="ORA_INCLUDE" value="/usr/include/oracle/12.2/client64"/>
-		<property name="ORA_LIB" value="/usr/lib/oracle/12.2/client64/lib"/>
-
 		<!-- Build Zabbix with oracle database -->
 		<sequential>
 			<make args="--enable-server --enable-agent --enable-proxy --with-oracle --with-libxml2 --with-unixodbc --with-net-snmp --with-ssh2 --with-openipmi --with-libevent --with-openssl --with-ldap --with-libcurl --with-oracle-include=${ORA_INCLUDE} --with-oracle-lib=${ORA_LIB}"/>
@@ -245,9 +244,6 @@
 	</target>
 
 	<target name="init-cmocka-ora-test-conf-options">
-		<property name="ORA_INCLUDE" value="/usr/include/oracle/12.2/client64"/>
-		<property name="ORA_LIB" value="/usr/lib/oracle/12.2/client64/lib"/>
-
 		<!-- Zabbix various configuration parameters for cmocka Oracle tests -->
 		<!-- Configuration option name must consist of prefix 'cmocka-ora-', configuration order number
 			and configuration title: cmocka-<number>-<title> -->
