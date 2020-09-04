@@ -1905,6 +1905,7 @@ class testFormAction extends CLegacyWebTest {
 		}
 
 		if (isset($data['operations'])) {
+			$this->page->waitUntilReady();
 			$this->zbxTestTabSwitch('Operations');
 
 			if (isset($data['def_shortdata'])){
