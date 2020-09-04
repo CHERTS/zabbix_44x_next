@@ -18,6 +18,7 @@ Bug fixes:
 A......... [ZBX-18181] fixed undefined index when importing host with non-existing interface (Ivo)
 ........S. [ZBX-18189] fixed crash when performing housekeeping with disabled value cache (viktors)
 ..F....... [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (agriscenko)
+..F....... [ZBX-18326] fixed unsupported code for internet explorer (rlataria)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.11 (unofficial)
