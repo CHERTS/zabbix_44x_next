@@ -151,21 +151,21 @@
 		</sequential>
 	</macrodef>
 
-	<target name="make-db-mysql" unless="${with.mysql}">
+	<target name="make-db-mysql" if="${with.mysql}">
 		<!-- Build Zabbix with postgresql database -->
 		<sequential>
 			<make args="--enable-server --enable-agent --enable-proxy --with-mysql --with-libxml2 --with-unixodbc --with-net-snmp --with-ssh2 --with-openipmi --with-libevent --with-openssl --with-ldap --with-libcurl"/>
 		</sequential>
 	</target>
 
-	<target name="make-db-postgresql" unless="${with.postgresql}">
+	<target name="make-db-postgresql" if="${with.postgresql}">
 		<!-- Build Zabbix with postgresql database -->
 		<sequential>
 			<make args="--enable-server --enable-agent --enable-proxy --with-postgresql --with-libxml2 --with-unixodbc --with-net-snmp --with-ssh2 --with-openipmi --with-libevent --with-openssl --with-ldap --with-libcurl"/>
 		</sequential>
 	</target>
 
-	<target name="make-db-oracle" unless="${with.oracle}">
+	<target name="make-db-oracle" if="${with.oracle}">
 		<property name="ORA_INCLUDE" value="/usr/include/oracle/12.2/client64"/>
 		<property name="ORA_LIB" value="/usr/lib/oracle/12.2/client64/lib"/>
 
