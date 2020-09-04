@@ -29,7 +29,7 @@ jobs:
       run: |
         sudo curl -O https://dl.google.com/go/go1.15.1.linux-amd64.tar.gz
         sudo tar -xf go1.15.1.linux-amd64.tar.gz -C /usr/local
-	sudo rm -f go1.15.1.linux-amd64.tar.gz 2>/dev/null
+	sudo rm -f go1.15.1.linux-amd64.tar.gz
         sudo chown -R root:root /usr/local/go
         export GOPATH=$HOME/go
         export PATH=$PATH:$GOPATH/bin
