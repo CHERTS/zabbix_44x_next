@@ -119,9 +119,16 @@ class CFormElement extends CElement {
 		}
 
 		// Nested table forms.
-		return $label->query('xpath', './../../'.self::TABLE_FORM_RIGHT.'//'.self::TABLE_FORM.'/..')
+		$element = $label->query('xpath', './../../'.self::TABLE_FORM_RIGHT.'//'.self::TABLE_FORM.'/..')
 				->cast('CFormElement', ['normalized' => true])
 				->one(false);
+
+
+		if (!$element->isValid()) {
+			$element = $label->query('xpath:./../../'.self::TABLE_FORM_RIGHT)->one(false);
+		}
+
+		return $element;
 	}
 
 	/**
@@ -161,53 +168,15 @@ class CFormElement extends CElement {
 		}
 
 		$parts = explode(':', $name, 2);
-		$element = new CNullElement(['locator' => 'form field (by name or selector "'.$name.'")']);
-
-		if (count($parts) === 2
-				&& in_array($parts[0], ['id', 'name', 'css', 'class', 'tag', 'link', 'button', 'xpath'])
-				&& (($element = $this->query($name)->one(false))->isValid())) {
+		if (count($parts) === 2 && in_array($parts[0], ['id', 'name', 'css', 'class', 'tag', 'link', 'button', 'xpath'])
+				&& ($element = $this->query($name)->one(false))->isValid()) {
 			$element = $element->detect();
 		}
-
-		if (!$element->isValid()) {
-			$label = $this->getLabel($name);
-
-			if (($element = $this->getFieldByLabelElement($label))->isValid() === false) {
-				throw new Exception('Failed to find form field by label name or selector: "'.$name.'".');
-			}
+		elseif (($element = $this->getFieldByLabelElement($this->getLabel($name)))->isValid() === false) {
+			throw new Exception('Failed to find form field by label name or selector: "'.$name.'".');
 		}
 
 		$this->fields->set($name, $element);
-
-		return $element;
-	}
-
-	/**
-	 * Get field by field id.
-	 *
-	 * @param string $id    field id
-	 *
-	 * @return CElement
-	 *
-	 * @throws Exception
-	 */
-	public function getFieldById($id) {
-		$prefix = 'xpath:.//'.self::TABLE_FORM.'/li/'.self::TABLE_FORM_LEFT;
-		$label = $this->query($prefix.'/label[@for='.CXPathHelper::escapeQuotes($id).']')->one(false);
-
-		if ($label->isValid() === false) {
-			$label = $this->query('xpath:.//'.self::TABLE_FORM.'/li/'.self::TABLE_FORM_RIGHT.'//*[@id='.
-					CXPathHelper::escapeQuotes($id).']/ancestor::'.self::TABLE_FORM_RIGHT.'/../'.
-					self::TABLE_FORM_LEFT.'/label')->one(false);
-
-			if (!$label->isValid()) {
-				throw new Exception('Failed to find form label by field id: "'.$id.'".');
-			}
-		}
-
-		if (!($element = $this->getFieldByLabelElement($label))->isValid()) {
-			throw new Exception('Failed to find form field by label id: "'.$id.'".');
-		}
 
 		return $element;
 	}
@@ -223,19 +192,6 @@ class CFormElement extends CElement {
 	 */
 	public function getFieldContainer($name) {
 		return $this->getLabel($name)->query('xpath:./../../'.self::TABLE_FORM_RIGHT)->one();
-	}
-
-	/**
-	 * Get field elements by label name.
-	 *
-	 * @param string $name    field label text
-	 *
-	 * @return CElementCollection
-	 *
-	 * @throws Exception
-	 */
-	public function getFieldElements($name) {
-		return $this->getFieldContainer($name)->query('xpath:./*')->all();
 	}
 
 	/**
