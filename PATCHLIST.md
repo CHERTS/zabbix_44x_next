@@ -38,6 +38,7 @@
 [ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)
 [ZBX-18160] fixed fatal error in items.php and host_discovery.php (https://support.zabbix.com/browse/ZBX-18160)
 [ZBX-18181] fixed undefined index when importing host with non-existing interface (https://support.zabbix.com/browse/ZBX-18181)
+[ZBX-18188] increased age and duration related macro resolution to seconds (https://support.zabbix.com/browse/ZBX-18188)
 [ZBX-18189] fixed crash when performing housekeeping with disabled value cache (https://support.zabbix.com/browse/ZBX-18189)
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)

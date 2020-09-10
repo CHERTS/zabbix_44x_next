@@ -244,6 +244,8 @@
 	</target>
 
 	<target name="init-cmocka-ora-test-conf-options">
+		<property name="ORA_INCLUDE" value="/usr/include/oracle/12.2/client64"/>
+		<property name="ORA_LIB" value="/usr/lib/oracle/12.2/client64/lib"/>
 		<!-- Zabbix various configuration parameters for cmocka Oracle tests -->
 		<!-- Configuration option name must consist of prefix 'cmocka-ora-', configuration order number
 			and configuration title: cmocka-<number>-<title> -->
