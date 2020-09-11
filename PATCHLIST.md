@@ -16,6 +16,7 @@
 [ZBX-17682] fixed button disable state in template item list and discovery list (https://support.zabbix.com/browse/ZBX-17682)
 [ZBX-17820] fixed classic graph widget default header (https://support.zabbix.com/browse/ZBX-17820)
 [ZBX-17860] fixed host prototype import (https://support.zabbix.com/browse/ZBX-17860)
+[ZBX-17906] fixed HTTP agent JSON output when using HTTP/2; thanks to Mike Noordermeer for the patch (https://support.zabbix.com/browse/ZBX-17906)
 [ZBX-17917] changed vm.memory.size keys on Solaris to get memory usage statistics from kstat (https://support.zabbix.com/browse/ZBX-17917)
 [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (https://support.zabbix.com/browse/ZBX-17922)
 [ZBX-17924] fixed php errors in "System information" window for MySQL (https://support.zabbix.com/browse/ZBX-17924)
