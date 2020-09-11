@@ -45,6 +45,7 @@
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
+[ZBXNEXT-4647,ZBXNEXT-6096] added support of digest authentication for HTTP Agent (https://support.zabbix.com/browse/ZBXNEXT-4647)
 [ZBXNEXT-5554] Added webhook through proxy (https://support.zabbix.com/browse/ZBXNEXT-5554)
 [ZBXNEXT-5592] dropped IBM DB2 database support for Zabbix server (https://support.zabbix.com/browse/ZBXNEXT-5592)
 [ZBXNEXT-5716] removed mbedTLS support (https://support.zabbix.com/browse/ZBXNEXT-5716)
