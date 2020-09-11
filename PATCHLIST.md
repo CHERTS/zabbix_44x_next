@@ -50,6 +50,7 @@
 [ZBXNEXT-5592] dropped IBM DB2 database support for Zabbix server (https://support.zabbix.com/browse/ZBXNEXT-5592)
 [ZBXNEXT-5716] removed mbedTLS support (https://support.zabbix.com/browse/ZBXNEXT-5716)
 [ZBXNEXT-5725] added ability to select specific severities in Monitoring->Problems (https://support.zabbix.com/browse/ZBXNEXT-5725)
+[ZBXNEXT-5879] added filter to Configuration->Templates/Hosts->Discovery rules (https://support.zabbix.com/browse/ZBXNEXT-5879)
 [ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
 [ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (https://support.zabbix.com/browse/ZBXNEXT-6139)

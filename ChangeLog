@@ -7,6 +7,7 @@ A.F.....S. [ZBXNEXT-4647,ZBXNEXT-6096] added support of digest authentication fo
 A.F.I..PS. [ZBXNEXT-5592] dropped IBM DB2 database support for Zabbix server (talbergs, viktors)
 ...GI..PS. [ZBXNEXT-5716] removed mbedTLS support (Andris)
 ..F....... [ZBXNEXT-5725] added ability to select specific severities in Monitoring->Problems (vasilijs)
+A.F....... [ZBXNEXT-5879] added filter to Configuration->Templates/Hosts->Discovery rules (agriscenko)
 ........S. [ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (wiper)
 
 Bug fixes:
