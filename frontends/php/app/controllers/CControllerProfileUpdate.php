@@ -40,6 +40,7 @@ class CControllerProfileUpdate extends CController {
 				case 'web.correlation.filter.active':
 				case 'web.discoveryconf.filter.active':
 				case 'web.groups.filter.active':
+				case 'web.host_discovery.filter.active':
 				case 'web.hostinventories.filter.active':
 				case 'web.httpconf.filter.active':
 				case 'web.httpdetails.filter.active':

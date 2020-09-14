@@ -271,12 +271,9 @@ $form_list
 		new CLabel(_('HTTP authentication'), 'http_authtype'),
 		[
 			$data['limited'] ? new CVar('http_authtype', $data['http_authtype']) : null,
-			(new CComboBox($data['limited'] ? '' : 'http_authtype', $data['http_authtype'], null, [
-				HTTPTEST_AUTH_NONE => _('None'),
-				HTTPTEST_AUTH_BASIC => _('Basic'),
-				HTTPTEST_AUTH_NTLM => _('NTLM'),
-				HTTPTEST_AUTH_KERBEROS => _('Kerberos')
-			]))->setEnabled(!$data['limited'])
+			(new CComboBox($data['limited'] ? '' : 'http_authtype', $data['http_authtype'], null,
+				httptest_authentications()
+			))->setEnabled(!$data['limited'])
 		],
 		'http_authtype_row'
 	)
@@ -809,14 +806,14 @@ if (!empty($data['itemid'])) {
 
 	$buttons[] = (new CButtonDelete(_('Delete discovery rule?'), url_params(['form', 'itemid', 'hostid'])))
 		->setEnabled(!$data['limited']);
-	$buttons[] = new CButtonCancel(url_param('hostid'));
+	$buttons[] = new CButtonCancel();
 
 	$tab->setFooter(makeFormFooter(new CSubmit('update', _('Update')), $buttons));
 }
 else {
 	$tab->setFooter(makeFormFooter(
 		new CSubmit('add', _('Add')),
-		[new CButtonCancel(url_param('hostid'))]
+		[(new CSimpleButton(_('Test')))->setId('test_item'), new CButtonCancel()]
 	));
 }
 
