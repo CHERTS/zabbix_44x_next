@@ -23,6 +23,7 @@ require_once 'vendor/autoload.php';
 require_once dirname(__FILE__).'/../CElement.php';
 
 use Facebook\WebDriver\Remote\RemoteWebElement;
+use Facebook\WebDriver\Exception\TimeoutException;
 
 /**
  * Multiselect element.
@@ -227,7 +228,7 @@ class CMultiselectElement extends CElement {
 		foreach ($text as $value) {
 			$input->overwrite($value)->fireEvent();
 
-			if (!$value) {
+			if ($value === null || $value === '') {
 				continue;
 			}
 
@@ -242,7 +243,7 @@ class CMultiselectElement extends CElement {
 							'/span[text()='.$content.']'
 				]))->waitUntilPresent();
 			}
-			catch (NoSuchElementException $exception) {
+			catch (TimeoutException $exception) {
 				throw new Exception('Cannot find value with label "'.$value.'" in multiselect element.');
 			}
 
