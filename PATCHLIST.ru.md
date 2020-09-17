@@ -44,6 +44,7 @@
 [ZBX-18189] fixed crash when performing housekeeping with disabled value cache (https://support.zabbix.com/browse/ZBX-18189)
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)
+[ZBX-18337] fixed potential crash due to printing NULL pointer (https://support.zabbix.com/browse/ZBX-18337)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-5554] Added webhook through proxy (https://support.zabbix.com/browse/ZBXNEXT-5554)
