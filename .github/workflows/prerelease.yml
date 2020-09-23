@@ -45,10 +45,9 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Zabbix ${{ github.ref }} (unofficial) now released
+        release_name: Zabbix (unofficial) release candidate
         draft: false
-        prerelease: false
+        prerelease: true
     - name: Upload Release Asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
