@@ -27,10 +27,6 @@ jobs:
       run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libconfig-dev
     - name: Install database dependencies
       run: sudo apt-get install -y libmysqlclient-dev
-    - name: Get current Zabbix version
-      run: echo "::set-env name=ZABBIX_VERSION::$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')"
-    - name: Get short SHA
-      run: echo ::set-env name=GITHUB_SHA_SHORT::$(echo $GITHUB_SHA | cut -c 1-6)
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
@@ -43,6 +39,10 @@ jobs:
       run: make css
     - name: Build dist
       run: make dist
+    - name: Get current Zabbix version
+      run: echo "::set-env name=ZABBIX_VERSION::$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')"
+    - name: Get short SHA
+      run: echo ::set-env name=GITHUB_SHA_SHORT::$(echo $GITHUB_SHA | cut -c 1-6)
     - name: Delete old drafts releases
       uses: hugo19941994/delete-draft-releases@v0.1.0
       env:
