@@ -127,9 +127,9 @@ static int	get_interval_option(const char *fping, const char *dst, int *value, c
 		char		tmp[MAX_STRING_LEN], err[255];
 		const char	*p;
 
-		zbx_snprintf(tmp, sizeof(tmp), "%s -c1 -t50 -i%u %s", fping, intervals[i], dst);
+		zabbix_log(LOG_LEVEL_DEBUG, "testing fping interval %u ms", intervals[i]);
 
-		zabbix_log(LOG_LEVEL_DEBUG, "testing interval %d using command \"%s\"", intervals[i], tmp);
+		zbx_snprintf(tmp, sizeof(tmp), "%s -c1 -t50 -i%u %s", fping, intervals[i], dst);
 
 		/* call fping, ignore its exit code but mind execution failures */
 		if (TIMEOUT_ERROR == (ret_exec = zbx_execute(tmp, &out, err, sizeof(err), 1,
@@ -252,12 +252,11 @@ static int	process_ping(ZBX_FPING_HOST *hosts, int hosts_count, int count, int i
 {
 	const int	response_time_chars_max = 20;
 	FILE		*f;
-	char		*c, params[70];
+	char		params[70];
 	char		filename[MAX_STRING_LEN];
 	char		*tmp = NULL;
 	size_t		tmp_size;
 	size_t		offset;
-	ZBX_FPING_HOST	*host;
 	double		sec;
 	int 		i, ret = NOTSUPPORTED, index;
 
@@ -542,20 +541,25 @@ static int	process_ping(ZBX_FPING_HOST *hosts, int hosts_count, int count, int i
 
 		do
 		{
+			ZBX_FPING_HOST	*host = NULL;
+			char		*c;
+
 			zbx_rtrim(tmp, "\n");
 			zabbix_log(LOG_LEVEL_DEBUG, "read line [%s]", tmp);
-
-			host = NULL;
 
 			if (NULL != (c = strchr(tmp, ' ')))
 			{
 				*c = '\0';
+
 				for (i = 0; i < hosts_count; i++)
+				{
 					if (0 == strcmp(tmp, hosts[i].addr))
 					{
 						host = &hosts[i];
 						break;
 					}
+				}
+
 				*c = ' ';
 			}
 
@@ -573,14 +577,14 @@ static int	process_ping(ZBX_FPING_HOST *hosts, int hosts_count, int count, int i
 
 			c += 3;
 
-			/* The were two issues with processing only the fping's final status line:  */
-			/*   1) pinging broadcast addresses could have resulted in responses from   */
-			/*      different hosts, which were counted as the target host responses;   */
-			/*   2) there is a bug in fping (v3.8 at least) where pinging broadcast     */
-			/*      address will result in no individual responses, but the final       */
-			/*      status line might contain a bogus value.                            */
-			/* Because of the above issues we must monitor the individual responses     */
-			/* and mark the valid ones.                                                 */
+			/* There were two issues with processing only the fping's final status line: */
+			/*   1) pinging broadcast addresses could have resulted in responses from    */
+			/*      different hosts, which were counted as the target host responses;    */
+			/*   2) there is a bug in fping (v3.8 at least) where pinging broadcast      */
+			/*      address will result in no individual responses, but the final        */
+			/*      status line might contain a bogus value.                             */
+			/* Because of the above issues we must monitor the individual responses      */
+			/* and mark the valid ones.                                                  */
 			if ('[' == *c)
 			{
 				/* Fping appends response source address in format '[<- 10.3.0.10]' */
@@ -592,6 +596,24 @@ static int	process_ping(ZBX_FPING_HOST *hosts, int hosts_count, int count, int i
 				index = atoi(c + 1);
 
 				if (0 > index || index >= count)
+					continue;
+
+				/* since 5.0 Fping outputs individual failed packages in additional to successful: */
+				/*                                                                                 */
+				/*   fping -C3 -i0 7.7.7.7 8.8.8.8                                                 */
+				/*   8.8.8.8 : [0], 64 bytes, 9.37 ms (9.37 avg, 0% loss)                          */
+				/*   7.7.7.7 : [0], timed out (NaN avg, 100% loss)                                 */
+				/*   8.8.8.8 : [1], 64 bytes, 8.72 ms (9.05 avg, 0% loss)                          */
+				/*   7.7.7.7 : [1], timed out (NaN avg, 100% loss)                                 */
+				/*   8.8.8.8 : [2], 64 bytes, 7.28 ms (8.46 avg, 0% loss)                          */
+				/*   7.7.7.7 : [2], timed out (NaN avg, 100% loss)                                 */
+				/*                                                                                 */
+				/*   7.7.7.7 : - - -                                                               */
+				/*   8.8.8.8 : 9.37 8.72 7.28                                                      */
+				/*                                                                                 */
+				/* Judging by Fping source code we can disregard lines reporting "timed out".      */
+
+				if (NULL != strstr(c + 2, " timed out "))
 					continue;
 
 				host->status[index] = 1;
