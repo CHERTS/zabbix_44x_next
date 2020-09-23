@@ -11,7 +11,7 @@ on:
       reason:
         description: 'Launch reason'
         required: true
-        default: 'Update all binary'
+        default: 'Create new release'
 
 jobs:
   github-job-release:
