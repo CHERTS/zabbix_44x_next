@@ -43,17 +43,21 @@ jobs:
       run: make css
     - name: Run make dist
       run: make dist
+    - name: Get current Zabbix version
+      run: echo "::set-env name=ZABBIX_VERSION::$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')"
+    - name: Get short SHA
+      run: echo ::set-env name=GITHUB_SHA_SHORT::$(echo $GITHUB_SHA | cut -c 1-6)
     - name: Extract distr
-      run: tar -zxf zabbix-4.4.12rc1.tar.gz
+      run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
     - name: Change directory
-      run: cd zabbix-4.4.12rc1/
+      run: cd zabbix-${{ env.ZABBIX_VERSION }}/
     - name: Run configure
       run: ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
     - name: Build
       run: make
     - uses: actions/upload-artifact@v2
       with:
-        name: zabbix_server ubuntu-18.04 mysql
+        name: zabbix_server v${{ env.ZABBIX_VERSION }} (${{ env.GITHUB_SHA_SHORT }} ubuntu-18.04 mysql)
         path: src/zabbix_server/zabbix_server
   github-job-pgsql:
     name: Ubuntu (PgSQL)
