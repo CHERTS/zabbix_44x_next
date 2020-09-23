@@ -27,6 +27,10 @@ jobs:
       run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libconfig-dev
     - name: Install database dependencies
       run: sudo apt-get install -y libmysqlclient-dev
+    - name: Get current Zabbix version
+      run: echo "::set-env name=ZABBIX_VERSION::$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')"
+    - name: Get short SHA
+      run: echo ::set-env name=GITHUB_SHA_SHORT::$(echo $GITHUB_SHA | cut -c 1-6)
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
@@ -50,7 +54,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: "latest"
-        release_name: Zabbix (unofficial) release candidate
+        release_name: Zabbix v${{ env.ZABBIX_VERSION }} (${{ env.GITHUB_SHA_SHORT }}) (unofficial) release candidate
         draft: true
         prerelease: false
     - name: Upload draft release asset
@@ -60,6 +64,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./zabbix-4.4.12rc1.tar.gz
-        asset_name: zabbix-4.4.12rc1.tar.gz
+        asset_path: ./zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
+        asset_name: zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
         asset_content_type: application/gzip
