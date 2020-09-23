@@ -39,16 +39,21 @@ jobs:
       run: make css
     - name: Build dist
       run: make dist
-    - name: Create Release
+    - name: Delete old drafts releases
+      uses: hugo19941994/delete-draft-releases@v0.1.0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create new draft release
       id: create_release
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
+        tag_name: "latest"
         release_name: Zabbix (unofficial) release candidate
-        draft: false
-        prerelease: true
-    - name: Upload Release Asset
+        draft: true
+        prerelease: false
+    - name: Upload draft release asset
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
       env:
