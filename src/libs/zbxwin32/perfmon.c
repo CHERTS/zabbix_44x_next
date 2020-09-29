@@ -30,13 +30,15 @@ static struct builtin_object_ref
 {
 	unsigned long	pdhIndex;
 	wchar_t		eng_name[PDH_MAX_COUNTER_NAME];
+	DWORD		minSupported_dwMajorVersion;
+	DWORD		minSupported_dwMinorVersion;
 }
 builtin_object_map[] =
 {
-	{ 0, L"System" },
-	{ 0, L"Processor" },
-	{ 0, L"Processor Information" },
-	{ 0, L"Terminal Services" }
+	{ 0, L"System", 0, 0 },
+	{ 0, L"Processor", 0, 0 },
+	{ 0, L"Processor Information", 6, 1 },
+	{ 0, L"Terminal Services", 0, 0 }
 };
 
 /* this enum must be only modified along with builtin_object_map[] */
@@ -57,14 +59,16 @@ static struct builtin_counter_ref
 	unsigned long			pdhIndex;
 	zbx_builtin_object_ref_t	object;
 	wchar_t				eng_name[PDH_MAX_COUNTER_NAME];
+	DWORD				minSupported_dwMajorVersion;
+	DWORD				minSupported_dwMinorVersion;
 }
 builtin_counter_map[] =
 {
-	{ 0,	POI_SYSTEM,			L"Processor Queue Length" },
-	{ 0,	POI_SYSTEM,			L"System Up Time" },
-	{ 0,	POI_PROCESSOR,			L"% Processor Time" },
-	{ 0,	POI_PROCESSOR_INFORMATION,	L"% Processor Time" },
-	{ 0,	POI_TERMINAL_SERVICES,		L"Total Sessions" }
+	{ 0,	POI_SYSTEM,			L"Processor Queue Length",	0,	0},
+	{ 0,	POI_SYSTEM,			L"System Up Time",		0,	0},
+	{ 0,	POI_PROCESSOR,			L"% Processor Time",		0, 	0},
+	{ 0,	POI_PROCESSOR_INFORMATION,	L"% Processor Time",		6,	1},
+	{ 0,	POI_TERMINAL_SERVICES,		L"Total Sessions",		0,	0}
 };
 
 PDH_STATUS	zbx_PdhMakeCounterPath(const char *function, PDH_COUNTER_PATH_ELEMENTS *cpe, char *counterpath)
@@ -374,7 +378,8 @@ finish:
  *                                                                            *
  * Function: get_perf_name_by_index                                           *
  *                                                                            *
- * Purpose: fills performance counter name based on its index                 *
+ * Purpose: checks if a specified counter path data is pointing to a valid    *
+ *          counter                                                           *
  *                                                                            *
  * Parameters: index - [IN]  PDH counter index                                *
  *             name  - [OUT] counter name buffer                              *
@@ -516,11 +521,19 @@ out:
  ******************************************************************************/
 int	init_builtin_counter_indexes(void)
 {
-	int 		ret = SUCCEED, i;
-	wchar_t 	*counter_text, *eng_names, *counter_base;
-	DWORD		counter_index;
+	int 				ret = SUCCEED, i;
+	wchar_t 			*counter_text, *eng_names, *counter_base;
+	DWORD				counter_index;
+	static const OSVERSIONINFOEX	*vi = NULL;
 
 	zabbix_log(LOG_LEVEL_DEBUG, "In %s()", __func__);
+
+	if (NULL == vi && NULL == (vi = zbx_win_getversion()))
+	{
+		zabbix_log(LOG_LEVEL_ERR, "Failed to get windows version");
+		ret = FAIL;
+		goto out;
+	}
 
 	/* Get buffer holding a list of performance counter indexes and English counter names. */
 	/* L"Counter" stores names, L"Help" stores descriptions ("Help" is not used).          */
@@ -542,8 +555,10 @@ int	init_builtin_counter_indexes(void)
 
 		for (i = 0; i < ARRSIZE(builtin_object_map); i++)
 		{
-			if (0 == builtin_object_map[i].pdhIndex &&
-					0 == wcscmp(builtin_object_map[i].eng_name, counter_text))
+			if (0 == builtin_object_map[i].pdhIndex && vi->dwMajorVersion >=
+					builtin_object_map[i].minSupported_dwMajorVersion && vi->dwMinorVersion >=
+					builtin_object_map[i].minSupported_dwMinorVersion && 0 ==
+					wcscmp(builtin_object_map[i].eng_name, counter_text))
 			{
 				builtin_object_map[i].pdhIndex = counter_index;
 				break;
@@ -560,9 +575,11 @@ int	init_builtin_counter_indexes(void)
 
 		for (i = 0; i < ARRSIZE(builtin_counter_map); i++)
 		{
-			if (0 == builtin_counter_map[i].pdhIndex &&
-					0 == wcscmp(builtin_counter_map[i].eng_name, counter_text) &&
-					SUCCEED == validate_object_counter(get_builtin_object_index(i), counter_index))
+			if (0 == builtin_counter_map[i].pdhIndex && vi->dwMajorVersion >=
+					builtin_counter_map[i].minSupported_dwMajorVersion && vi->dwMinorVersion >=
+					builtin_counter_map[i].minSupported_dwMinorVersion && 0 ==
+					wcscmp(builtin_counter_map[i].eng_name, counter_text) && SUCCEED ==
+					validate_object_counter(get_builtin_object_index(i), counter_index))
 			{
 				builtin_counter_map[i].pdhIndex = counter_index;
 				break;
@@ -575,7 +592,9 @@ int	init_builtin_counter_indexes(void)
 #define CHECK_COUNTER_INDICES(index_map)								\
 	for (i = 0; i < ARRSIZE(index_map); i++)							\
 	{												\
-		if (0 == index_map[i].pdhIndex)								\
+		if (0 == index_map[i].pdhIndex && vi->dwMajorVersion >=					\
+				index_map[i].minSupported_dwMajorVersion && vi->dwMinorVersion >=       \
+				builtin_counter_map[i].minSupported_dwMinorVersion)                     \
 		{											\
 			char	*counter;								\
 													\
