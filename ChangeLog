@@ -3,6 +3,7 @@ Changes for 4.4.13rc1 (unofficial)
 New features:
 
 Bug fixes:
+.......PS. [ZBX-17694] fixed high memory consumption when using dependent items (vso)
 ...G...... [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (arimdjonoks)
 
 --------------------------------------------------------------------------------

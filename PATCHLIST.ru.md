@@ -14,6 +14,7 @@
 [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (https://support.zabbix.com/browse/ZBX-17624)
 [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (https://support.zabbix.com/browse/ZBX-17922)
 [ZBX-17682] fixed button disable state in template item list and discovery list (https://support.zabbix.com/browse/ZBX-17682)
+[ZBX-17694] fixed high memory consumption when using dependent items (https://support.zabbix.com/browse/ZBX-17694)
 [ZBX-17820] fixed classic graph widget default header (https://support.zabbix.com/browse/ZBX-17820)
 [ZBX-17848] fixed fping interval detection, added log prints of detected options in debug mode, re-detect options every hour (https://support.zabbix.com/browse/ZBX-17848)
 [ZBX-17860] fixed host prototype import (https://support.zabbix.com/browse/ZBX-17860)
