@@ -12,6 +12,7 @@
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
 [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (https://support.zabbix.com/browse/ZBX-17624)
+[ZBX-17720] exclude disabled items from preprocessing configuration sync (https://support.zabbix.com/browse/ZBX-17720)
 [ZBX-17848] fixed fping interval detection, added log prints of detected options in debug mode, re-detect options every hour (https://support.zabbix.com/browse/ZBX-17848)
 [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (https://support.zabbix.com/browse/ZBX-17922)
 [ZBX-17682] fixed button disable state in template item list and discovery list (https://support.zabbix.com/browse/ZBX-17682)
