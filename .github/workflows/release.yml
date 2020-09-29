@@ -45,7 +45,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.event.release.tag_name }}
+        tag_name: v${{ env.ZABBIX_VERSION }}
         release_name: Zabbix v${{ env.ZABBIX_VERSION }} (unofficial) now released
         draft: false
         prerelease: false
