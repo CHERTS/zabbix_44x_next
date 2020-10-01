@@ -131,6 +131,8 @@ static int	get_interval_option(const char *fping, const char *dst, int *value, c
 
 		zbx_snprintf(tmp, sizeof(tmp), "%s -c1 -t50 -i%u %s", fping, intervals[i], dst);
 
+		zbx_free(out);
+
 		/* call fping, ignore its exit code but mind execution failures */
 		if (TIMEOUT_ERROR == (ret_exec = zbx_execute(tmp, &out, err, sizeof(err), 1,
 				ZBX_EXIT_CODE_CHECKS_DISABLED)))
@@ -195,14 +197,26 @@ static int	get_interval_option(const char *fping, const char *dst, int *value, c
 
 				goto out;
 			}
-		}
 
-		/* we probably hit the help message so let's try the next interval */
-		zbx_free(out);
+			/* check if we hit the error message */
+			if (NULL != (p = strstr(out, " as root")))
+			{
+				zbx_rtrim(out, "\n");
+				zbx_strlcpy(error, out, max_error_len);
+				goto out;
+			}
+		}
 	}
 
-	/* interval detection failed */
-	zbx_snprintf(error, max_error_len, "Cannot detect the minimum interval of %s", fping);
+	/* if we are here we have probably hit the usage or error message, let's collect it if it's error message */
+
+	if (ZBX_KIBIBYTE > strlen(out) && 0 != strlen(out))
+	{
+		zbx_rtrim(out, "\n");
+		zbx_strlcpy(error, out, max_error_len);
+	}
+	else
+		zbx_snprintf(error, max_error_len, "Cannot detect the minimum interval of %s", fping);
 out:
 	zbx_free(out);
 
