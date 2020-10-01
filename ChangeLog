@@ -3,6 +3,7 @@ Changes for 4.4.13rc1 (unofficial)
 New features:
 
 Bug fixes:
+........S. [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (wiper)
 .......PS. [ZBX-17694] fixed high memory consumption when using dependent items (vso)
 .......PS. [ZBX-17720] exclude disabled items from preprocessing configuration sync (wiper)
 ..F....... [ZBX-18343] fixed in screen "host issue" problem stay even after problem resolved (rlataria)

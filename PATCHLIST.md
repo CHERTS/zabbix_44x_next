@@ -11,6 +11,7 @@
 [ZBX-15927] removed problem calculation for dependent triggers when master trigger is in problem state (https://support.zabbix.com/browse/ZBX-15927)
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
+[ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (https://support.zabbix.com/browse/ZBX-17493)
 [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (https://support.zabbix.com/browse/ZBX-17624)
 [ZBX-17720] exclude disabled items from preprocessing configuration sync (https://support.zabbix.com/browse/ZBX-17720)
 [ZBX-17848] fixed fping interval detection, added log prints of detected options in debug mode, re-detect options every hour (https://support.zabbix.com/browse/ZBX-17848)
