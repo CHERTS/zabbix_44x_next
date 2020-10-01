@@ -80,6 +80,13 @@ static void	common_sigusr_handler(int flags)
 						zabbix_get_log_level_string());
 			}
 			break;
+		case ZBX_RTC_SNMP_CACHE_RELOAD:
+			zbx_signal_process_by_type(ZBX_PROCESS_TYPE_UNREACHABLE, ZBX_RTC_GET_DATA(flags), flags);
+			zbx_signal_process_by_type(ZBX_PROCESS_TYPE_POLLER, ZBX_RTC_GET_DATA(flags), flags);
+			zbx_signal_process_by_type(ZBX_PROCESS_TYPE_TRAPPER, ZBX_RTC_GET_DATA(flags), flags);
+			zbx_signal_process_by_type(ZBX_PROCESS_TYPE_DISCOVERER, ZBX_RTC_GET_DATA(flags), flags);
+			zbx_signal_process_by_type(ZBX_PROCESS_TYPE_TASKMANAGER, ZBX_RTC_GET_DATA(flags), flags);
+			break;
 		default:
 			if (NULL != zbx_sigusr_handler)
 				zbx_sigusr_handler(flags);

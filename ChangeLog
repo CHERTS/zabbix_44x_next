@@ -1,6 +1,7 @@
 Changes for 4.4.13rc1 (unofficial)
 
 New features:
+.......PS. [ZBXNEXT-3940] added functionality to flush SNMP connections cache (arimdjonoks)
 
 Bug fixes:
 ........S. [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (wiper)
