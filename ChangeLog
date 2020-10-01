@@ -5,8 +5,9 @@ New features:
 Bug fixes:
 .......PS. [ZBX-17694] fixed high memory consumption when using dependent items (vso)
 .......PS. [ZBX-17720] exclude disabled items from preprocessing configuration sync (wiper)
-...G...... [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (arimdjonoks)
+..F....... [ZBX-18343] fixed in screen "host issue" problem stay even after problem resolved (rlataria)
 .......PS. [ZBX-18365] fixed Fping 5.0 support to Zabbix (dimir)
+...G...... [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (arimdjonoks)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.12 (unofficial)

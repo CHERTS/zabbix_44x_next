@@ -47,6 +47,7 @@
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)
 [ZBX-18337] fixed potential crash due to printing NULL pointer (https://support.zabbix.com/browse/ZBX-18337)
+[ZBX-18343] fixed in screen "host issue" problem stay even after problem resolved (https://support.zabbix.com/browse/ZBX-18343)
 [ZBX-18365] added Fping 5.0 support to Zabbix (https://support.zabbix.com/browse/ZBX-18365)
 [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (https://support.zabbix.com/browse/ZBX-18366)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
