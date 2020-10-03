@@ -45,6 +45,7 @@
 [ZBX-18181] fixed undefined index when importing host with non-existing interface (https://support.zabbix.com/browse/ZBX-18181)
 [ZBX-18188] increased age and duration related macro resolution to seconds (https://support.zabbix.com/browse/ZBX-18188)
 [ZBX-18189] fixed crash when performing housekeeping with disabled value cache (https://support.zabbix.com/browse/ZBX-18189)
+[ZBX-18193] added logging for snmp_cache_reload (https://support.zabbix.com/browse/ZBX-18193)
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)
 [ZBX-18337] fixed potential crash due to printing NULL pointer (https://support.zabbix.com/browse/ZBX-18337)
