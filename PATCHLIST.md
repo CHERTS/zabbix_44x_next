@@ -51,6 +51,7 @@
 [ZBX-18343] fixed in screen "host issue" problem stay even after problem resolved (https://support.zabbix.com/browse/ZBX-18343)
 [ZBX-18365] added Fping 5.0 support to Zabbix (https://support.zabbix.com/browse/ZBX-18365)
 [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (https://support.zabbix.com/browse/ZBX-18366)
+[ZBX-18400] fixed http(s) requests from JavaScript to use SourceIP parameter in connections (https://support.zabbix.com/browse/ZBX-18400)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-4647,ZBXNEXT-6096] added support of digest authentication for HTTP Agent (https://support.zabbix.com/browse/ZBXNEXT-4647)
