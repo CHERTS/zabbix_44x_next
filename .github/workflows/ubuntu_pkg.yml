@@ -1,0 +1,78 @@
+name: CreateUbuntuDEB
+
+on:
+#  push:
+#    branches:
+#      - master
+#    paths-ignore:
+#      - ".github/**"
+#      - "bin/**"
+#      - "build/**"
+#      - "conf/**"
+#      - "create/**"
+#      - "database/**"
+#      - "man/**"
+#      - "misc/**"
+#      - "packages/**"
+#      - "sass/**"
+#      - "templates/**"
+#      - "tests/**"
+#      - "frontends/**"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Create Ubuntu packages'
+
+jobs:
+  github-job:
+    name: Ubuntu (Bionic)
+    runs-on: [ubuntu-18.04]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install base dependencies
+      run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
+    - name: Install build deb dependencies
+      run: sudo apt-get install -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
+    - name: Install database dependencies
+      run: sudo apt-get install -y libmysqlclient-dev libpq-dev libsqlite3-dev
+    - name: Run bootstrap
+      run: ./bootstrap.sh
+    - name: Run configure
+      run: ./configure
+    - name: Build dbschema
+      run: make dbschema
+    - name: Build gettext
+      run: make gettext
+    - name: Build css
+      run: make css
+    - name: Build dist
+      run: make dist
+    - name: Get current Zabbix version
+      run: echo "::set-env name=ZABBIX_VERSION::$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')"
+    - name: Get short SHA
+      run: echo ::set-env name=GITHUB_SHA_SHORT::$(echo $GITHUB_SHA | cut -c 1-8)
+    - name: Set original zabbix version
+      run: echo ::set-env name=ZABBIX_ORIG_VERSION::$(echo 4.4.10)
+    - name: Set short zabbix version
+      run: echo ::set-env name=ZABBIX_VERSION_SHORT::$(echo ${{ env.ZABBIX_VERSION }} | awk -F. '{print $1"."$2}')
+    - name: Extract distr
+      run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
+    - name: Change directory
+      run: cd zabbix-${{ env.ZABBIX_VERSION }}/
+    - name: Download original sources
+      run: wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz
+    - name: Extract original sources
+      run: tar -xvf debian.tar.xz
+    - name: Prepare build DEB
+      run: dch -v "1:${{ env.ZABBIX_VERSION }}-1+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}"
+    - name: Build DEB
+      run: dpkg-buildpackage -b
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
+        known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
+    - name: Upload deb from dev server
+      run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:pkgs/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/$(lsb_release -c -s)/
