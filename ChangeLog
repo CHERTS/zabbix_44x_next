@@ -4,6 +4,7 @@ New features:
 .......PS. [ZBXNEXT-3940] added functionality to flush SNMP connections cache (arimdjonoks)
 
 Bug fixes:
+.......PS. [ZBX-17178] fixed multi-line value truncation in snmp lld (asestakovs)
 ........S. [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (wiper)
 .......PS. [ZBX-17694] fixed high memory consumption when using dependent items (vso)
 .......PS. [ZBX-17720] exclude disabled items from preprocessing configuration sync (wiper)
