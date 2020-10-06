@@ -34,7 +34,14 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: 1.15.x
-    - uses: actions/checkout@v2
+      id: go
+    - name: Install Golang dependencies
+      env:
+        GO111MODULE: on
+      run: |
+        go get -u golang.org/x/lint/golint
+        go get -u github.com/kisielk/errcheck
+        curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.27.0
     - name: Update packages
       run: sudo apt-get update --fix-missing -y
     - name: Upgrade packages
@@ -45,6 +52,8 @@ jobs:
       run: sudo apt-get install -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
     - name: Install database dependencies
       run: sudo apt-get install -y libmysqlclient-dev libpq-dev libsqlite3-dev
+    - name: Code checkout
+      uses: actions/checkout@v2
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
@@ -74,7 +83,11 @@ jobs:
     - name: Prepare build DEB
       run: dch -v "1:${{ env.ZABBIX_VERSION }}-1+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}"
     - name: Build DEB
-      run: dpkg-buildpackage -b
+      env:
+        GO111MODULE: on
+      run: |
+        export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
+        dpkg-buildpackage -b
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
       with:

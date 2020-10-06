@@ -14,6 +14,7 @@ Bug fixes:
 .......PS. [ZBX-18365] fixed Fping 5.0 support to Zabbix (dimir)
 ...G...... [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (arimdjonoks)
 .......PS. [ZBX-18400] fixed http(s) requests from JavaScript to use SourceIP parameter in connections (Andris)
+.......PS. [ZBX-18407] fixed dependent items not working if it's master item is calculated and host is monitored by Zabbix proxy (vso)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.12 (unofficial)
