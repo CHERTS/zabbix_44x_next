@@ -50,6 +50,7 @@
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)
 [ZBX-18337] fixed potential crash due to printing NULL pointer (https://support.zabbix.com/browse/ZBX-18337)
 [ZBX-18343] fixed in screen "host issue" problem stay even after problem resolved (https://support.zabbix.com/browse/ZBX-18343)
+[ZBX-18364] fixed fixed inconsistency with autoregistration behaviour for hosts without metadata on Oracle compared to other databases (https://support.zabbix.com/browse/ZBX-18364)
 [ZBX-18365] added Fping 5.0 support to Zabbix (https://support.zabbix.com/browse/ZBX-18365)
 [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (https://support.zabbix.com/browse/ZBX-18366)
 [ZBX-18400] fixed http(s) requests from JavaScript to use SourceIP parameter in connections (https://support.zabbix.com/browse/ZBX-18400)
