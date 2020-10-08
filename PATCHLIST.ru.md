@@ -56,6 +56,7 @@
 [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (https://support.zabbix.com/browse/ZBX-18366)
 [ZBX-18400] fixed http(s) requests from JavaScript to use SourceIP parameter in connections (https://support.zabbix.com/browse/ZBX-18400)
 [ZBX-18407] fixed dependent items not working if it's master item is calculated and host is monitored by Zabbix proxy (https://support.zabbix.com/browse/ZBX-18407)
+[ZBX-18462] fixed inconsistent auto-registration behaviour for hosts without metadata on Oracle DB compared to other databases when using Zabbix proxy (https://support.zabbix.com/browse/ZBX-18462)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-3940] added functionality to flush SNMP connections cache (https://support.zabbix.com/browse/ZBXNEXT-3940)
