@@ -67,11 +67,11 @@ jobs:
     - name: Build dist
       run: make dist
     - name: Get current Zabbix version
-      run: echo "::set-env name=ZABBIX_VERSION::$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')"
+      run: echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
     - name: Set original zabbix version
-      run: echo ::set-env name=ZABBIX_ORIG_VERSION::$(echo 4.4.10)
+      run: echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
     - name: Set short zabbix version
-      run: echo ::set-env name=ZABBIX_VERSION_SHORT::$(echo ${{ env.ZABBIX_VERSION }} | awk -F. '{print $1"."$2}')
+      run: echo "ZABBIX_VERSION_SHORT=$(echo ${{ env.ZABBIX_VERSION }} | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
     - name: Extract distr
       run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
     - name: Change directory

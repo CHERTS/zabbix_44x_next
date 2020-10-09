@@ -38,7 +38,7 @@ jobs:
     - name: Build dist
       run: make dist
     - name: Get current Zabbix version
-      run: echo "::set-env name=ZABBIX_VERSION::$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')"
+      run: echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
