@@ -50,6 +50,7 @@
 [ZBX-18193] added logging for snmp_cache_reload (https://support.zabbix.com/browse/ZBX-18193)
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)
+[ZBX-18327] fixed undefined index when invalid URL is given (https://support.zabbix.com/browse/ZBX-18327)
 [ZBX-18337] fixed potential crash due to printing NULL pointer (https://support.zabbix.com/browse/ZBX-18337)
 [ZBX-18343] fixed in screen "host issue" problem stay even after problem resolved (https://support.zabbix.com/browse/ZBX-18343)
 [ZBX-18364] fixed fixed inconsistency with autoregistration behaviour for hosts without metadata on Oracle compared to other databases (https://support.zabbix.com/browse/ZBX-18364)

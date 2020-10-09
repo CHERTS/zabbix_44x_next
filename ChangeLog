@@ -10,6 +10,7 @@ Bug fixes:
 .......PS. [ZBX-17720] exclude disabled items from preprocessing configuration sync (wiper)
 ........S. [ZBX-18118] sorted event tag macro selection (arimdjonoks)
 .......PS. [ZBX-18193] added logging for snmp_cache_reload (arimdjonoks)
+..F....... [ZBX-18327] fixed undefined index when invalid URL is given (Ivo)
 ..F....... [ZBX-18343] fixed in screen "host issue" problem stay even after problem resolved (rlataria)
 .......PS. [ZBX-18364] fixed fixed inconsistency with autoregistration behaviour for hosts without metadata on Oracle compared to other databases (viktors)
 .......PS. [ZBX-18365] fixed Fping 5.0 support to Zabbix (dimir)
