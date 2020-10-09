@@ -39,6 +39,7 @@
 [ZBX-18075] fixed runtime error when creating a host via API (https://support.zabbix.com/browse/ZBX-18075)
 [ZBX-18076] fixed PHP notice and multiple undefined index errors in hostinterface API (https://support.zabbix.com/browse/ZBX-18076)
 [ZBX-18105] fixed use on uninitialised variable (https://support.zabbix.com/browse/ZBX-18105)
+[ZBX-18118] sorted event tag macro selection (https://support.zabbix.com/browse/ZBX-18118)
 [ZBX-18121] fixed SSH monitoring when compiled with libssh; thanks to MATSUDA Daiki for the patch (https://support.zabbix.com/browse/ZBX-18121)
 [ZBX-18124] fixed discovered host group prototype saving during import (https://support.zabbix.com/browse/ZBX-18124)
 [ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)

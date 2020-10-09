@@ -8,6 +8,7 @@ Bug fixes:
 ........S. [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (wiper)
 .......PS. [ZBX-17694] fixed high memory consumption when using dependent items (vso)
 .......PS. [ZBX-17720] exclude disabled items from preprocessing configuration sync (wiper)
+........S. [ZBX-18118] sorted event tag macro selection (arimdjonoks)
 .......PS. [ZBX-18193] added logging for snmp_cache_reload (arimdjonoks)
 ..F....... [ZBX-18343] fixed in screen "host issue" problem stay even after problem resolved (rlataria)
 .......PS. [ZBX-18364] fixed fixed inconsistency with autoregistration behaviour for hosts without metadata on Oracle compared to other databases (viktors)
