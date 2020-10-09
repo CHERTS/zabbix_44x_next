@@ -42,16 +42,11 @@ jobs:
         go get -u golang.org/x/lint/golint
         go get -u github.com/kisielk/errcheck
         curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.27.0
-    - name: Update packages
-      run: sudo apt-get update --fix-missing -y
-    - name: Upgrade packages
-      run: sudo apt-get upgrade -y
     - name: Install base dependencies
-      run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
-    - name: Install build deb dependencies
-      run: sudo apt-get install -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
-    - name: Install database dependencies
-      run: sudo apt-get install -y libmysqlclient-dev libpq-dev libsqlite3-dev
+      run: |
+        sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
+        sudo apt-get install -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
+        sudo apt-get install -y libmysqlclient-dev libpq-dev libsqlite3-dev
     - name: Code checkout
       uses: actions/checkout@v2
     - name: Run bootstrap
@@ -66,20 +61,15 @@ jobs:
       run: make css
     - name: Build dist
       run: make dist
-    - name: Get current Zabbix version
-      run: echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
-    - name: Set original zabbix version
-      run: echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
-    - name: Set short zabbix version
-      run: echo "ZABBIX_VERSION_SHORT=$(echo ${{ env.ZABBIX_VERSION }} | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
+    - name: Set variables
+      run: |
+        echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
+        echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
+        echo "ZABBIX_VERSION_SHORT=$(echo ${{ env.ZABBIX_VERSION }} | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
     - name: Extract distr
-      run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
-    - name: Change directory
-      run: cd zabbix-${{ env.ZABBIX_VERSION }}/
+      run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz && cd zabbix-${{ env.ZABBIX_VERSION }}
     - name: Download original sources
-      run: wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz
-    - name: Extract original sources
-      run: tar -xvf debian.tar.xz
+      run: wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz && tar -xvf debian.tar.xz
     - name: Prepare build DEB
       run: dch -v "1:${{ env.ZABBIX_VERSION }}-1+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}"
     - name: Build DEB

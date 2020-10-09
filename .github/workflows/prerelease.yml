@@ -18,31 +18,21 @@ jobs:
     name: Ubuntu
     runs-on: [ubuntu-18.04]
     steps:
-    - uses: actions/checkout@v2
-    - name: Update packages
-      run: sudo apt-get update --fix-missing -y
-    - name: Upgrade packages
-      run: sudo apt-get upgrade -y
     - name: Install base dependencies
-      run: sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libconfig-dev
-    - name: Install database dependencies
-      run: sudo apt-get install -y libmysqlclient-dev
+      run: |
+        sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libconfig-dev
+        sudo apt-get install -y libmysqlclient-dev
+    - name: Checkout code
+      uses: actions/checkout@v2
     - name: Run bootstrap
       run: ./bootstrap.sh
     - name: Run configure
       run: ./configure
-    - name: Build dbschema
-      run: make dbschema
-    - name: Build gettext
-      run: make gettext
-    - name: Build css
-      run: make css
     - name: Build dist
-      run: make dist
-    - name: Get current Zabbix version
-      run: echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
-    - name: Get short SHA
-      run: echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
+      run: |
+        make dist
+        echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
+        echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
     - name: Delete old drafts releases
       uses: hugo19941994/delete-draft-releases@v0.1.0
       env:

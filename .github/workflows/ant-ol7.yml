@@ -20,7 +20,8 @@ jobs:
     name: Oracle Linux 7
     runs-on: [self-hosted, linux, ol7]
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
     - name: Run backend build tests with MySQL...
       run: ant -DDBTYPE=MYSQL -f build-backend.xml
     - name: Run backend build tests with PostgreSQL...
