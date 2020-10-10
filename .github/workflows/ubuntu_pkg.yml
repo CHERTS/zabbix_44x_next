@@ -69,7 +69,7 @@ jobs:
     - name: Extract distr
       run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz && cd zabbix-${{ env.ZABBIX_VERSION }}
     - name: Download original sources
-      run: wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz && tar -xvf debian.tar.xz
+      run: wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz && tar -xf debian.tar.xz
     - name: Prepare build DEB
       run: dch -v "1:${{ env.ZABBIX_VERSION }}-1+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}"
     - name: Build DEB
