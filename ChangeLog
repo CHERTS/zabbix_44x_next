@@ -20,6 +20,7 @@ Bug fixes:
 ........S. [ZBX-18411] set maxQueryMetrics default values for vcenter depending on its version (arimdjonoks)
 ..F....... [ZBX-18438] fixed missing asterisk mark for "timeout" field in item, item prototype and LLD rule edit forms (Ivo)
 .......PS. [ZBX-18462] fixed inconsistent auto-registration behaviour for hosts without metadata on Oracle DB compared to other databases when using Zabbix proxy (viktors)
+..F....... [ZBX-18464] fixed javascript Uncaught TypeError when clicking on disabled multiselect item (miks)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.12 (unofficial)

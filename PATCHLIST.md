@@ -61,6 +61,7 @@
 [ZBX-18411] set maxQueryMetrics default values for vcenter depending on its version (https://support.zabbix.com/browse/ZBX-18411)
 [ZBX-18438] fixed missing asterisk mark for "timeout" field in item, item prototype and LLD rule edit forms (https://support.zabbix.com/browse/ZBX-18438)
 [ZBX-18462] fixed inconsistent auto-registration behaviour for hosts without metadata on Oracle DB compared to other databases when using Zabbix proxy (https://support.zabbix.com/browse/ZBX-18462)
+[ZBX-18464] fixed javascript Uncaught TypeError when clicking on disabled multiselect item (https://support.zabbix.com/browse/ZBX-18464)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-4647,ZBXNEXT-6096] added support of digest authentication for HTTP Agent (https://support.zabbix.com/browse/ZBXNEXT-4647)
