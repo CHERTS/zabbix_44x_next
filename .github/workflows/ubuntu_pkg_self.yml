@@ -1,0 +1,54 @@
+name: CreateUbuntuDEBSelf
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Create Ubuntu packages'
+
+jobs:
+  ubuntu-bionic:
+    name: Ubuntu (Bionic)
+    runs-on: [self-hosted, linux, ubuntu-bionic]
+    steps:
+    - name: Code checkout
+      uses: actions/checkout@v2
+    - name: Build zabbix distr
+      run: |
+        ./bootstrap.sh
+        ./configure
+        make dbschema
+        make gettext
+        make css
+        make dist
+    - name: Set variables
+      run: |
+        echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
+        echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
+        echo "ZABBIX_VERSION_SHORT=$(echo ${{ env.ZABBIX_VERSION }} | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
+    - name: Extract distr
+      run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz && cd zabbix-${{ env.ZABBIX_VERSION }}
+    - name: Download original sources
+      run: wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz && tar -xf debian.tar.xz
+    - name: Prepare build DEB
+      run: dch -v "1:${{ env.ZABBIX_VERSION }}-1+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}"
+    - name: Build DEB
+      env:
+        GO111MODULE: on
+      run: |
+        export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
+        dpkg-buildpackage -b
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
+        known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
+    - name: Upload deb from dev server
+      run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:pkgs/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/$(lsb_release -c -s)/
+    - name: Remove SSH key
+      run: |
+        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/id_rsa 2>/dev/null; fi
+        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/known_hosts 2>/dev/null; fi
+        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/config 2>/dev/null; fi
