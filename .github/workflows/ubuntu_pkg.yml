@@ -84,4 +84,4 @@ jobs:
         key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
         known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
     - name: Upload deb from dev server
-      run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:pkgs/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/$(lsb_release -c -s)/
+      run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s)/
