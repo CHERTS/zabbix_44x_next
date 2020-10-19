@@ -19,10 +19,7 @@ jobs:
       run: |
         ./bootstrap.sh
         ./configure
-        make dbschema
-        make gettext
-        make css
-        make dist
+         make dist
     - name: Set variables
       run: |
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
@@ -39,24 +36,9 @@ jobs:
         GO111MODULE: on
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
-        dpkg-buildpackage -b
-    - name: Remove old SSH key
-      run: |
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/id_rsa 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/known_hosts 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/config 2>/dev/null; fi
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
-        known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
+        dpkg-buildpackage -b -k${{ secrets.GPG_KEYID }}
     - name: Upload deb from dev server
       run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s)/
-    - name: Remove SSH key
-      run: |
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/id_rsa 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/known_hosts 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/config 2>/dev/null; fi
   ubuntu-bionic:
     name: Ubuntu (Bionic)
     runs-on: [self-hosted, linux, ubuntu-bionic]
@@ -67,10 +49,7 @@ jobs:
       run: |
         ./bootstrap.sh
         ./configure
-        make dbschema
-        make gettext
-        make css
-        make dist
+         make dist
     - name: Set variables
       run: |
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
@@ -87,24 +66,9 @@ jobs:
         GO111MODULE: on
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
-        dpkg-buildpackage -b
-    - name: Remove old SSH key
-      run: |
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/id_rsa 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/known_hosts 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/config 2>/dev/null; fi
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
-        known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
+        dpkg-buildpackage -b -k${{ secrets.GPG_KEYID }}
     - name: Upload deb from dev server
       run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s)/
-    - name: Remove SSH key
-      run: |
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/id_rsa 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/known_hosts 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/config 2>/dev/null; fi
   ubuntu-focal:
     name: Ubuntu (Focal)
     runs-on: [self-hosted, linux, ubuntu-focal]
@@ -115,10 +79,7 @@ jobs:
       run: |
         ./bootstrap.sh
         ./configure
-        make dbschema
-        make gettext
-        make css
-        make dist
+         make dist
     - name: Set variables
       run: |
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
@@ -135,21 +96,6 @@ jobs:
         GO111MODULE: on
       run: |
         export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
-        dpkg-buildpackage -b
-    - name: Remove old SSH key
-      run: |
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/id_rsa 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/known_hosts 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/config 2>/dev/null; fi
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
-        known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
+        dpkg-buildpackage -b -k${{ secrets.GPG_KEYID }}
     - name: Upload deb from dev server
       run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s)/
-    - name: Remove SSH key
-      run: |
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/id_rsa 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/known_hosts 2>/dev/null; fi
-        if [ -d $HOME/.ssh ]; then rm -f $HOME/.ssh/config 2>/dev/null; fi
