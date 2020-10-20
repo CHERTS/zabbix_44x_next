@@ -39,9 +39,9 @@ jobs:
       id: go
     - name: Install base dependencies
       run: |
-        sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
-        sudo apt-get install -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
-        sudo apt-get install -y libmysqlclient-dev libpq-dev libsqlite3-dev
+        apt-get install -y autoconf automake gcc make wget unzip gettext sass libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
+        apt-get install -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
+        apt-get install -y libmysqlclient-dev libpq-dev libsqlite3-dev
     - name: Code checkout
       uses: actions/checkout@v2
     - name: Build zabbix distr
