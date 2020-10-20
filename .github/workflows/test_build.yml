@@ -35,8 +35,9 @@ jobs:
          echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
     - name: Prepare build
       run: |
-        tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz && cd zabbix-${{ env.ZABBIX_VERSION }}
+        tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
     - name: Build
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
       run: |
         ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
         make
@@ -59,8 +60,9 @@ jobs:
          echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
     - name: Prepare build
       run: |
-        tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz && cd zabbix-${{ env.ZABBIX_VERSION }}
+        tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
     - name: Build
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
       run: |
         ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-postgresql
         make
