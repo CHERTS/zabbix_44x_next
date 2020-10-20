@@ -37,13 +37,12 @@ jobs:
       with:
         go-version: 1.15.x
       id: go
-    - name: Set timezone
-      run: |
-        echo "Europe/Moscow" > /etc/timezone 
-        dpkg-reconfigure -f noninteractive tzdata
     - name: Install base dependencies
       run: |
+        echo "Europe/Moscow" > /etc/timezone
         apt-get update
+        apt-get install -q -y tzdata
+        dpkg-reconfigure -f noninteractive tzdata
         apt-get install -q -y autoconf automake gcc make wget unzip gettext sass libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
         apt-get install -q -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
         apt-get install -q -y libmysqlclient-dev libpq-dev libsqlite3-dev
