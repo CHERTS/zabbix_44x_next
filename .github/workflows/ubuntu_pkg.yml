@@ -60,11 +60,18 @@ jobs:
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
         echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
         echo "ZABBIX_VERSION_SHORT=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \' | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
+        echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-6)" >> $GITHUB_ENV
     - name: Extract distr
       run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
     - name: Prepare build DEB
       working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
       run: |
+        cat include/version.h | sed "s@define ZABBIX_VERSION_REVISION@define ZABBIX_VERSION_REVISION ${GITHUB_SHA_SHORT}@g" > include/version.h.new
+        mv include/version.h.new include/version.h
+        cat src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java | sed "s@REVISION = \"\";@REVISION = \"${GITHUB_SHA_SHORT}\";@g" > src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new
+        mv src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java
+        cat src/go/pkg/version/version.go | sed "s@ZABBIX_VERSION_REVISION = \"\"@ZABBIX_VERSION_REVISION = \"${GITHUB_SHA_SHORT}\"@g" > src/go/pkg/version/version.go.new
+        mv src/go/pkg/version/version.go.new src/go/pkg/version/version.go
         wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz
         tar -xf debian.tar.xz
         dch -v "1:${{ env.ZABBIX_VERSION }}-1+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}"
