@@ -1,6 +1,6 @@
 # Upgrading from packages for Ubuntu
 
-[По-русски / In Russian](UBUNTUUPDATE.md)
+[По-русски / In Russian](UBUNTUUPDATE.ru.md)
 
 ## Upgrading from packages for Ubuntu 16.04/18.04/20.04
 
