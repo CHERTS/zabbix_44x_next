@@ -18,4 +18,6 @@ Zabbix version numbers in this repository will continue under 4.4.11 and so on, 
 
 [Upgrading from packages for RedHat/CentOS/OracleLinux](RHELUPDATE.md)
 
+[Upgrading from packages for Ubuntu](UBUNTUUPDATE.md)
+
 [List of addition patches](PATCHLIST.md)

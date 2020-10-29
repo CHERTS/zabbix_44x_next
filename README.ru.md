@@ -18,4 +18,6 @@
 
 [Обновление из пакетов для RedHat/CentOS/OracleLinux](RHELUPDATE.ru.md)
 
+[Обновление из пакетов для Ubuntu](UBUNTUUPDATE.ru.md)
+
 [Список дополнительных патчей](PATCHLIST.ru.md)
