@@ -50,6 +50,7 @@
 [ZBX-18189] fixed crash when performing housekeeping with disabled value cache (https://support.zabbix.com/browse/ZBX-18189)
 [ZBX-18193] added logging for snmp_cache_reload (https://support.zabbix.com/browse/ZBX-18193)
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
+[ZBX-18317] fixed fatal error when updating only discovered triggers and their properties (https://support.zabbix.com/browse/ZBX-18317)
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)
 [ZBX-18327] fixed undefined index when invalid URL is given (https://support.zabbix.com/browse/ZBX-18327)
 [ZBX-18337] fixed potential crash due to printing NULL pointer (https://support.zabbix.com/browse/ZBX-18337)

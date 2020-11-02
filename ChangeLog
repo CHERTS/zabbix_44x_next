@@ -6,6 +6,7 @@ New features:
 Bug fixes:
 ..F....... [ZBX-18058] updated the list of item keys and their descriptions (agriscenko)
 ...G...... [ZBX-18185] fixed compilation error on Solaris 10 (akozlovs)
+A......... [ZBX-18317] fixed fatal error when updating only discovered triggers and their properties (Ivo)
 
 --------------------------------------------------------------------------------
 
