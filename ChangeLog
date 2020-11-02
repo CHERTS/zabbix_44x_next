@@ -4,6 +4,7 @@ New features:
 ........S. [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (viktors)
 
 Bug fixes:
+...G...... [ZBX-18185] fixed compilation error on Solaris 10 (akozlovs)
 
 --------------------------------------------------------------------------------
 
