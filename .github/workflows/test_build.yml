@@ -22,7 +22,7 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
-        sudo apt-get update
+        sudo apt-get update --fix-missing
         sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
         sudo apt-get install -y libmysqlclient-dev
     - name: Code checkout
@@ -48,6 +48,7 @@ jobs:
     steps:
     - name: Install dependencies
       run: |
+        sudo apt-get update --fix-missing
         sudo apt-get install -y autoconf automake gcc make wget unzip gettext sass default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev
         sudo apt-get install -y libpq-dev
     - name: Code checkout
