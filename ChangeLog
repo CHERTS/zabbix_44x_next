@@ -9,6 +9,7 @@ A......... [ZBX-18163] fixed deletion of one last remaining main host interface 
 ...G...... [ZBX-18185] fixed compilation error on Solaris 10 (akozlovs)
 A......... [ZBX-18317] fixed fatal error when updating only discovered triggers and their properties (Ivo)
 .......PS. [ZBX-18487] increased trapper verbosity for DebugLevel=4 when rejecting sender data (akozlovs)
+........S. [ZBX-18564] moved taskid calculation to transaction when creating remote command task (wiper)
 
 --------------------------------------------------------------------------------
 
