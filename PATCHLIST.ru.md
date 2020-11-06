@@ -65,6 +65,7 @@
 [ZBX-18438] fixed missing asterisk mark for "timeout" field in item, item prototype and LLD rule edit forms (https://support.zabbix.com/browse/ZBX-18438)
 [ZBX-18462] fixed inconsistent auto-registration behaviour for hosts without metadata on Oracle DB compared to other databases when using Zabbix proxy (https://support.zabbix.com/browse/ZBX-18462)
 [ZBX-18464] fixed javascript Uncaught TypeError when clicking on disabled multiselect item (https://support.zabbix.com/browse/ZBX-18464)
+[ZBX-18487] increased trapper verbosity for DebugLevel=4 when rejecting sender data (https://support.zabbix.com/browse/ZBX-18487)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-3940] added functionality to flush SNMP connections cache (https://support.zabbix.com/browse/ZBXNEXT-3940)
