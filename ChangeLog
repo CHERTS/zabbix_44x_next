@@ -2,6 +2,7 @@ Changes for 4.4.14rc1 (unofficial)
 
 New features:
 ........S. [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (viktors)
+........S. [ZBXNEXT-3588] improved Zabbix server performance when evaluating trigger, discovery, autoregistration and internal actions (vso)
 
 Bug fixes:
 ..F....... [ZBX-18058] updated the list of item keys and their descriptions (agriscenko)

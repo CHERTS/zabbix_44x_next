@@ -594,7 +594,7 @@ static int	is_discovery_or_auto_registration(const DB_EVENT *event)
 		return SUCCEED;
 	}
 
-	if (event->source == EVENT_SOURCE_AUTO_REGISTRATION && event->object == EVENT_OBJECT_ZABBIX_ACTIVE)
+	if (event->source == EVENT_SOURCE_AUTOREGISTRATION && event->object == EVENT_OBJECT_ZABBIX_ACTIVE)
 		return SUCCEED;
 
 	return FAIL;

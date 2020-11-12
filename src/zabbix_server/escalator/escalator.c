@@ -200,7 +200,7 @@ static int	check_tag_based_permission(zbx_uint64_t userid, zbx_vector_uint64_t *
 	int			ret = FAIL, i;
 	zbx_vector_ptr_t	tag_filters;
 	zbx_tag_filter_t	*tag_filter;
-	DB_CONDITION		condition;
+	zbx_condition_t		condition;
 
 	zabbix_log(LOG_LEVEL_DEBUG, "In %s()", __func__);
 
@@ -254,7 +254,9 @@ static int	check_tag_based_permission(zbx_uint64_t userid, zbx_vector_uint64_t *
 				condition.value = tag_filter->tag;
 			}
 
+			zbx_vector_uint64_create(&condition.eventids);
 			ret = check_action_condition(event, &condition);
+			zbx_vector_uint64_destroy(&condition.eventids);
 		}
 		else
 			ret = SUCCEED;
@@ -767,7 +769,7 @@ static int	get_dynamic_hostid(const DB_EVENT *event, DC_HOST *host, char *error,
 					break;
 			}
 			break;
-		case EVENT_SOURCE_AUTO_REGISTRATION:
+		case EVENT_SOURCE_AUTOREGISTRATION:
 			zbx_snprintf(sql + offset, sizeof(sql) - offset,
 					" from autoreg_host a,hosts h"
 					" where " ZBX_SQL_NULLCMP("a.proxy_hostid", "h.proxy_hostid")
@@ -1303,7 +1305,7 @@ static int	check_operation_conditions(const DB_EVENT *event, zbx_uint64_t operat
 {
 	DB_RESULT	result;
 	DB_ROW		row;
-	DB_CONDITION	condition;
+	zbx_condition_t	condition;
 
 	int		ret = SUCCEED; /* SUCCEED required for CONDITION_EVAL_TYPE_AND_OR */
 	int		cond, exit = 0;
@@ -1323,6 +1325,7 @@ static int	check_operation_conditions(const DB_EVENT *event, zbx_uint64_t operat
 		condition.conditiontype	= (unsigned char)atoi(row[0]);
 		condition.op = (unsigned char)atoi(row[1]);
 		condition.value = row[2];
+		zbx_vector_uint64_create(&condition.eventids);
 
 		switch (evaltype)
 		{
@@ -1369,6 +1372,8 @@ static int	check_operation_conditions(const DB_EVENT *event, zbx_uint64_t operat
 				exit = 1;
 				break;
 		}
+
+		zbx_vector_uint64_destroy(&condition.eventids);
 	}
 	DBfree_result(result);
 
@@ -2493,7 +2498,7 @@ out:
  * Return value: the count of deleted escalations                             *
  *                                                                            *
  * Comments: actions.c:process_actions() creates pseudo-escalations also for  *
- *           EVENT_SOURCE_DISCOVERY, EVENT_SOURCE_AUTO_REGISTRATION events,   *
+ *           EVENT_SOURCE_DISCOVERY, EVENT_SOURCE_AUTOREGISTRATION events,    *
  *           this function handles message and command operations for these   *
  *           events while host, group, template operations are handled        *
  *           in process_actions().                                            *
