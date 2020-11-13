@@ -956,6 +956,7 @@ if (!empty($data['new_operation'])) {
 					))
 						->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
 						->setAriaRequired()
+						->disableAutocomplete()
 				)
 				->addRow(
 					(new CLabel(_('Public key file'), 'new_operation[opcommand][publickey]'))->setAsteriskMark(),
@@ -976,7 +977,9 @@ if (!empty($data['new_operation'])) {
 				->addRow(_('Password'),
 					(new CTextBox('new_operation[opcommand][password]',
 						$data['new_operation']['opcommand']['password']
-					))->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
+					))
+						->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
+						->disableAutocomplete()
 				)
 				// set custom id because otherwise they are set based on name (sick!) and produce duplicate ids
 				->addRow(_('Key passphrase'),
@@ -985,6 +988,7 @@ if (!empty($data['new_operation'])) {
 					))
 						->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
 						->setId('new_operation_opcommand_passphrase')
+						->disableAutocomplete()
 				)
 				// ssh && telnet
 				->addRow(_('Port'),
@@ -1729,6 +1733,7 @@ if ($data['eventsource'] == EVENT_SOURCE_TRIGGERS || $data['eventsource'] == EVE
 					))
 						->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
 						->setAriaRequired()
+						->disableAutocomplete()
 				);
 				$new_operation_formlist->addRow(
 					(new CLabel(_('Public key file'), 'new_recovery_operation[opcommand][publickey]'))
@@ -1751,7 +1756,9 @@ if ($data['eventsource'] == EVENT_SOURCE_TRIGGERS || $data['eventsource'] == EVE
 				$new_operation_formlist->addRow(_('Password'),
 					(new CTextBox('new_recovery_operation[opcommand][password]',
 						$data['new_recovery_operation']['opcommand']['password']
-					))->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
+					))
+						->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
+						->disableAutocomplete()
 				);
 
 				// set custom id because otherwise they are set based on name (sick!) and produce duplicate ids
@@ -1759,7 +1766,8 @@ if ($data['eventsource'] == EVENT_SOURCE_TRIGGERS || $data['eventsource'] == EVE
 					$data['new_recovery_operation']['opcommand']['password']
 				))
 					->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
-					->setId('new_recovery_operation_opcommand_passphrase');
+					->setId('new_recovery_operation_opcommand_passphrase')
+					->disableAutocomplete();
 				$new_operation_formlist->addRow(_('Key passphrase'), $passphraseCB);
 
 				// ssh && telnet
@@ -2194,6 +2202,7 @@ if ($data['eventsource'] == EVENT_SOURCE_TRIGGERS) {
 					))
 						->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
 						->setAriaRequired()
+						->disableAutocomplete()
 				)
 				->addRow(
 					(new CLabel(_('Public key file'), 'new_ack_operation[opcommand][publickey]'))->setAsteriskMark(),
@@ -2214,7 +2223,9 @@ if ($data['eventsource'] == EVENT_SOURCE_TRIGGERS) {
 				->addRow(_('Password'),
 					(new CTextBox('new_ack_operation[opcommand][password]',
 						$data['new_ack_operation']['opcommand']['password']
-					))->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
+					))
+						->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
+						->disableAutocomplete()
 				)
 				->addRow(_('Key passphrase'),
 					(new CTextBox('new_ack_operation[opcommand][password]',
@@ -2222,6 +2233,7 @@ if ($data['eventsource'] == EVENT_SOURCE_TRIGGERS) {
 					))
 						->setWidth(ZBX_TEXTAREA_SMALL_WIDTH)
 						->setId('new_ack_operation_opcommand_passphrase')
+						->disableAutocomplete()
 				)
 				->addRow(_('Port'),
 					(new CTextBox('new_ack_operation[opcommand][port]',

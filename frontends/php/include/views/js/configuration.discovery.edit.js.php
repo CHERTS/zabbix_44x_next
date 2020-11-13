@@ -123,7 +123,8 @@
 					(new CLabel(_('Authentication passphrase'), 'snmpv3_authpassphrase')),
 					(new CTextBox('snmpv3_authpassphrase'))
 						->setWidth(ZBX_TEXTAREA_MEDIUM_WIDTH)
-						->setAttribute('maxlength', 64),
+						->setAttribute('maxlength', 64)
+						->disableAutocomplete(),
 					'newCheckAuthPassRow'
 				)
 				->addRow(
@@ -139,7 +140,8 @@
 					(new CTextBox('snmpv3_privpassphrase'))
 						->setWidth(ZBX_TEXTAREA_MEDIUM_WIDTH)
 						->setAriaRequired()
-						->setAttribute('maxlength', 64),
+						->setAttribute('maxlength', 64)
+						->disableAutocomplete(),
 					'newCheckPrivPassRow'
 				),
 			(new CHorList([
