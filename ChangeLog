@@ -5,6 +5,7 @@ New features:
 ........S. [ZBXNEXT-3588] improved Zabbix server performance when evaluating trigger, discovery, autoregistration and internal actions (vso)
 
 Bug fixes:
+A.F....... [ZBX-5842] fixed ability to detect username existence from unsuccessful login message (miks)
 ..F....... [ZBX-18058] updated the list of item keys and their descriptions (agriscenko)
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
 ...G...... [ZBX-18185] fixed compilation error on Solaris 10 (akozlovs)
