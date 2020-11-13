@@ -271,6 +271,7 @@ $encryption_table = (new CTable())
 		(new CTextBox('tls_psk_identity', $data['tls_psk_identity'], false, 128))
 			->setWidth(ZBX_TEXTAREA_BIG_WIDTH)
 			->setAriaRequired()
+			->disableAutocomplete()
 	])
 	->addRow([
 		(new CLabel(_('PSK'), 'tls_psk'))->setAsteriskMark(),
