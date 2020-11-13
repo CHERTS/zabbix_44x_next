@@ -71,6 +71,7 @@
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (https://support.zabbix.com/browse/ZBXNEXT-2480)
+[ZBXNEXT-3205] added regex context matching support to user macros (https://support.zabbix.com/browse/ZBXNEXT-3205)
 [ZBXNEXT-3588] improved Zabbix server performance when evaluating trigger, discovery, autoregistration and internal actions (https://support.zabbix.com/browse/ZBXNEXT-3588)
 [ZBXNEXT-3940] added functionality to flush SNMP connections cache (https://support.zabbix.com/browse/ZBXNEXT-3940)
 [ZBXNEXT-4647,ZBXNEXT-6096] added support of digest authentication for HTTP Agent (https://support.zabbix.com/browse/ZBXNEXT-4647)

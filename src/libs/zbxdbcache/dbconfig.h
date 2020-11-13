@@ -418,6 +418,7 @@ typedef struct
 	const char	*macro;
 	const char	*context;
 	const char	*value;
+	unsigned char	context_op;
 }
 ZBX_DC_GMACRO;
 
@@ -435,6 +436,7 @@ typedef struct
 	const char	*macro;
 	const char	*context;
 	const char	*value;
+	unsigned char	context_op;
 }
 ZBX_DC_HMACRO;
 

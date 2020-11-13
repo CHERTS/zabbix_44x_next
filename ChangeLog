@@ -2,6 +2,7 @@ Changes for 4.4.14rc1 (unofficial)
 
 New features:
 ..F....... [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (gcalenko)
+A.F....PS. [ZBXNEXT-3205] added regex context matching support to user macros (rlataria, wiper)
 ........S. [ZBXNEXT-3588] improved Zabbix server performance when evaluating trigger, discovery, autoregistration and internal actions (vso)
 ........S. [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (viktors)
 
