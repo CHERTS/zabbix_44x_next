@@ -24,7 +24,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Bootstrap
       run: ./bootstrap.sh
-   - name: Get current Zabbix version
+    - name: Get current Zabbix version
       run: echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
     - name: Run backend build tests with MySQL...
       run: ant -DDBTYPE=MYSQL -f build-backend.xml
