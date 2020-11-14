@@ -31,17 +31,43 @@ jobs:
         sudo apt-get install -y libmysqlclient-dev libpq-dev
     - name: Checkout code
       uses: actions/checkout@v2
+    - name: Get current Zabbix version
+      run: echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
     - name: Run backend build tests with MySQL...
       run: ant -DDBTYPE=MYSQL -f build-backend.xml
+    - name: Cleanup
+      run: |
+        rm -rf ./sources
+        rm -rf ./zabbix-${ZABBIX_VERSION}
     - name: Run backend build tests with PostgreSQL...
       run: ant -DDBTYPE=POSTGRESQL -f build-backend.xml
+    - name: Cleanup
+      run: |
+        rm -rf ./sources
+        rm -rf ./zabbix-${ZABBIX_VERSION}
 #    - name: Run backend build tests with Oracle...
 #      run: ant -DDBTYPE=ORACLE -f build-backend.xml
+#    - name: Cleanup
+#      run: |
+#        rm -rf ./sources
+#        rm -rf ./zabbix-${ZABBIX_VERSION}
 #    - name: Run backend test cppcheck-static-analyzer...
 #      run: ant -f build-backend.xml cppcheck-static-analyzer
+#    - name: Cleanup
+#      run: |
+#        rm -rf ./sources
+#        rm -rf ./zabbix-${ZABBIX_VERSION}
 #    - name: Run backend test clang-static-analyzer...
 #      run: ant -f build-backend.xml clang-static-analyzer
+#    - name: Cleanup
+#      run: |
+#        rm -rf ./sources
+#        rm -rf ./zabbix-${ZABBIX_VERSION}
     - name: Run backend test cmocka-tests...
       run: ant -f build-backend.xml cmocka-tests
+#    - name: Cleanup
+#      run: |
+#        rm -rf ./sources
+#        rm -rf ./zabbix-${ZABBIX_VERSION}
 #    - name: Run backend test cmocka-ora-tests...
 #      run: ant -f build-backend.xml cmocka-ora-tests
