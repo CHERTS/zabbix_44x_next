@@ -9,6 +9,7 @@ A.F....PS. [ZBXNEXT-3205] added regex context matching support to user macros (r
 Bug fixes:
 A.F....... [ZBX-5842] fixed ability to detect username existence from unsuccessful login message (miks)
 ..F....... [ZBX-18058] updated the list of item keys and their descriptions (agriscenko)
+A......... [ZBX-18155] removed positional macros from item names on 'Web monitoring' page (kustalovs, vmurzins)
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
 ...G...... [ZBX-18185] fixed compilation error on Solaris 10 (akozlovs)
 A......... [ZBX-18317] fixed fatal error when updating only discovered triggers and their properties (Ivo)

@@ -45,6 +45,7 @@
 [ZBX-18121] fixed SSH monitoring when compiled with libssh; thanks to MATSUDA Daiki for the patch (https://support.zabbix.com/browse/ZBX-18121)
 [ZBX-18124] fixed discovered host group prototype saving during import (https://support.zabbix.com/browse/ZBX-18124)
 [ZBX-18147] fixed wrong character set detection logic for Oracle DB (https://support.zabbix.com/browse/ZBX-18147)
+[ZBX-18155] removed positional macros from item names on 'Web monitoring' page (https://support.zabbix.com/browse/ZBX-18155)
 [ZBX-18160] fixed fatal error in items.php and host_discovery.php (https://support.zabbix.com/browse/ZBX-18160)
 [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (https://support.zabbix.com/browse/ZBX-18163)
 [ZBX-18181] fixed undefined index when importing host with non-existing interface (https://support.zabbix.com/browse/ZBX-18181)
