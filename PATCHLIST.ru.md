@@ -69,6 +69,7 @@
 [ZBX-18464] fixed javascript Uncaught TypeError when clicking on disabled multiselect item (https://support.zabbix.com/browse/ZBX-18464)
 [ZBX-18487] increased trapper verbosity for DebugLevel=4 when rejecting sender data (https://support.zabbix.com/browse/ZBX-18487)
 [ZBX-18564] moved taskid calculation to transaction when creating remote command task (https://support.zabbix.com/browse/ZBX-18564)
+[ZBX-18650] fixed logic for processing LLD rule duplicates after reconnecting to proxy (https://support.zabbix.com/browse/ZBX-18650)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (https://support.zabbix.com/browse/ZBXNEXT-2480)

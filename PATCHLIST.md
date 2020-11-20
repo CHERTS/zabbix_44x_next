@@ -1,6 +1,4 @@
-# List of backported patches from version 5.0/5.2 and list of my patches
-
-[По-русски / In Russian](PATCHLIST.ru.md)
+# List of backported patches from version 5.0/5.2
 
 ~~~~
 [ZBX-5842] fixed ability to detect username existence from unsuccessful login message (https://support.zabbix.com/browse/ZBX-ZBX-5842)
@@ -69,6 +67,7 @@
 [ZBX-18464] fixed javascript Uncaught TypeError when clicking on disabled multiselect item (https://support.zabbix.com/browse/ZBX-18464)
 [ZBX-18487] increased trapper verbosity for DebugLevel=4 when rejecting sender data (https://support.zabbix.com/browse/ZBX-18487)
 [ZBX-18564] moved taskid calculation to transaction when creating remote command task (https://support.zabbix.com/browse/ZBX-18564)
+[ZBX-18650] fixed logic for processing LLD rule duplicates after reconnecting to proxy (https://support.zabbix.com/browse/ZBX-18650)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (https://support.zabbix.com/browse/ZBXNEXT-2480)
@@ -85,10 +84,25 @@
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
 [ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (https://support.zabbix.com/browse/ZBXNEXT-6139)
 [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (https://support.zabbix.com/browse/ZBXNEXT-6247)
+
+# List of my patches (English)
+
+~~~~
 [DBS-001] Added the ability to display 4 tags on the Problems page
 [DBS-002] Added space between tags on Problems page
 [DBS-003] Added a quick jump to the "Latest data" page from the Configuration -> Hosts page
 [DBS-004] Change default setting: ZBX_UNITS_ROUNDOFF_MIDDLE_LIMIT - 4 => 2 and ZBX_DEFAULT_URL - zabbix.php?action=dashboard.view => zabbix.php?action=problem.view
 [DBS-005] Increased the width of the pop-up window on the Problems page
 [DBS-006] Tag column has been moved before the Problem column. The width of the Tag column has also been increased
+~~~~
+
+# List of my patches (Russian)
+
+~~~~
+[DBS-001] На странице "Проблемы" реализована возможность отображения 4-х тегов
+[DBS-002] На странице "Проблемы" в колонке "Теги" добавлен пробел для разделения тегов при выделении и копировани их в буфер обмена
+[DBS-003] Добавлен переход на страницу "Последние данные" со страницы Конфигурация -> Хосты
+[DBS-004] Изменены некоторые настройки по-умолчанию в веб-интерфейса: ZBX_UNITS_ROUNDOFF_MIDDLE_LIMIT - 4 => 2 и ZBX_DEFAULT_URL - zabbix.php?action=dashboard.view => zabbix.php?action=problem.view
+[DBS-005] Увеличина ширина всплывающего окна на странице "Проблемы" при клике на аларм
+[DBS-006] На странице "Проблемы" колонка "Теги" перемещена в позицию после корлонки "Проблема", так же увеличена ширина колонки "Теги"
 ~~~~
