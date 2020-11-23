@@ -100,7 +100,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 			[
 				[
 					'fields' => [
-						'Encryption level' => ['No encryption', 'PSK'],
+						'Encryption level' => ['No encryption', 'PSK']
 					],
 					'audit' => [
 						'User' => 'Admin',
@@ -115,7 +115,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 			[
 				[
 					'fields' => [
-						'Encryption level' => ['No encryption'],
+						'Encryption level' => ['No encryption']
 					],
 					'audit' => [
 						'User' => 'Admin',
@@ -452,7 +452,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 			[
 				[
 					'fields' => [
-						'Encryption level' => ['No encryption', 'PSK'],
+						'Encryption level' => ['No encryption', 'PSK']
 					]
 				]
 			],

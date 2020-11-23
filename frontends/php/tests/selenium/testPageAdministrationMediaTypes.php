@@ -321,7 +321,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => ' ',
+						'Send to' => ' '
 					],
 					'error' => 'Invalid email address " ".'
 				]
@@ -330,7 +330,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => 'zabbixzabbix.com',
+						'Send to' => 'zabbixzabbix.com'
 					],
 					'error' => 'Invalid email address "zabbixzabbix.com".'
 				]
@@ -339,7 +339,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => 'zabbix@zabbixcom',
+						'Send to' => 'zabbix@zabbixcom'
 					],
 					'error' => 'Invalid email address "zabbix@zabbixcom".'
 				]
@@ -348,7 +348,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => 'zabbix@zabbixcom',
+						'Send to' => 'zabbix@zabbixcom'
 					],
 					'error' => 'Invalid email address "zabbix@zabbixcom".'
 				]
@@ -357,7 +357,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => '@zabbix.com',
+						'Send to' => '@zabbix.com'
 					],
 					'error' => 'Invalid email address "@zabbix.com".'
 				]
@@ -366,7 +366,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => 'zabbix1@zabbix.com,zabbix2@zabbix.com',
+						'Send to' => 'zabbix1@zabbix.com,zabbix2@zabbix.com'
 					],
 					'error' => 'Invalid email address "zabbix1@zabbix.com,zabbix2@zabbix.com".'
 				]
@@ -375,7 +375,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => 'zabbix@zabbix.com',
+						'Send to' => 'zabbix@zabbix.com'
 						'Subject' => ''
 					],
 					'error' => [
@@ -393,7 +393,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => 'zabbix@zabbix.com',
+						'Send to' => 'zabbix@zabbix.com'
 						'Message' => ''
 					],
 					'error' => 'Incorrect value for field "message": cannot be empty.'

@@ -179,7 +179,7 @@ public static function getFilterByTagsData() {
 				[
 					'evaluation_type' => 'And/Or',
 					'tags' => [
-						['name' => 'tag', 'operator' => 'Contains', 'value' => 'TEMPLATE'],
+						['name' => 'tag', 'operator' => 'Contains', 'value' => 'TEMPLATE']
 					],
 					'expected_templates' => [
 						'Form test template',
@@ -192,7 +192,7 @@ public static function getFilterByTagsData() {
 				[
 					'evaluation_type' => 'And/Or',
 					'tags' => [
-						['name' => 'tag', 'operator' => 'Equals', 'value' => 'TEMPLATE'],
+						['name' => 'tag', 'operator' => 'Equals', 'value' => 'TEMPLATE']
 					],
 					'expected_templates' => [
 						'Form test template'
@@ -203,7 +203,7 @@ public static function getFilterByTagsData() {
 				[
 					'evaluation_type' => 'And/Or',
 					'tags' => [
-						['name' => 'action', 'operator' => 'Contains'],
+						['name' => 'action', 'operator' => 'Contains']
 					],
 					'expected_templates' => [
 						'Form test template',
@@ -216,7 +216,7 @@ public static function getFilterByTagsData() {
 				[
 					'evaluation_type' => 'And/Or',
 					'tags' => [
-						['name' => 'action', 'operator' => 'Equals'],
+						['name' => 'action', 'operator' => 'Equals']
 					]
 				]
 			]

@@ -128,7 +128,7 @@ class testPageItems extends CLegacyWebTest {
 						['Host for triggers filtering' => 'Item for triggers filtering'],
 						['Host for trigger tags filtering' => 'Trapper'],
 						['ЗАББИКС Сервер' => 'Utilization of snmp trapper data collector processes, in %'],
-						['ЗАББИКС Сервер' => 'Utilization of trapper data collector processes, in %'],
+						['ЗАББИКС Сервер' => 'Utilization of trapper data collector processes, in %']
 					]
 				]
 			],

@@ -61,7 +61,7 @@ class CControllerPopupMediatypeTestSend extends CController {
 	protected function validateMediaType() {
 		$mediatypes = API::MediaType()->get([
 			'output' => ['type', 'status'],
-			'mediatypeids' => $this->getInput('mediatypeid'),
+			'mediatypeids' => $this->getInput('mediatypeid')
 		]);
 
 		if (!$mediatypes) {

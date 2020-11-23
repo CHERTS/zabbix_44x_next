@@ -2286,7 +2286,7 @@ class CDiscoveryRule extends CItemGeneral {
 		if ($options['selectLLDMacroPaths'] !== null && $options['selectLLDMacroPaths'] != API_OUTPUT_COUNT) {
 			$lld_macro_paths = API::getApiService()->select('lld_macro_path', [
 				'output' => $this->outputExtend($options['selectLLDMacroPaths'], ['itemid', 'lld_macro_pathid']),
-				'filter' => ['itemid' => $itemIds],
+				'filter' => ['itemid' => $itemIds]
 			]);
 
 			foreach ($result as &$lld_macro_path) {

@@ -171,7 +171,7 @@ class testFormItemPreprocessingTest extends CWebTest {
 					'preprocessing' => [
 						['type' => 'Simple change'],
 						['type' => 'Discard unchanged'],
-						['type' => 'In range', 'parameter_1' => '1', 'parameter_2' => ''],
+						['type' => 'In range', 'parameter_1' => '1', 'parameter_2' => '']
 					],
 					'action' => 'Test'
 				]
@@ -182,7 +182,7 @@ class testFormItemPreprocessingTest extends CWebTest {
 					'preprocessing' => [
 						['type' => 'Discard unchanged with heartbeat', 'parameter_1' => '1'],
 						['type' => 'Change per second'],
-						['type' => 'CSV to JSON','parameter_1' => ',', 'parameter_2' => '"', 'parameter_3' => false],
+						['type' => 'CSV to JSON','parameter_1' => ',', 'parameter_2' => '"', 'parameter_3' => false]
 					],
 					'action' => 'Test'
 				]
