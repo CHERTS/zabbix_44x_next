@@ -69,7 +69,7 @@ class EvalExpressionDataTest extends PHPUnit_Framework_TestCase {
 				'{host:item.last()} = 1 or {host:item2.last()} = 2',
 				[
 					'{host:item.last()}' => 1,
-					'{host:item2.last()}' => 2,
+					'{host:item2.last()}' => 2
 				]
 			],
 			[
@@ -108,7 +108,7 @@ class EvalExpressionDataTest extends PHPUnit_Framework_TestCase {
 				[
 					'{host:item.last()}' => '10m'
 				]
-			],
+			]
 		];
 	}
 
@@ -172,7 +172,7 @@ class EvalExpressionDataTest extends PHPUnit_Framework_TestCase {
 				'{host:item.last()} = 1 and {host:item2.last()} = 2',
 				[
 					'{host:item.last()}' => 2,
-					'{host:item2.last()}' => 2,
+					'{host:item2.last()}' => 2
 				]
 			],
 			[
@@ -224,7 +224,7 @@ class EvalExpressionDataTest extends PHPUnit_Framework_TestCase {
 				[
 					'{host:item.last()}' => 2
 				]
-			],
+			]
 		];
 	}
 

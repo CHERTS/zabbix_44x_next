@@ -1430,7 +1430,7 @@ class CHost extends CHostGeneral {
 		}
 
 		DB::delete('opcommand_hst', [
-			'hostid' => $hostIds,
+			'hostid' => $hostIds
 		]);
 
 		// delete empty operations

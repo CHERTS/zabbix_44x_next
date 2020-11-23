@@ -122,7 +122,7 @@ class testFormHostPrototype extends CLegacyWebTest {
 				[
 					'name' => ' ',
 					'error' => 'Page received incorrect data',
-					'error_message' => 'Incorrect value for field "Host name": cannot be empty.',
+					'error_message' => 'Incorrect value for field "Host name": cannot be empty.'
 				]
 			],
 			// Create host prototype with invalid name.
@@ -149,14 +149,14 @@ class testFormHostPrototype extends CLegacyWebTest {
 				[
 					'name' => 'Кириллица Прототип хоста {#FSNAME}',
 					'error' => 'Cannot add host prototype',
-					'error_message' => 'Invalid parameter "/1/host": invalid host name.',
+					'error_message' => 'Invalid parameter "/1/host": invalid host name.'
 				]
 			],
 			[
 				[
 					'name' => 'Host prototype without macro in name',
 					'error' => 'Cannot add host prototype',
-					'error_message' => 'Invalid parameter "/1/host": must contain at least one low-level discovery macro.',
+					'error_message' => 'Invalid parameter "/1/host": must contain at least one low-level discovery macro.'
 				]
 			],
 			[
@@ -164,7 +164,7 @@ class testFormHostPrototype extends CLegacyWebTest {
 					'name' => 'Host prototype with / in name',
 					'hostgroup' => 'Linux servers',
 					'error' => 'Cannot add host prototype',
-					'error_message' => 'Invalid parameter "/1/host": invalid host name.',
+					'error_message' => 'Invalid parameter "/1/host": invalid host name.'
 				]
 			],
 			// Create host prototype with invalid group.
@@ -172,7 +172,7 @@ class testFormHostPrototype extends CLegacyWebTest {
 				[
 					'name' => 'Host prototype {#GROUP_EMPTY}',
 					'error' => 'Cannot add host prototype',
-					'error_message' => 'Invalid parameter "/1/groupLinks": cannot be empty.',
+					'error_message' => 'Invalid parameter "/1/groupLinks": cannot be empty.'
 				]
 			],
 			[
@@ -183,7 +183,7 @@ class testFormHostPrototype extends CLegacyWebTest {
 						'Group prototype'
 					],
 					'error' => 'Cannot add host prototype',
-					'error_message' => 'Invalid parameter "/1/host": must contain at least one low-level discovery macro.',
+					'error_message' => 'Invalid parameter "/1/host": must contain at least one low-level discovery macro.'
 				]
 			],
 			[
@@ -195,7 +195,7 @@ class testFormHostPrototype extends CLegacyWebTest {
 						'Group prototype {#MACRO}'
 					],
 					'error' => 'Cannot add host prototype',
-					'error_message' => 'Invalid parameter "/1/groupPrototypes/2": value (name)=(Group prototype {#MACRO}) already exists.',
+					'error_message' => 'Invalid parameter "/1/groupPrototypes/2": value (name)=(Group prototype {#MACRO}) already exists.'
 				]
 			]
 		];
@@ -701,7 +701,7 @@ class testFormHostPrototype extends CLegacyWebTest {
 			['type' => 'radio', 'value' => 'Certificate'],
 			['type' => 'checkbox', 'value' => 'No encryption'],
 			['type' => 'checkbox', 'value' => 'PSK'],
-			['type' => 'checkbox', 'value' => 'Certificate'],
+			['type' => 'checkbox', 'value' => 'Certificate']
 		];
 
 		foreach ($labels as $label) {

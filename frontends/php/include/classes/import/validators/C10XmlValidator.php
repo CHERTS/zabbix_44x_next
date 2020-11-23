@@ -287,7 +287,7 @@ class C10XmlValidator {
 									'triggerid' =>				['type' => XML_ARRAY | XML_REQUIRED, 'rules' => [
 										'host' =>					['type' => XML_STRING],
 										'description' =>			['type' => XML_STRING | XML_REQUIRED],
-										'expression' =>				['type' => XML_STRING | XML_REQUIRED],
+										'expression' =>				['type' => XML_STRING | XML_REQUIRED]
 									]]
 								]]
 							]]

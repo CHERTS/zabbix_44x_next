@@ -118,7 +118,7 @@ class function_convert_units extends PHPUnit_Framework_TestCase {
 			[ 'in' => ['value' => '0.000002', 'units' => '!U', 'convert' => ITEM_CONVERT_WITH_UNITS],		'out'  => '0.000002 U' ],
 			[ 'in' => ['value' => '0.000002', 'units' => '!U', 'convert' => ITEM_CONVERT_NO_UNITS],			'out'  => '0.000002 U' ],
 			[ 'in' => ['value' => '10000000', 'units' => '!uptime', 'convert' => ITEM_CONVERT_WITH_UNITS],	'out'  => '10000000 uptime' ],
-			[ 'in' => ['value' => '10000000', 'units' => '!uptime', 'convert' => ITEM_CONVERT_NO_UNITS],	'out'  => '10000000 uptime' ],
+			[ 'in' => ['value' => '10000000', 'units' => '!uptime', 'convert' => ITEM_CONVERT_NO_UNITS],	'out'  => '10000000 uptime' ]
 		];
 	}
 

@@ -283,7 +283,7 @@ class testTaskCreate extends CAPITest {
 				'item' => [
 					'itemid' => '90004',
 					'type' => '18',
-					'master_itemid' => '23287',
+					'master_itemid' => '23287'
 				],
 				'expected_error' => 'Cannot send request: wrong item type.'
 			],
@@ -323,7 +323,7 @@ class testTaskCreate extends CAPITest {
 		// Create task for check now
 		$task = [
 			'type' => '6',
-			'itemids' => [$object['itemid']],
+			'itemids' => [$object['itemid']]
 		];
 
 		$this->call('task.create', $task, $expected_error);

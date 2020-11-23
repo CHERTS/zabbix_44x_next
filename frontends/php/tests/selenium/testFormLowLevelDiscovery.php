@@ -66,7 +66,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 				['host' => 'Simple form test host', 'form' => 'testFormDiscoveryRule1']
 			],
 			[
-				['type' => 'Zabbix agent (active)', 'host' => 'Simple form test host'],
+				['type' => 'Zabbix agent (active)', 'host' => 'Simple form test host']
 			],
 			[
 				['type' => 'Simple check', 'host' => 'Simple form test host']
@@ -1824,7 +1824,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 						'name' => 'Rule with macro does not match',
 						'key' => 'macro-doesnt-match-key',
 						'macros'=> [
-							['macro' => '{#TEST_MACRO}', 'expression' => 'Test expression', 'operator' => 'does not match'],
+							['macro' => '{#TEST_MACRO}', 'expression' => 'Test expression', 'operator' => 'does not match']
 						]
 					]
 				],
@@ -1919,7 +1919,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'name' => 'Rule with wrong macro',
 					'key' => 'macro-wrong-key',
 					'macros'=> [
-							['macro' => '{TEST_MACRO}', 'expression' => 'Test expression', 'operator' => 'does not match'],
+							['macro' => '{TEST_MACRO}', 'expression' => 'Test expression', 'operator' => 'does not match']
 					],
 					'error_message' => 'Incorrect filter condition macro for discovery rule'
 				]
@@ -1930,7 +1930,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'key' => 'macro-empty-formula-key',
 					'macros'=> [
 							['macro' => '{#TEST_MACRO1}', 'expression' => 'Test expression 1', 'operator' => 'matches'],
-							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ],
+							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ]
 					],
 					'calculation' => 'Custom expression',
 					'formula' => '',
@@ -1944,7 +1944,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'macros'=> [
 							['macro' => '{#TEST_MACRO1}', 'expression' => 'Test expression 1', 'operator' => 'matches'],
 							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ],
-							['macro' => '{#TEST_MACRO3}', 'expression' => 'Test expression 3', 'operator' => 'does not match' ],
+							['macro' => '{#TEST_MACRO3}', 'expression' => 'Test expression 3', 'operator' => 'does not match' ]
 					],
 					'calculation' => 'Custom expression',
 					'formula' => 'A and B',
@@ -1957,7 +1957,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'key' => 'macro-extra-argument-key',
 					'macros'=> [
 							['macro' => '{#TEST_MACRO1}', 'expression' => 'Test expression 1', 'operator' => 'matches'],
-							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ],
+							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ]
 					],
 					'calculation' => 'Custom expression',
 					'formula' => 'A and B or C',
@@ -1970,7 +1970,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'key' => 'macro-wrong-formula-key',
 					'macros'=> [
 							['macro' => '{#TEST_MACRO1}', 'expression' => 'Test expression 1', 'operator' => 'matches'],
-							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ],
+							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ]
 					],
 					'calculation' => 'Custom expression',
 					'formula' => 'Wrong formula',
@@ -1983,7 +1983,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'key' => 'macro-not-in-formula-key',
 					'macros'=> [
 							['macro' => '{#TEST_MACRO1}', 'expression' => 'Test expression 1', 'operator' => 'matches'],
-							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ],
+							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ]
 					],
 					'calculation' => 'Custom expression',
 					'formula'=> 'A and Not B',
@@ -1996,7 +1996,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'key' => 'macro-wrong-operator-key',
 					'macros'=> [
 							['macro' => '{#TEST_MACRO1}', 'expression' => 'Test expression 1', 'operator' => 'matches'],
-							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ],
+							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ]
 					],
 					'calculation' => 'Custom expression',
 					'formula'=> 'NOT A and not B',
@@ -2009,7 +2009,7 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'key' => 'macro-not-formula',
 					'macros'=> [
 							['macro' => '{#TEST_MACRO1}', 'expression' => 'Test expression 1', 'operator' => 'matches'],
-							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ],
+							['macro' => '{#TEST_MACRO2}', 'expression' => 'Test expression 2', 'operator' => 'does not match' ]
 					],
 					'calculation' => 'Custom expression',
 					'formula'=> 'not A not B',

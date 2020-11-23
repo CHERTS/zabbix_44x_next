@@ -43,7 +43,7 @@ function zbx_construct_menu(&$main_menu, &$sub_menus, array &$page, $action = nu
 					'url' => 'zabbix.php',
 					'action' => 'dashboard.view',
 					'active_if' => ['dashboard.list', 'dashboard.view'],
-					'label' => _('Dashboard'),
+					'label' => _('Dashboard')
 				],
 				[
 					'url' => 'zabbix.php',

@@ -108,7 +108,7 @@ class CDecimalStringValidatorTest extends CValidatorTest {
 				['messageInvalid' => 'Invalid decimal "%1$s"'],
 				'.4.',
 				'Invalid decimal ".4."'
-			],
+			]
 		];
 	}
 
@@ -128,7 +128,7 @@ class CDecimalStringValidatorTest extends CValidatorTest {
 				['messageInvalid' => 'Invalid decimal value "%2$s" for "%1$s"'],
 				'A',
 				'Invalid decimal value "A" for "object"'
-			],
+			]
 		];
 	}
 

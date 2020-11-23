@@ -29,7 +29,7 @@
 	<?= (new CRow([
 			new CCol([
 				(new CTextBox('userGroups[#{usrgrpid}][usrgrpid]', '#{usrgrpid}'))->setAttribute('type', 'hidden'),
-				(new CSpan('#{name}')),
+				(new CSpan('#{name}'))
 			]),
 			new CCol(
 				(new CTag('ul', false, [
@@ -63,7 +63,7 @@
 	<?= (new CRow([
 			new CCol([
 				(new CTextBox('users[#{id}][userid]', '#{id}'))->setAttribute('type', 'hidden'),
-				(new CSpan('#{name}')),
+				(new CSpan('#{name}'))
 			]),
 			new CCol(
 				(new CTag('ul', false, [

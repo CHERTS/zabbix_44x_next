@@ -495,7 +495,7 @@ abstract class CMapElement extends CApiService {
 
 			$update[] = [
 				'values' => $selement,
-				'where' => ['selementid' => $selement['selementid']],
+				'where' => ['selementid' => $selement['selementid']]
 			];
 			$selementIds[] = $selement['selementid'];
 
@@ -631,7 +631,7 @@ abstract class CMapElement extends CApiService {
 			if ($shape) {
 				$update[] = [
 					'values' => $shape,
-					'where' => ['sysmap_shapeid' => $shapeid],
+					'where' => ['sysmap_shapeid' => $shapeid]
 				];
 			}
 		}

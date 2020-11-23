@@ -792,31 +792,31 @@ class CApiInputValidatorTest extends PHPUnit_Framework_TestCase {
 				['type' => API_FLOAT],
 				1.23E+11,
 				'/1/float',
-				1.23E+11,
+				1.23E+11
 			],
 			[
 				['type' => API_FLOAT],
 				'1.23E+11',
 				'/1/float',
-				1.23E+11,
+				1.23E+11
 			],
 			[
 				['type' => API_FLOAT],
 				'1.23e+11',
 				'/1/float',
-				1.23E+11,
+				1.23E+11
 			],
 			[
 				['type' => API_FLOAT],
 				'-1.23e+11',
 				'/1/float',
-				-1.23E+11,
+				-1.23E+11
 			],
 			[
 				['type' => API_FLOAT],
 				'.23E11',
 				'/1/float',
-				0.23E+11,
+				0.23E+11
 			],
 			[
 				['type' => API_FLOATS],
@@ -1456,7 +1456,7 @@ class CApiInputValidatorTest extends PHPUnit_Framework_TestCase {
 			[
 				['type' => API_OBJECT, 'fields' => [
 					'tags' => ['type' => API_OBJECT, 'flags' => API_ALLOW_NULL, 'fields' => [
-						'tag'	=> ['type' => API_STRING_UTF8],
+						'tag'	=> ['type' => API_STRING_UTF8]
 					]]
 				]],
 				[
@@ -1577,7 +1577,7 @@ class CApiInputValidatorTest extends PHPUnit_Framework_TestCase {
 			[
 				['type' => API_OBJECTS, 'fields' => [
 					'host' =>	['type' => API_H_NAME, 'flags' => API_REQUIRED],
-					'name' =>	['type' => API_STRING_UTF8, 'default_source' => 'host'],
+					'name' =>	['type' => API_STRING_UTF8, 'default_source' => 'host']
 				]],
 				[
 					['host' => 'host 0'],

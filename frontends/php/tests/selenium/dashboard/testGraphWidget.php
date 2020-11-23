@@ -1166,7 +1166,7 @@ class testGraphWidget extends CWebTest {
 						'item' => 'Agent ping'
 					],
 					'Overrides' => [
-						'item' => '*',
+						'item' => '*'
 					],
 					'error' => 'Invalid parameter "Overrides/1/hosts": cannot be empty.'
 				]
@@ -1244,7 +1244,7 @@ class testGraphWidget extends CWebTest {
 				[
 					'Widget name' => 'Test cases for update',
 					'Overrides' => [
-						'item' => '',
+						'item' => ''
 					],
 					'error' => 'Invalid parameter "Overrides/1/items": cannot be empty.'
 				]
@@ -2000,7 +2000,7 @@ class testGraphWidget extends CWebTest {
 						'class' => CMultiselectElement::class
 					],
 					'color' => 'id:or_'.$i.'__color_',
-					'time_shift' => 'name:or['.$i.'][timeshift]',
+					'time_shift' => 'name:or['.$i.'][timeshift]'
 				];
 				foreach ($mapping as $field => $item) {
 					if (!array_key_exists($field, $override)) {
@@ -2089,7 +2089,7 @@ class testGraphWidget extends CWebTest {
 					'host' => 'xpath://div[@id="or_'.$i.'_hosts_"]/..',
 					'item' => 'xpath://div[@id="or_'.$i.'_items_"]/..',
 					'color' => 'id:or_'.$i.'__color_',
-					'time_shift' => 'name:or['.$i.'][timeshift]',
+					'time_shift' => 'name:or['.$i.'][timeshift]'
 				];
 				$inputs = [];
 				foreach ($mapping as $field => $selector) {
@@ -2187,7 +2187,7 @@ class testGraphWidget extends CWebTest {
 					],
 					'Data set' => [
 						'host' => 'Cancel create',
-						'item' => 'Cancel create',
+						'item' => 'Cancel create'
 					]
 				]
 			],
@@ -2200,7 +2200,7 @@ class testGraphWidget extends CWebTest {
 					],
 					'Data set' => [
 						'host' => 'Cancel update',
-						'item' => 'Cancel update',
+						'item' => 'Cancel update'
 					]
 				]
 			]

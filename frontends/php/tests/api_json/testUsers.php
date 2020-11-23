@@ -83,7 +83,7 @@ class testUsers extends CAPITest {
 						'usrgrps' => [
 							['usrgrpid' => 7]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/2": value (alias)=(API create users with the same names) already exists.'
 			],
@@ -101,7 +101,7 @@ class testUsers extends CAPITest {
 			[
 				'user' => [
 					'alias' => 'User without group parameter',
-					'passwd' => 'zabbix',
+					'passwd' => 'zabbix'
 				],
 				'expected_error' => 'Invalid parameter "/1": the parameter "usrgrps" is missing.'
 			],
@@ -223,7 +223,7 @@ class testUsers extends CAPITest {
 						'user_medias' => [
 							[
 								'mediatypeid' => '1',
-								'sendto' => 'api@zabbix.com',
+								'sendto' => 'api@zabbix.com'
 							]
 						]
 					]
@@ -289,7 +289,7 @@ class testUsers extends CAPITest {
 			'user_medias' => [
 				[
 					'mediatypeid' => '1',
-					'sendto' => ["api1@zabbix.com","Api test <api2@zabbix.com>","АПИ test ☺æų <api2@zabbix.com>"],
+					'sendto' => ["api1@zabbix.com","Api test <api2@zabbix.com>","АПИ test ☺æų <api2@zabbix.com>"]
 				]
 			]
 		];
@@ -350,7 +350,7 @@ class testUsers extends CAPITest {
 					[
 						'userid' => '9',
 						'alias' => 'API update users with the same id2'
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/2": value (userid)=(9) already exists.'
 			],
@@ -393,7 +393,7 @@ class testUsers extends CAPITest {
 					[
 						'userid' => '10',
 						'alias' => 'API update users with the same alias'
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/2": value (alias)=(API update users with the same alias) already exists.'
 			],
@@ -544,7 +544,7 @@ class testUsers extends CAPITest {
 						'user_medias' => [
 							[
 								'mediatypeid' => '1',
-								'sendto' => 'api@zabbix.com',
+								'sendto' => 'api@zabbix.com'
 							]
 						]
 					]
@@ -929,7 +929,7 @@ class testUsers extends CAPITest {
 					'usrgrps' => [
 						['usrgrpid' => '7']
 					],
-					'user_medias' => [[ ]],
+					'user_medias' => [[ ]]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1": the parameter "mediatypeid" is missing.'
 			],
@@ -944,7 +944,7 @@ class testUsers extends CAPITest {
 						[
 							'mediatypeid' => ''
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/mediatypeid": a number is expected.'
 			],
@@ -959,7 +959,7 @@ class testUsers extends CAPITest {
 						[
 							'mediatypeid' => '1.1'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/mediatypeid": a number is expected.'
 			],
@@ -975,7 +975,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1234',
 							'sendto' => 'api@zabbix.com'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Media type with ID "1234" is not available.'
 			],
@@ -991,7 +991,7 @@ class testUsers extends CAPITest {
 						[
 							'mediatypeid' => '1'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1": the parameter "sendto" is missing.'
 			],
@@ -1007,7 +1007,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ''
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "sendto": cannot be empty.'
 			],
@@ -1023,7 +1023,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => [[]]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/sendto/1": a character string is expected.'
 			],
@@ -1039,7 +1039,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => []
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/sendto": cannot be empty.'
 			],
@@ -1055,7 +1055,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => [""]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "sendto": cannot be empty.'
 			],
@@ -1071,7 +1071,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ["test1@zabbix.com",""]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "sendto": cannot be empty.'
 			],
@@ -1087,7 +1087,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ["test1zabbix.com"]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid email address for media type with ID "1".'
 			],
@@ -1103,7 +1103,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ["test1@zabbixcom"]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid email address for media type with ID "1".'
 			],
@@ -1119,7 +1119,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ["test1@@zabbix.com"]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid email address for media type with ID "1".'
 			],
@@ -1135,7 +1135,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ["test1 test2@zabbix.com"]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid email address for media type with ID "1".'
 			],
@@ -1151,7 +1151,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ["<test1@zabbix.com> test2"]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid email address for media type with ID "1".'
 			],
@@ -1167,7 +1167,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ["test1@zabbix.com, a,b"]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid email address for media type with ID "1".'
 			],
@@ -1183,7 +1183,7 @@ class testUsers extends CAPITest {
 							'mediatypeid' => '1',
 							'sendto' => ["test1@zabbix.com,test2@zabbix.com"]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid email address for media type with ID "1".'
 			],
@@ -1201,7 +1201,7 @@ class testUsers extends CAPITest {
 							'sendto' => 'api@zabbix.com',
 							'active' => ''
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/active": an integer is expected.'
 			],
@@ -1218,7 +1218,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'active' => '1.1'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/active": an integer is expected.'
 			],
@@ -1235,7 +1235,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'active' => '2'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/active": value must be one of 0, 1.'
 			],
@@ -1253,7 +1253,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'severity' => ''
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/severity": an integer is expected.'
 			],
@@ -1270,7 +1270,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'severity' => '64'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/severity": value must be one of 0-63.'
 			],
@@ -1288,7 +1288,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => ''
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": cannot be empty.'
 			],
@@ -1305,7 +1305,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => 'test'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1322,7 +1322,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => '1-7 00:00-24:00'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1339,7 +1339,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => '1-5,09:00-18:00,6-7,10:00-16:00'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1356,7 +1356,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => '1-8,00:00-24:00'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1373,7 +1373,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => '0-7,00:00-24:00'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1390,7 +1390,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => '1-7,24:00-00:00'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1407,7 +1407,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => '1-7,14:00-13:00'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1424,7 +1424,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => '1-7,25:00-26:00'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1441,7 +1441,7 @@ class testUsers extends CAPITest {
 						'sendto' => 'api@zabbix.com',
 						'period' => '1-7,13:60-14:00'
 						]
-					],
+					]
 				],
 				'expected_error' => 'Invalid parameter "/1/user_medias/1/period": a time period is expected.'
 			],
@@ -1472,7 +1472,7 @@ class testUsers extends CAPITest {
 					'url' => 'zabbix.php?action=userprofile.edit'
 				],
 				'expected_error' => null
-			],
+			]
 		];
 	}
 
@@ -1623,7 +1623,7 @@ class testUsers extends CAPITest {
 				'login' => ['user' => 'zabbix-admin', 'password' => 'zabbix'],
 				'user' => [
 							'userid' => '9',
-							'alias' => 'API user update as zabbix admin without permissions',
+							'alias' => 'API user update as zabbix admin without permissions'
 						],
 				'expected_error' => 'No permissions to referred object or it does not exist!'
 			],
@@ -1650,7 +1650,7 @@ class testUsers extends CAPITest {
 				'login' => ['user' => 'zabbix-user', 'password' => 'zabbix'],
 				'user' => [
 							'userid' => '9',
-							'alias' => 'API user update as zabbix user without permissions',
+							'alias' => 'API user update as zabbix user without permissions'
 						],
 				'expected_error' => 'No permissions to referred object or it does not exist!'
 			],
@@ -1679,7 +1679,7 @@ class testUsers extends CAPITest {
 				'params' =>
 					[
 						'userid' => '9',
-						'alias' => 'check authentication',
+						'alias' => 'check authentication'
 					],
 				'auth' => '12345',
 				'id' => '1'
@@ -1690,7 +1690,7 @@ class testUsers extends CAPITest {
 				'params' => [],
 				'auth' => '12345',
 				'id' => '1'
-			]],
+			]]
 		];
 	}
 
@@ -1719,7 +1719,7 @@ class testUsers extends CAPITest {
 			'params' =>
 				[
 					'userid' => '9',
-					'alias' => 'check authentication',
+					'alias' => 'check authentication'
 				],
 			'auth' => CAPIHelper::getSessionId(),
 			'id' => '1'
@@ -1733,7 +1733,7 @@ class testUsers extends CAPITest {
 				'login' => [
 					'user' => 'Admin',
 					'password' => 'zabbix',
-					'sessionid' => '123456',
+					'sessionid' => '123456'
 				],
 				'expected_error' => 'Invalid parameter "/": unexpected parameter "sessionid".'
 			],

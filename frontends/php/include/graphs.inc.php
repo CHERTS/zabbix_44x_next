@@ -1009,7 +1009,7 @@ function expandShortGraphItem($short_item) {
 		'dr' => 'drawtype',
 		'ya' => 'yaxisside',
 		'ca' => 'calc_fnc',
-		'co' => 'color',
+		'co' => 'color'
 	];
 
 	$item = [];

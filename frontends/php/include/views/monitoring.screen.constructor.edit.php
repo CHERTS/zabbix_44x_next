@@ -431,7 +431,7 @@ elseif ($resourceType == SCREEN_RESOURCE_PLAIN_TEXT) {
 						'real_hosts' => !array_key_exists('templateid', $data['screen']),
 						'webitems' => true
 					]
-				],
+				]
 			]))
 			->setWidth(ZBX_TEXTAREA_STANDARD_WIDTH)
 			->setAriaRequired(true)

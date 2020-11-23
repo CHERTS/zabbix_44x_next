@@ -1,6 +1,7 @@
 Changes for 4.4.14rc1 (unofficial)
 
 New features:
+A.F....... [ZBXNEXT-686] removed trailing commas after the last element of the arrays
 ..F....... [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (gcalenko)
 A.F....PS. [ZBXNEXT-3205] added regex context matching support to user macros (rlataria, wiper)
 ........S. [ZBXNEXT-3588] improved Zabbix server performance when evaluating trigger, discovery, autoregistration and internal actions (vso)

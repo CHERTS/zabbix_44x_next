@@ -86,7 +86,7 @@ $action_list = (new CList())
 		(new CDiv())->addClass(ZBX_STYLE_FORM_INPUT_MARGIN),
 		(new CComboBox('action', $data['action'], 'submit()', $actions))
 			->setEnabled((bool) $data['items'])
-			->removeId(),
+			->removeId()
 	]);
 
 if ($data['action'] !== HISTORY_GRAPH && $data['action'] !== HISTORY_BATCH_GRAPH) {

@@ -3283,7 +3283,7 @@ class CTriggerExpressionTest extends PHPUnit_Framework_TestCase {
 					'function' => 'str(ГУГЛ)',
 					'functionName' => 'str',
 					'functionParams' => ['ГУГЛ']
-				],
+				]
 			],
 			[
 				'type' => CTriggerExprParserResult::TOKEN_TYPE_OPERATOR,
@@ -3377,7 +3377,7 @@ class CTriggerExpressionTest extends PHPUnit_Framework_TestCase {
 				'data' => null,
 				'pos' => 137,
 				'length' => 1
-			],
+			]
 		];
 
 		$parser = new CTriggerExpression();

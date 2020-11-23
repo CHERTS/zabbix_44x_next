@@ -95,7 +95,7 @@ if (isset($_REQUEST['maintenanceid'])) {
 		'selectTimeperiods' => API_OUTPUT_EXTEND,
 		'selectTags' => API_OUTPUT_EXTEND,
 		'editable' => true,
-		'maintenanceids' => getRequest('maintenanceid'),
+		'maintenanceids' => getRequest('maintenanceid')
 	]);
 	if (empty($dbMaintenance)) {
 		access_deny();

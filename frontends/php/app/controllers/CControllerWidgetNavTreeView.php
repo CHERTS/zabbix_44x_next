@@ -469,7 +469,7 @@ class CControllerWidgetNavTreeView extends CControllerWidget {
 			$this->problems_per_severity_tpl[$severity] = 0;
 			$severity_config[$severity] = [
 				'color' => $config['severity_color_'.$severity],
-				'name' => $config['severity_name_'.$severity],
+				'name' => $config['severity_name_'.$severity]
 			];
 		}
 

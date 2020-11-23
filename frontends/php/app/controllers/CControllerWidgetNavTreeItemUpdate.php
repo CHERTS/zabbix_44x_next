@@ -130,7 +130,7 @@ class CControllerWidgetNavTreeItemUpdate extends CController {
 			$submaps = API::Map()->get([
 				'output' => ['sysmapid', 'name'],
 				'sysmapids' => array_keys(array_flip($maps_found)),
-				'preservekeys' => true,
+				'preservekeys' => true
 			]);
 
 			unset($submap);
