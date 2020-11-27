@@ -75,7 +75,7 @@ zbx_db_value_t;
 #	define ZBX_ROW_DL	";\n"
 #endif
 
-int	zbx_db_init(const char *dbname, const char *const db_schema, char **error);
+int	zbx_db_init(const char *dbname, const char *const dbschema, char **error);
 void	zbx_db_deinit(void);
 
 int	zbx_db_connect(char *host, char *user, char *password, char *dbname, char *dbschema, char *dbsocket, int port);
