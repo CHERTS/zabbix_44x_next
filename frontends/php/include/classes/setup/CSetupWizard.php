@@ -210,7 +210,7 @@ class CSetupWizard extends CForm {
 	}
 
 	function stage2() {
-		$DB['TYPE'] = $this->getConfig('DB_TYPE');
+		$DB['TYPE'] = $this->getConfig('DB_TYPE', key(CFrontendSetup::getSupportedDatabases()));
 
 		$table = new CFormList();
 

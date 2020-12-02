@@ -4,6 +4,7 @@ Changes for 4.4.15rc1 (unofficial)
 New features:
 
 Bug fixes:
+..F....... [ZBX-18688] fixed schema name didnt show when available only postgresql (rlataria)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.14 (unofficial)
