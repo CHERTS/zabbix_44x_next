@@ -10,8 +10,7 @@
 			(new CCol(
 				(new CTextAreaFlexible('macros[#{rowNum}][value]', '', ['add_post_js' => false]))
 					->setWidth(ZBX_TEXTAREA_MACRO_VALUE_WIDTH)
-					->setAttribute('placeholder', _('value')),
-					->disableAutocomplete()
+					->setAttribute('placeholder', _('value'))
 			))->addClass(ZBX_STYLE_TEXTAREA_FLEXIBLE_PARENT),
 			(new CCol(
 				(new CTextAreaFlexible('macros[#{rowNum}][description]', '', ['add_post_js' => false]))
