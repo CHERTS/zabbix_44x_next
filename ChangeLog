@@ -5,6 +5,7 @@ New features:
 
 Bug fixes:
 A......... [ZBX-18219] fixed custom multiplier preprocessing step validation to accept a string with macros (agriscenko)
+........S. [ZBX-18423] fixed inconsistent macro expansion with Oracle DB compared with other databases (viktors)
 ..F....... [ZBX-18688] fixed schema name didnt show when available only postgresql (rlataria)
 ..F....... [ZBXNEXT-2480] Fixed autocomplete in global macros
 
