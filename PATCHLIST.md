@@ -68,6 +68,7 @@
 [ZBX-18462] fixed inconsistent auto-registration behaviour for hosts without metadata on Oracle DB compared to other databases when using Zabbix proxy (https://support.zabbix.com/browse/ZBX-18462)
 [ZBX-18464] fixed javascript Uncaught TypeError when clicking on disabled multiselect item (https://support.zabbix.com/browse/ZBX-18464)
 [ZBX-18487] increased trapper verbosity for DebugLevel=4 when rejecting sender data (https://support.zabbix.com/browse/ZBX-18487)
+[ZBX-18553] increased ssh.run[] item data limit to 512KB for pre-processing, data storage limit still remains at 64KB (https://support.zabbix.com/browse/ZBX-18553)
 [ZBX-18564] moved taskid calculation to transaction when creating remote command task (https://support.zabbix.com/browse/ZBX-18564)
 [ZBX-18650] fixed logic for processing LLD rule duplicates after reconnecting to proxy (https://support.zabbix.com/browse/ZBX-18650)
 [ZBX-18688] fixed schema name didnt show when available only postgresql (https://support.zabbix.com/browse/ZBX-18688)
