@@ -502,7 +502,7 @@ static int	parse_query_fields(const DC_ITEM *item, char **query_fields)
  ******************************************************************************/
 static int	get_values(unsigned char poller_type, int *nextcheck)
 {
-	DC_ITEM			items[MAX_POLLER_ITEMS];
+	DC_ITEM			item ,*items;
 	AGENT_RESULT		results[MAX_POLLER_ITEMS];
 	int			errcodes[MAX_POLLER_ITEMS];
 	zbx_timespec_t		timespec;
@@ -512,7 +512,8 @@ static int	get_values(unsigned char poller_type, int *nextcheck)
 
 	zabbix_log(LOG_LEVEL_DEBUG, "In %s()", __func__);
 
-	num = DCconfig_get_poller_items(poller_type, items);
+	items = &item;
+	num = DCconfig_get_poller_items(poller_type, &items);
 
 	if (0 == num)
 	{
@@ -872,6 +873,8 @@ static int	get_values(unsigned char poller_type, int *nextcheck)
 	zbx_vector_ptr_destroy(&add_results);
 
 	DCconfig_clean_items(items, NULL, num);
+	if (items != &item)
+		zbx_free(items);
 exit:
 	zabbix_log(LOG_LEVEL_DEBUG, "End of %s():%d", __func__, num);
 

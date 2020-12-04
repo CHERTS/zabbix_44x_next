@@ -71,6 +71,7 @@
 [ZBX-18553] increased ssh.run[] item data limit to 512KB for pre-processing, data storage limit still remains at 64KB (https://support.zabbix.com/browse/ZBX-18553)
 [ZBX-18564] moved taskid calculation to transaction when creating remote command task (https://support.zabbix.com/browse/ZBX-18564)
 [ZBX-18650] fixed logic for processing LLD rule duplicates after reconnecting to proxy (https://support.zabbix.com/browse/ZBX-18650)
+[ZBX-18662] improved pollers, unreachable pollers, Java pollers and pingers to use less memory (https://support.zabbix.com/browse/ZBX-18662)
 [ZBX-18688] fixed schema name didnt show when available only postgresql (https://support.zabbix.com/browse/ZBX-18688)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
