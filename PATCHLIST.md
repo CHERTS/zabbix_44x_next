@@ -73,6 +73,7 @@
 [ZBX-18650] fixed logic for processing LLD rule duplicates after reconnecting to proxy (https://support.zabbix.com/browse/ZBX-18650)
 [ZBX-18662] improved pollers, unreachable pollers, Java pollers and pingers to use less memory (https://support.zabbix.com/browse/ZBX-18662)
 [ZBX-18688] fixed schema name didnt show when available only postgresql (https://support.zabbix.com/browse/ZBX-18688)
+[ZBX-18694] fixed crash when PSK connection is configured but PSK or PSK identity is empty (https://support.zabbix.com/browse/ZBX-18694)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
