@@ -404,7 +404,12 @@ class CSetupWizard extends CForm {
 			return false;
 		}
 
-		$DB['SERVER'] = $this->getConfig('DB_SERVER', 'localhost');
+		if (!zbx_empty($this->getConfig('DB_DATABASE', '')) && $DB['TYPE'] == ZBX_DB_ORACLE) {
+			$DB['SERVER'] = $this->getConfig('DB_SERVER', '');
+		}
+		else {
+			$DB['SERVER'] = $this->getConfig('DB_SERVER', 'localhost');
+		}
 		$DB['PORT'] = $this->getConfig('DB_PORT', '0');
 		$DB['DATABASE'] = $this->getConfig('DB_DATABASE', 'zabbix');
 		$DB['USER'] = $this->getConfig('DB_USER', 'root');
@@ -470,7 +475,12 @@ class CSetupWizard extends CForm {
 		}
 		elseif ($this->getStep() == 2) {
 			$this->setConfig('DB_TYPE', getRequest('type', $this->getConfig('DB_TYPE')));
-			$this->setConfig('DB_SERVER', getRequest('server', $this->getConfig('DB_SERVER', 'localhost')));
+			if (getRequest('type', $this->getConfig('DB_TYPE')) == 'ORACLE') {
+				$this->setConfig('DB_SERVER', getRequest('server', $this->getConfig('DB_SERVER', '')));
+			}
+			else {
+				$this->setConfig('DB_SERVER', getRequest('server', $this->getConfig('DB_SERVER', 'localhost')));
+			}
 			$this->setConfig('DB_PORT', getRequest('port', $this->getConfig('DB_PORT', '0')));
 			$this->setConfig('DB_DATABASE', getRequest('database', $this->getConfig('DB_DATABASE', 'zabbix')));
 			$this->setConfig('DB_USER', getRequest('user', $this->getConfig('DB_USER', 'root')));

@@ -8,7 +8,8 @@ A......... [ZBX-18219] fixed custom multiplier preprocessing step validation to 
 ........S. [ZBX-18423] fixed inconsistent macro expansion with Oracle DB compared with other databases (viktors)
 .......PS. [ZBX-18553] increased ssh.run[] item data limit to 512KB for pre-processing, data storage limit still remains at 64KB (viktors)
 ..F....... [ZBX-18688] fixed schema name didnt show when available only postgresql (rlataria)
-..F....... [ZBXNEXT-2480] Fixed autocomplete in global macros
+..F....... [ZBXNEXT-435] Fixed using TNSNAMES connect support for Oracle (mgrigorev)
+..F....... [ZBXNEXT-2480] Fixed autocomplete in global macros (mgrigorev)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.14 (unofficial)
