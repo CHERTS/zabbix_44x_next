@@ -93,6 +93,7 @@
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
 [ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (https://support.zabbix.com/browse/ZBXNEXT-6139)
 [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (https://support.zabbix.com/browse/ZBXNEXT-6247)
+[ZBXNEXT-6307] added ability to read properties from a file (https://support.zabbix.com/browse/ZBXNEXT-6307)
 
 # List of my patches (English)
 
