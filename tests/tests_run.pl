@@ -114,7 +114,7 @@ die("Bad command-line arguments") unless(GetOptions((
 		'suite=s' => \$target_suite
 		)));
 
-my $iter = path(".")->iterator({
+my $iter = path(dirname(Cwd::abs_path(__FILE__)))->iterator({
 	'recurse'		=> 1,
 	'follow_symlinks'	=> 0
 });

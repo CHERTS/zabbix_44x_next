@@ -174,4 +174,4 @@ clean: clean-recursive
 	cd tests && $(MAKE) clean
 endif
 
-.PHONY: test tests
+.PHONY: test tests clean
