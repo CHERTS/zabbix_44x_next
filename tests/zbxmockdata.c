@@ -920,3 +920,74 @@ zbx_mock_error_t	zbx_mock_float(zbx_mock_handle_t object, double *value)
 
 	return res;
 }
+
+/******************************************************************************
+ *                                                                            *
+ * Function: zbx_mock_string_ex                                               *
+ *                                                                            *
+ * Purpose: return string object contents                                     *
+ *                                                                            *
+ * Comments: The object can be either scalar value or a mapping. In the first *
+ *           case the scalar value is returned. In the other case the string  *
+ *           is assembled from the object properties:                         *
+ *             <header> + <page> * <pages> + <footer>                         *
+ *           (<header>, <page>, <pages>, <footer> properties are optional and *
+ *           by default are empty except pages, which is 1 by default).       *
+ *                                                                            *
+ ******************************************************************************/
+zbx_mock_error_t	zbx_mock_string_ex(zbx_mock_handle_t hobject, const char **value)
+{
+	zbx_mock_error_t	err;
+	zbx_mock_handle_t	handle;
+	char			*tmp = NULL;
+	size_t			tmp_alloc = 0, tmp_offset = 0;
+
+	/* if the object is string - return the value */
+	if (ZBX_MOCK_SUCCESS == (err = zbx_mock_string(hobject, value)))
+		return ZBX_MOCK_SUCCESS;
+
+	if (ZBX_MOCK_SUCCESS == zbx_mock_object_member(hobject, "header", &handle))
+	{
+		const char	*header;
+
+		if (ZBX_MOCK_SUCCESS != (err = zbx_mock_string(handle, &header)))
+			fail_msg("Cannot read header property: %s", zbx_mock_error_string(err));
+		zbx_strcpy_alloc(&tmp, &tmp_alloc, &tmp_offset, header);
+	}
+
+	if (ZBX_MOCK_SUCCESS == zbx_mock_object_member(hobject, "page", &handle))
+	{
+		const char	*page;
+		int		i, pages_num = 1;
+
+		if (ZBX_MOCK_SUCCESS != (err = zbx_mock_string(handle, &page)))
+			fail_msg("Cannot read page property: %s", zbx_mock_error_string(err));
+
+		if (ZBX_MOCK_SUCCESS == zbx_mock_object_member(hobject, "pages", &handle))
+		{
+			const char	*pages;
+
+			if (ZBX_MOCK_SUCCESS != (err = zbx_mock_string(handle, &pages)))
+				fail_msg("Cannot read pages property: %s", zbx_mock_error_string(err));
+			pages_num = atoi(pages);
+		}
+
+		for (i = 0; i < pages_num; i++)
+			zbx_strcpy_alloc(&tmp, &tmp_alloc, &tmp_offset, page);
+	}
+
+	if (ZBX_MOCK_SUCCESS == zbx_mock_object_member(hobject, "footer", &handle))
+	{
+		const char	*footer;
+
+		if (ZBX_MOCK_SUCCESS != (err = zbx_mock_string(handle, &footer)))
+			fail_msg("Cannot read footer property: %s", zbx_mock_error_string(err));
+		zbx_strcpy_alloc(&tmp, &tmp_alloc, &tmp_offset, footer);
+	}
+
+	zbx_vector_str_append(&string_pool, tmp);
+	*value = tmp;
+
+	return ZBX_MOCK_SUCCESS;
+}
+
