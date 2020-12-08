@@ -9,4 +9,3 @@ libvaluecachemock_a_CFLAGS = \
 	-I@top_srcdir@/src/libs/zbxdbcache \
 	-I@top_srcdir@/src/libs/zbxhistory \
 	-I@top_srcdir@/tests
-

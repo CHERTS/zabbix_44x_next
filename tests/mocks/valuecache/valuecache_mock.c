@@ -733,8 +733,6 @@ void	zbx_vcmock_set_cache_size(zbx_mock_handle_t hitem, const char *key)
 			fail_msg("Cannot read \"%s\" parameter", key);
 		else
 			zbx_vcmock_set_available_mem(cache_size);
-
-		zbx_vcmock_set_available_mem(cache_size);
 	}
 }
 
@@ -800,8 +798,8 @@ time_t	__wrap_time(time_t *ptr)
 }
 
 /*
- *  * zbx_timespec() emulation
- *   */
+ * zbx_timespec() emulation
+ */
 void	__wrap_zbx_timespec(zbx_timespec_t *ts)
 {
 	*ts = vcmock_ts;
@@ -837,4 +835,3 @@ zbx_timespec_t	zbx_vcmock_get_ts(void)
 {
 	return vcmock_ts;
 }
-
