@@ -6,6 +6,7 @@ New features:
 
 Bug fixes:
 ........S. [ZBX-17703] fixed problem negative duration for timed triggers in case of database disconnect (asestakovs)
+........S. [ZBX-18116] fixed identical tags in webhook (arimdjonoks)
 A......... [ZBX-18219] fixed custom multiplier preprocessing step validation to accept a string with macros (agriscenko)
 ........S. [ZBX-18423] fixed inconsistent macro expansion with Oracle DB compared with other databases (viktors)
 .......PS. [ZBX-18553] increased ssh.run[] item data limit to 512KB for pre-processing, data storage limit still remains at 64KB (viktors)
