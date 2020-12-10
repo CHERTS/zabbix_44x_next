@@ -94,7 +94,7 @@ class ConfigurationManager
 							props = new Properties(System.getProperties());
 
 							props.load(inStream);
-			
+
 							System.setProperties(props);
 						}
 						catch (IOException e)
@@ -110,7 +110,7 @@ class ConfigurationManager
 							try { if (null != inStream) inStream.close(); } catch (Exception e) { }
 						}
 					}
-				})
+				}),
 	};
 
 	static void parseConfiguration()
