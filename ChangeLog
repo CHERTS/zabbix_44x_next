@@ -3,6 +3,7 @@ Changes for 4.4.15rc1 (unofficial)
 
 New features:
 .....J.... [ZBXNEXT-6307] added ability to read properties from a file (vso)
+...G...... [ZBXNEXT-6345] added substitution of SID to account name and domain name in eventlog message (vso)
 
 Bug fixes:
 ........S. [ZBX-17703] fixed problem negative duration for timed triggers in case of database disconnect (asestakovs)

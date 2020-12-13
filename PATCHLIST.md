@@ -95,6 +95,7 @@
 [ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (https://support.zabbix.com/browse/ZBXNEXT-6139)
 [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (https://support.zabbix.com/browse/ZBXNEXT-6247)
 [ZBXNEXT-6307] added ability to read properties from a file (https://support.zabbix.com/browse/ZBXNEXT-6307)
+[ZBXNEXT-6345] added substitution of SID to account name and domain name in eventlog message (https://support.zabbix.com/browse/ZBXNEXT-6345)
 
 # List of my patches (English)
 
