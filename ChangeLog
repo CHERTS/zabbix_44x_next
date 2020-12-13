@@ -10,6 +10,7 @@ Bug fixes:
 ........S. [ZBX-18116] fixed identical tags in webhook (arimdjonoks)
 A......... [ZBX-18219] fixed custom multiplier preprocessing step validation to accept a string with macros (agriscenko)
 ........S. [ZBX-18423] fixed inconsistent macro expansion with Oracle DB compared with other databases (viktors)
+..F....... [ZBX-18486] fixed screen inheritance from a linked template in the full clone case (ozdancuka)
 .......PS. [ZBX-18553] increased ssh.run[] item data limit to 512KB for pre-processing, data storage limit still remains at 64KB (viktors)
 ........S. [ZBX-18660] fixed SNMP index returning as a number instead of string if there is a backslash (arimdjonoks)
 .......PS. [ZBX-18662] improved pollers, unreachable pollers, Java pollers and pingers to use less memory (vso)
