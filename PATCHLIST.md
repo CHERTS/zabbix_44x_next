@@ -83,6 +83,7 @@
 [ZBX-18736] added missing idle statistics from lld manager process title (https://support.zabbix.com/browse/ZBX-18736)
 [ZBX-18755] fixed possibility of out of memory error when replacing string in mail, calculated checks, actions and when linking template (https://support.zabbix.com/browse/ZBX-18755)
 [ZBX-18761] fixed possible heap overflow issues in IPC commonications when deserializing huge text values (https://support.zabbix.com/browse/ZBX-18761)
+[ZBX-18784] fixed memory leak when handling vmware events (https://support.zabbix.com/browse/ZBX-18784)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
