@@ -4,6 +4,7 @@ New features:
 
 Bug fixes:
 ...G...... [ZBX-18398] made system.swap.size item unsupported for free,pfree,used,pused types on systems without swap
+........S. [ZBX-18612] added error message for when real-time data export file become inaccessible (viktors)
 ..F....... [ZBX-18625] fixed host level tags were not inherited in Trigger -> Tags configuration form (ozdancuka)
 .......PS. [ZBX-18784] fixed memory leak when handling vmware events (MVekslers)
 

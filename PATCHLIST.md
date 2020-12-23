@@ -74,6 +74,7 @@
 [ZBX-18487] increased trapper verbosity for DebugLevel=4 when rejecting sender data (https://support.zabbix.com/browse/ZBX-18487)
 [ZBX-18553] increased ssh.run[] item data limit to 512KB for pre-processing, data storage limit still remains at 64KB (https://support.zabbix.com/browse/ZBX-18553)
 [ZBX-18564] moved taskid calculation to transaction when creating remote command task (https://support.zabbix.com/browse/ZBX-18564)
+[ZBX-18612] added error message for when real-time data export file become inaccessible (https://support.zabbix.com/browse/ZBX-18612)
 [ZBX-18625] fixed host level tags were not inherited in Trigger -> Tags configuration form (https://support.zabbix.com/browse/ZBX-18625)
 [ZBX-18650] fixed logic for processing LLD rule duplicates after reconnecting to proxy (https://support.zabbix.com/browse/ZBX-18650)
 [ZBX-18660] fixed SNMP index returning as a number instead of string if there is a backslash (https://support.zabbix.com/browse/ZBX-18660)
