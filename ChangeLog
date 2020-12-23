@@ -3,6 +3,7 @@ Changes for 4.4.16rc1 (unofficial)
 New features:
 
 Bug fixes:
+...G...... [ZBX-18398] made system.swap.size item unsupported for free,pfree,used,pused types on systems without swap
 ..F....... [ZBX-18625] fixed host level tags were not inherited in Trigger -> Tags configuration form (ozdancuka)
 
 --------------------------------------------------------------------------------

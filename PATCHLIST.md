@@ -62,6 +62,7 @@
 [ZBX-18364] fixed fixed inconsistency with autoregistration behaviour for hosts without metadata on Oracle compared to other databases (https://support.zabbix.com/browse/ZBX-18364)
 [ZBX-18365] added Fping 5.0 support to Zabbix (https://support.zabbix.com/browse/ZBX-18365)
 [ZBX-18366] fixed agent reporting absence of 'Processor Information' counter on old Windows systems (https://support.zabbix.com/browse/ZBX-18366)
+[ZBX-18398] made system.swap.size item unsupported for free,pfree,used,pused types on systems without swap (https://support.zabbix.com/browse/ZBX-18398)
 [ZBX-18400] fixed http(s) requests from JavaScript to use SourceIP parameter in connections (https://support.zabbix.com/browse/ZBX-18400)
 [ZBX-18407] fixed dependent items not working if it's master item is calculated and host is monitored by Zabbix proxy (https://support.zabbix.com/browse/ZBX-18407)
 [ZBX-18411] set maxQueryMetrics default values for vcenter depending on its version (https://support.zabbix.com/browse/ZBX-18411)
