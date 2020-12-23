@@ -3,6 +3,7 @@ Changes for 4.4.16rc1 (unofficial)
 New features:
 
 Bug fixes:
+..F....... [ZBX-18625] fixed host level tags were not inherited in Trigger -> Tags configuration form (ozdancuka)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.15 (unofficial)
