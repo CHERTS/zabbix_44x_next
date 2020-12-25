@@ -788,7 +788,7 @@ class CHostInterface extends CApiService {
 		$db_interfaces = $interfaces;
 
 		foreach ($interfaceIds as $interfaceId) {
-			unset($dbInterfaces[$interfaceId]);
+			unset($interfaces[$interfaceId]);
 		}
 
 		$this->checkMainInterfaces($interfaces, $db_interfaces);
