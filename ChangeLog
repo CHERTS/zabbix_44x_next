@@ -1,6 +1,7 @@
 Changes for 4.4.16rc1 (unofficial)
 
 New features:
+..F....... [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (talbergs)
 
 Bug fixes:
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
