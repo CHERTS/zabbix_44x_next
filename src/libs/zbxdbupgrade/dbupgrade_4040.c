@@ -143,6 +143,30 @@ static int	DBpatch_4040003(void)
 	return ret;
 }
 
+static int  DBpatch_4040004(void)
+{
+#if defined(HAVE_IBM_DB2) || defined(HAVE_POSTGRESQL)
+    const char *cast_value_str = "bigint";
+#elif defined(HAVE_MYSQL)
+    const char *cast_value_str = "unsigned";
+#elif defined(HAVE_ORACLE)
+    const char *cast_value_str = "number(20)";
+#endif
+
+    if (ZBX_DB_OK > DBexecute(
+            "update profiles"
+            " set value_id=CAST(value_str as %s),"
+                " value_str='',"
+                " type=1"   /* PROFILE_TYPE_ID */
+            " where type=3" /* PROFILE_TYPE_STR */
+                " and (idx='web.latest.filter.groupids' or idx='web.latest.filter.hostids')", cast_value_str))
+    {
+        return FAIL;
+    }
+
+    return SUCCEED;
+}
+
 #endif
 
 DBPATCH_START(4040)
@@ -153,5 +177,6 @@ DBPATCH_ADD(4040000, 0, 1)
 DBPATCH_ADD(4040001, 0, 0)
 DBPATCH_ADD(4040002, 0, 0)
 DBPATCH_ADD(4040003, 0, 0)
+DBPATCH_ADD(4040004, 0, 0)
 
 DBPATCH_END()

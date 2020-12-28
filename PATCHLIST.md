@@ -1,7 +1,8 @@
 # List of backported patches from version 5.0/5.2
 
 ~~~~
-[ZBX-5842] fixed ability to detect username existence from unsuccessful login message (https://support.zabbix.com/browse/ZBX-ZBX-5842)
+[ZBX-402] fixed latest data reloading to updating asynchronously (https://support.zabbix.com/browse/ZBX-402)
+[ZBX-5842] fixed ability to detect username existence from unsuccessful login message (https://support.zabbix.com/browse/ZBX-5842)
 [ZBX-8081] fixed 'cmdline' parameter truncation on Solaris 11.3 and later (https://support.zabbix.com/browse/ZBX-8081)
 [ZBX-13383] improved performance of the trigger and trigger prototype inheritance (https://support.zabbix.com/browse/ZBX-13383)
 [ZBX-13789] improved performance of "Problems" widget with MySQL backend by removing DISTINCT modifier from SQL statements with tables joined by primary keys (https://support.zabbix.com/browse/ZBX-13789)

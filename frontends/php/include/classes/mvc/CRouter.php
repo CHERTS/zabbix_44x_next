@@ -83,6 +83,8 @@ class CRouter {
 		'favourite.create'				=> ['CControllerFavouriteCreate',					'layout.javascript',	null],
 		'favourite.delete'				=> ['CControllerFavouriteDelete',					'layout.javascript',	null],
 		'hostmacros.list'				=> ['CControllerHostMacrosList',					'layout.json',			'hostmacros.list'],
+		'latest.view'					=> ['CControllerLatestView',						'layout.htmlpage',		'monitoring.latest.view'],
+		'latest.view.refresh'			=> ['CControllerLatestViewRefresh',					'layout.json',			'monitoring.latest.view.refresh'],
 		'map.view'						=> ['CControllerMapView',							'layout.htmlpage',		'monitoring.map.view'],
 		'mediatype.create'				=> ['CControllerMediatypeCreate',					null,					null],
 		'mediatype.delete'				=> ['CControllerMediatypeDelete',					null,					null],

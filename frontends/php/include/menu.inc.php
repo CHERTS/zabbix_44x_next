@@ -64,7 +64,9 @@ function zbx_construct_menu(&$main_menu, &$sub_menus, array &$page, $action = nu
 					'sub_pages' => ['httpdetails.php']
 				],
 				[
-					'url' => 'latest.php',
+					'url' => 'zabbix.php',
+					'action' => 'latest.view',
+					'active_if' => ['latest.view'],
 					'label' => _('Latest data'),
 					'sub_pages' => ['history.php', 'chart.php']
 				],

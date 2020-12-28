@@ -4,6 +4,7 @@ New features:
 ..F....... [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (talbergs)
 
 Bug fixes:
+..F....... [ZBX-402] fixed latest data reloading to updating asynchronously (averza)
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
 ...G...... [ZBX-18398] made system.swap.size item unsupported for free,pfree,used,pused types on systems without swap
 ........S. [ZBX-18612] added error message for when real-time data export file become inaccessible (viktors)

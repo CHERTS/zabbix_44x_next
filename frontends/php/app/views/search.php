@@ -100,12 +100,17 @@ foreach ($data['hosts'] as $hostid => $host) {
 		$name,
 		make_decoration($interface['ip'], $data['search']),
 		make_decoration($interface['dns'], $data['search']),
-		new CLink(_('Latest data'), 'latest.php?filter_set=1&hostids[]='.$hostid),
+		new CLink(_('Latest data'),
+			(new CUrl('zabbix.php'))
+				->setArgument('action', 'latest.view')
+				->setArgument('filter_hostids[]', $hostid)
+				->setArgument('filter_set', '1')
+		),
 		new CLink(_('Problems'),
-		(new CUrl('zabbix.php'))
-			->setArgument('action', 'problem.view')
-			->setArgument('filter_hostids[]', $hostid)
-			->setArgument('filter_set', '1')
+			(new CUrl('zabbix.php'))
+				->setArgument('action', 'problem.view')
+				->setArgument('filter_hostids[]', $hostid)
+				->setArgument('filter_set', '1')
 		),
 		new CLink(_('Graphs'), 'charts.php?'.$link),
 		new CLink(_('Screens'), 'host_screen.php?hostid='.$hostid),
