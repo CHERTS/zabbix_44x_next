@@ -13,6 +13,7 @@
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
 [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (https://support.zabbix.com/browse/ZBX-17493)
+[ZBX-17595] fixed latest data all applications expansion with every refresh (https://support.zabbix.com/browse/ZBX-17595)
 [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (https://support.zabbix.com/browse/ZBX-17624)
 [ZBX-17703] fixed problem negative duration for timed triggers in case of database disconnect (https://support.zabbix.com/browse/ZBX-17703)
 [ZBX-17720] exclude disabled items from preprocessing configuration sync (https://support.zabbix.com/browse/ZBX-17720)
