@@ -107,6 +107,7 @@
 [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (https://support.zabbix.com/browse/ZBXNEXT-6247)
 [ZBXNEXT-6307] added ability to read properties from a file (https://support.zabbix.com/browse/ZBXNEXT-6307)
 [ZBXNEXT-6345] added substitution of SID to account name and domain name in eventlog message (https://support.zabbix.com/browse/ZBXNEXT-6345)
+[ZBXNEXT-6380] added new key vmware.cl.perfcounter (https://support.zabbix.com/browse/ZBXNEXT-6380)
 
 # List of my patches (English)
 

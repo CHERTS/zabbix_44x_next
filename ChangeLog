@@ -2,6 +2,7 @@ Changes for 4.4.16rc1 (unofficial)
 
 New features:
 ..F....... [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (talbergs)
+.......PS. [ZBXNEXT-6380] added new key vmware.cl.perfcounter
 
 Bug fixes:
 ..F....... [ZBX-402] fixed latest data reloading to updating asynchronously (averza)
