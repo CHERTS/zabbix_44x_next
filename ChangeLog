@@ -6,6 +6,7 @@ New features:
 
 Bug fixes:
 ..F....... [ZBX-402] fixed latest data reloading to updating asynchronously (averza)
+..F....... [ZBX-17222] fixed unlimited data selection in Latest data view (averza)
 ..F....... [ZBX-17595] fixed latest data all applications expansion with every refresh (vasilijs)
 ..F....... [ZBX-18031] fixed missing "loading" state in Monitoring → Latest data (talbergs)
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)

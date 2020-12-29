@@ -10,6 +10,7 @@
 [ZBX-15904] added check of required cache size for vmware event messages (https://support.zabbix.com/browse/ZBX-15904)
 [ZBX-15927] removed problem calculation for dependent triggers when master trigger is in problem state (https://support.zabbix.com/browse/ZBX-15927)
 [ZBX-17178] fixed multi-line value truncation in snmp lld (https://support.zabbix.com/browse/ZBX-17178)
+[ZBX-17222] fixed unlimited data selection in Latest data view (https://support.zabbix.com/browse/ZBX-17222)
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
 [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (https://support.zabbix.com/browse/ZBX-17493)
