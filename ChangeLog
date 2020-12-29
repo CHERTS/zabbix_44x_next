@@ -2,6 +2,7 @@ Changes for 4.4.16rc1 (unofficial)
 
 New features:
 ..F....... [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (talbergs)
+A.F.I..... [ZBXNEXT-5538] moved Adminitration->User groups pages to MVC framework (Sasha, talbergs)
 .......PS. [ZBXNEXT-6380] added new key vmware.cl.perfcounter
 
 Bug fixes:
