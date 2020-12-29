@@ -32,6 +32,7 @@
 [ZBX-18014] fixed memory leak when action message does not have to be sent (https://support.zabbix.com/browse/ZBX-18014)
 [ZBX-18024] added ODBC empty query check (https://support.zabbix.com/browse/ZBX-18024)
 [ZBX-18029] fixed cpu counter wraparound handling on Solaris (https://support.zabbix.com/browse/ZBX-18029)
+[ZBX-18031] fixed missing "loading" state in Monitoring → Latest data (https://support.zabbix.com/browse/ZBX-18031)
 [ZBX-18046] imporved error message generation performance of user macro and item key parser (https://support.zabbix.com/browse/ZBX-18046)
 [ZBX-18050] removed proxy name from host breadcrumbs (https://support.zabbix.com/browse/ZBX-18050)
 [ZBX-18058] updated the list of item keys and their descriptions (https://support.zabbix.com/browse/ZBX-18058)

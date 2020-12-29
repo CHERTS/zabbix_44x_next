@@ -780,6 +780,12 @@ output {
 	}
 }
 
+form {
+	&.is-loading {
+		position: relative;
+	}
+}
+
 // Tables
 .list-table {
 	width: 100%;
