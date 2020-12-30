@@ -167,7 +167,12 @@ foreach ($data['groups'] as $groupid => $group) {
 
 	$table->addRow([
 		$group['editable'] ? new CLink($caption, 'hostgroups.php?form=update&'.$link) : new CSpan($caption),
-		new CLink(_('Latest data'), 'latest.php?filter_set=1&groupids[]='.$groupid),
+		new CLink(_('Latest data'),
+			(new CUrl('zabbix.php'))
+				->setArgument('action', 'latest.view')
+				->setArgument('filter_groupids[]', $groupid)
+				->setArgument('filter_set', '1')
+		),
 		new CLink(_('Problems'), (new CUrl('zabbix.php'))
 			->setArgument('action', 'problem.view')
 			->setArgument('filter_groupids[]', $groupid)
