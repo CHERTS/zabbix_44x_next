@@ -28,9 +28,9 @@ yum install -y MariaDB-client MariaDB-devel MariaDB-shared
 ### 2. Download and unzip the latest version of the source code:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.11/zabbix-4.4.11.tar.gz
-tar -zxf zabbix-4.4.11.tar.gz
-cd zabbix-4.4.11
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.15/zabbix-4.4.15.tar.gz
+tar -zxf zabbix-4.4.15.tar.gz
+cd zabbix-4.4.15
 ~~~~
 
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
@@ -44,22 +44,22 @@ make gettext
 ### 4. After successful build, in step 3 you can use zabbix binaries, copy them to the current directory:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.11
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.11
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.11
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.11
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.15
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.15
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.15
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.15
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.15
 ~~~~
 
 Check for the presence of binary files:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.11
--rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.11
--rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
--rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
--rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.15
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.15
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.15
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.15
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.15
 ~~~~
 
 Congratulations! Now you can stop your zabbix components version 4.4.x and replace them with this build.
@@ -83,9 +83,9 @@ yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient
 ### 2. Download and unzip the latest version of the source code:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.11/zabbix-4.4.11.tar.gz
-tar -zxf zabbix-4.4.11.tar.gz
-cd zabbix-4.4.11
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.15/zabbix-4.4.15.tar.gz
+tar -zxf zabbix-4.4.15.tar.gz
+cd zabbix-4.4.15
 ~~~~
 
 ### 3. Build all Zabbix components with Oracle 19c support:
@@ -99,25 +99,25 @@ make gettext
 ### 4. After successful build, in step 3 you can use zabbix binaries, copy them to the current directory:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_oracle_v4.4.11
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_oracle_v4.4.11
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.11
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.11
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
+cp src/zabbix_server/zabbix_server zabbix_server_oracle_v4.4.15
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_oracle_v4.4.15
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.15
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.15
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.15
 ~~~~
 
 Check for the presence of binary files:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root 1894312 Aug 10 16:02 zabbix_agentd_v4.4.11
--rwxr-xr-x  1 root root  629984 Aug 10 16:02 zabbix_get_v4.4.11
--rwxr-xr-x  1 root root 8351184 Aug 10 16:02 zabbix_proxy_oracle_v4.4.11
--rwxr-xr-x  1 root root  963680 Aug 10 16:02 zabbix_sender_v4.4.11
--rwxr-xr-x  1 root root 9835920 Aug 10 16:02 zabbix_server_oracle_v4.4.11
+-rwxr-xr-x  1 root root 1894312 Aug 10 16:02 zabbix_agentd_v4.4.15
+-rwxr-xr-x  1 root root  629984 Aug 10 16:02 zabbix_get_v4.4.15
+-rwxr-xr-x  1 root root 8351184 Aug 10 16:02 zabbix_proxy_oracle_v4.4.15
+-rwxr-xr-x  1 root root  963680 Aug 10 16:02 zabbix_sender_v4.4.15
+-rwxr-xr-x  1 root root 9835920 Aug 10 16:02 zabbix_server_oracle_v4.4.15
 ~~~~
 
-Congratulations! Now you can stop your zabbix components version 4.4.11 and replace them with this build.
+Congratulations! Now you can stop your zabbix components version 4.4.15 and replace them with this build.
 
 # Red Hat Enterprise Linux 8
 ## Build on Red Hat Enterprise Linux 8 with MySQL (MariaDB) support
@@ -136,9 +136,9 @@ dnf install -y libssh2-devel OpenIPMI-devel
 ### 2. Download and unzip the latest version of the source code:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.11/zabbix-4.4.11.tar.gz
-tar -zxf zabbix-4.4.11.tar.gz
-cd zabbix-4.4.11
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.15/zabbix-4.4.15.tar.gz
+tar -zxf zabbix-4.4.15.tar.gz
+cd zabbix-4.4.15
 ~~~~
 
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
@@ -152,22 +152,22 @@ make gettext
 ### 4. After successful build, in step 3 you can use zabbix binaries, copy them to the current directory:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.11
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.11
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.11
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.11
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.15
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.15
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.15
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.15
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.15
 ~~~~
 
 Check for the presence of binary files:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.11
--rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.11
--rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
--rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
--rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.15
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.15
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.15
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.15
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.15
 ~~~~
 
 Congratulations! Now you can stop your zabbix components version 4.4.x and replace them with this build.
@@ -185,9 +185,9 @@ sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jd
 ### 2. Download and unzip the latest version of the source code:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.11/zabbix-4.4.11.tar.gz
-tar -zxf zabbix-4.4.11.tar.gz
-cd zabbix-4.4.11
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.15/zabbix-4.4.15.tar.gz
+tar -zxf zabbix-4.4.15.tar.gz
+cd zabbix-4.4.15
 ~~~~
 
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
@@ -201,22 +201,22 @@ make gettext
 ### 4. After successful build, in step 3 you can use zabbix binaries, copy them to the current directory:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.11
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.11
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.11
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.11
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.15
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.15
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.15
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.15
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.15
 ~~~~
 
 Check for the presence of binary files:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.11
--rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.11
--rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
--rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
--rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.15
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.15
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.15
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.15
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.15
 ~~~~
 
 Congratulations! Now you can stop your zabbix components version 4.4.x and replace them with this build.
@@ -234,9 +234,9 @@ sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jd
 ### 2. Download and unzip the latest version of the source code:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.11/zabbix-4.4.11.tar.gz
-tar -zxf zabbix-4.4.11.tar.gz
-cd zabbix-4.4.11
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.15/zabbix-4.4.15.tar.gz
+tar -zxf zabbix-4.4.15.tar.gz
+cd zabbix-4.4.15
 ~~~~
 
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
@@ -250,22 +250,22 @@ make gettext
 ### 4. After successful build, in step 3 you can use zabbix binaries, copy them to the current directory:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.11
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.11
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.11
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.11
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.11
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.15
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.15
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.15
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.15
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.15
 ~~~~
 
 Check for the presence of binary files:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.11
--rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.11
--rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.11
--rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.11
--rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.11
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.15
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.15
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.15
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.15
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.15
 ~~~~
 
 Congratulations! Now you can stop your zabbix components version 4.4.x and replace them with this build.

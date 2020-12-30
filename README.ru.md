@@ -16,6 +16,8 @@
 
 [Новая установка из пакетов для RedHat/CentOS/OracleLinux](RHELINSTALL.ru.md)
 
+[Новая установка из пакетов для Ubuntu](UBUNTUINSTALL.ru.md)
+
 [Обновление из пакетов для RedHat/CentOS/OracleLinux](RHELUPDATE.ru.md)
 
 [Обновление из пакетов для Ubuntu](UBUNTUUPDATE.ru.md)

@@ -114,7 +114,7 @@ firewall-cmd --reload
 
 ### 4. Create and initial Zabbix database
 
-Run the following on your database host:
+Run the following on your database host::
 ~~~~
 # mysql -uroot -p
 password: *******
@@ -125,7 +125,7 @@ mysql> flush privileges;
 mysql> quit;
 ~~~~
 
-On Zabbix server host import initial schema and data.
+On Zabbix server host import initial schema and data:
 ~~~~
 # zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
@@ -143,7 +143,7 @@ If use Apache web-server:
 
 Edit file /etc/httpd/conf.d/zabbix.conf, uncomment and set the right timezone for you.
 ~~~~
-# php_value date.timezone Europe/Riga
+php_value date.timezone Europe/Riga
 ~~~~
 
 Restart Apache web-server
@@ -153,12 +153,12 @@ systemctl restart httpd
 
 If use Nginx + PHP-FPM:
 
-Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for you.
+Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for you
 ~~~~
-; php_value[date.timezone] = Europe/Riga
+php_value[date.timezone] = Europe/Riga
 ~~~~
 
-Start php-fpm processes and make it start at system boot.
+Start php-fpm processes and make it start at system boot
 ~~~~
 systemctl enable php-fpm
 systemctl start php-fpm
@@ -177,7 +177,7 @@ nginx -t && nginx -s reload
 
 ### 7. Start Zabbix server and agent processes
 
-Start Zabbix server and agent processes and make it start at system boot.
+Start Zabbix server and agent processes and make it start at system boot
 ~~~~
 systemctl enable zabbix-server zabbix-agent
 systemctl restart zabbix-server zabbix-agent
