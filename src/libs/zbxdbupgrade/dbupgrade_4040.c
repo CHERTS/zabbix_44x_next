@@ -146,46 +146,48 @@ static int	DBpatch_4040003(void)
 static int  DBpatch_4040004(void)
 {
 #if defined(HAVE_IBM_DB2) || defined(HAVE_POSTGRESQL)
-    const char *cast_value_str = "bigint";
+	const char *cast_value_str = "bigint";
 #elif defined(HAVE_MYSQL)
-    const char *cast_value_str = "unsigned";
+	const char *cast_value_str = "unsigned";
 #elif defined(HAVE_ORACLE)
-    const char *cast_value_str = "number(20)";
+	const char *cast_value_str = "number(20)";
 #endif
 
-    if (ZBX_DB_OK > DBexecute(
-            "update profiles"
-            " set value_id=CAST(value_str as %s),"
-                " value_str='',"
-                " type=1"   /* PROFILE_TYPE_ID */
-            " where type=3" /* PROFILE_TYPE_STR */
-                " and (idx='web.latest.filter.groupids' or idx='web.latest.filter.hostids')", cast_value_str))
-    {
-        return FAIL;
-    }
+	if (ZBX_DB_OK > DBexecute(
+			"update profiles"
+			" set value_id=CAST(value_str as %s),"
+				" value_str='',"
+				" type=1"	/* PROFILE_TYPE_ID */
+			" where type=3"	/* PROFILE_TYPE_STR */
+				" and (idx='web.latest.filter.groupids' or idx='web.latest.filter.hostids')", cast_value_str))
+	{
+		return FAIL;
+	}
 
-    return SUCCEED;
+	return SUCCEED;
 }
 
 static int  DBpatch_4040005(void)
 {
-    int     i;
-    const char  *values[] = {
-            "web.usergroup.filter_users_status", "web.usergroup.filter_user_status",
-            "web.usergrps.php.sort", "web.usergroup.sort",
-            "web.usergrps.php.sortorder", "web.usergroup.sortorder"
-        };
+	int		i;
+	const char	*values[] = {
+			"web.usergroup.filter_users_status", "web.usergroup.filter_user_status",
+			"web.usergrps.php.sort", "web.usergroup.sort",
+			"web.usergrps.php.sortorder", "web.usergroup.sortorder",
+			"web.latest.php.sort", "web.latest.sort",
+			"web.latest.php.sortorder", "web.latest.sortorder"
+		};
 
-    if (0 == (program_type & ZBX_PROGRAM_TYPE_SERVER))
-        return SUCCEED;
+	if (0 == (program_type & ZBX_PROGRAM_TYPE_SERVER))
+		return SUCCEED;
 
-    for (i = 0; i < (int)ARRSIZE(values); i += 2)
-    {
-        if (ZBX_DB_OK > DBexecute("update profiles set idx='%s' where idx='%s'", values[i + 1], values[i]))
-            return FAIL;
-    }
+	for (i = 0; i < (int)ARRSIZE(values); i += 2)
+	{
+		if (ZBX_DB_OK > DBexecute("update profiles set idx='%s' where idx='%s'", values[i + 1], values[i]))
+			return FAIL;
+	}
 
-    return SUCCEED;
+	return SUCCEED;
 }
 
 #endif
