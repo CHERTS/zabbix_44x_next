@@ -98,6 +98,7 @@
 [ZBXNEXT-3588] improved Zabbix server performance when evaluating trigger, discovery, autoregistration and internal actions (https://support.zabbix.com/browse/ZBXNEXT-3588)
 [ZBXNEXT-3940] added functionality to flush SNMP connections cache (https://support.zabbix.com/browse/ZBXNEXT-3940)
 [ZBXNEXT-4647,ZBXNEXT-6096] added support of digest authentication for HTTP Agent (https://support.zabbix.com/browse/ZBXNEXT-4647)
+[ZBXNEXT-5486] move Administration->General section to MVC (https://support.zabbix.com/browse/ZBXNEXT-5486)
 [ZBXNEXT-5554] Added webhook through proxy (https://support.zabbix.com/browse/ZBXNEXT-5554)
 [ZBXNEXT-5592] dropped IBM DB2 database support for Zabbix server (https://support.zabbix.com/browse/ZBXNEXT-5592)
 [ZBXNEXT-5716] removed mbedTLS support (https://support.zabbix.com/browse/ZBXNEXT-5716)

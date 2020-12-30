@@ -174,6 +174,8 @@ static int  DBpatch_4040005(void)
 			"web.usergroup.filter_users_status", "web.usergroup.filter_user_status",
 			"web.usergrps.php.sort", "web.usergroup.sort",
 			"web.usergrps.php.sortorder", "web.usergroup.sortorder",
+			"web.adm.valuemapping.php.sortorder", "web.valuemap.list.sortorder",
+			"web.adm.valuemapping.php.sort", "web.valuemap.list.sort",
 			"web.latest.php.sort", "web.latest.sort",
 			"web.latest.php.sortorder", "web.latest.sortorder"
 		};

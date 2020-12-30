@@ -56,7 +56,7 @@ class CHtmlUrlValidatorTest extends PHPUnit_Framework_TestCase {
 			['subdir1/subdir2/hosts.php',								[],															true],
 			['192.168.1.1.',											[],															true], // Not a valid IP, but it is accepted as "path".
 			['zabbix.php?a=1',											[],															true],
-			['adm.images.php?a=1',										[],															true],
+			['zabbix.php?action=image.list',										[],															true],
 			['chart_bar.php?a=1&b=2',									[],															true],
 			['mailto:example@example.com',								[],															true],
 			['file://localhost/path',									[],															true],

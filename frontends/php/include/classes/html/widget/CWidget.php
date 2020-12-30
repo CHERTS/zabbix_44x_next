@@ -44,6 +44,12 @@ class CWidget {
 		return $this;
 	}
 
+	public function setTitleSubmenu($title_submenu) {
+		$this->title_submenu = $title_submenu;
+
+		return $this;
+	}
+
 	public function setControls($controls) {
 		zbx_value2array($controls);
 		$this->controls = $controls;
