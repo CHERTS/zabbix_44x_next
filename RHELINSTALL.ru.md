@@ -130,7 +130,7 @@ mysql> quit;
 
 Импортируйте схему и данные:
 ~~~~
-# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
+zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
 
 ### 5. Редактирование конфигурации Zabbix server
@@ -146,7 +146,7 @@ DBPassword=password
 
 а) Отредактируйте файл /etc/httpd/conf.d/zabbix.conf (раскоментируйте параметр отвечающий за временную зону, укажите свою зону)
 ~~~~
-# php_value date.timezone Europe/Riga
+php_value date.timezone Europe/Riga
 ~~~~
 
 б) Переапустите веб-сервер Apache
@@ -158,7 +158,7 @@ systemctl restart httpd
 
 а) Отредактируйте файл /etc/php-fpm.d/zabbix.conf (раскоментируйте параметр отвечающий за временную зону, укажите свою зону)
 ~~~~
-; php_value[date.timezone] = Europe/Riga
+php_value[date.timezone] = Europe/Riga
 ~~~~
 
 б) Запустите php-fpm, выполните
@@ -306,7 +306,7 @@ mysql> quit;
 
 Импортируйте схему и данные:
 ~~~~
-# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
+zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
 
 ### 5. Редактирование конфигурации Zabbix server
@@ -320,7 +320,7 @@ DBPassword=password
 
 Отредактируйте файл /etc/php-fpm.d/zabbix.conf (раскоментируйте параметр отвечающий за временную зону, укажите свою зону)
 ~~~~
-; php_value[date.timezone] = Europe/Riga
+php_value[date.timezone] = Europe/Riga
 ~~~~
 
 Запустите php-fpm, выполните
@@ -333,8 +333,8 @@ systemctl start php-fpm
 
 Запустите процессы сервера и агента, выполните
 ~~~~
-# systemctl enable zabbix-server zabbix-agent
-# systemctl restart zabbix-server zabbix-agent
+systemctl enable zabbix-server zabbix-agent
+systemctl restart zabbix-server zabbix-agent
 ~~~~
 
 ### 8. Настройте веб-интерфейс Zabbix

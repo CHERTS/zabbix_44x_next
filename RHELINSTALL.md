@@ -301,7 +301,7 @@ mysql> quit;
 
 On Zabbix server host import initial schema and data.
 ~~~~
-# zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
+zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
 
 ### 5. Configure the database for Zabbix server
@@ -328,8 +328,8 @@ systemctl start php-fpm
 
 Start Zabbix server and agent processes and make it start at system boot.
 ~~~~
-# systemctl enable zabbix-server zabbix-agent
-# systemctl restart zabbix-server zabbix-agent
+systemctl enable zabbix-server zabbix-agent
+systemctl restart zabbix-server zabbix-agent
 ~~~~
 
 ### 8. Configure Zabbix frontend

@@ -62,7 +62,7 @@ mysql> quit;
 
 Импортируйте схему и данные:
 ~~~~
-# zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -uzabbix -ppassword zabbix
+zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
 
 ### 6. Редактирование конфигурации Zabbix server

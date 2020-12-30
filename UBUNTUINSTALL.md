@@ -62,7 +62,7 @@ mysql> quit;
 
 On Zabbix server host import initial schema and data:
 ~~~~
-# zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -uzabbix -ppassword zabbix
+zcat /usr/share/doc/zabbix-server-mysql/create.sql.gz | mysql -uzabbix -ppassword zabbix
 ~~~~
 
 ### 6. Configure the database for Zabbix server
