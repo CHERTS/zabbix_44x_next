@@ -49,13 +49,15 @@ class CControllerDashboardDelete extends CController {
 
 		$deleted = count($dashboardids);
 
-		$url = (new CUrl('zabbix.php'))
+		$response = new CControllerResponseRedirect((new CUrl('zabbix.php'))
 			->setArgument('action', 'dashboard.list')
-			->setArgument('uncheck', '1');
+			->setArgument('page', CPagerHelper::loadPage('dashboard.list', null))
+		);
 
 		$response = new CControllerResponseRedirect($url->getUrl());
 
 		if ($result) {
+			$response->setFormData(['uncheck' => '1']);
 			$response->setMessageOk(_n('Dashboard deleted', 'Dashboards deleted', $deleted));
 		}
 		else {

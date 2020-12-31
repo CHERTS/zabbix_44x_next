@@ -96,6 +96,11 @@ $form_list->addRow(
 $tab_view = (new CTabView())->addTab('valuemap_tab', _('Value mapping'), $form_list);
 
 // append buttons
+$cancel_button = (new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+	->setArgument('action', 'valuemap.list')
+	->setArgument('page', CPagerHelper::loadPage('valuemap.list', null))
+))->setId('cancel');
+
 if ($data['valuemapid'] != 0) {
 	if ($data['valuemap_count'] == 0) {
 		$confirm_message = _('Delete selected value mapping?');
@@ -117,10 +122,7 @@ if ($data['valuemapid'] != 0) {
 					->setArgument('valuemapids', (array) $data['valuemapid']),
 				$confirm_message
 			))->setId('delete'),
-			(new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
-				->setArgument('action', 'valuemap.list')
-				->getUrl()
-			))->setId('cancel')
+			$cancel_button
 		]
 	));
 }
@@ -128,9 +130,7 @@ else {
 	$tab_view->setFooter(makeFormFooter(
 		new CSubmit('add', _('Add')),
 		[
-			(new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
-				->setArgument('action', 'valuemap.list')
-			))->setId('cancel')
+			$cancel_button
 		]
 	));
 }

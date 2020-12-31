@@ -4,6 +4,7 @@ New features:
 ..F....... [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (talbergs)
 A.F.I..... [ZBXNEXT-5486] move Administration->General section to MVC (talbergs)
 A.F.I..... [ZBXNEXT-5538] moved Adminitration->User groups pages to MVC framework (Sasha, talbergs)
+..F....... [ZBXNEXT-5693] reset page number when applying new filter, changing sort order or re-opening the page (averza)
 .......PS. [ZBXNEXT-6380] added new key vmware.cl.perfcounter
 
 Bug fixes:

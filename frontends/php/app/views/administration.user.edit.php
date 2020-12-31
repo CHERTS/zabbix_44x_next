@@ -446,6 +446,11 @@ if ($data['action'] !== 'user.edit') {
 
 // Append buttons to form.
 if ($data['action'] === 'user.edit') {
+	$cancel_button = (new CRedirectButton(_('Cancel'), (new CUrl('zabbix.php'))
+		->setArgument('action', 'user.list')
+		->setArgument('page', CPagerHelper::loadPage('user.list', null))
+	))->setId('cancel');
+
 	if ($data['userid'] != 0) {
 		$tabs->setFooter(makeFormFooter(
 			(new CSubmitButton(_('Update'), 'action', 'user.update'))->setId('update'),
@@ -456,14 +461,16 @@ if ($data['action'] === 'user.edit') {
 				))
 					->setEnabled(bccomp(CWebUser::$data['userid'], $data['userid']) != 0)
 					->setId('delete'),
-				(new CRedirectButton(_('Cancel'), 'zabbix.php?action=user.list'))->setId('cancel')
+				$cancel_button
 			]
 		));
 	}
 	else {
 		$tabs->setFooter(makeFormFooter(
 			(new CSubmitButton(_('Add'), 'action', 'user.create'))->setId('add'),
-			[(new CRedirectButton(_('Cancel'), 'zabbix.php?action=user.list'))->setId('cancel')]
+			[
+				$cancel_button
+			]
 		));
 	}
 }

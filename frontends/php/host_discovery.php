@@ -976,9 +976,25 @@ else {
 		}
 	}
 
-	// paging
 	$data['discoveries'] = expandItemNamesWithMasterItems($data['discoveries'], 'items');
-	$data['paging'] = getPagingLine($data['discoveries'], $sort_order, new CUrl('host_discovery.php'));
+
+	// pager
+	if (hasRequest('page')) {
+		$page_num = getRequest('page');
+	}
+	elseif (isRequestMethod('get') && !hasRequest('cancel')) {
+		$page_num = 1;
+	}
+	else {
+		$page_num = CPagerHelper::loadPage($page['file']);
+	}
+
+	CPagerHelper::savePage($page['file'], $page_num);
+
+	$data['paging'] = CPagerHelper::paginate($page_num, $data['discoveries'], $sortOrder,
+		(new CUrl('host_discovery.php'))->setArgument('hostid', $data['hostid'])
+	);
+
 	$data['parent_templates'] = getItemParentTemplates($data['discoveries'], ZBX_FLAG_DISCOVERY_RULE);
 
 	// render view

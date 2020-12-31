@@ -101,6 +101,7 @@
 [ZBXNEXT-5486] move Administration->General section to MVC (https://support.zabbix.com/browse/ZBXNEXT-5486)
 [ZBXNEXT-5554] Added webhook through proxy (https://support.zabbix.com/browse/ZBXNEXT-5554)
 [ZBXNEXT-5592] dropped IBM DB2 database support for Zabbix server (https://support.zabbix.com/browse/ZBXNEXT-5592)
+[ZBXNEXT-5693] reset page number when applying new filter, changing sort order or re-opening the page (https://support.zabbix.com/browse/ZBXNEXT-5693)
 [ZBXNEXT-5716] removed mbedTLS support (https://support.zabbix.com/browse/ZBXNEXT-5716)
 [ZBXNEXT-5725] added ability to select specific severities in Monitoring->Problems (https://support.zabbix.com/browse/ZBXNEXT-5725)
 [ZBXNEXT-5879] added filter to Configuration->Templates/Hosts->Discovery rules (https://support.zabbix.com/browse/ZBXNEXT-5879)

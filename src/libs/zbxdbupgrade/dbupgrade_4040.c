@@ -177,7 +177,9 @@ static int  DBpatch_4040005(void)
 			"web.adm.valuemapping.php.sortorder", "web.valuemap.list.sortorder",
 			"web.adm.valuemapping.php.sort", "web.valuemap.list.sort",
 			"web.latest.php.sort", "web.latest.sort",
-			"web.latest.php.sortorder", "web.latest.sortorder"
+			"web.latest.php.sortorder", "web.latest.sortorder",
+			"web.paging.lastpage", "web.pager.entity",
+			"web.paging.page", "web.pager.page"
 		};
 
 	if (0 == (program_type & ZBX_PROGRAM_TYPE_SERVER))

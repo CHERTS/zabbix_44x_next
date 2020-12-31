@@ -241,7 +241,7 @@ jQuery(function($) {
 					delete request_data.error;
 				}
 				else {
-					updateUrlFromToArguments(json.from, json.to);
+					updateUrlArguments(json.from, json.to);
 					$container
 						.find('.time-input-error')
 						.hide();
@@ -273,25 +273,30 @@ jQuery(function($) {
 	}
 
 	/**
-	 * Replaces 'from' and/or 'to' URL arguments with new values in browser history.
+	 * Update from/to URL arguments and remove page URL argument from browser history.
 	 *
 	 * @param {string} from  Value for 'from' argument.
 	 * @param {string} to    Value for 'to' argument.
 	 */
-	function updateUrlFromToArguments(from, to) {
+	function updateUrlArguments(from, to) {
 		var url = new Curl(),
 			args = url.getArguments();
 
-		if ('from' in args) {
-			url.setArgument('from', from);
-		}
+		if (('from' in args) || ('to' in args) || ('page' in args)) {
+			if ('from' in args) {
+				url.setArgument('from', from);
+			}
 
-		if ('to' in args) {
-			url.setArgument('to', to);
-		}
+			if ('to' in args) {
+				url.setArgument('to', to);
+			}
 
-		if (('from' in args) || ('to' in args)) {
+			if ('page' in args) {
+				url.unsetArgument('page');
+			}
+
 			url.unsetArgument('sid');
+
 			history.replaceState(history.state, '', url.getUrl());
 		}
 	}
@@ -710,6 +715,9 @@ var timeControl = {
 		if (timeControl.refreshPage) {
 			var url = new Curl(location.href, false);
 			url.unsetArgument('output');
+
+			// Always reset "page" when reloading with updated time range.
+			url.unsetArgument('page');
 
 			location.href = url.getUrl();
 		}

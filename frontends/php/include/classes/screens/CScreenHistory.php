@@ -302,9 +302,10 @@ class CScreenHistory extends CScreenBase {
 					['field' => 'ns', 'order' => ZBX_SORT_DOWN]
 				]);
 
-				$url = (new CUrl($this->page_file))->formatGetArguments();
 				// Array $history_data will be modified according page and rows on page.
-				$pagination = getPagingLine($history_data, ZBX_SORT_UP, $url);
+				$pagination = CPagerHelper::paginate($this->page, $history_data, ZBX_SORT_UP,
+					new CUrl($this->page_file)
+				);
 
 				foreach ($history_data as $data) {
 					$data['value'] = rtrim($data['value'], " \t\r\n");
@@ -569,7 +570,7 @@ class CScreenHistory extends CScreenBase {
 			];
 
 			if ($this->action == HISTORY_VALUES) {
-				$flickerfreeData['page'] = getPageNumber();
+				$flickerfreeData['page'] = $this->page;
 			}
 
 			if ($this->graphid != 0) {
