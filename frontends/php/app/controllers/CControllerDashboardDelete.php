@@ -54,8 +54,6 @@ class CControllerDashboardDelete extends CController {
 			->setArgument('page', CPagerHelper::loadPage('dashboard.list', null))
 		);
 
-		$response = new CControllerResponseRedirect($url->getUrl());
-
 		if ($result) {
 			$response->setFormData(['uncheck' => '1']);
 			$response->setMessageOk(_n('Dashboard deleted', 'Dashboards deleted', $deleted));
