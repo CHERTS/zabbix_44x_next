@@ -13,6 +13,7 @@
 [ZBX-17222] fixed unlimited data selection in Latest data view (https://support.zabbix.com/browse/ZBX-17222)
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
+[ZBX-17469] fixed kiosk button margin in history/graph view of the latest data (https://support.zabbix.com/browse/ZBX-17469)
 [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (https://support.zabbix.com/browse/ZBX-17493)
 [ZBX-17595] fixed latest data all applications expansion with every refresh (https://support.zabbix.com/browse/ZBX-17595)
 [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (https://support.zabbix.com/browse/ZBX-17624)
