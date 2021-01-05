@@ -991,7 +991,7 @@ else {
 
 	CPagerHelper::savePage($page['file'], $page_num);
 
-	$data['paging'] = CPagerHelper::paginate($page_num, $data['discoveries'], $sortOrder,
+	$data['paging'] = CPagerHelper::paginate($page_num, $data['discoveries'], $sort_order,
 		(new CUrl('host_discovery.php'))->setArgument('hostid', $data['hostid'])
 	);
 
