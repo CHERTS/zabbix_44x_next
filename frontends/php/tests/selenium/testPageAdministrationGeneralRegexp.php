@@ -55,7 +55,7 @@ class testPageAdministrationGeneralRegexp extends CLegacyWebTest {
 		$this->zbxTestCheckTitle('Configuration of regular expressions');
 		$this->zbxTestCheckHeader('Regular expressions');
 		$this->zbxTestDropdownHasOptions('configDropDown', [
-			'GUI', 'Housekeeping', 'Images', 'Icon mapping', 'Regular expressions', 'Macros', 'Value mapping',
+			'GUI', 'Autoregistration', 'Housekeeping', 'Images', 'Icon mapping', 'Regular expressions', 'Macros', 'Value mapping',
 			'Working time', 'Trigger severities', 'Trigger displaying options', 'Other'
 		]);
 		$this->zbxTestAssertElementPresentXpath('//button[text()="New regular expression"]');
@@ -93,7 +93,7 @@ class testPageAdministrationGeneralRegexp extends CLegacyWebTest {
 
 		$this->zbxTestLogin('zabbix.php?action=regex.list');
 		$this->zbxTestCheckboxSelect('regexids_'.$regexp['regexpid']);
-		$this->zbxTestClickButton('regexp.massdelete');
+		$this->zbxTestClickButton('regex.delete');
 		$this->zbxTestAcceptAlert();
 		$this->zbxTestCheckTitle('Configuration of regular expressions');
 		$this->zbxTestTextPresent('Regular expression deleted');
