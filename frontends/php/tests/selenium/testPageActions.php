@@ -161,7 +161,7 @@ class testPageActions extends CLegacyWebTest {
 		$eventsources = [
 			EVENT_SOURCE_TRIGGERS => 'Triggers',
 			EVENT_SOURCE_DISCOVERY => 'Discovery',
-			EVENT_SOURCE_AUTO_REGISTRATION => 'Auto registration',
+			EVENT_SOURCE_AUTO_REGISTRATION => 'Autoregistration',
 			EVENT_SOURCE_INTERNAL => 'Internal'
 		];
 

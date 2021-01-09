@@ -26,14 +26,14 @@ require_once dirname(__FILE__) . '/../include/CWebTest.php';
 class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 
 	/**
-	 * Check the default state of page elements, when first time open Auto registration.
+	 * Check the default state of page elements, when first time open Autoregistration.
 	 */
 	public function testFormAdministrationGeneralAutoRegistration_checkDefaultState() {
-		// Navigate to auto registration page from dashboard page.
+		// Navigate to autoregistration page from dashboard page.
 		$this->page->login()->open('zabbix.php?action=dashboard.view');
 		$this->query('link:Administration')->one()->click();
 		$this->query('xpath://nav[@class="top-subnav-container"]//a[text()="General"]')->one()->click();
-		$this->query('id:configDropDown')->asDropdown()->one()->select('Auto registration');
+		$this->query('id:configDropDown')->asDropdown()->one()->select('Autoregistration');
 
 		// Check elements dafault state.
 		$form = $this->query('id:autoreg-form')->asForm()->one();
@@ -85,7 +85,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 					],
 					'audit' => [
 						'User' => 'Admin',
-						'Resource' => 'Auto registration',
+						'Resource' => 'Autoregistration',
 						'Action' => 'Updated',
 						'ID' => 1,
 						'Details' => [
@@ -104,7 +104,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 					],
 					'audit' => [
 						'User' => 'Admin',
-						'Resource' => 'Auto registration',
+						'Resource' => 'Autoregistration',
 						'Action' => 'Updated',
 						'ID' => 1,
 						'Details' => ['config.tls_accept: 2 => 3']
@@ -119,7 +119,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 					],
 					'audit' => [
 						'User' => 'Admin',
-						'Resource' => 'Auto registration',
+						'Resource' => 'Autoregistration',
 						'Action' => 'Updated',
 						'ID' => 1,
 						'Details' => [
@@ -137,7 +137,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 	 * @dataProvider getAuditReportData
 	 * @backup-once config
 	 *
-	 * Check record on Audit report page, after updating auto registration.
+	 * Check record on Audit report page, after updating autoregistration.
 	 */
 	public function testFormAdministrationGeneralAutoRegistration_Audit($data) {
 		// Add encryption.
@@ -152,7 +152,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 		$this->assertTrue($message->isGood());
 		$this->assertEquals('Configuration updated', $message->getTitle());
 
-		// Check Audit record about auto registration update.
+		// Check Audit record about autoregistration update.
 		$this->page->open('auditlogs.php');
 		$rows = $this->query('class:list-table')->asTable()->one()->getRows();
 		// Get first row data.
@@ -170,7 +170,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 
 	public static function getAutoRegistrationValidationData() {
 		return [
-			// Auto registration without encryption level.
+			// Autoregistration without encryption level.
 			[
 				[
 					'uncheck_all' => true,
@@ -178,7 +178,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 					'error' => 'Incorrect value "0" for "tls_accept" field.'
 				]
 			],
-			// Auto registration with empty PSK values.
+			// Autoregistration with empty PSK values.
 			[
 				[
 					'fields' => [
@@ -270,16 +270,16 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 	 * @dataProvider getAutoRegistrationValidationData
 	 * @backup-once config
 	 *
-	 * Check auto registration validation on first update.
+	 * Check autoregistration validation on first update.
 	 */
 	public function testFormAdministrationGeneralAutoRegistration_Validation($data) {
 		$this->executeValidation($data);
 	}
 
 	/**
-	 * Fields validation when updating auto registration or changing PSK fields.
+	 * Fields validation when updating autoregistration or changing PSK fields.
 	 *
-	 * @param array $data			values of auto registration from data provider
+	 * @param array $data			values of autoregistration from data provider
 	 * @param boolean $change		change existing values of PSK
 	 */
 	private function executeValidation($data, $change = false) {
@@ -310,7 +310,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 	}
 
 	/**
-	 * Successfully update auto registration.
+	 * Successfully update autoregistration.
 	 */
 	private function executeUpdate($data) {
 		$this->page->login()->open('zabbix.php?action=autoreg.edit');
@@ -367,7 +367,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 
 	public static function getAutoRegistrationUpdateData() {
 		return [
-			// Auto registration with default values.
+			// Autoregistration with default values.
 			[
 				[
 					'fields' => [
@@ -375,7 +375,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 					]
 				]
 			],
-			// Auto registration with PSK only.
+			// Autoregistration with PSK only.
 			[
 				[
 					'fields' => [
@@ -385,7 +385,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 					]
 				]
 			],
-			// Auto registration with PSK and 'No encryption' levels.
+			// Autoregistration with PSK and 'No encryption' levels.
 			[
 				[
 					'fields' => [
@@ -402,7 +402,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 	 * @dataProvider getAutoRegistrationUpdateData
 	 * @backup config
 	 *
-	 * First time update Auto registration data.
+	 * First time update Autoregistration data.
 	 */
 	public function testFormAdministrationGeneralAutoRegistration_Update($data) {
 		$this->executeUpdate($data);
@@ -416,7 +416,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 	}
 
 	/**
-	 * Add PSK encryption to then verify for changes in auto registration.
+	 * Add PSK encryption to then verify for changes in autoregistration.
 	 */
 	public function testFormAdministrationGeneralAutoRegistration_AddPskEncryption() {
 		$data = [
@@ -440,7 +440,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 	 * @depends testFormAdministrationGeneralAutoRegistration_AddPskEncryption
 	 * @backup-once config
 	 *
-	 * Check auto registration validation, when change PSK values.
+	 * Check autoregistration validation, when change PSK values.
 	 */
 	public function testFormAdministrationGeneralAutoRegistration_ValidationChangePsk($data) {
 		$this->executeValidation($data, true);
@@ -494,7 +494,7 @@ class testFormAdministrationGeneralAutoRegistration extends CWebTest {
 	 * @depends testFormAdministrationGeneralAutoRegistration_AddPskEncryption
 	 * @backup config
 	 *
-	 * Change auto registration data.
+	 * Change autoregistration data.
 	 */
 	public function testFormAdministrationGeneralAutoRegistration_ChangePSK($data) {
 		$this->executeUpdate($data);

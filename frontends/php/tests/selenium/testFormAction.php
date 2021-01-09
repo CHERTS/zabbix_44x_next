@@ -314,75 +314,75 @@ class testFormAction extends CLegacyWebTest {
 				['eventsource' => 'Discovery', 'new_operation_operationtype' => 'Disable host']
 			],
 			[
-				['eventsource' => 'Auto registration']
+				['eventsource' => 'Autoregistration']
 			],
 			[
-				['eventsource' => 'Auto registration', 'new_condition_conditiontype' => 'Host name']
+				['eventsource' => 'Autoregistration', 'new_condition_conditiontype' => 'Host name']
 			],
 			[
-				['eventsource' => 'Auto registration', 'new_condition_conditiontype' => 'Proxy']
+				['eventsource' => 'Autoregistration', 'new_condition_conditiontype' => 'Proxy']
 			],
 			[
-				['eventsource' => 'Auto registration', 'new_condition_conditiontype' => 'Host metadata']
+				['eventsource' => 'Autoregistration', 'new_condition_conditiontype' => 'Host metadata']
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Send message'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Send message',
 					'new_operation_opmessage_default_msg' => 'unchecked'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'opCmdTarget' => 'Current host'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'opCmdTarget' => 'Host'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'opCmdTarget' => 'Host group'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'new_operation_opcommand_type' => 'Custom script'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'new_operation_opcommand_type' => 'IPMI'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'new_operation_opcommand_type' => 'SSH'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'new_operation_opcommand_type' => 'SSH',
 					'new_operation_opcommand_authtype' => 'Public key'
@@ -390,29 +390,29 @@ class testFormAction extends CLegacyWebTest {
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'new_operation_opcommand_type' => 'Telnet'
 				]
 			],
 			[
 				[
-					'eventsource' => 'Auto registration',
+					'eventsource' => 'Autoregistration',
 					'new_operation_operationtype' => 'Remote command',
 					'new_operation_opcommand_type' => 'Global script'
 				]
 			],
 			[
-				['eventsource' => 'Auto registration', 'new_operation_operationtype' => 'Add host']
+				['eventsource' => 'Autoregistration', 'new_operation_operationtype' => 'Add host']
 			],
 			[
-				['eventsource' => 'Auto registration', 'new_operation_operationtype' => 'Add to host group']
+				['eventsource' => 'Autoregistration', 'new_operation_operationtype' => 'Add to host group']
 			],
 			[
-				['eventsource' => 'Auto registration', 'new_operation_operationtype' => 'Link to template']
+				['eventsource' => 'Autoregistration', 'new_operation_operationtype' => 'Link to template']
 			],
 			[
-				['eventsource' => 'Auto registration', 'new_operation_operationtype' => 'Disable host']
+				['eventsource' => 'Autoregistration', 'new_operation_operationtype' => 'Disable host']
 			],
 			[
 				['eventsource' => 'Internal']
@@ -457,7 +457,7 @@ class testFormAction extends CLegacyWebTest {
 			case 'Discovery':
 				$this->zbxTestLogin('actionconf.php?eventsource='.EVENT_SOURCE_DISCOVERY.'&form=Create+action');
 				break;
-			case 'Auto registration':
+			case 'Autoregistration':
 				$this->zbxTestLogin('actionconf.php?eventsource='.EVENT_SOURCE_AUTO_REGISTRATION.'&form=Create+action');
 				break;
 			case 'Internal';
@@ -569,7 +569,7 @@ class testFormAction extends CLegacyWebTest {
 						'Proxy'
 				]);
 				break;
-			case 'Auto registration':
+			case 'Autoregistration':
 				$this->zbxTestDropdownHasOptions('new_condition_conditiontype', [
 						'Host name',
 						'Proxy',
@@ -598,7 +598,7 @@ class testFormAction extends CLegacyWebTest {
 				case 'Discovery':
 					$this->zbxTestDropdownAssertSelected('new_condition[conditiontype]', 'Host IP');
 					break;
-				case 'Auto registration':
+				case 'Autoregistration':
 					$this->zbxTestDropdownAssertSelected('new_condition[conditiontype]', 'Host name');
 					break;
 				case 'Internal':
@@ -880,8 +880,8 @@ class testFormAction extends CLegacyWebTest {
 			case 'Discovery':
 				$this->zbxTestAssertElementValue('def_shortdata', 'Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}');
 				break;
-			case 'Auto registration':
-				$this->zbxTestAssertElementValue('def_shortdata', 'Auto registration: {HOST.HOST}');
+			case 'Autoregistration':
+				$this->zbxTestAssertElementValue('def_shortdata', 'Autoregistration: {HOST.HOST}');
 				break;
 			case 'Internal':
 				$this->zbxTestAssertElementValue('def_shortdata', '');
@@ -910,7 +910,7 @@ class testFormAction extends CLegacyWebTest {
 					' Device service status: {DISCOVERY.SERVICE.STATUS}'.
 					' Device service uptime: {DISCOVERY.SERVICE.UPTIME}';
 				break;
-			case 'Auto registration':
+			case 'Autoregistration':
 				$def_longdata_val = 'Host name: {HOST.HOST}'.
 					' Host IP: {HOST.IP}'.
 					' Agent port: {HOST.PORT}';
@@ -927,7 +927,7 @@ class testFormAction extends CLegacyWebTest {
 			switch ($eventsource) {
 				case 'Triggers':
 				case 'Discovery':
-				case 'Auto registration':
+				case 'Autoregistration':
 					$this->zbxTestDropdownSelectWait('new_operation_operationtype', $new_operation_operationtype);
 					break;
 				case 'Internal':
@@ -1095,7 +1095,7 @@ class testFormAction extends CLegacyWebTest {
 						'Disable host'
 				]);
 					break;
-				case 'Auto registration':
+				case 'Autoregistration':
 				$this->zbxTestDropdownHasOptions('new_operation_operationtype', [
 						'Send message',
 						'Remote command',
@@ -1112,7 +1112,7 @@ class testFormAction extends CLegacyWebTest {
 			switch ($eventsource) {
 				case 'Triggers':
 				case 'Discovery':
-				case 'Auto registration':
+				case 'Autoregistration':
 					$this->zbxTestDropdownAssertSelected('new_operation[operationtype]', $new_operation_operationtype);
 					break;
 			}
@@ -1180,8 +1180,8 @@ class testFormAction extends CLegacyWebTest {
 					case 'Discovery':
 						$this->zbxTestAssertElementValue('new_operation_opmessage_subject', 'Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}');
 						break;
-					case 'Auto registration':
-						$this->zbxTestAssertElementValue('new_operation_opmessage_subject', 'Auto registration: {HOST.HOST}');
+					case 'Autoregistration':
+						$this->zbxTestAssertElementValue('new_operation_opmessage_subject', 'Autoregistration: {HOST.HOST}');
 						break;
 					case 'Internal':
 						$this->zbxTestAssertElementValue('new_operation_opmessage_subject', '');
@@ -1211,7 +1211,7 @@ class testFormAction extends CLegacyWebTest {
 							' Device service status: {DISCOVERY.SERVICE.STATUS}'.
 							' Device service uptime: {DISCOVERY.SERVICE.UPTIME}';
 						break;
-					case 'Auto registration':
+					case 'Autoregistration':
 						$new_operation_opmessage_message_val = 'Host name: {HOST.HOST}'.
 							' Host IP: {HOST.IP}'.
 							' Agent port: {HOST.PORT}';
@@ -1634,7 +1634,7 @@ class testFormAction extends CLegacyWebTest {
 				$this->zbxTestDropdownSelectWait('eventsource', 'Discovery');
 				break;
 			case EVENT_SOURCE_AUTO_REGISTRATION:
-				$this->zbxTestDropdownSelectWait('eventsource', 'Auto registration');
+				$this->zbxTestDropdownSelectWait('eventsource', 'Autoregistration');
 				break;
 			case EVENT_SOURCE_INTERNAL;
 				$this->zbxTestDropdownSelectWait('eventsource', 'Internal');
@@ -1748,7 +1748,7 @@ class testFormAction extends CLegacyWebTest {
 			[[
 				'expected' => ACTION_GOOD,
 				'eventsource' => EVENT_SOURCE_AUTO_REGISTRATION,
-				'name' => 'TestFormAction Auto registration 001',
+				'name' => 'TestFormAction Autoregistration 001',
 				'def_shortdata' => 'def_shortdata',
 				'def_longdata' => 'def_longdata',
 				'conditions' => [
