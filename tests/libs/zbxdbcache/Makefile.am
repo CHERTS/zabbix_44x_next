@@ -6,7 +6,10 @@ SERVER_tests = \
 	dc_maintenance_match_tags \
 	dc_check_maintenance_period \
 	is_item_processed_by_server \
-	dc_item_poller_type_update
+	dc_item_poller_type_update \
+	dc_expand_user_macros_in_expression \
+	dc_expand_user_macros_in_func_params \
+	dc_expand_user_macros_in_calcitem
 endif
 
 noinst_PROGRAMS = $(SERVER_tests)
@@ -143,4 +146,41 @@ dc_item_poller_type_update_SOURCES = dc_item_poller_type_update.c
 dc_item_poller_type_update_LDADD = $(CACHE_LIBS) @SERVER_LIBS@
 dc_item_poller_type_update_LDFLAGS = @SERVER_LDFLAGS@
 dc_item_poller_type_update_CFLAGS = -I@top_srcdir@/tests -I@top_srcdir@/src/libs/zbxdbcache
+
+dc_expand_user_macros_in_expression_CFLAGS = \
+	-I@top_srcdir@/tests \
+	-I@top_srcdir@/tests/mocks/configcache \
+	-I@top_srcdir@/src/libs/zbxdbcache \
+	-Wl,--wrap=zbx_hashset_search
+dc_expand_user_macros_in_expression_SOURCES = \
+	dc_expand_user_macros_in_expression.c 
+dc_expand_user_macros_in_expression_LDADD = \
+	$(top_srcdir)/tests/mocks/configcache/libconfigcachemock.a \
+	$(CACHE_LIBS) @SERVER_LIBS@
+dc_expand_user_macros_in_expression_LDFLAGS = @SERVER_LDFLAGS@
+
+dc_expand_user_macros_in_func_params_CFLAGS = \
+	-I@top_srcdir@/tests \
+	-I@top_srcdir@/tests/mocks/configcache \
+	-I@top_srcdir@/src/libs/zbxdbcache \
+	-Wl,--wrap=zbx_hashset_search
+dc_expand_user_macros_in_func_params_SOURCES = \
+	dc_expand_user_macros_in_func_params.c 
+dc_expand_user_macros_in_func_params_LDADD = \
+	$(top_srcdir)/tests/mocks/configcache/libconfigcachemock.a \
+	$(CACHE_LIBS) @SERVER_LIBS@ 
+dc_expand_user_macros_in_func_params_LDFLAGS = @SERVER_LDFLAGS@
+
+dc_expand_user_macros_in_calcitem_CFLAGS = \
+	-I@top_srcdir@/tests \
+	-I@top_srcdir@/tests/mocks/configcache \
+	-I@top_srcdir@/src/libs/zbxdbcache \
+	-Wl,--wrap=zbx_hashset_search
+dc_expand_user_macros_in_calcitem_SOURCES = \
+	dc_expand_user_macros_in_calcitem.c 
+dc_expand_user_macros_in_calcitem_LDADD = \
+	$(top_srcdir)/tests/mocks/configcache/libconfigcachemock.a \
+	$(CACHE_LIBS) @SERVER_LIBS@ 
+dc_expand_user_macros_in_calcitem_LDFLAGS = @SERVER_LDFLAGS@
+
 endif

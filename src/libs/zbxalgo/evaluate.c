@@ -781,3 +781,38 @@ int	evaluate_unknown(const char *expression, double *value, char *error, size_t 
 
 	return SUCCEED;
 }
+
+/******************************************************************************
+ *                                                                            *
+ * Function: evaluate_string_to_double                                        *
+ *                                                                            *
+ * Purpose: cast string to a double, expand suffixes and parse negative sign  *
+ *                                                                            *
+ * Parameters: in - [IN] the input string                                     *
+ * Return value:  -  the resulting double                                     *
+ *                                                                            *
+ ******************************************************************************/
+double	evaluate_string_to_double(const char *in)
+{
+	int		len;
+	double		result_double_value;
+	const char	*tmp_ptr = in;
+
+	if (1 < strlen(in) && '-' == in[0])
+		tmp_ptr++;
+
+	if (SUCCEED == zbx_suffixed_number_parse(tmp_ptr, &len) && '\0' == *(tmp_ptr + len))
+	{
+		result_double_value = atof(tmp_ptr) * suffix2factor(*(tmp_ptr + len - 1));
+
+		/* negative sign detected */
+		if (tmp_ptr != in)
+			result_double_value = -(result_double_value);
+	}
+	else
+	{
+		result_double_value = ZBX_INFINITY;
+	}
+
+	return result_double_value;
+}

@@ -39,6 +39,7 @@ AC_DEFUN([CONF_TESTS],[
 		tests/libs/zbxcomms/Makefile
 		tests/zabbix_server/trapper/Makefile
 		tests/mocks/Makefile
+		tests/mocks/configcache/Makefile
 		tests/mocks/valuecache/Makefile
 		])
 		AC_DEFINE([HAVE_TESTS], [1], ["Define to 1 if tests directory is present"])

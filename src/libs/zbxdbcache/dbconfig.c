@@ -9695,34 +9695,14 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: dc_expression_user_macro_validator                               *
- *                                                                            *
- * Purpose: validate user macro values in trigger expressions                 *
- *                                                                            *
- * Parameters: value   - [IN] the macro value                                 *
- *                                                                            *
- * Return value: SUCCEED - the macro value can be used in expression          *
- *               FAIL    - otherwise                                          *
- *                                                                            *
- ******************************************************************************/
-static int	dc_expression_user_macro_validator(const char *value)
-{
-	if (SUCCEED == is_double_suffix(value, ZBX_FLAG_DOUBLE_SUFFIX))
-		return SUCCEED;
-
-	return FAIL;
-}
-
-/******************************************************************************
- *                                                                            *
- * Function: zbx_dc_expand_user_macros                                        *
+ * Function: dc_expand_user_macros                                            *
  *                                                                            *
  * Purpose: expand user macros in the specified text value                    *
+ * WARNING - DO NOT USE FOR TRIGGERS, for triggers use the dedicated function *
  *                                                                            *
  * Parameters: text           - [IN] the text value to expand                 *
  *             hostids        - [IN] an array of related hostids              *
  *             hostids_num    - [IN] the number of hostids                    *
- *             validator_func - [IN] an optional validator function           *
  *                                                                            *
  * Return value: The text value with expanded user macros. Unknown or invalid *
  *               macros will be left unresolved.                              *
@@ -9731,8 +9711,7 @@ static int	dc_expression_user_macro_validator(const char *value)
  *           This function must be used only by configuration syncer          *
  *                                                                            *
  ******************************************************************************/
-char	*zbx_dc_expand_user_macros(const char *text, zbx_uint64_t *hostids, int hostids_num,
-		zbx_macro_value_validator_func_t validator_func)
+char	*dc_expand_user_macros(const char *text, zbx_uint64_t *hostids, int hostids_num)
 {
 	zbx_token_t	token;
 	int		pos = 0, len, last_pos = 0;
@@ -9753,9 +9732,6 @@ char	*zbx_dc_expand_user_macros(const char *text, zbx_uint64_t *hostids, int hos
 		zbx_strncpy_alloc(&str, &str_alloc, &str_offset, text + last_pos, token.loc.l - last_pos);
 		dc_get_user_macro(hostids, hostids_num, name, context, &value);
 
-		if (NULL != value && NULL != validator_func && FAIL == validator_func(value))
-			zbx_free(value);
-
 		if (NULL != value)
 		{
 			zbx_strcpy_alloc(&str, &str_alloc, &str_offset, value);
@@ -9773,6 +9749,120 @@ char	*zbx_dc_expand_user_macros(const char *text, zbx_uint64_t *hostids, int hos
 
 		pos = token.loc.r;
 		last_pos = pos + 1;
+	}
+
+	zbx_strcpy_alloc(&str, &str_alloc, &str_offset, text + last_pos);
+
+	return str;
+}
+
+/******************************************************************************
+ *                                                                            *
+ * Function: dc_expand_user_macros_in_expression                              *
+ *                                                                            *
+ * Purpose: expand user macros for triggers and calculated items in the       *
+ *          specified text value and autoquote macros that are not already    *
+ *          quoted that cannot be casted to a double                          *
+ *                                                                            *
+ * Parameters: text           - [IN] the text value to expand                 *
+ *             hostids        - [IN] an array of related hostids              *
+ *             hostids_num    - [IN] the number of hostids                    *
+ *                                                                            *
+ * Return value: The text value with expanded user macros. Unknown or invalid *
+ *               macros will be left unresolved.                              *
+ *                                                                            *
+ * Comments: The returned value must be freed by the caller.                  *
+ *                                                                            *
+ ******************************************************************************/
+char	*dc_expand_user_macros_in_expression(const char *text, zbx_uint64_t *hostids, int hostids_num)
+{
+	zbx_token_t	token;
+	int		pos = 0, last_pos = 0, cur_token_inside_quote = 0, prev_token_loc_r = -1, len;
+	char		*str = NULL, *name = NULL, *context = NULL, *value = NULL;
+	size_t		str_alloc = 0, str_offset = 0, i;
+
+	if ('\0' == *text)
+		return zbx_strdup(NULL, text);
+
+	for (; SUCCEED == zbx_token_find(text, pos, &token, ZBX_TOKEN_SEARCH_BASIC); pos++)
+	{
+		for (i = prev_token_loc_r + 1; i < token.loc.l; i++)
+		{
+			switch (text[i])
+			{
+				case '\\':
+					if (0 != cur_token_inside_quote)
+						i++;
+					break;
+				case '"':
+					cur_token_inside_quote = !cur_token_inside_quote;
+					break;
+			}
+		}
+
+		if (ZBX_TOKEN_USER_MACRO != token.type)
+		{
+			prev_token_loc_r = token.loc.r;
+			continue;
+		}
+
+		if (SUCCEED != zbx_user_macro_parse_dyn(text + token.loc.l, &name, &context, &len, NULL))
+		{
+			prev_token_loc_r = token.loc.r;
+			continue;
+		}
+
+		zbx_strncpy_alloc(&str, &str_alloc, &str_offset, text + last_pos, token.loc.l - last_pos);
+		dc_get_user_macro(hostids, hostids_num, name, context, &value);
+
+		if (NULL != value)
+		{
+			size_t	sz;
+			char	*tmp;
+
+			sz = zbx_get_escape_string_len(value, "\"\\");
+
+			if (0 == cur_token_inside_quote && ZBX_INFINITY == evaluate_string_to_double(value))
+			{
+				/* autoquote */
+				tmp = zbx_malloc(NULL, sz + 3);
+				tmp[0] = '\"';
+				zbx_escape_string(tmp + 1, sz + 1, value, "\"\\");
+				tmp[sz + 1] = '\"';
+				tmp[sz + 2] = '\0';
+				zbx_free(value);
+				value = tmp;
+			}
+			else
+			{
+				if (sz != strlen(value))
+				{
+					tmp = zbx_malloc(NULL, sz + 1);
+					zbx_escape_string(tmp, sz + 1, value, "\"\\");
+					tmp[sz] = '\0';
+					zbx_free(value);
+					value = tmp;
+				}
+			}
+		}
+
+		if (NULL != value)
+		{
+			zbx_strcpy_alloc(&str, &str_alloc, &str_offset, value);
+			zbx_free(value);
+		}
+		else
+		{
+			zbx_strncpy_alloc(&str, &str_alloc, &str_offset, text + token.loc.l,
+					token.loc.r - token.loc.l + 1);
+		}
+
+		zbx_free(name);
+		zbx_free(context);
+
+		pos = token.loc.r;
+		last_pos = pos + 1;
+		prev_token_loc_r = token.loc.r;
 	}
 
 	zbx_strcpy_alloc(&str, &str_alloc, &str_offset, text + last_pos);
@@ -9804,10 +9894,9 @@ static char	*dc_expression_expand_user_macros(const char *expression)
 	zbx_vector_uint64_create(&hostids);
 
 	get_functionids(&functionids, expression);
-	zbx_dc_get_hostids_by_functionids(functionids.values, functionids.values_num, &hostids);
+	dc_get_hostids_by_functionids(functionids.values, functionids.values_num, &hostids);
 
-	out = zbx_dc_expand_user_macros(expression, hostids.values, hostids.values_num,
-			dc_expression_user_macro_validator);
+	out = dc_expand_user_macros_in_expression(expression, hostids.values, hostids.values_num);
 
 	if (NULL != strstr(out, "{$"))
 	{
@@ -10574,7 +10663,7 @@ unlock:
  * Comments: this function must be used only by configuration syncer          *
  *                                                                            *
  ******************************************************************************/
-void	zbx_dc_get_hostids_by_functionids(const zbx_uint64_t *functionids, int functionids_num,
+void	dc_get_hostids_by_functionids(const zbx_uint64_t *functionids, int functionids_num,
 		zbx_vector_uint64_t *hostids)
 {
 	const ZBX_DC_FUNCTION	*function;
@@ -10610,7 +10699,7 @@ void	DCget_hostids_by_functionids(zbx_vector_uint64_t *functionids, zbx_vector_u
 
 	RDLOCK_CACHE;
 
-	zbx_dc_get_hostids_by_functionids(functionids->values, functionids->values_num, hostids);
+	dc_get_hostids_by_functionids(functionids->values, functionids->values_num, hostids);
 
 	UNLOCK_CACHE;
 
@@ -12304,6 +12393,158 @@ void	zbx_dc_get_item_tags_by_functionids(const zbx_uint64_t *functionids, size_t
 	}
 
 	UNLOCK_CACHE;
+}
+
+/******************************************************************************
+ *                                                                            *
+ * Function: dc_expand_user_macros_in_func_params                             *
+ *                                                                            *
+ * Purpose: expand user macros in trigger function parameters                 *
+ *                                                                            *
+ * Parameters: params - [IN] the function parameters                          *
+ *             hostid - [IN] host of the item used in function                *
+ *                                                                            *
+ * Return value: The function parameters with expanded user macros.           *
+ *                                                                            *
+ ******************************************************************************/
+char	*dc_expand_user_macros_in_func_params(const char *params, zbx_uint64_t hostid)
+{
+	const char	*ptr;
+	size_t		params_len;
+	char		*buf;
+	size_t		buf_alloc, buf_offset = 0, sep_pos;
+
+	if ('\0' == *params)
+		return zbx_strdup(NULL, params);
+
+	buf_alloc = params_len = strlen(params);
+	buf = zbx_malloc(NULL, buf_alloc);
+
+	for (ptr = params; ptr < params + params_len; ptr += sep_pos + 1)
+	{
+		size_t	param_pos, param_len;
+		int	quoted;
+		char	*param, *resolved_param;
+
+		zbx_function_param_parse(ptr, &param_pos, &param_len, &sep_pos);
+
+		param = zbx_function_param_unquote_dyn(ptr + param_pos, param_len, &quoted);
+		resolved_param = dc_expand_user_macros(param, &hostid, 1);
+
+		if (SUCCEED == zbx_function_param_quote(&resolved_param, quoted))
+			zbx_strcpy_alloc(&buf, &buf_alloc, &buf_offset, resolved_param);
+		else
+			zbx_strncpy_alloc(&buf, &buf_alloc, &buf_offset, ptr + param_pos, param_len);
+
+		if (',' == ptr[sep_pos])
+			zbx_chrcpy_alloc(&buf, &buf_alloc, &buf_offset, ',');
+
+		zbx_free(resolved_param);
+		zbx_free(param);
+	}
+
+	return buf;
+}
+
+char	*zbx_dc_expand_user_macros_in_func_params(const char *params, zbx_uint64_t hostid)
+{
+	char	*resolved_params;
+
+	RDLOCK_CACHE;
+	resolved_params = dc_expand_user_macros_in_func_params(params, hostid);
+	UNLOCK_CACHE;
+
+	return resolved_params;
+}
+
+char	*dc_expand_user_macros_in_calcitem(const char *formula, zbx_uint64_t hostid)
+{
+	char		*exp, *tmp,*expanded, error[128];
+	const char	*e;
+	size_t		exp_alloc = 128, exp_offset = 0, tmp_alloc = 128, tmp_offset = 0, f_pos, par_l, par_r;
+	ZBX_DC_HOST	*dc_host;
+
+	zabbix_log(LOG_LEVEL_DEBUG, "In %s() formula:%s", __func__, formula);
+
+	exp = (char *)zbx_malloc(NULL, exp_alloc);
+	tmp = (char *)zbx_malloc(NULL, tmp_alloc);
+
+	for (e = formula; SUCCEED == zbx_function_find(e, &f_pos, &par_l, &par_r, error, sizeof(error)); e += par_r + 1)
+	{
+		size_t		param_pos, param_len, sep_pos;
+		int		quoted;
+		char		*hostkey, *host = NULL, *key = NULL;
+		zbx_uint64_t	func_hostid = 0;
+
+		/* substitute user macros in the part of the string preceding function parameters */
+
+		zbx_strncpy_alloc(&tmp, &tmp_alloc, &tmp_offset, e, par_l + 1);
+		expanded = dc_expand_user_macros_in_expression(tmp, &hostid, 1);
+		zbx_strcpy_alloc(&exp, &exp_alloc, &exp_offset, expanded);
+		zbx_free(expanded);
+		tmp_offset = 0;
+
+		/* substitute user macros in function parameters */
+
+		zbx_function_param_parse(e + par_l + 1, &param_pos, &param_len, &sep_pos);
+
+		/* convert relative offset to absolute */
+		param_pos += par_l + 1;
+		sep_pos += par_l + 1;
+
+		zbx_strncpy_alloc(&exp, &exp_alloc, &exp_offset, e + par_l + 1, sep_pos - par_l);
+
+		/* calculated function has only fist parameter - host:key */
+		if (sep_pos == par_r)
+			continue;
+
+		/* extract host:key parameter to find the function hostid */
+		hostkey = zbx_function_param_unquote_dyn(e + param_pos, param_len, &quoted);
+		if (SUCCEED == parse_host_key(hostkey, &host, &key))
+		{
+			if (NULL != host)
+			{
+				if (NULL != (dc_host = DCfind_host(host)))
+					func_hostid = dc_host->hostid;
+			}
+			else
+				func_hostid = hostid;
+		}
+		zbx_free(host);
+		zbx_free(key);
+		zbx_free(hostkey);
+
+		if (0 == func_hostid)
+		{
+			/* couldn't obtain target host, copy the rest of the function as it is */
+			zbx_strncpy_alloc(&exp, &exp_alloc, &exp_offset, e + sep_pos + 1, par_r - sep_pos);
+			continue;
+		}
+
+		/* extract remaining parameters and expand user macros */
+		zbx_strncpy_alloc(&tmp, &tmp_alloc, &tmp_offset, e + sep_pos + 1, par_r - sep_pos - 1);
+		expanded = dc_expand_user_macros_in_func_params(tmp, func_hostid);
+		zbx_strcpy_alloc(&exp, &exp_alloc, &exp_offset, expanded);
+		zbx_free(expanded);
+		tmp_offset = 0;
+
+		zbx_strcpy_alloc(&exp, &exp_alloc, &exp_offset, ")");
+	}
+
+	if (par_l <= par_r)
+	{
+		/* substitute user macros in the remaining part */
+		zbx_strcpy_alloc(&tmp, &tmp_alloc, &tmp_offset, e);
+		expanded = dc_expand_user_macros_in_expression(tmp, &hostid, 1);
+		zbx_strcpy_alloc(&exp, &exp_alloc, &exp_offset, expanded);
+		zbx_free(expanded);
+	}
+
+	zbx_free(tmp);
+
+	zabbix_log(LOG_LEVEL_DEBUG, "End of %s() formula:%s", __func__, exp);
+
+	return exp;
 }
 
 #ifdef HAVE_TESTS

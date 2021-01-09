@@ -729,6 +729,7 @@ void	DCget_autoregistration_psk(char *psk_identity_buf, size_t psk_identity_buf_
 
 void	DCget_user_macro(const zbx_uint64_t *hostids, int hostids_num, const char *macro, char **replace_to);
 char	*DCexpression_expand_user_macros(const char *expression);
+char	*zbx_dc_expand_func_params_user_macros(zbx_uint64_t hostid, const char *params);
 
 int	DChost_activate(zbx_uint64_t hostid, unsigned char agent_type, const zbx_timespec_t *ts,
 		zbx_agent_availability_t *in, zbx_agent_availability_t *out);
@@ -949,5 +950,7 @@ int	zbx_lld_macro_paths_compare(const void *d1, const void *d2);
 
 void	zbx_dc_get_item_tags_by_functionids(const zbx_uint64_t *functionids, size_t functionids_num,
 		zbx_vector_ptr_t *item_tags);
+
+char	*zbx_dc_expand_user_macros_in_func_params(const char *params, zbx_uint64_t hostid);
 
 #endif

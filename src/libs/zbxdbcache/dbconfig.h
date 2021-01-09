@@ -828,26 +828,7 @@ extern zbx_rwlock_t	config_lock;
 #define ZBX_IPMI_DEFAULT_AUTHTYPE	-1
 #define ZBX_IPMI_DEFAULT_PRIVILEGE	2
 
-/* validator function optionally used to validate macro values when expanding user macros */
-
-/******************************************************************************
- *                                                                            *
- * Function: zbx_macro_value_validator_func_t                                 *
- *                                                                            *
- * Purpose: validate macro value when expanding user macros                   *
- *                                                                            *
- * Parameters: value   - [IN] the macro value                                 *
- *                                                                            *
- * Return value: SUCCEED - the value is valid                                 *
- *               FAIL    - otherwise                                          *
- *                                                                            *
- ******************************************************************************/
-typedef int (*zbx_macro_value_validator_func_t)(const char *value);
-
-char	*zbx_dc_expand_user_macros(const char *text, zbx_uint64_t *hostids, int hostids_num,
-		zbx_macro_value_validator_func_t validator_func);
-
-void	zbx_dc_get_hostids_by_functionids(const zbx_uint64_t *functionids, int functionids_num,
+void	dc_get_hostids_by_functionids(const zbx_uint64_t *functionids, int functionids_num,
 		zbx_vector_uint64_t *hostids);
 
 void	DCdump_configuration(void);
@@ -878,5 +859,17 @@ void	DCsync_maintenance_hosts(zbx_dbsync_t *sync);
 #define ZBX_MAINTENANCE_UPDATE_FLAGS_NUM()	\
 		((CONFIG_TIMER_FORKS + sizeof(uint64_t) * 8 - 1) / (sizeof(uint64_t) * 8))
 
+char	*dc_expand_user_macros_in_expression(const char *text, zbx_uint64_t *hostids, int hostids_num);
+char	*dc_expand_user_macros_in_func_params(const char *params, zbx_uint64_t hostid);
+char	*dc_expand_user_macros_in_calcitem(const char *formula, zbx_uint64_t hostid);
 
+/******************************************************************************
+ *                                                                            *
+ * dc_expand_user_macros - has no autoquoting                                 *
+ * for triggers and calculated items use                                      *
+ * dc_expand_user_macros_in_expression - which autoquotes macros that are     *
+ * not already quoted and cannot be casted to a double                        *
+ *                                                                            *
+ ******************************************************************************/
+char	*dc_expand_user_macros(const char *text, zbx_uint64_t *hostids, int hostids_num);
 #endif

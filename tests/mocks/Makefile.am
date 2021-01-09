@@ -1,2 +1,3 @@
 SUBDIRS = \
+	configcache \
 	valuecache 
