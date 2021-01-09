@@ -483,7 +483,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 		$row = $table->findRow('Name', $data['name']);
 		$row->query('button:Test')->one()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
-		$this->assertEquals('Test media type "'.$data['name'].'"', $dialog->getTitle());
+		$this->assertEquals('Test media type', $dialog->getTitle());
 		$form = $dialog->asForm();
 		$fields = CTestArrayHelper::get($data, 'parameters', ['Send to', 'Subject', 'Message']);
 		$this->assertEquals($fields, $form->getLabels()->asText());
@@ -532,7 +532,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 		$row = $table->findRow('Name', $media);
 		$row->query('button:Test')->one()->click();
 		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
-		$this->assertEquals('Test media type "'.$media.'"', $dialog->getTitle());
+		$this->assertEquals('Test media type', $dialog->getTitle());
 		$form = $dialog->asForm();
 		$form->fill($fields);
 
