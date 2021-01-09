@@ -92,7 +92,7 @@ class testPageAdministrationGeneralRegexp extends CLegacyWebTest {
 		$this->calculateHash('regexpid<>'.$regexp['regexpid']);
 
 		$this->zbxTestLogin('zabbix.php?action=regex.list');
-		$this->zbxTestCheckboxSelect('regexpids_'.$regexp['regexpid']);
+		$this->zbxTestCheckboxSelect('regexids_'.$regexp['regexpid']);
 		$this->zbxTestClickButton('regexp.massdelete');
 		$this->zbxTestAcceptAlert();
 		$this->zbxTestCheckTitle('Configuration of regular expressions');
