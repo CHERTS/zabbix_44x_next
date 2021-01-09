@@ -63,6 +63,7 @@ $autoloader = new CAutoloader([
 	__DIR__.'/../../include/classes/html',
 	__DIR__.'/../../include/classes/html/interfaces',
 	__DIR__.'/../../include/classes/xml',
+	__DIR__.'/../../include/classes/macros',
 	__DIR__.'/include/classes/db',
 	__DIR__.'/include/classes/html',
 	__DIR__.'/include/classes/validators',

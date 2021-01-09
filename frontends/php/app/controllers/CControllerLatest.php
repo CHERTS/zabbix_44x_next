@@ -160,6 +160,7 @@ abstract class CControllerLatest extends CController {
 			// macros
 			$items = CMacrosResolverHelper::resolveItemKeys($items);
 			$items = CMacrosResolverHelper::resolveItemNames($items);
+			$items = CMacrosResolverHelper::resolveItemDescriptions($items);
 			$items = CMacrosResolverHelper::resolveTimeUnitMacros($items, ['delay', 'history', 'trends']);
 
 			// Filter items by name.

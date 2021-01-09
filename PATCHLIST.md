@@ -106,6 +106,7 @@
 [ZBXNEXT-5716] removed mbedTLS support (https://support.zabbix.com/browse/ZBXNEXT-5716)
 [ZBXNEXT-5725] added ability to select specific severities in Monitoring->Problems (https://support.zabbix.com/browse/ZBXNEXT-5725)
 [ZBXNEXT-5879] added filter to Configuration->Templates/Hosts->Discovery rules (https://support.zabbix.com/browse/ZBXNEXT-5879)
+[ZBXNEXT-5898] added user macro expanding in item description (https://support.zabbix.com/browse/ZBXNEXT-5898)
 [ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
 [ZBXNEXT-6042] optimized trigger, calculated item processing by resolving user macros during configuration cache synchronization (https://support.zabbix.com/browse/ZBXNEXT-6042)
