@@ -72,8 +72,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 					'filter' => [
 						'Status' => 'Enabled'
 					],
-					'result' => ['Discord', 'Email', 'Mattermost', 'Opsgenie', 'PagerDuty', 'Pushover', 'Reference webhook',
-							'Slack', 'SMS', 'Telegram', 'URL test webhook', 'Validation webhook', 'Webhook to delete']
+					'get_db_result' => true
 				]
 			],
 			[
@@ -118,6 +117,13 @@ class testPageAdministrationMediaTypes extends CWebTest {
 		$form->fill($data['filter']);
 		$form->submit();
 		$this->page->waitUntilReady();
+
+		if (CTestArrayHelper::get($data, 'get_db_result', false)) {
+			foreach (CDBHelper::getAll('SELECT name FROM media_type WHERE status='.MEDIA_STATUS_ACTIVE.
+					' ORDER BY LOWER(name) ASC') as $name) {
+				$data['result'][] = $name['name'];
+			}
+		}
 		$this->assertTableDataColumn(CTestArrayHelper::get($data, 'result', []));
 	}
 
@@ -476,12 +482,11 @@ class testPageAdministrationMediaTypes extends CWebTest {
 		$table = $this->query('class:list-table')->asTable()->one();
 		$row = $table->findRow('Name', $data['name']);
 		$row->query('button:Test')->one()->click();
-		$dialog = $this->query('id:overlay_dialogue')->asOverlayDialog()->one()->waitUntilReady();
-		$this->assertEquals('Test media type', $dialog->getTitle());
+		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
+		$this->assertEquals('Test media type "'.$data['name'].'"', $dialog->getTitle());
 		$form = $dialog->asForm();
-		$labels = $form->getLabels()->asText();
-		sort($labels);
-		$this->assertEquals(CTestArrayHelper::get($data, 'parameters', ['Message', 'Send to', 'Subject']), $labels);
+		$fields = CTestArrayHelper::get($data, 'parameters', ['Send to', 'Subject', 'Message']);
+		$this->assertEquals($fields, $form->getLabels()->asText());
 		if (CTestArrayHelper::get($data, 'webhook', false)) {
 			$this->assertTrue($form->getField('Response')->isEnabled(false));
 		}
@@ -526,8 +531,8 @@ class testPageAdministrationMediaTypes extends CWebTest {
 		$table = $this->query('class:list-table')->asTable()->one();
 		$row = $table->findRow('Name', $media);
 		$row->query('button:Test')->one()->click();
-		$dialog = $this->query('id:overlay_dialogue')->asOverlayDialog()->one()->waitUntilReady();
-		$this->assertEquals('Test media type', $dialog->getTitle());
+		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
+		$this->assertEquals('Test media type "'.$media.'"', $dialog->getTitle());
 		$form = $dialog->asForm();
 		$form->fill($fields);
 
