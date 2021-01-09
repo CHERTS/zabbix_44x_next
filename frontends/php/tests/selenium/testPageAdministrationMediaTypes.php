@@ -375,7 +375,7 @@ class testPageAdministrationMediaTypes extends CWebTest {
 				[
 					'name' => 'Email',
 					'form' => [
-						'Send to' => 'zabbix@zabbix.com'
+						'Send to' => 'zabbix@zabbix.com',
 						'Subject' => ''
 					],
 					'error' => [
