@@ -1331,7 +1331,7 @@ msgstr "Auto"
 #: app/views/administration.autoreg.edit.php:25
 #: app/views/administration.autoreg.edit.php:96 include/audit.inc.php:57
 #: include/html.inc.php:768 include/views/configuration.action.list.php:34
-msgid "Auto registration"
+msgid "Autoregistration"
 msgstr "Enregistrement automatique"
 
 #: app/views/administration.user.edit.php:184
@@ -18957,7 +18957,7 @@ msgid "at least one override option must be specified"
 msgstr "au moins une option de substitution doit être spécifiée"
 
 #: include/events.inc.php:36
-msgid "auto registration"
+msgid "autoregistration"
 msgstr "enregistrement automatique"
 
 #: include/events.inc.php:66

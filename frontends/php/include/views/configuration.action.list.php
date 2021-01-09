@@ -31,7 +31,7 @@ $widget = (new CWidget())
 					new CComboBox('eventsource', $data['eventsource'], 'submit()', [
 						EVENT_SOURCE_TRIGGERS => _('Triggers'),
 						EVENT_SOURCE_DISCOVERY => _('Discovery'),
-						EVENT_SOURCE_AUTO_REGISTRATION => _('Auto registration'),
+						EVENT_SOURCE_AUTO_REGISTRATION => _('Autoregistration'),
 						EVENT_SOURCE_INTERNAL => _x('Internal', 'event source')
 					])
 				])

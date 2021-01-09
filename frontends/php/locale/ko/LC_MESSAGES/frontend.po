@@ -1310,7 +1310,7 @@ msgstr "자동"
 #: app/views/administration.autoreg.edit.php:25
 #: app/views/administration.autoreg.edit.php:96 include/audit.inc.php:57
 #: include/html.inc.php:768 include/views/configuration.action.list.php:34
-msgid "Auto registration"
+msgid "Autoregistration"
 msgstr "자동 등록"
 
 #: app/views/administration.user.edit.php:184
@@ -18852,7 +18852,7 @@ msgid "at least one override option must be specified"
 msgstr "적어도 1개의 오버라이드 옵션을 지정할 필요가 있습니다"
 
 #: include/events.inc.php:36
-msgid "auto registration"
+msgid "autoregistration"
 msgstr "자동 등록"
 
 #: include/events.inc.php:66

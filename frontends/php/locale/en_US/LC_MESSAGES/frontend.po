@@ -1330,8 +1330,8 @@ msgstr "Auto"
 #: app/views/administration.autoreg.edit.php:25
 #: app/views/administration.autoreg.edit.php:96 include/audit.inc.php:57
 #: include/html.inc.php:768 include/views/configuration.action.list.php:34
-msgid "Auto registration"
-msgstr "Auto registration"
+msgid "Autoregistration"
+msgstr "Autoregistration"
 
 #: app/views/administration.user.edit.php:184
 msgid "Auto-login"
@@ -18954,8 +18954,8 @@ msgid "at least one override option must be specified"
 msgstr "at least one override option must be specified"
 
 #: include/events.inc.php:36
-msgid "auto registration"
-msgstr "auto registration"
+msgid "autoregistration"
+msgstr "autoregistration"
 
 #: include/events.inc.php:66
 msgid "auto-registered host"
