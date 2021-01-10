@@ -348,7 +348,8 @@ func main() {
 
 	log.Infof("using configuration file: %s", confFlag)
 
-	if err = agent.InitUserParameterPlugin(agent.Options.UserParameter, agent.Options.UnsafeUserParameters); err != nil {
+	if err = agent.InitUserParameterPlugin(agent.Options.UserParameter, agent.Options.UnsafeUserParameters,
+			agent.Options.UserParameterDir); err != nil {
 		fatalExit("cannot initialize user parameters", err)
 	}
 

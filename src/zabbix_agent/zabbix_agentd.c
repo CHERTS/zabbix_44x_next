@@ -54,6 +54,7 @@ char	*CONFIG_LOAD_MODULE_PATH	= NULL;
 char	**CONFIG_ALIASES		= NULL;
 char	**CONFIG_LOAD_MODULE		= NULL;
 char	**CONFIG_USER_PARAMETERS	= NULL;
+char	*CONFIG_USER_PARAMETER_DIR	= NULL;
 #if defined(_WINDOWS)
 char	**CONFIG_PERF_COUNTERS		= NULL;
 char	**CONFIG_PERF_COUNTERS_EN	= NULL;
@@ -797,6 +798,8 @@ static void	zbx_load_config(int requirement, ZBX_TASK_EX *task)
 			PARM_OPT,	0,			0},
 		{"UserParameter",		&CONFIG_USER_PARAMETERS,		TYPE_MULTISTRING,
 			PARM_OPT,	0,			0},
+		{"UserParameterDir",		&CONFIG_USER_PARAMETER_DIR,		TYPE_STRING,
+			PARM_OPT,	0,			0},
 #ifndef _WINDOWS
 		{"LoadModulePath",		&CONFIG_LOAD_MODULE_PATH,		TYPE_STRING,
 			PARM_OPT,	0,			0},
@@ -1279,6 +1282,7 @@ int	main(int argc, char **argv)
 				exit(EXIT_FAILURE);
 			}
 #endif
+			set_user_parameter_dir(CONFIG_USER_PARAMETER_DIR);
 			load_user_parameters(CONFIG_USER_PARAMETERS);
 			load_aliases(CONFIG_ALIASES);
 			zbx_free_config();
@@ -1315,6 +1319,7 @@ int	main(int argc, char **argv)
 			break;
 		default:
 			zbx_load_config(ZBX_CFG_FILE_REQUIRED, &t);
+			set_user_parameter_dir(CONFIG_USER_PARAMETER_DIR);
 			load_user_parameters(CONFIG_USER_PARAMETERS);
 			load_aliases(CONFIG_ALIASES);
 			break;

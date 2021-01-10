@@ -7,6 +7,7 @@ A.F.I..... [ZBXNEXT-5538] moved Adminitration->User groups pages to MVC framewor
 ..F....... [ZBXNEXT-5693] reset page number when applying new filter, changing sort order or re-opening the page (averza)
 ..F.....S. [ZBXNEXT-5898] added user macro expanding in item description (asitals, kustalovs)
 ........S. [ZBXNEXT-6042] optimized trigger, calculated item processing by resolving user macros during configuration cache synchronization (wiper)
+...G...... [ZBXNEXT-6171] added UserParameterDir config option to agent and agent2 (yurii)
 .......PS. [ZBXNEXT-6380] added new key vmware.cl.perfcounter
 
 Bug fixes:
@@ -16,9 +17,11 @@ Bug fixes:
 ..F....... [ZBX-17595] fixed latest data all applications expansion with every refresh (vasilijs)
 ..F....... [ZBX-18031] fixed missing "loading" state in Monitoring → Latest data (talbergs)
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
+...G...... [ZBX-18387] made directory error handling for the UserParameter command in C agent the same as in GO agent (arimdjonoks)
 ...G...... [ZBX-18398] made system.swap.size item unsupported for free,pfree,used,pused types on systems without swap
 ........S. [ZBX-18612] added error message for when real-time data export file become inaccessible (viktors)
 ..F....... [ZBX-18625] fixed host level tags were not inherited in Trigger -> Tags configuration form (ozdancuka)
+...G...PS. [ZBX-18644] replaced deprecated gethostbyname function with getaddrinfo (wiper)
 .......PS. [ZBX-18784] fixed memory leak when handling vmware events (MVekslers)
 
 --------------------------------------------------------------------------------
