@@ -107,6 +107,7 @@
 [ZBXNEXT-3940] added functionality to flush SNMP connections cache (https://support.zabbix.com/browse/ZBXNEXT-3940)
 [ZBXNEXT-4647,ZBXNEXT-6096] added support of digest authentication for HTTP Agent (https://support.zabbix.com/browse/ZBXNEXT-4647)
 [ZBXNEXT-5486] move Administration->General section to MVC (https://support.zabbix.com/browse/ZBXNEXT-5486)
+[ZBXNEXT-5514] added functionality for Zabbix frontend customization (https://support.zabbix.com/browse/ZBXNEXT-5514)
 [ZBXNEXT-5554] Added webhook through proxy (https://support.zabbix.com/browse/ZBXNEXT-5554)
 [ZBXNEXT-5592] dropped IBM DB2 database support for Zabbix server (https://support.zabbix.com/browse/ZBXNEXT-5592)
 [ZBXNEXT-5693] reset page number when applying new filter, changing sort order or re-opening the page (https://support.zabbix.com/browse/ZBXNEXT-5693)

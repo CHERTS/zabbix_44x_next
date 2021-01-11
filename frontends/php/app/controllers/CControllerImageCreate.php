@@ -97,12 +97,10 @@ class CControllerImageCreate extends CController {
 		$image = $this->uploadImage($error);
 
 		if ($error) {
-			$url = (new CUrl('zabbix.php'))
+			$response = new CControllerResponseRedirect((new CUrl('zabbix.php'))
 				->setArgument('action', 'image.edit')
-				->setArgument('imagetype', $this->getInput('imagetype'));
-
-			$response = new CControllerResponseRedirect($url);
-			error($error);
+				->setArgument('imagetype', $this->getInput('imagetype'))
+			);
 			$response->setFormData($this->getInputAll());
 			$response->setMessageError(_('Cannot add image'));
 

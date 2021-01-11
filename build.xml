@@ -56,6 +56,7 @@
 		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBUSER}" value="${dbuser}"/>
 		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBPASSWORD}" value="${dbpassword}"/>
 		<replace file="frontends/php/conf/zabbix.conf.php" token="{PHPUNIT_ERROR_LOG}" value="${phpunit_error_log}"/>
+		<chmod file="frontends/php/conf/zabbix.conf.php" perm="go+w"/>
 	</target>
 
 	<target name="init-integration">
