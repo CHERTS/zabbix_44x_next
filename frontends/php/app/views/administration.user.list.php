@@ -146,8 +146,8 @@ foreach ($data['users'] as $user) {
 
 		$users_groups[] = (new CLink(
 			$user_group['name'],
-			(new CUrl('usergrps.php'))
-				->setArgument('form', 'update')
+			(new CUrl('zabbix.php'))
+				->setArgument('action', 'usergroup.edit')
 				->setArgument('usrgrpid', $user_group['usrgrpid'])
 				->getUrl()
 		))
