@@ -45,7 +45,7 @@
 			<arg line="--quiet"/>
 			<arg line="--enable-server --enable-agent --enable-proxy --with-mysql --with-libxml2 --with-unixodbc --with-net-snmp --with-ssh2 --with-libevent --with-ldap --with-libcurl"/>
 		</exec>
-		<exec executable="cppcheck" error="${SCANFILE}" failonerror="on">
+		<exec executable="cppcheck" error="tests_results/cppcheck.xml" failonerror="on">
 			<arg line="--enable=all"/>
 			<arg line="-j4"/>
 			<arg line="-I/usr/include"/>
@@ -58,6 +58,13 @@
 			<arg line="--xml"/>
 			<arg line="--xml-version=2"/>
 			<arg line="."/>
+		</exec>
+		<mkdir dir="tests_results/cppcheck_html"/>
+		<exec executable="cppcheck-htmlreport" failonerror="on">
+			<arg line="--source-dir=."/>
+			<arg line="--title=Zabbix"/>
+			<arg line="--file=./tests_results/cppcheck.xml"/>
+			<arg line="--report-dir=./tests_results/cppcheck_html"/>
 		</exec>
 	</target>
 
