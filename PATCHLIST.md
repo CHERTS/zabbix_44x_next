@@ -26,6 +26,7 @@
 [ZBX-17716] fixed 'UserParameter' parsing and possible buffer overrun (https://support.zabbix.com/browse/ZBX-17716)
 [ZBX-17820] fixed classic graph widget default header (https://support.zabbix.com/browse/ZBX-17820)
 [ZBX-17860] fixed host prototype import (https://support.zabbix.com/browse/ZBX-17860)
+[ZBX-17865] fixed displaying of long problem names on problems and event pages (https://support.zabbix.com/browse/ZBX-17865)
 [ZBX-17906] fixed HTTP agent JSON output when using HTTP/2; thanks to Mike Noordermeer for the patch (https://support.zabbix.com/browse/ZBX-17906)
 [ZBX-17917] changed vm.memory.size keys on Solaris to get memory usage statistics from kstat (https://support.zabbix.com/browse/ZBX-17917)
 [ZBX-17922] removed mtime check when matching files on disk with the cached list, this should reduce chances of log files being scanned again after system time changes (https://support.zabbix.com/browse/ZBX-17922)
