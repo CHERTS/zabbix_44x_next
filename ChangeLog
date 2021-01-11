@@ -24,6 +24,7 @@ A......... [ZBX-18163] fixed deletion of one last remaining main host interface 
 ..F....... [ZBX-18625] fixed host level tags were not inherited in Trigger -> Tags configuration form (ozdancuka)
 ...G...PS. [ZBX-18644] replaced deprecated gethostbyname function with getaddrinfo (wiper)
 .......PS. [ZBX-18784] fixed memory leak when handling vmware events (MVekslers)
+A......... [ZBX-18796] improved update performance of the preprocessing rules in item.update(), itemprototype.update() and discoveryrule.update() methods (Sasha)
 ........S. [ZBX-18802] fixed close problem task to be deleted when problem event is deleted (vso)
 
 --------------------------------------------------------------------------------

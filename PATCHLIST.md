@@ -93,6 +93,7 @@
 [ZBX-18755] fixed possibility of out of memory error when replacing string in mail, calculated checks, actions and when linking template (https://support.zabbix.com/browse/ZBX-18755)
 [ZBX-18761] fixed possible heap overflow issues in IPC commonications when deserializing huge text values (https://support.zabbix.com/browse/ZBX-18761)
 [ZBX-18784] fixed memory leak when handling vmware events (https://support.zabbix.com/browse/ZBX-18784)
+[ZBX-18796] improved update performance of the preprocessing rules in item.update(), itemprototype.update() and discoveryrule.update() methods (https://support.zabbix.com/browse/ZBX-18796)
 [ZBX-18802] fixed close problem task to be deleted when problem event is deleted (https://support.zabbix.com/browse/ZBX-18802)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
