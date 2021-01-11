@@ -15,6 +15,7 @@ Bug fixes:
 ..F....... [ZBX-17222] fixed unlimited data selection in Latest data view (averza)
 ..F....... [ZBX-17469] fixed kiosk button margin in history/graph view of the latest data (averza)
 ..F....... [ZBX-17595] fixed latest data all applications expansion with every refresh (vasilijs)
+...G...... [ZBX-17716] fixed 'UserParameter' parsing and possible buffer overrun (viktors)
 ..F....... [ZBX-18031] fixed missing "loading" state in Monitoring → Latest data (talbergs)
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
 ...G...... [ZBX-18387] made directory error handling for the UserParameter command in C agent the same as in GO agent (arimdjonoks)
