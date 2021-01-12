@@ -27,6 +27,7 @@ Bug fixes:
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
 ...G...... [ZBX-18387] made directory error handling for the UserParameter command in C agent the same as in GO agent (arimdjonoks)
 ...G...... [ZBX-18398] made system.swap.size item unsupported for free,pfree,used,pused types on systems without swap
+..F....... [ZBX-18556] fixed gaps in time labels of classic graphs related to DST transitions (averza, Sasha)
 ........S. [ZBX-18612] added error message for when real-time data export file become inaccessible (viktors)
 ..F....... [ZBX-18625] fixed host level tags were not inherited in Trigger -> Tags configuration form (ozdancuka)
 ...G...PS. [ZBX-18644] replaced deprecated gethostbyname function with getaddrinfo (wiper)
