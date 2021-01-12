@@ -809,7 +809,7 @@ static void	ipmi_manager_serialize_request(const DC_ITEM *item, int command, con
 
 	size = zbx_ipmi_serialize_request(&message->data, item->host.hostid, item->itemid, item->interface.addr,
 			item->interface.port, item->host.ipmi_authtype, item->host.ipmi_privilege,
-			item->host.ipmi_username, item->host.ipmi_password, item->ipmi_sensor, command);
+			item->host.ipmi_username, item->host.ipmi_password, item->ipmi_sensor, 0, item->key_orig);
 
 	if (0 == strcmp(key, "ipmi.get"))
 		message->code = ZBX_IPC_IPMI_DISCOVERY_REQUEST;
