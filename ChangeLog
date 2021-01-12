@@ -2,6 +2,7 @@ Changes for 4.4.16rc1 (unofficial)
 
 New features:
 ..F....... [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (talbergs)
+A.F....PS. [ZBXNEXT-1423] added ipmi.get item for IPMI sensor LLD (akozlovs, Ivo)
 A.F.I..... [ZBXNEXT-5486] move Administration->General section to MVC (talbergs)
 A.F.I..... [ZBXNEXT-5514] added functionality for Zabbix frontend customization (ashubin, averza, gcalenko)
 A.F.I..... [ZBXNEXT-5538] moved Adminitration->User groups pages to MVC framework (Sasha, talbergs)

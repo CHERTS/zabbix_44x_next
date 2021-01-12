@@ -1492,6 +1492,17 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'formCheck' => true
 				]
 			],
+			// IPMI sensor is optional if item key is ipmi.get
+			[
+				[
+					'expected' => TEST_GOOD,
+					'type' => 'IPMI agent',
+					'name' => 'IPMI agent with ipmi.get',
+					'key' => 'ipmi.get',
+					'dbCheck' => true,
+					'formCheck' => true
+				]
+			],
 			[
 				[
 					'expected' => TEST_GOOD,
@@ -1523,9 +1534,9 @@ class testFormLowLevelDiscovery extends CLegacyWebTest {
 					'type' => 'IPMI agent',
 					'name' => 'IPMI agent error',
 					'key' => 'discovery-ipmi-agent-error',
-					'error_msg' => 'Page received incorrect data',
+					'error_msg' => 'Cannot add discovery rule',
 					'errors' => [
-						'Incorrect value for field "IPMI sensor": cannot be empty.'
+						'Incorrect value for field "ipmi_sensor": cannot be empty.'
 					]
 				]
 			],
