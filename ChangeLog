@@ -35,6 +35,7 @@ A......... [ZBX-18722] fixed runtime error when creating user group without user
 .......PS. [ZBX-18784] fixed memory leak when handling vmware events (MVekslers)
 A......... [ZBX-18796] improved update performance of the preprocessing rules in item.update(), itemprototype.update() and discoveryrule.update() methods (Sasha)
 ........S. [ZBX-18802] fixed close problem task to be deleted when problem event is deleted (vso)
+..F....... [ZBX-18815] fixed displaying incomplete list of inherited trigger tags under rare circumstances (ozdancuka)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.15 (unofficial)

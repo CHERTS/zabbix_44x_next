@@ -99,6 +99,7 @@
 [ZBX-18784] fixed memory leak when handling vmware events (https://support.zabbix.com/browse/ZBX-18784)
 [ZBX-18796] improved update performance of the preprocessing rules in item.update(), itemprototype.update() and discoveryrule.update() methods (https://support.zabbix.com/browse/ZBX-18796)
 [ZBX-18802] fixed close problem task to be deleted when problem event is deleted (https://support.zabbix.com/browse/ZBX-18802)
+[ZBX-18815] fixed displaying incomplete list of inherited trigger tags under rare circumstances (https://support.zabbix.com/browse/ZBX-18815)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
