@@ -18,6 +18,7 @@ Bug fixes:
 ..F....... [ZBX-402] fixed latest data reloading to updating asynchronously (averza)
 ..F....... [ZBX-17222] fixed unlimited data selection in Latest data view (averza)
 .......PS. [ZBX-17295] fixed IPMI sensor LLD JSON output (akozlovs)
+...G...... [ZBX-17369] fixed retrieval of decimal values from WMI (dgoloscapov)
 ..F....... [ZBX-17469] fixed kiosk button margin in history/graph view of the latest data (averza)
 ..F....... [ZBX-17595] fixed latest data all applications expansion with every refresh (vasilijs)
 ...G...... [ZBX-17716] fixed 'UserParameter' parsing and possible buffer overrun (viktors)
