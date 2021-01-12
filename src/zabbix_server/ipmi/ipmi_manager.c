@@ -807,7 +807,7 @@ static void	ipmi_manager_serialize_request(const DC_ITEM *item, int command, con
 {
 	zbx_uint32_t	size;
 
-	size = zbx_ipmi_serialize_request(&message->data, item->itemid, item->interface.addr,
+	size = zbx_ipmi_serialize_request(&message->data, item->host.hostid, item->itemid, item->interface.addr,
 			item->interface.port, item->host.ipmi_authtype, item->host.ipmi_privilege,
 			item->host.ipmi_username, item->host.ipmi_password, item->ipmi_sensor, command);
 

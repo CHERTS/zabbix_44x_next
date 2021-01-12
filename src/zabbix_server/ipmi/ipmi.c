@@ -119,8 +119,9 @@ int	zbx_ipmi_execute_command(const DC_HOST *host, const char *command, char *err
 		goto cleanup;
 	}
 
-	data_len = zbx_ipmi_serialize_request(&data, host->hostid, interface.addr, interface.port, host->ipmi_authtype,
-			host->ipmi_privilege, host->ipmi_username, host->ipmi_password, sensor, op);
+	data_len = zbx_ipmi_serialize_request(&data, host->hostid, host->hostid, interface.addr, interface.port,
+			host->ipmi_authtype, host->ipmi_privilege, host->ipmi_username, host->ipmi_password, sensor, op,
+			NULL);
 
 	if (FAIL == zbx_ipc_socket_write(&ipmi_socket, ZBX_IPC_IPMI_SCRIPT_REQUEST, data, data_len))
 	{

@@ -102,6 +102,7 @@
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
 [ZBXNEXT-1423] added ipmi.get item for IPMI sensor LLD (https://support.zabbix.com/browse/ZBXNEXT-1423)
+[ZBXNEXT-1578] added ability to use user macros for IPMI user and password (https://support.zabbix.com/browse/ZBXNEXT-1578)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (https://support.zabbix.com/browse/ZBXNEXT-2480)
 [ZBXNEXT-3205] added regex context matching support to user macros (https://support.zabbix.com/browse/ZBXNEXT-3205)
