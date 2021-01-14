@@ -22,6 +22,7 @@ Bug fixes:
 ...G...... [ZBX-17369] fixed retrieval of decimal values from WMI (dgoloscapov)
 ..F....... [ZBX-17469] fixed kiosk button margin in history/graph view of the latest data (averza)
 ..F....... [ZBX-17595] fixed latest data all applications expansion with every refresh (vasilijs)
+A.F....... [ZBX-17715] fixed filtering and sorting of the Latest Data (averza)
 ...G...... [ZBX-17716] fixed 'UserParameter' parsing and possible buffer overrun (viktors)
 ..F....... [ZBX-17865] fixed displaying of long problem names on problems and event pages (gcalenko)
 ..F....... [ZBX-18031] fixed missing "loading" state in Monitoring → Latest data (talbergs)
