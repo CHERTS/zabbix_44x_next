@@ -194,6 +194,44 @@ static int  DBpatch_4040005(void)
 	return SUCCEED;
 }
 
+static int      DBpatch_4040006(void)
+{
+        if (0 == (program_type & ZBX_PROGRAM_TYPE_SERVER))
+                return SUCCEED;
+
+        if (ZBX_DB_OK > DBexecute("delete from profiles where idx in ('web.latest.toggle','web.latest.toggle_other')"))
+                return FAIL;
+
+        return SUCCEED;
+}
+
+static int      DBpatch_4040007(void)
+{
+        DB_ROW          row;
+        DB_RESULT       result;
+        int             ret = SUCCEED;
+
+        if (0 == (program_type & ZBX_PROGRAM_TYPE_SERVER))
+                return SUCCEED;
+
+        result = DBselect("select userid from profiles where idx='web.latest.sort' and value_str='lastclock'");
+
+        while (NULL != (row = DBfetch(result)))
+        {
+                if (ZBX_DB_OK > DBexecute(
+                        "delete from profiles"
+                        " where userid='%s'"
+                                " and idx in ('web.latest.sort','web.latest.sortorder')", row[0]))
+                {
+                        ret = FAIL;
+                        break;
+                }
+        }
+        DBfree_result(result);
+
+        return ret;
+}
+
 #endif
 
 DBPATCH_START(4040)
@@ -201,10 +239,12 @@ DBPATCH_START(4040)
 /* version, duplicates flag, mandatory flag */
 
 DBPATCH_ADD(4040000, 0, 1)
-DBPATCH_ADD(4040001, 0, 0)
-DBPATCH_ADD(4040002, 0, 0)
-DBPATCH_ADD(4040003, 0, 0)
-DBPATCH_ADD(4040004, 0, 0)
-DBPATCH_ADD(4040005, 0, 0)
+DBPATCH_ADD(4040001, 0, 1)
+DBPATCH_ADD(4040002, 0, 1)
+DBPATCH_ADD(4040003, 0, 1)
+DBPATCH_ADD(4040004, 0, 1)
+DBPATCH_ADD(4040005, 0, 1)
+DBPATCH_ADD(4040006, 0, 1)
+DBPATCH_ADD(4040007, 0, 1)
 
 DBPATCH_END()
