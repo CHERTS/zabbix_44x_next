@@ -30,6 +30,8 @@ A.F....... [ZBX-17715] fixed filtering and sorting of the Latest Data (averza)
 A......... [ZBX-18071] fixed slow SQL query when filtering items with latest data available (averza)
 ..F....... [ZBX-18092] reimplemented item folding based on application names and improved summary for each application in latest data view (averza, miks)
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
+..F....... [ZBX-18261] fixed Latest data performance by allowing to filter items with data only if hosts are selected as well (averza)
+..F....... [ZBX-18261] fixed performance of the "Latest data" screen with partitioned history tables (Sasha)
 ...G...... [ZBX-18387] made directory error handling for the UserParameter command in C agent the same as in GO agent (arimdjonoks)
 ...G...... [ZBX-18398] made system.swap.size item unsupported for free,pfree,used,pused types on systems without swap
 ..F....... [ZBX-18556] fixed gaps in time labels of classic graphs related to DST transitions (averza, Sasha)

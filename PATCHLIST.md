@@ -67,6 +67,8 @@
 [ZBX-18193] added logging for snmp_cache_reload (https://support.zabbix.com/browse/ZBX-18193)
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
 [ZBX-18219] fixed custom multiplier preprocessing step validation to accept a string with macros (https://support.zabbix.com/browse/ZBX-18219)
+[ZBX-18261] fixed Latest data performance by allowing to filter items with data only if hosts are selected as well (https://support.zabbix.com/browse/ZBX-18261)
+[ZBX-18261] fixed performance of the "Latest data" screen with partitioned history tables (https://support.zabbix.com/browse/ZBX-18261)
 [ZBX-18317] fixed fatal error when updating only discovered triggers and their properties (https://support.zabbix.com/browse/ZBX-18317)
 [ZBX-18326] fixed unsupported code for internet explorer (https://support.zabbix.com/browse/ZBX-18326)
 [ZBX-18327] fixed undefined index when invalid URL is given (https://support.zabbix.com/browse/ZBX-18327)

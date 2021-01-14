@@ -95,7 +95,9 @@ if (in_array($web_layout_mode, [ZBX_LAYOUT_NORMAL, ZBX_LAYOUT_FULLSCREEN])) {
 					->setWidth(ZBX_TEXTAREA_FILTER_STANDARD_WIDTH)
 				)
 				->addRow(_('Show items without data'),
-					(new CCheckBox('filter_show_without_data'))->setChecked($data['filter']['show_without_data'] == 1)
+					(new CCheckBox('filter_show_without_data'))
+						->setChecked($data['filter']['show_without_data'] == 1)
+						->setAttribute('disabled', $data['filter']['hostids'] ? null : 'disabled')
 				)
 				->addRow(_('Show details'),
 					(new CCheckBox('filter_show_details'))->setChecked($data['filter']['show_details'] == 1)
