@@ -160,8 +160,7 @@ if ($user_type == USER_TYPE_SUPER_ADMIN) {
 				'action' => 'gui.edit',
 				'alias' => ['gui.edit', 'autoreg.edit', 'housekeeping.edit', 'image.list', 'image.edit', 'iconmap.list',
 					'iconmap.edit', 'regex.list', 'regex.edit', 'macros.edit', 'valuemap.list','valuemap.edit',
-					'workingtime.edit', 'trigseverity.edit', 'trigdisplay.edit', 'miscconfig.edit', 'module.list',
-					'module.edit', 'module.scan'
+					'workingtime.edit', 'trigseverity.edit', 'trigdisplay.edit', 'miscconfig.edit'
 				]
 			],
 			_('Proxies') => [
@@ -170,7 +169,7 @@ if ($user_type == USER_TYPE_SUPER_ADMIN) {
 			],
 			_('Authentication') => [
 				'action' => 'authentication.edit',
-				'alias' => ['authentication.edit', 'authentication.update']
+				'alias' => ['authentication.edit']
 			],
 			_('User groups') => [
 				'action' => 'usergroup.list',
