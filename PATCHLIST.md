@@ -48,6 +48,7 @@
 [ZBX-18060] fixed inaccessible user be displayed as accessible in slide show properties screen (https://support.zabbix.com/browse/ZBX-18060)
 [ZBX-18063] fixed usage of unsupported parameter in API call (https://support.zabbix.com/browse/ZBX-18063)
 [ZBX-18069] fixed server exit when trying to execute IPMI script without IPMI pollers (https://support.zabbix.com/browse/ZBX-18069)
+[ZBX-18071] fixed slow SQL query when filtering items with latest data available (https://support.zabbix.com/browse/ZBX-18071)
 [ZBX-18075] fixed runtime error when creating a host via API (https://support.zabbix.com/browse/ZBX-18075)
 [ZBX-18076] fixed PHP notice and multiple undefined index errors in hostinterface API (https://support.zabbix.com/browse/ZBX-18076)
 [ZBX-18092] reimplemented item folding based on application names and improved summary for each application in latest data view (https://support.zabbix.com/browse/ZBX-18092)
