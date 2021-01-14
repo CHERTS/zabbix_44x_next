@@ -106,7 +106,7 @@ if (in_array($web_layout_mode, [ZBX_LAYOUT_NORMAL, ZBX_LAYOUT_FULLSCREEN])) {
 
 $widget->addItem((new CView('monitoring.latest.view.html', array_intersect_key($data, array_flip(['filter',
 	'sort_field', 'sort_order', 'view_curl', 'paging', 'rows', 'hosts', 'applications', 'applications_size',
-	'applications_index', 'items', 'history', 'collapsed_index', 'collapsed_all'
+	'applications_index', 'items', 'history', 'filter_set', 'collapsed_index', 'collapsed_all'
 ]))))->getOutput());
 
 $widget->show();
