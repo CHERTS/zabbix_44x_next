@@ -116,11 +116,12 @@ class CControllerLatestView extends CControllerLatest {
 			->setArgument('sortorder', $sort_order)
 			->setArgument('page', $this->hasInput('page') ? $this->getInput('page') : null);
 
-
 		// data sort and pager
 		$prepared_data = $this->prepareData($filter, $sort_field, $sort_order);
 
 		$paging = CPagerHelper::paginate(getRequest('page', 1), $prepared_data['rows'], ZBX_SORT_UP, $view_curl);
+
+		$this->addCollapsedDataFromProfile($prepared_data);
 
 		// display
 		$data = [
@@ -133,8 +134,6 @@ class CControllerLatestView extends CControllerLatest {
 			'active_tab' => CProfile::get('web.latest.filter.active', 1),
 			'paging' => $paging
 		] + $prepared_data;
-
-		CView::$has_web_layout_mode = true;
 
 		$response = new CControllerResponseData($data);
 		$response->setTitle(_('Latest data'));

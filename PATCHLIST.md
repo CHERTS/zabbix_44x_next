@@ -50,6 +50,7 @@
 [ZBX-18069] fixed server exit when trying to execute IPMI script without IPMI pollers (https://support.zabbix.com/browse/ZBX-18069)
 [ZBX-18075] fixed runtime error when creating a host via API (https://support.zabbix.com/browse/ZBX-18075)
 [ZBX-18076] fixed PHP notice and multiple undefined index errors in hostinterface API (https://support.zabbix.com/browse/ZBX-18076)
+[ZBX-18092] reimplemented item folding based on application names and improved summary for each application in latest data view (https://support.zabbix.com/browse/ZBX-18092)
 [ZBX-18105] fixed use on uninitialised variable (https://support.zabbix.com/browse/ZBX-18105)
 [ZBX-18116] fixed identical tags in webhook (https://support.zabbix.com/browse/ZBX-18116)
 [ZBX-18118] sorted event tag macro selection (https://support.zabbix.com/browse/ZBX-18118)

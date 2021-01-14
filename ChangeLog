@@ -26,6 +26,7 @@ A.F....... [ZBX-17715] fixed filtering and sorting of the Latest Data (averza)
 ...G...... [ZBX-17716] fixed 'UserParameter' parsing and possible buffer overrun (viktors)
 ..F....... [ZBX-17865] fixed displaying of long problem names on problems and event pages (gcalenko)
 ..F....... [ZBX-18031] fixed missing "loading" state in Monitoring → Latest data (talbergs)
+..F....... [ZBX-18092] reimplemented item folding based on application names and improved summary for each application in latest data view (averza, miks)
 A......... [ZBX-18163] fixed deletion of one last remaining main host interface to show error instead of silently deleting the interface (Ivo)
 ...G...... [ZBX-18387] made directory error handling for the UserParameter command in C agent the same as in GO agent (arimdjonoks)
 ...G...... [ZBX-18398] made system.swap.size item unsupported for free,pfree,used,pused types on systems without swap
