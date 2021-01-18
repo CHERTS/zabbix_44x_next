@@ -5785,6 +5785,10 @@ svg {
   display: none;
 }
 
+.display-none, .table-forms li.display-none {
+  display: none;
+}
+
 .checkbox-list li {
   overflow: hidden;
   text-overflow: ellipsis;

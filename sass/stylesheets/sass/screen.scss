@@ -1840,10 +1840,13 @@ form {
 
 	li {
 		display: table-row;
+
+		&.display-none {
+			@extend .display-none
+		}
 	}
 
 	.multiselect-suggest {
-
 		li {
 			display: block;
 		}
@@ -6709,6 +6712,10 @@ svg {
 			display: none;
 		}
 	}
+}
+
+.display-none {
+	display: none;
 }
 
 .checkbox-list {
