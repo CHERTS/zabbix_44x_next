@@ -19209,6 +19209,11 @@ msgstr "discovery"
 msgid "discovery rule is disabled"
 msgstr "discovery rule is disabled"
 
+#: app/views/monitoring.latest.view.html.php:126
+#, c-format
+msgid "displaying %1$s to %2$s of %3$s Items"
+msgstr ""
+
 #: include/actions.inc.php:27 include/correlation.inc.php:34
 msgid "does not contain"
 msgstr "does not contain"
