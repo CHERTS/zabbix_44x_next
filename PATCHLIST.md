@@ -109,6 +109,7 @@
 [ZBX-18815] fixed displaying incomplete list of inherited trigger tags under rare circumstances (https://support.zabbix.com/browse/ZBX-18815)
 [ZBX-18865] fixed dbConditionInt (db.inc.php) returning wrong result in rare cases (https://support.zabbix.com/browse/ZBX-18865)
 [ZBX-18884] fixed crash in web monitoring and web.page.* keys when encoding non ASCII characters in URL (https://support.zabbix.com/browse/ZBX-18884)
+[ZBX-18892] fixed preprocessing steps wrapping (https://support.zabbix.com/browse/ZBX-18892)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)

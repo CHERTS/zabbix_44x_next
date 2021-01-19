@@ -57,7 +57,7 @@ $result_table = (new CTable())
 	->addStyle('width: 100%;')
 	->setHeader([
 		'',
-		(new CColHeader(_('Name'))),
+		(new CColHeader(_('Name')))->addStyle('width: 100%;'),
 		(new CColHeader(_('Result')))->addClass(ZBX_STYLE_RIGHT)
 	]);
 
@@ -77,7 +77,9 @@ foreach ($data['steps'] as $i => $step) {
 
 	$result_table->addRow([
 		$step['num'].':',
-		(new CCol($step['name']))->setId('preproc-test-step-'.$i.'-name'),
+		(new CCol($step['name']))
+			->setId('preproc-test-step-'.$i.'-name')
+			->addClass(ZBX_STYLE_WORDBREAK),
 		(new CCol())
 			->addClass(ZBX_STYLE_RIGHT)
 			->setId('preproc-test-step-'.$i.'-result')
