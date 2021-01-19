@@ -57,7 +57,7 @@ $result_table = (new CTable())
 	->addStyle('width: 100%;')
 	->setHeader([
 		'',
-		(new CColHeader(_('Name')))->addStyle('width: 100%;'),
+		(new CColHeader(_('Name'))),
 		(new CColHeader(_('Result')))->addClass(ZBX_STYLE_RIGHT)
 	]);
 
@@ -197,10 +197,9 @@ $output = [
 	'buttons' => [
 		[
 			'title' => _('Test'),
-			'class' => 'submit-test-btn',
 			'keepOpen' => true,
 			'isSubmit' => true,
-			'action' => 'return itemPreprocessingTest("#'.$form->getId().'");'
+			'action' => 'return itemPreprocessingTest(overlay);'
 		]
 	]
 ];

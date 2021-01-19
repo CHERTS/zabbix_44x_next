@@ -92,6 +92,7 @@ $availableJScripts = [
 	'class.ctree.js' => '',
 	'class.curl.js' => '',
 	'class.overlaycollection.js' => '',
+	'class.overlay.js' => '',
 	'class.cverticalaccordion.js' => '',
 	'class.mapwidget.js' => '',
 	'class.svg.canvas.js' => 'vector/',
@@ -109,6 +110,9 @@ $availableJScripts = [
 $tranStrings = [
 	'gtlc.js' => [
 		'S_MINUTE_SHORT' => _x('m', 'minute short')
+	],
+	'class.overlay.js' => [
+		'Operation details' => _('Operation details')
 	],
 	'dashboard.grid.js' => [
 		'Edit widget' => _('Edit widget'),
@@ -336,6 +340,7 @@ if (empty($_GET['files'])) {
 		'common.js',
 		'class.cdebug.js',
 		'class.overlaycollection.js',
+		'class.overlay.js',
 		'class.cdate.js',
 		'class.cookie.js',
 		'class.curl.js',

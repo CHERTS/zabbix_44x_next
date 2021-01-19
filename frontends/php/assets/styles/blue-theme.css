@@ -3903,6 +3903,15 @@ button.icon-cal[disabled] {
   max-width: 1024px;
   min-width: 650px;
 }
+.overlay-dialogue.modal-popup.modal-popup-medium {
+  min-width: 450px;
+}
+.overlay-dialogue .hintbox-wrap {
+    overflow: auto;
+    max-height: 240px;
+    max-width: 800px;
+    overflow-wrap: break-word;
+}
 .overlay-dialogue .hintbox-scrollable {
   overflow: auto;
   width: 100%;
@@ -3921,7 +3930,7 @@ button.icon-cal[disabled] {
   position: -webkit-sticky;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 2;
 }
 .overlay-dialogue .list-table {
   white-space: normal;
@@ -4422,7 +4431,7 @@ button.icon-cal[disabled] {
   left: 0;
   right: 0;
   top: 0;
-  z-index: 999;
+  z-index: 1;
 }
 
 .svg-graph {
@@ -5337,6 +5346,73 @@ td[class] + td.disaster-bg {
   padding-left: 25px;
 }
 
+@keyframes is-loading-kf {
+  to {
+    transform: rotate(360deg); } }
+.is-loading {
+  pointer-events: none; }
+  .is-loading::before {
+    background-color: rgba(255, 255, 255, 0.8);
+    content: 'loading';
+    text-indent: 200%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3; }
+  .is-loading::after {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 2px solid #ccd5d9;
+    border-bottom-color: #0275b8;
+    border-radius: 50%;
+    box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.8);
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: is-loading-kf .6s infinite linear;
+    z-index: 3;
+    content: ''; }
+  .is-loading.is-loading-fadein::before {
+    opacity: 0;
+    animation: fadein 2s ease-in .5s normal forwards; }
+  .is-loading.is-loading-fadein::after {
+    opacity: 0;
+    animation: fadein 2s ease-in .5s normal forwards, is-loading-kf .6s infinite linear; }
+  .is-loading.is-loading-fadein .delayed-15s::before, .is-loading.is-loading-fadein .delayed-15s::after {
+    animation-delay: 15s; }
+
+button.is-loading {
+  position: relative; }
+  button.is-loading::before {
+    background: none; }
+  button.is-loading::after {
+    box-shadow: none;
+    background: none;
+    border: 1px solid #fdfdfd;
+    border-bottom-color: #0275b8;
+    width: 12px;
+    height: 12px; }
+
+span.is-loading {
+  position: relative;
+  display: inline-block;
+  min-width: 40px;
+  min-height: 40px; }
+
+.overlay-dialogue.modal .overlay-dialogue-body.is-loading {
+  overflow: hidden; }
+.overlay-dialogue.modal .overlay-dialogue-body.is-loading:before {
+  top: 42px;
+  bottom: 42px;
+}
+
 .in-progress {
   position: relative;
 }
@@ -5506,7 +5582,7 @@ td[class] + td.disaster-bg {
   text-align: center;
 }
 
-.overflow-table::-webkit-scrollbar, .multiselect-available::-webkit-scrollbar, textarea::-webkit-scrollbar, select::-webkit-scrollbar, .setup-right-body::-webkit-scrollbar, .dashbrd-grid-widget-content::-webkit-scrollbar, .overlay-dialogue.modal .overlay-dialogue-body::-webkit-scrollbar, .overlay-dialogue .hintbox-scrollable::-webkit-scrollbar, .overlay-dialogue .hintbox-description::-webkit-scrollbar, .overlay-dialogue .maps-container::-webkit-scrollbar, .notif-body::-webkit-scrollbar, .debug-output::-webkit-scrollbar, .overlay-descr::-webkit-scrollbar, .msg-details ul::-webkit-scrollbar {
+.overflow-table::-webkit-scrollbar, .multiselect-available::-webkit-scrollbar, textarea::-webkit-scrollbar, select::-webkit-scrollbar, .setup-right-body::-webkit-scrollbar, .dashbrd-grid-widget-content::-webkit-scrollbar, .overlay-dialogue-body::-webkit-scrollbar, .overlay-dialogue .hintbox-scrollable::-webkit-scrollbar, .overlay-dialogue .hintbox-description::-webkit-scrollbar, .overlay-dialogue .maps-container::-webkit-scrollbar, .notif-body::-webkit-scrollbar, .debug-output::-webkit-scrollbar, .overlay-descr::-webkit-scrollbar, .msg-details ul::-webkit-scrollbar {
   width: 9px;
 }
 .overflow-table::-webkit-scrollbar-track, .multiselect-available::-webkit-scrollbar-track, textarea::-webkit-scrollbar-track, select::-webkit-scrollbar-track, .setup-right-body::-webkit-scrollbar-track, .dashbrd-grid-widget-content::-webkit-scrollbar-track, .overlay-dialogue.modal .overlay-dialogue-body::-webkit-scrollbar-track, .overlay-dialogue .hintbox-scrollable::-webkit-scrollbar-track, .overlay-dialogue .hintbox-description::-webkit-scrollbar-track, .overlay-dialogue .maps-container::-webkit-scrollbar-track, .notif-body::-webkit-scrollbar-track, .debug-output::-webkit-scrollbar-track, .overlay-descr::-webkit-scrollbar-track, .msg-details ul::-webkit-scrollbar-track {

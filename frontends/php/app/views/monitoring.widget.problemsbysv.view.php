@@ -19,10 +19,6 @@
 **/
 
 
-$data['backurl'] = (new CUrl('zabbix.php'))
-	->setArgument('action', 'dashboard.view')
-	->getUrl();
-
 if ($data['filter']['show_type'] == WIDGET_PROBLEMS_BY_SV_SHOW_TOTALS) {
 	$table = makeSeverityTotals($data)
 		->addClass(ZBX_STYLE_BY_SEVERITY_WIDGET)
