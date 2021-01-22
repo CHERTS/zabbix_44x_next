@@ -91,6 +91,7 @@
 [ZBX-18553] increased ssh.run[] item data limit to 512KB for pre-processing, data storage limit still remains at 64KB (https://support.zabbix.com/browse/ZBX-18553)
 [ZBX-18564] moved taskid calculation to transaction when creating remote command task (https://support.zabbix.com/browse/ZBX-18564)
 [ZBX-18612] added error message for when real-time data export file become inaccessible (https://support.zabbix.com/browse/ZBX-18612)
+[ZBX-18623] fixed the global search showing number of objects that user has no permissions (https://support.zabbix.com/browse/ZBX-18623)
 [ZBX-18625] fixed host level tags were not inherited in Trigger -> Tags configuration form (https://support.zabbix.com/browse/ZBX-18625)
 [ZBX-18644] replaced deprecated gethostbyname function with getaddrinfo (https://support.zabbix.com/browse/ZBX-18644)
 [ZBX-18650] fixed logic for processing LLD rule duplicates after reconnecting to proxy (https://support.zabbix.com/browse/ZBX-18650)

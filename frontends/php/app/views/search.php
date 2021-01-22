@@ -54,36 +54,36 @@ foreach ($data['hosts'] as $hostid => $host) {
 
 	$applications_link = $host['editable']
 		? [new CLink(_('Applications'), 'applications.php?'.$link), $app_count]
-		: [_('Applications'), $app_count];
+		: _('Applications');
 
 	$items_link = $host['editable']
 		? [new CLink(_('Items'), (new CUrl('items.php'))
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$hostid])
 		), $item_count]
-		: [_('Items'), $item_count];
+		: _('Items');
 
 	$triggers_link = $host['editable']
 		? [new CLink(_('Triggers'), (new CUrl('triggers.php'))
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$hostid])
 		), $trigger_count]
-		: [_('Triggers'), $trigger_count];
+		: _('Triggers');
 
 	$graphs_link = $host['editable']
 		? [new CLink(_('Graphs'), 'graphs.php?'.$link), $graph_count]
-		: [_('Graphs'), $graph_count];
+		: _('Graphs');
 
 	$discovery_link = $host['editable']
 		? [new CLink(_('Discovery'), (new CUrl('host_discovery.php'))
 			->setArgument('filter_set', '1')
 			->setArgument('filter_hostids', [$hostid])
 		), $discovery_count]
-		: [_('Discovery'), $discovery_count];
+		: _('Discovery');
 
 	$httptests_link = $host['editable']
 		? [new CLink(_('Web'), 'httpconf.php?'.$link), $httptest_count]
-		: [_('Web'), $httptest_count];
+		: _('Web');
 
 	if ($host['status'] == HOST_STATUS_NOT_MONITORED) {
 		$name
@@ -215,36 +215,36 @@ if ($data['admin']) {
 
 		$applications_link = $template['editable']
 			? [new CLink(_('Applications'), 'applications.php?'.$link), $app_count]
-			: [_('Applications'), $app_count];
+			: _('Applications');
 
 		$items_link = $template['editable']
 			? [new CLink(_('Items'), (new CUrl('items.php'))
 				->setArgument('filter_set', '1')
 				->setArgument('filter_hostids', [$templateid])
 			), $item_count]
-			: [_('Items'), $item_count];
+			: _('Items');
 
 		$triggers_link = $template['editable']
 			? [new CLink(_('Triggers'), (new CUrl('triggers.php'))
 				->setArgument('filter_set', '1')
 				->setArgument('filter_hostids', [$templateid])
 			), $trigger_count]
-			: [_('Triggers'), $trigger_count];
+			: _('Triggers');
 
 		$graphs_link = $template['editable']
 			? [new CLink(_('Graphs'), 'graphs.php?'.$link), $graph_count]
-			: [_('Graphs'), $graph_count];
+			: _('Graphs');
 
 		$screens_link = $template['editable']
 			? [new CLink(_('Screens'), 'screenconf.php?templateid='.$templateid), $screen_count]
-			: [_('Screens'), $screen_count];
+			: _('Screens');
 
 		$discovery_link = $template['editable']
 			? [new CLink(_('Discovery'), (new CUrl('host_discovery.php'))
 				->setArgument('filter_set', '1')
 				->setArgument('filter_hostids', [$templateid])
 			), $discovery_count]
-			: [_('Discovery'), $discovery_count];
+			: _('Discovery');
 
 		$httptests_link = $template['editable']
 			? [new CLink(_('Web'), 'httpconf.php?'.$link), $httptest_count]
