@@ -13,6 +13,7 @@ A.F.I..... [ZBXNEXT-5538] moved Adminitration->User groups pages to MVC framewor
 ..F.....S. [ZBXNEXT-5898] added user macro expanding in item description (asitals, kustalovs)
 ........S. [ZBXNEXT-6042] optimized trigger, calculated item processing by resolving user macros during configuration cache synchronization (wiper)
 ...G...... [ZBXNEXT-6171] added UserParameterDir config option to agent and agent2 (yurii)
+..F....... [ZBXNEXT-6358] removed detailed information from Reports -> Notifications page (Ivo)
 ..F....... [ZBXNEXT-6364] removed long lists of cloned objects from host and template full clone forms (Ivo)
 .......PS. [ZBXNEXT-6380] added new key vmware.cl.perfcounter
 
