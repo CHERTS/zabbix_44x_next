@@ -4585,7 +4585,6 @@ $form-icon-btn: (
 
 			.table-forms {
 				.table-forms-td-right {
-					@extend %space-pre-wrap;
 					padding-right: 8px;
 				}
 
@@ -7514,7 +7513,7 @@ $range-input-width: 31px;
 	}
 }
 
-table.preprocessing-test-results {
+.preprocessing-test-results {
 
 	td {
 		vertical-align: top !important;
