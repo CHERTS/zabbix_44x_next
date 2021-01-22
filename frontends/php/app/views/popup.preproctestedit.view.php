@@ -57,7 +57,7 @@ $result_table = (new CTable())
 	->addStyle('width: 100%;')
 	->setHeader([
 		'',
-		(new CColHeader(_('Name')))->addStyle('width: 100%;'),
+		(new CColHeader(_('Name')))->addClass(ZBX_STYLE_WORDBREAK),
 		(new CColHeader(_('Result')))->addClass(ZBX_STYLE_RIGHT)
 	]);
 
