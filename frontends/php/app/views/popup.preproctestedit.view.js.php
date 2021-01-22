@@ -53,25 +53,33 @@ function makeStepResult(step) {
 /**
  * Send item preprocessing test details and display results in table.
  *
- * @param {Overlay} overlay
+ * @param string formid  Selector for form to send.
  */
-function itemPreprocessingTest(overlay) {
-	var $form = overlay.$dialogue.find('form'),
-		url = new Curl($form.attr('action')),
+function itemPreprocessingTest(form) {
+	var form = jQuery(form),
+		url = new Curl(jQuery(form).attr('action')),
 		is_prev_enabled = <?= $data['show_prev'] ? 'true' : 'false' ?>;
 
-	overlay.setLoading();
-	overlay.xhr = jQuery.ajax({
+	jQuery.ajax({
 		url: url.getUrl(),
-		data: $form.serialize(),
-		complete: function() {
-			overlay.unsetLoading();
-		},
+		data: jQuery(form).serialize(),
 		beforeSend: function() {
 			jQuery('#value, #time, [name^=macros]').prop('disabled', true);
 			if (is_prev_enabled) {
 				jQuery('#prev_value, #prev_time').prop('disabled', true);
 			}
+
+			jQuery('<span>')
+				.addClass('preloader')
+				.insertAfter(jQuery('.submit-test-btn'))
+				.css({
+					'display': 'inline-block',
+					'margin': '0 10px -8px'
+				});
+
+			jQuery('.submit-test-btn')
+				.prop('disabled', true)
+				.hide();
 
 			// Clean previous results.
 			jQuery('[id^="preproc-test-step-"][id$="-result"]').empty();
@@ -82,12 +90,12 @@ function itemPreprocessingTest(overlay) {
 				.empty();
 		},
 		success: function(ret) {
-			overlay.$dialogue.find('.msg-bad, .msg-good').remove();
+			jQuery(form).parent().find('.msg-bad, .msg-good').remove();
 
 			processItemPreprocessingTestResults(ret.steps);
 
 			if (typeof ret.messages !== 'undefined') {
-				jQuery(ret.messages).insertBefore($form);
+				jQuery(ret.messages).insertBefore(jQuery(form));
 			}
 
 			if (typeof ret.final !== 'undefined') {
@@ -107,6 +115,11 @@ function itemPreprocessingTest(overlay) {
 			if (is_prev_enabled) {
 				jQuery('#prev_value, #prev_time').prop('disabled', false);
 			}
+
+			jQuery('.preloader').remove();
+			jQuery('.submit-test-btn')
+				.prop('disabled', false)
+				.show();
 		},
 		dataType: 'json',
 		type: 'post'

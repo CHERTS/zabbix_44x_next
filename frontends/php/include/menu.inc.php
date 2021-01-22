@@ -31,7 +31,7 @@ $menu
 			],
 			_('Problems') => [
 				'action' => 'problem.view',
-				'alias' => ['problem.view', 'tr_events.php']
+				'alias' => ['problem.view', 'acknowledge.edit', 'tr_events.php']
 			],
 			_('Overview') => [
 				'action' => 'overview.php'

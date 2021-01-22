@@ -76,7 +76,7 @@ class testPageDashboardWidgets extends CWebTest {
 	 */
 	private function checkLastSelectedWidgetType($type = 'Action log', $db_type = null) {
 		$dashboard = CDashboardElement::find()->one();
-		$this->query('id:overlay-bg')->waitUntilNotVisible();
+		$this->query('id:overlay_bg')->waitUntilNotVisible();
 		$overlay = $dashboard->addWidget();
 		$form = $overlay->asForm();
 		$this->assertEquals($type, $form->getField('Type')->getValue());
@@ -179,10 +179,8 @@ class testPageDashboardWidgets extends CWebTest {
 
 		// Create a new dashboard.
 		$this->query('button:Create dashboard')->one()->click();
-		$this->page->waitUntilReady();
-
 		// Wait until overlay dialog is visible and ready.
-		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
+		$dialog = $this->query('id:overlay_dialogue')->waitUntilVisible()->asOverlayDialog()->one()->waitUntilReady();
 
 		// Check title of a dialog.
 		$this->assertEquals('Dashboard properties', $dialog->getTitle());
@@ -211,8 +209,7 @@ class testPageDashboardWidgets extends CWebTest {
 		$this->page->login()->open('zabbix.php?action=dashboard.list');
 
 		$this->query('button:Create dashboard')->one()->click();
-		$this->page->waitUntilReady();
-		$dialog = COverlayDialogElement::find()->one()->waitUntilReady();
+		$dialog = $this->query('id:overlay_dialogue')->waitUntilVisible()->asOverlayDialog()->one()->waitUntilReady();
 
 		$this->assertEquals('Dashboard properties', $dialog->getTitle());
 		$configuration = $dialog->asForm();

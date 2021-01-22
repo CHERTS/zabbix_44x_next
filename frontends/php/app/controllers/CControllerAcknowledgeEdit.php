@@ -19,7 +19,7 @@
 **/
 
 
-class CControllerPopupAcknowledgeEdit extends CController {
+class CControllerAcknowledgeEdit extends CController {
 
 	protected function init() {
 		$this->disableSIDValidation();
@@ -27,27 +27,40 @@ class CControllerPopupAcknowledgeEdit extends CController {
 
 	protected function checkInput() {
 		$fields = [
-			'eventids' =>				'required|array_db acknowledges.eventid',
-			'message' =>				'db acknowledges.message|flags '.P_CRLF,
-			'scope' =>					'in '.ZBX_ACKNOWLEDGE_SELECTED.','.ZBX_ACKNOWLEDGE_PROBLEM,
-			'change_severity' =>		'db acknowledges.action|in '.ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_SEVERITY,
-			'severity' =>				'ge '.TRIGGER_SEVERITY_NOT_CLASSIFIED.'|le '.TRIGGER_SEVERITY_COUNT,
-			'acknowledge_problem' =>	'db acknowledges.action|in '.ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_ACKNOWLEDGE,
-			'close_problem' =>			'db acknowledges.action|in '.ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_CLOSE
+			'eventids' =>					'required|array_db acknowledges.eventid',
+			'message' =>					'db acknowledges.message',
+			'scope' =>						'in '.ZBX_ACKNOWLEDGE_SELECTED.','.ZBX_ACKNOWLEDGE_PROBLEM,
+			'change_severity' =>			'db acknowledges.action|in '.
+												ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_SEVERITY,
+			'severity' =>					'ge '.TRIGGER_SEVERITY_NOT_CLASSIFIED.'|le '.TRIGGER_SEVERITY_COUNT,
+			'acknowledge_problem' =>		'db acknowledges.action|in '.
+												ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_ACKNOWLEDGE,
+			'close_problem' =>				'db acknowledges.action|in '.
+												ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_CLOSE,
+			'backurl' =>					'string'
 		];
 
 		$ret = $this->validateInput($fields);
 
-		if (!$ret) {
-			$output = [];
+		if ($ret) {
+			$backurl = $this->getInput('backurl', 'zabbix.php?action=problem.view');
 
-			if (($messages = getMessages()) !== null) {
-				$output['errors'] = $messages->toString();
+			switch (parse_url($backurl, PHP_URL_PATH)) {
+				case 'overview.php':
+				case 'screenedit.php':
+				case 'screens.php':
+				case 'slides.php':
+				case 'tr_events.php':
+				case 'zabbix.php':
+					break;
+
+				default:
+					$ret = false;
 			}
+		}
 
-			$this->setResponse(
-				(new CControllerResponseData(['main_block' => json_encode($output)]))->disableView()
-			);
+		if (!$ret) {
+			$this->setResponse(new CControllerResponseFatal());
 		}
 
 		return $ret;
@@ -70,6 +83,7 @@ class CControllerPopupAcknowledgeEdit extends CController {
 			'eventids' => $this->getInput('eventids'),
 			'message' => $this->getInput('message', ''),
 			'scope' => (int) $this->getInput('scope', ZBX_ACKNOWLEDGE_SELECTED),
+			'backurl' => $this->getInput('backurl', 'zabbix.php?action=problem.view'),
 			'change_severity' => $this->getInput('change_severity', ZBX_PROBLEM_UPDATE_NONE),
 			'severity' => $this->hasInput('severity') ? (int) $this->getInput('severity') : null,
 			'acknowledge_problem' => $this->getInput('acknowledge_problem', ZBX_PROBLEM_UPDATE_NONE),
@@ -80,7 +94,7 @@ class CControllerPopupAcknowledgeEdit extends CController {
 			'problem_severity_can_be_changed' => false
 		];
 
-		// Select events.
+		// Select events:
 		$events = API::Event()->get([
 			'output' => ['eventid', 'objectid', 'acknowledged', 'value', 'r_eventid'],
 			'select_acknowledges' => ['userid', 'clock', 'message', 'action', 'old_severity', 'new_severity'],
@@ -110,7 +124,7 @@ class CControllerPopupAcknowledgeEdit extends CController {
 			]);
 		}
 
-		$triggerids = array_column($events, 'objectid', 'objectid');
+		$triggerids = array_keys(array_flip(zbx_objectValues($events, 'objectid')));
 
 		$editable_triggers = API::Trigger()->get([
 			'output' => ['manual_close'],
@@ -163,14 +177,9 @@ class CControllerPopupAcknowledgeEdit extends CController {
 			'objectids' => $triggerids
 		]);
 
-		$output = [
-			'title' => _('Update problem'),
-			'errors' => hasErrorMesssages() ? getMessages() : null,
-			'user' => [
-				'debug_mode' => $this->getDebugMode()
-			]
-		] + $data;
-
-		$this->setResponse(new CControllerResponseData($output));
+		$response = new CControllerResponseData($data);
+		$response->setTitle(_('Update problem'));
+		$this->setResponse($response);
 	}
 }
+

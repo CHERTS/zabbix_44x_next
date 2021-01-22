@@ -1035,11 +1035,9 @@
 	/**
 	 * This method is bound via popup button attribute. It posts serialized version of current form to be validated.
 	 * Note that we do not bother posting dynamic fields, since they are not validated at this point.
-	 *
-	 * @param {Overlay} overlay
 	 */
-	StepEditForm.prototype.validate = function(overlay) {
-		var url = new Curl(this.$form.attr('action'));
+	StepEditForm.prototype.validate = function() {
+		var url = new Curl(this.$form.attr('action')),
 			dialogueid = this.$form.closest('[data-dialogueid]').attr('data-dialogueid');
 
 		this.$form.trimValues(['#step_name', '#url', '#timeout', '#required', '#status_codes']);
@@ -1049,15 +1047,11 @@
 
 		var curr_pairs = this.stepPairsData();
 
-		overlay.setLoading();
-		overlay.xhr = jQuery.ajax({
+		return jQuery.ajax({
 			url: url.getUrl(),
 			data: this.$form.serialize(),
 			dataType: 'json',
 			type: 'post'
-		})
-		.always(function() {
-			overlay.unsetLoading();
 		})
 		.done(function(ret) {
 			if (typeof ret.errors !== 'undefined') {
@@ -1073,7 +1067,7 @@
 			httpconf.steps.data[ret.params.no].update(ret.params);
 			httpconf.steps.renderData();
 
-			overlayDialogueDestroy(overlay.dialogueid);
+			overlayDialogueDestroy(dialogueid);
 		}.bind(this));
 	};
 </script>

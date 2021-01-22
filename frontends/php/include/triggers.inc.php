@@ -882,11 +882,13 @@ function getTriggersWithActualSeverity(array $trigger_options, array $problem_op
  * @param string $triggers[<triggerid>][hosts][][name]
  * @param array  $triggers[<triggerid>]['dependencies']
  * @param string $triggers[<triggerid>]['dependencies'][]['triggerid']
+ * @param string $pageFile                     The page where the element is displayed.
  * @param int    $viewMode                     Table display style: either hosts on top, or host on the left side.
+ * @param string $screenId                     The ID of the screen, that contains the trigger overview table.
  *
  * @return CTableInfo
  */
-function getTriggersOverview(array $hosts, array $triggers, $viewMode = null) {
+function getTriggersOverview(array $hosts, array $triggers, $pageFile, $viewMode = null, $screenId = null) {
 	$data = [];
 	$host_names = [];
 	$trcounter = [];
@@ -959,7 +961,7 @@ function getTriggersOverview(array $hosts, array $triggers, $viewMode = null) {
 				foreach ($host_names as $host_name) {
 					$columns[] = getTriggerOverviewCells(
 						array_key_exists($host_name, $trigger_hosts) ? $trigger_hosts[$host_name] : null,
-						$dependencies
+						$dependencies, $pageFile, $screenId
 					);
 				}
 				$triggerTable->addRow($columns);
@@ -989,7 +991,7 @@ function getTriggersOverview(array $hosts, array $triggers, $viewMode = null) {
 				foreach ($trigger_data as $trigger_hosts) {
 					$columns[] = getTriggerOverviewCells(
 						array_key_exists($host_name, $trigger_hosts) ? $trigger_hosts[$host_name] : null,
-						$dependencies
+						$dependencies, $pageFile, $screenId
 					);
 				}
 			}
@@ -1008,15 +1010,17 @@ function getTriggersOverview(array $hosts, array $triggers, $viewMode = null) {
  *
  * @param array  $trigger
  * @param array  $dependencies  The list of trigger dependencies, prepared by getTriggerDependencies() function.
+ * @param string $pageFile      The page where the element is displayed.
+ * @param string $screenid
  *
  * @return CCol
  */
-function getTriggerOverviewCells($trigger, array $dependencies) {
+function getTriggerOverviewCells($trigger, $dependencies, $pageFile, $screenid = null) {
 	$ack = null;
 	$css = null;
 	$desc = null;
 	$eventid = 0;
-	$acknowledge = false;
+	$acknowledge = [];
 
 	if ($trigger) {
 		$css = getSeverityStyle($trigger['priority'], $trigger['value'] == TRIGGER_VALUE_TRUE);
@@ -1024,7 +1028,7 @@ function getTriggerOverviewCells($trigger, array $dependencies) {
 		// problem trigger
 		if ($trigger['value'] == TRIGGER_VALUE_TRUE) {
 			$eventid = $trigger['problem']['eventid'];
-			$acknowledge = true;
+			$acknowledge = ['backurl' => ($screenid !== null) ? $pageFile.'?screenid='.$screenid : $pageFile];
 		}
 
 		if ($trigger['problem']['acknowledged'] == 1) {

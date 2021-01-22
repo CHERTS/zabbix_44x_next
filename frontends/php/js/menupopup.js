@@ -575,7 +575,8 @@ function getMenuPopupDashboard(options, trigger_elmnt) {
  * @param {object} options['items']                   Link to trigger item history page (optional).
  * @param {string} options['items'][]['name']         Item name.
  * @param {object} options['items'][]['params']       Item URL parameters ("name" => "value").
- * @param {bool}   options['acknowledge']             (optional) Whether to show Acknowledge section.
+ * @param {object} options['acknowledge']             Link to acknowledge page (optional).
+ * @param {string} options['acknowledge']['backurl']  Return URL.
  * @param {object} options['configuration']           Link to trigger configuration page (optional).
  * @param {bool}   options['showEvents']              Show Problems item enabled. Default: false.
  * @param {string} options['url']                     Trigger URL link (optional).
@@ -607,16 +608,16 @@ function getMenuPopupTrigger(options, trigger_elmnt) {
 	items[items.length] = events;
 
 	// acknowledge
-	if (typeof options.acknowledge !== 'undefined' && options.acknowledge) {
+	if (typeof options.acknowledge !== 'undefined' && objectSize(options.acknowledge) > 0) {
+		var url = new Curl('zabbix.php', false);
+
+		url.setArgument('action', 'acknowledge.edit');
+		url.setArgument('eventids[]', options.eventid);
+		url.setArgument('backurl', options.acknowledge.backurl);
+
 		items[items.length] = {
 			label: t('Acknowledge'),
-			clickCallback: function() {
-				jQuery(this).closest('.menu-popup-top').menuPopup('close', null);
-
-				return PopUp('popup.acknowledge.edit', {
-					eventids: [options.eventid]
-				}, null, trigger_elmnt);
-			}
+			url: url.getUrl()
 		};
 	}
 

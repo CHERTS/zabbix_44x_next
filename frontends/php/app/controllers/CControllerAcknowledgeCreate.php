@@ -19,56 +19,38 @@
 **/
 
 
-class CControllerPopupAcknowledgeCreate extends CController {
-
-	/**
-	 * @var bool
-	 */
-	private $close_problems;
-
-	/**
-	 * @var bool
-	 */
-	private $change_severity;
-
-	/**
-	 * @var bool
-	 */
-	private $acknowledge;
-
-	/**
-	 * @var string
-	 */
-	private $new_severity;
-
-	/**
-	 * @var string
-	 */
-	private $message;
+class CControllerAcknowledgeCreate extends CController {
 
 	protected function checkInput() {
 		$fields = [
 			'eventids' =>				'required|array_db acknowledges.eventid',
-			'message' =>				'db acknowledges.message|flags '.P_CRLF,
+			'message' =>				'db acknowledges.message |flags '.P_CRLF,
 			'scope' =>					'in '.ZBX_ACKNOWLEDGE_SELECTED.','.ZBX_ACKNOWLEDGE_PROBLEM,
-			'change_severity' =>		'db acknowledges.action|in '.ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_SEVERITY,
+			'change_severity' =>		'db acknowledges.action|in '.
+											ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_SEVERITY,
 			'severity' =>				'ge '.TRIGGER_SEVERITY_NOT_CLASSIFIED.'|le '.TRIGGER_SEVERITY_COUNT,
-			'acknowledge_problem' =>	'db acknowledges.action|in '.ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_ACKNOWLEDGE,
-			'close_problem' =>			'db acknowledges.action|in '.ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_CLOSE
+			'acknowledge_problem' =>	'db acknowledges.action|in '.
+												ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_ACKNOWLEDGE,
+			'close_problem' =>			'db acknowledges.action|in '.
+											ZBX_PROBLEM_UPDATE_NONE.','.ZBX_PROBLEM_UPDATE_CLOSE,
+			'backurl' =>				'string'
 		];
 
 		$ret = $this->validateInput($fields);
 
 		if (!$ret) {
-			$output = [];
+			switch ($this->GetValidationError()) {
+				case self::VALIDATION_ERROR:
+					$response = new CControllerResponseRedirect('zabbix.php?action=acknowledge.edit');
+					$response->setFormData($this->getInputAll());
+					$response->setMessageError(_('Cannot update event'));
+					$this->setResponse($response);
+					break;
 
-			if (($messages = getMessages()) !== null) {
-				$output['errors'] = $messages->toString();
+				case self::VALIDATION_FATAL_ERROR:
+					$this->setResponse(new CControllerResponseFatal());
+					break;
 			}
-
-			$this->setResponse(
-				(new CControllerResponseData(['main_block' => json_encode($output)]))->disableView()
-			);
 		}
 
 		return $ret;
@@ -104,7 +86,7 @@ class CControllerPopupAcknowledgeCreate extends CController {
 		}
 
 		// Select data about all affected events and triggers involved.
-		[$events, $editable_triggers] = $this->getEventDetails(array_keys($eventids));
+		list($events, $editable_triggers) = $this->getEventDetails(array_keys($eventids));
 		unset($eventids);
 
 		// Group events by actions user is allowed to perform.
@@ -118,7 +100,7 @@ class CControllerPopupAcknowledgeCreate extends CController {
 			 * for any of selected events. This can happen, when you will perform one action on multiple problems,
 			 * where only some of these problems can perform this action (ex. close problem).
 			 */
-			if ($data['action'] == ZBX_PROBLEM_UPDATE_NONE) {
+			if ($data['action'] === ZBX_PROBLEM_UPDATE_NONE) {
 				break;
 			}
 
@@ -138,23 +120,19 @@ class CControllerPopupAcknowledgeCreate extends CController {
 			}
 		}
 
-		$output = [];
-
 		if ($result) {
-			CSession::setValue('messageOk', _n('Event updated', 'Events updated', $updated_events_count));
+			$response = new CControllerResponseRedirect($this->getInput('backurl', 'zabbix.php?action=problem.view'));
+			$response->setMessageOk(_n('Event updated', 'Events updated', $updated_events_count));
 		}
 		else {
-			error(($data && $data['action'] == ZBX_PROBLEM_UPDATE_NONE)
-				? _('At least one update operation or message is mandatory')
+			$response = new CControllerResponseRedirect('zabbix.php?action=acknowledge.edit');
+			$response->setFormData($this->getInputAll());
+			$response->setMessageError(($data && $data['action'] == ZBX_PROBLEM_UPDATE_NONE)
+				? _('At least one update operation is mandatory')
 				: _n('Cannot update event', 'Cannot update events', $updated_events_count)
 			);
-
-			if (($messages = getMessages()) !== null) {
-				$output['errors'] = $messages->toString();
-			}
 		}
-
-		$this->setResponse((new CControllerResponseData(['main_block' => json_encode($output)]))->disableView());
+		$this->setResponse($response);
 	}
 
 	/**
@@ -174,8 +152,8 @@ class CControllerPopupAcknowledgeCreate extends CController {
 
 		if ($events) {
 			$related_problems = API::Problem()->get([
-				'output' => ['eventid'],
-				'objectids' => array_column($events, 'objectid', 'objectid'),
+				'output' => [],
+				'objectids' => array_keys(array_flip(zbx_objectValues($events, 'objectid'))),
 				'preservekeys' => true
 			]);
 
@@ -209,7 +187,7 @@ class CControllerPopupAcknowledgeCreate extends CController {
 		$editable_triggers = ($events && ($this->change_severity || $this->close_problems))
 			? API::Trigger()->get([
 				'output' => ['manual_close'],
-				'triggerids' => array_column($events, 'objectid'),
+				'triggerids' => zbx_objectValues($events, 'objectid'),
 				'editable' => true,
 				'preservekeys' => true
 			])
@@ -281,10 +259,11 @@ class CControllerPopupAcknowledgeCreate extends CController {
 				|| bccomp($event['r_eventid'], '0') > 0) {
 			return false;
 		}
-
-		foreach ($event['acknowledges'] as $acknowledge) {
-			if (($acknowledge['action'] & ZBX_PROBLEM_UPDATE_CLOSE) == ZBX_PROBLEM_UPDATE_CLOSE) {
-				return false;
+		else {
+			foreach ($event['acknowledges'] as $acknowledge) {
+				if (($acknowledge['action'] & ZBX_PROBLEM_UPDATE_CLOSE) == ZBX_PROBLEM_UPDATE_CLOSE) {
+					return false;
+				}
 			}
 		}
 
@@ -316,6 +295,7 @@ class CControllerPopupAcknowledgeCreate extends CController {
 		}
 
 		if ($this->change_severity && $eventid_groups['editable']) {
+
 			if (!$data['eventids']) {
 				$data['eventids'] = $eventid_groups['editable'];
 			}
@@ -326,6 +306,7 @@ class CControllerPopupAcknowledgeCreate extends CController {
 		}
 
 		if ($this->acknowledge && $eventid_groups['acknowledgeable']) {
+
 			if (!$data['eventids']) {
 				$data['eventids'] = $eventid_groups['acknowledgeable'];
 			}
@@ -335,6 +316,7 @@ class CControllerPopupAcknowledgeCreate extends CController {
 		}
 
 		if ($this->message !== '' && $eventid_groups['readable']) {
+
 			if (!$data['eventids']) {
 				$data['eventids'] = $eventid_groups['readable'];
 			}

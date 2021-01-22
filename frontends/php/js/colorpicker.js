@@ -119,6 +119,13 @@
 
 				overlay.appendTo($(options.appendTo));
 
+				if ($(options.appendTo).prop('tagName') !== 'BODY') {
+					$(options.appendTo).on('remove', function() {
+						overlay.remove();
+						overlay = null;
+					});
+				}
+
 				methods.hide();
 			},
 			/**
@@ -132,7 +139,6 @@
 				});
 				colorbox = null;
 				input = null;
-				removeFromOverlaysStack('color_picker');
 			},
 			/**
 			 * Show colorpicker for specific element.
@@ -157,9 +163,7 @@
 				});
 
 				addToOverlaysStack('color_picker', target, 'color_picker');
-
-				Overlay.prototype.recoverFocus.call({'$dialogue': overlay});
-				Overlay.prototype.containFocus.call({'$dialogue': overlay});
+				overlayDialogueOnLoad(true, overlay);
 			},
 			/**
 			 * Set color as background color value of colorbox and as value for input.
@@ -212,7 +216,7 @@
 		/**
 		 * Initialize colorpicker overlay if it is not initialized.
 		 */
-		if (!overlay || !$('#color_picker').length) {
+		if (!overlay) {
 			methods.init(options);
 		}
 

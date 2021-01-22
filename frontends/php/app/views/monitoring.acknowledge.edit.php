@@ -19,18 +19,15 @@
 **/
 
 
-$form = (new CForm())
-	->cleanItems()
-	->setId('acknowledge_form')
-	->addVar('action', 'popup.acknowledge.create')
-	->addVar('eventids', $data['eventids']);
+$this->includeJSfile('app/views/monitoring.acknowledge.edit.js.php');
 
 $form_list = (new CFormList())
 	->addRow(
 		new CLabel(_('Message'), 'message'),
 		(new CTextArea('message', $data['message']))
 			->setWidth(ZBX_TEXTAREA_BIG_WIDTH)
-			->setAttribute('maxlength', DB::getFieldLength('acknowledges', 'message'))
+			->setMaxLength(255)
+			->setAttribute('autofocus', 'autofocus')
 	);
 
 if (array_key_exists('history', $data)) {
@@ -50,8 +47,8 @@ $form_list
 				->makeVertical()
 				->addValue([
 					_n('Only selected problem', 'Only selected problems', $selected_events),
-					($selected_events > 1) ? (new CDiv())->addClass(ZBX_STYLE_FORM_INPUT_MARGIN) : null,
-					($selected_events > 1) ? new CSup(_n('%1$s event', '%1$s events', $selected_events)) : null
+					$selected_events > 1 ? (new CDiv())->addClass(ZBX_STYLE_FORM_INPUT_MARGIN) : null,
+					$selected_events > 1 ? new CSup(_n('%1$s event', '%1$s events', $selected_events)) : null
 				], ZBX_ACKNOWLEDGE_SELECTED)
 				->addValue([
 					_('Selected and all other problems of related triggers'),
@@ -86,26 +83,23 @@ $form_list
 		(new CDiv((new CLabel(_('At least one update operation or message must exist.')))->setAsteriskMark()))
 	);
 
-$form->addItem($form_list);
+$footer_buttons = makeFormFooter(
+	new CSubmitButton(_('Update'), 'action', 'acknowledge.create'),
+	[new CRedirectButton(_('Cancel'), $data['backurl'])]
+);
 
-$output = [
-	'header' => $data['title'],
-	'body' => (new CDiv([$data['errors'], $form]))->toString(),
-	'buttons' => [
-		[
-			'title' => _('Update'),
-			'class' => '',
-			'keepOpen' => true,
-			'isSubmit' => true,
-			'action' => 'return submitAcknowledge(overlay);'
-		]
-	],
-	'script_inline' => require 'app/views/popup.acknowledge.edit.js.php'
-];
-
-if ($data['user']['debug_mode'] == GROUP_DEBUG_MODE_ENABLED) {
-	CProfiler::getInstance()->stop();
-	$output['debug'] = CProfiler::getInstance()->make()->toString();
-}
-
-echo (new CJson())->encode($output);
+(new CWidget())
+	->setTitle(_('Update problem'))
+	->addItem(
+		(new CForm())
+			->setId('acknowledge_form')
+			->setAttribute('aria-labeledby', ZBX_STYLE_PAGE_TITLE)
+			->addVar('eventids', $data['eventids'])
+			->addVar('backurl', $data['backurl'])
+			->addItem(
+				(new CTabView())
+					->addTab('ackTab', null, $form_list)
+					->setFooter($footer_buttons)
+			)
+	)
+	->show();

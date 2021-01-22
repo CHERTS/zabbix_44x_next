@@ -626,15 +626,14 @@ jQuery(function($) {
 					success: function(resp) {
 						var id = +ajax_data['map_id'];
 
-					overlayDialogue({
+						overlayDialogue({
 							'title': t('Edit tree element'),
 							'content': resp.body,
 							'buttons': [
 								{
 									'title': item_edit ? t('Apply') : t('Add'),
 									'class': 'dialogue-widget-save',
-									'isSubmit': true,
-									'action': function(overlay) {
+									'action': function() {
 										var form = $('#widget_dialogue_form'),
 											url = new Curl('zabbix.php'),
 											ajax_data = {
@@ -647,16 +646,11 @@ jQuery(function($) {
 
 										url.setArgument('action', 'widget.navtree.item.update');
 
-										overlay.setLoading();
-
-										overlay.xhr = jQuery.ajax({
+										jQuery.ajax({
 											url: url.getUrl(),
 											method: 'POST',
 											data: ajax_data,
 											dataType: 'json',
-											complete: function() {
-												overlay.unsetLoading();
-											},
 											success: function(resp) {
 												var new_item,
 													root;
@@ -732,7 +726,7 @@ jQuery(function($) {
 															.removeClass('closed');
 													}
 
-													overlayDialogueDestroy(overlay.dialogueid);
+													overlayDialogueDestroy('navtreeitem');
 													setTreeHandlers($obj);
 												}
 											}

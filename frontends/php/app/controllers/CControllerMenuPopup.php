@@ -490,7 +490,8 @@ class CControllerMenuPopup extends CController {
 	 * @param array  $data
 	 * @param string $data['triggerid']
 	 * @param string $data['eventid']                 (optional) Mandatory for Acknowledge menu.
-	 * @param bool   $data['acknowledge']             (optional) Whether to show Acknowledge menu.
+	 * @param array  $data['acknowledge']             (optional) Acknowledge link parameters.
+	 * @param string $data['acknowledge']['backurl']
 	 * @param int    $data['severity_min']            (optional)
 	 * @param bool   $data['show_suppressed']         (optional)
 	 * @param array  $data['urls']                    (optional)

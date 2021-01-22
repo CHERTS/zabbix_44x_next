@@ -39,14 +39,6 @@ class testHostAvailabilityWidget extends CWebTest {
 
 	public static function getCreateWidgetData() {
 		return [
-			// Create a Host availability widget with default values.
-			[
-				[
-					'fields' => [
-						'Type' => 'Host availability'
-					]
-				]
-			],
 			// Create a Host availability widget with default values for Zabbix agent interface.
 			[
 				[
@@ -145,6 +137,14 @@ class testHostAvailabilityWidget extends CWebTest {
 						'Available' => '1',
 						'Not available' => '1',
 						'Unknown' => '4'
+					]
+				]
+			],
+			// Create a Host availability widget with default values.
+			[
+				[
+					'fields' => [
+						'Type' => 'Host availability'
 					]
 				]
 			],

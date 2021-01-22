@@ -184,7 +184,8 @@ $output = [
 			'class' => '',
 			'keepOpen' => true,
 			'isSubmit' => true,
-			'action' => 'return validate_trigger_expression(overlay);'
+			'action' => 'return validate_trigger_expression("expression", '.
+					'jQuery(window.document.forms["expression"]).closest("[data-dialogueid]").attr("data-dialogueid"));'
 		]
 	],
 	'script_inline' =>

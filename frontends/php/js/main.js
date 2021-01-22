@@ -509,8 +509,7 @@ var hintBox = {
 		target.hintBoxItem.show();
 
 		if (target.isStatic) {
-			Overlay.prototype.recoverFocus.call({'$dialogue': target.hintBoxItem});
-			Overlay.prototype.containFocus.call({'$dialogue': target.hintBoxItem});
+			overlayDialogueOnLoad(true, target.hintBoxItem);
 		}
 	},
 
@@ -580,7 +579,8 @@ var hintBox = {
 
 		target.hintBoxItem.css({
 			top: top + 'px',
-			left: left + 'px'
+			left: left + 'px',
+			zIndex: 1001
 		});
 	},
 

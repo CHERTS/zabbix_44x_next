@@ -514,7 +514,7 @@ class testPageOverview extends CLegacyWebTest {
 	/**
 	 * @dataProvider getFilterData
 	 */
-	public function testPageOverview_CheckFilterResults($data) {
+	public function testPageOverview_CheclFilterResults($data) {
 		$this->zbxTestLogin('overview.php');
 		$this->zbxTestClickButtonText('Reset');
 		$this->zbxTestWaitForPageToLoad();
@@ -564,12 +564,12 @@ class testPageOverview extends CLegacyWebTest {
 				foreach ($data['applications'] as $key => $value) {
 					switch ($key) {
 						case 'app_group':
-							$this->zbxTestClickXpathWait('//div[contains(@class, "overlay-dialogue modal")]'.
-									'//select[@name="groupid"]//option[text()="'.$value.'"]');
+							$this->zbxTestClickXpathWait('//div[@id="overlay_dialogue"]//select[@name="groupid"]'.
+									'//option[text()="'.$value.'"]');
 							break;
 						case 'app_host':
-							$this->zbxTestClickXpathWait('//div[contains(@class, "overlay-dialogue modal")]'.
-									'//select[@name="hostid"]//option[text()="'.$value.'"]');
+							$this->zbxTestClickXpathWait('//div[@id="overlay_dialogue"]//select[@name="hostid"]'.
+									'//option[text()="'.$value.'"]');
 							break;
 						case 'application':
 							$this->zbxTestClickLinkTextWait($value);

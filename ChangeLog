@@ -2,7 +2,6 @@ Changes for 4.4.16rc1 (unofficial)
 
 New features:
 ..F....... [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (talbergs)
-..F....... [ZBXNEXT-1169] replaced problem acknowledge page with a modal popup window (agriscenko)
 A.F....PS. [ZBXNEXT-1423] added ipmi.get item for IPMI sensor LLD (akozlovs, Ivo)
 .......PS. [ZBXNEXT-1578] added ability to use user macros for IPMI user and password (akozlovs)
 A.F.I..... [ZBXNEXT-5486] move Administration->General section to MVC (talbergs)
@@ -19,7 +18,6 @@ A.F.I..... [ZBXNEXT-5538] moved Adminitration->User groups pages to MVC framewor
 Bug fixes:
 ..F....... [ZBX-402] fixed latest data reloading to updating asynchronously (averza)
 ...G...... [ZBX-16216] fixed semaphore not being cleaned up when stopping Zabbix agent (vso)
-..F....... [ZBX-16697] implemented preloader in popups (talbergs)
 ..F....... [ZBX-17222] fixed unlimited data selection in Latest data view (averza)
 .......PS. [ZBX-17295] fixed IPMI sensor LLD JSON output (akozlovs)
 ...G...... [ZBX-17369] fixed retrieval of decimal values from WMI (dgoloscapov)

@@ -138,7 +138,9 @@ if (in_array($web_layout_mode, [ZBX_LAYOUT_NORMAL, ZBX_LAYOUT_FULLSCREEN])) {
 
 // data table
 if ($data['pageFilter']->groupsSelected) {
-	$dataTable = getTriggersOverview($data['hosts'], $data['triggers'], $data['view_style']);
+	global $page;
+
+	$dataTable = getTriggersOverview($data['hosts'], $data['triggers'], $page['file'], $data['view_style']);
 }
 else {
 	$dataTable = new CTableInfo();

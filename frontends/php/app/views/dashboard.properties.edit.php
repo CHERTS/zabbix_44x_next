@@ -65,7 +65,7 @@ $output = [
 			'title' => _('Apply'),
 			'keepOpen' => true,
 			'isSubmit' => true,
-			'action' => 'return dashbrdApplyProperties(overlay);'
+			'action' => 'return dashbrdApplyProperties();'
 		]
 	]
 ];

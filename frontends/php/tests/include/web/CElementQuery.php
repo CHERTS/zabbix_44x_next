@@ -378,7 +378,7 @@ class CElementQuery implements IWaitable {
 		$target = $this;
 
 		return function () use ($target) {
-			return $target->one(false)->isClickable();
+			return $target->one()->isClickable();
 		};
 	}
 
@@ -400,7 +400,7 @@ class CElementQuery implements IWaitable {
 		$target = $this;
 
 		return function () use ($target) {
-			return $target->one(false)->isValid();
+			return $target->one();
 		};
 	}
 
@@ -411,12 +411,7 @@ class CElementQuery implements IWaitable {
 		$target = $this;
 
 		return function () use ($target, $text) {
-			$element = $target->one(false);
-			if (!$element->isValid()) {
-				return false;
-			}
-
-			return (strpos($element->getText(), $text) !== false);
+			return (strpos($target->one()->getText(), $text) !== false);
 		};
 	}
 
@@ -427,10 +422,7 @@ class CElementQuery implements IWaitable {
 		$target = $this;
 
 		return function () use ($target, $attributes) {
-			$element = $target->one(false);
-			if (!$element->isValid()) {
-				return false;
-			}
+			$element = $target->one();
 
 			foreach ($attributes as $key => $value) {
 				if (is_numeric($key) && $element->getAttribute($value) === null) {

@@ -2256,8 +2256,6 @@
 			overlay = overlays_stack.getById('widgetConfg');
 
 		$save_btn.prop('disabled', true);
-
-		overlay.setLoading();
 		overlay.xhr = $.ajax({
 			url: url.getUrl(),
 			method: 'POST',
@@ -2431,7 +2429,6 @@
 			.always(function() {
 				$save_btn.prop('disabled', false);
 				delete data['options']['updating_config'];
-				overlay.unsetLoading();
 			});
 	}
 
@@ -2489,16 +2486,14 @@
 		data.dialogue = {};
 		data.dialogue.widget = widget;
 
-		var overlay = overlayDialogue({
+		overlayDialogue({
 			'title': (edit_mode ? t('Edit widget') : t('Add widget')),
-			'class': 'modal-popup modal-popup-generic',
-			'content': jQuery('<div>', {'height': '68px'}),
+			'content': '',
 			'buttons': [
 				{
 					'title': (edit_mode ? t('Apply') : t('Add')),
 					'class': 'dialogue-widget-save',
 					'keepOpen': true,
-					'isSubmit': true,
 					'action': function() {
 						updateWidgetConfig($obj, data, widget);
 					}
@@ -2512,10 +2507,9 @@
 			'dialogueid': 'widgetConfg'
 		}, trigger_elmnt);
 
-		overlay.setLoading();
-
-		data.dialogue.div = overlay.$dialogue;
-		data.dialogue.body = overlay.$dialogue.$body;
+		var overlay_dialogue = $('#overlay_dialogue');
+		data.dialogue.div = overlay_dialogue;
+		data.dialogue.body = $('.overlay-dialogue-body', overlay_dialogue);
 
 		updateWidgetConfigDialogue();
 	}
@@ -3569,23 +3563,43 @@
 					ajax_data['fields'] = JSON.stringify(fields);
 				}
 
-				var overlay = overlays_stack.getById('widgetConfg');
-
-				overlay.setLoading();
-
-				if (overlay.xhr) {
-					overlay.xhr.abort();
-				}
-
-				overlay.xhr = jQuery.ajax({
+				jQuery.ajax({
 					url: url.getUrl(),
 					method: 'POST',
 					data: ajax_data,
-					dataType: 'json'
-				});
+					dataType: 'json',
+					beforeSend: function() {
+						/*
+						 * Clear the 'sticked-to-top' class before updating the body for it's mutation handler
+						 * to center the popup while the widget form is being loaded.
+						 */
+						jQuery('[data-dialogueid="widgetConfg"]').removeClass('sticked-to-top');
 
-				overlay.xhr.done(function(response) {
+						body.empty()
+							.append($('<div>')
+								// The smallest possible size of configuration dialog.
+								.css({
+									'width': '544px',
+									'height': '68px',
+									'max-width': '100%'
+								})
+								.append($('<div>')
+									.addClass('preloader-container')
+									.append($('<div>').addClass('preloader'))
+								));
+					}
+				})
+					.done(function(response) {
 						data.dialogue['widget_type'] = response.type;
+
+						/*
+						 * Set the 'sticked-to-top' class before updating the body for it's mutation handler
+						 * to have actual data for the popup positioning.
+						 */
+						if (response.options.stick_to_top) {
+							jQuery('[data-dialogueid="widgetConfg"]').addClass('sticked-to-top');
+						}
+
 						body.empty();
 						body.append(response.body);
 						if (typeof response.debug !== 'undefined') {
@@ -3611,13 +3625,7 @@
 							$('.dialogue-widget-save', footer).prop('disabled', false);
 						}
 
-						var $overlay = jQuery('[data-dialogueid="widgetConfg"]');
-						$overlay.toggleClass('sticked-to-top', data.dialogue['widget_type'] === 'svggraph');
-
-						Overlay.prototype.recoverFocus.call({'$dialogue': $overlay});
-						Overlay.prototype.containFocus.call({'$dialogue': $overlay});
-
-						overlay.unsetLoading();
+						overlayDialogueOnLoad(true, jQuery('[data-dialogueid="widgetConfg"]'));
 					});
 			});
 		},

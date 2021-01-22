@@ -92,15 +92,13 @@
 			/**
 			 * Send all expressions data to server with test string.
 			 *
-			 * @param {string} string Test string to test expression against
-			 *
-			 * @return {jqXHR}
+			 * @param {String} string Test string to test expression against
 			 */
 			testExpressions: function(string) {
 				var ajaxData = {
-					testString: string,
-					expressions: {}
-				};
+						testString: string,
+						expressions: {}
+					};
 
 				$('#testResultTable').css({opacity: 0.5});
 
@@ -118,7 +116,7 @@
 				var url = new Curl('zabbix.php');
 				url.setArgument('action', 'regex.test');
 
-				return $.post(
+				$.post(
 					url.getUrl(),
 					{ajaxdata: ajaxData},
 					$.proxy(this.showTestResults, this),
@@ -209,26 +207,14 @@
 	}(jQuery));
 
 	jQuery(function($) {
-		var $form = $('form#regex'),
-			$test_string = $('#test_string');
-			$test_btn = $('#testExpression');
+		var $form = $('form#regex');
 
 		$form.on('submit', function() {
 			$form.trimValues(['#name']);
 		});
 
 		$('#testExpression, #tab_test').click(function() {
-			$test_btn.addClass('is-loading');
-			$test_btn.prop('disabled', true);
-			$test_string.prop('disabled', true);
-
-			zabbixRegExp
-				.testExpressions($test_string.val())
-				.always(function() {
-					$test_btn.removeClass('is-loading');
-					$test_btn.prop('disabled', false);
-					$test_string.prop('disabled', false);
-				});
+			zabbixRegExp.testExpressions($('#test_string').val());
 		});
 
 		$('#tbl_expr').dynamicRows({
