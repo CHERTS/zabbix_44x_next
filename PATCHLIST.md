@@ -129,6 +129,7 @@
 [ZBXNEXT-5693] reset page number when applying new filter, changing sort order or re-opening the page (https://support.zabbix.com/browse/ZBXNEXT-5693)
 [ZBXNEXT-5716] removed mbedTLS support (https://support.zabbix.com/browse/ZBXNEXT-5716)
 [ZBXNEXT-5725] added ability to select specific severities in Monitoring->Problems (https://support.zabbix.com/browse/ZBXNEXT-5725)
+[ZBXNEXT-5759] added Oracle DB tnsnames.ora service name lookup support (https://support.zabbix.com/browse/ZBXNEXT-5759)
 [ZBXNEXT-5879] added filter to Configuration->Templates/Hosts->Discovery rules (https://support.zabbix.com/browse/ZBXNEXT-5879)
 [ZBXNEXT-5898] added user macro expanding in item description (https://support.zabbix.com/browse/ZBXNEXT-5898)
 [ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)

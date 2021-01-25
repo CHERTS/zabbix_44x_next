@@ -10,6 +10,7 @@ A.F.I..... [ZBXNEXT-5514] added functionality for Zabbix frontend customization 
 A.F.I..... [ZBXNEXT-5538] moved Adminitration->User groups pages to MVC framework (Sasha, talbergs)
 ..F....... [ZBXNEXT-5693] reset page number when applying new filter, changing sort order or re-opening the page (averza)
 ..F....... [ZBXNEXT-5720] revert change implemented displaying latest data if filter is empty (mgrigorev)
+..F....PS. [ZBXNEXT-5759] added Oracle DB tnsnames.ora service name lookup support (viktors, vmaksimovs)
 ..F.....S. [ZBXNEXT-5898] added user macro expanding in item description (asitals, kustalovs)
 ........S. [ZBXNEXT-6042] optimized trigger, calculated item processing by resolving user macros during configuration cache synchronization (wiper)
 ...G...... [ZBXNEXT-6171] added UserParameterDir config option to agent and agent2 (yurii)
