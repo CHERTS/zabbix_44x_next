@@ -143,6 +143,7 @@
 [ZBXNEXT-6358] removed detailed information from Reports -> Notifications page (https://support.zabbix.com/browse/ZBXNEXT-6358)
 [ZBXNEXT-6364] removed long lists of cloned objects from host and template full clone forms (https://support.zabbix.com/browse/ZBXNEXT-6364)
 [ZBXNEXT-6380] added new key vmware.cl.perfcounter (https://support.zabbix.com/browse/ZBXNEXT-6380)
+[ZBXNEXT-6441] added function to configure HTTP authentication for embedded scripts (https://support.zabbix.com/browse/ZBXNEXT-6441)
 
 # List of my patches (English)
 

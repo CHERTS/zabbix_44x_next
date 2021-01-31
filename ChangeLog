@@ -1,6 +1,7 @@
 Changes for 4.4.17rc1 (unofficial)
 
 New features:
+.......PS. [ZBXNEXT-6441] added function to configure HTTP authentication for embedded scripts (wiper)
 
 Bug fixes:
 
