@@ -5,6 +5,7 @@ New features:
 .......PS. [ZBXNEXT-6441] added function to configure HTTP authentication for embedded scripts (wiper)
 
 Bug fixes:
+.......PS. [ZBX-18885] fixed SNMP agent item not accepting values that are bigger than 2KB (vso)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.16 (unofficial)
