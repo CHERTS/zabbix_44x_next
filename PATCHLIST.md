@@ -113,6 +113,7 @@
 [ZBX-18872] fixed system.sw.os[name] for cases without quotation mark in /etc/os-release (https://support.zabbix.com/browse/ZBX-18872)
 [ZBX-18884] fixed crash in web monitoring and web.page.* keys when encoding non ASCII characters in URL (https://support.zabbix.com/browse/ZBX-18884)
 [ZBX-18885] fixed SNMP agent item not accepting values that are bigger than 2KB (https://support.zabbix.com/browse/ZBX-18885)
+[ZBX-18887] fixed user session expiration when notification checks are performed in background (https://support.zabbix.com/browse/ZBX-18887)
 [ZBX-18892] fixed preprocessing steps wrapping (https://support.zabbix.com/browse/ZBX-18892)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
