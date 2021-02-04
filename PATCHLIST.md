@@ -66,6 +66,7 @@
 [ZBX-18189] fixed crash when performing housekeeping with disabled value cache (https://support.zabbix.com/browse/ZBX-18189)
 [ZBX-18193] added logging for snmp_cache_reload (https://support.zabbix.com/browse/ZBX-18193)
 [ZBX-18202] added new default item keys for item type "Zabbix aggregate" (https://support.zabbix.com/browse/ZBX-18202)
+[ZBX-18209] fixed RegEx delimiter not being escaped in macro resolver (https://support.zabbix.com/browse/ZBX-18209)
 [ZBX-18219] fixed custom multiplier preprocessing step validation to accept a string with macros (https://support.zabbix.com/browse/ZBX-18219)
 [ZBX-18261] fixed Latest data performance by allowing to filter items with data only if hosts are selected as well (https://support.zabbix.com/browse/ZBX-18261)
 [ZBX-18261] fixed performance of the "Latest data" screen with partitioned history tables (https://support.zabbix.com/browse/ZBX-18261)

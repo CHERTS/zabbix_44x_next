@@ -5,6 +5,7 @@ New features:
 .......PS. [ZBXNEXT-6441] added function to configure HTTP authentication for embedded scripts (wiper)
 
 Bug fixes:
+..F....... [ZBX-18209] fixed RegEx delimiter not being escaped in macro resolver (talbergs)
 ...G...... [ZBX-18872] fixed system.sw.os[name] for cases without quotation mark in /etc/os-release (akozlovs)
 .......PS. [ZBX-18885] fixed SNMP agent item not accepting values that are bigger than 2KB (vso)
 
