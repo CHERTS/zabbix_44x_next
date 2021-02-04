@@ -3,6 +3,7 @@ Changes for 4.4.17rc1 (unofficial)
 New features:
 .......PS. [ZBXNEXT-6183] added md5 checksum computation to preprocessing (viktors)
 .......PS. [ZBXNEXT-6441] added function to configure HTTP authentication for embedded scripts (wiper)
+.......PS. [ZBXNEXT-6443] added sha256() function to JavaScript preprocessing (viktors)
 
 Bug fixes:
 ..F....... [ZBX-18209] fixed RegEx delimiter not being escaped in macro resolver (talbergs)
