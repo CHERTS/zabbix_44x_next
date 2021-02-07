@@ -992,7 +992,6 @@ INSERT INTO hstgrp (groupid, name, internal, flags) VALUES (50026, 'host group d
 INSERT INTO hosts (hostid, host, name, status, flags, description) VALUES (99010, 'Host having discovered hosts', 'Host having discovered hosts', 0, 0, '');
 INSERT INTO hosts (hostid, host, name, status, flags, description) VALUES (99011, '{#VALUE}', '{#VALUE}', 0, 2, '');
 INSERT INTO hosts (hostid, host, name, status, flags, description) VALUES (99012, 'discovered', 'discovered', 0, 4, '');
-INSERT INTO items (itemid, type, hostid, name, key_, delay, history, trends, status, value_type, flags, params, description, posts, headers) VALUES (8735, 2, 99010, 'trap', 'trap', '0', '90d', '0', 0, 4, 1, '', '', '', '');
 INSERT INTO items (itemid, type, hostid, name, key_, delay, history, trends, status, value_type, flags, params, description, posts, headers) VALUES (58735, 2, 99010, 'trap', 'trap', '0', '90d', '0', 0, 4, 1, '', '', '', '');
 INSERT INTO group_prototype (group_prototypeid, hostid, name) VALUES (10, 99011, 'host group {#VALUE}');
 INSERT INTO group_prototype (group_prototypeid, hostid, groupid) VALUES (11, 99011, 50025);
@@ -1000,9 +999,24 @@ INSERT INTO group_discovery (groupid, parent_group_prototypeid, name) VALUES (50
 INSERT INTO hosts_groups (hostgroupid, hostid, groupid) VALUES (50020, 99010, 50025);
 INSERT INTO hosts_groups (hostgroupid, hostid, groupid) VALUES (50021, 99012, 50025);
 INSERT INTO hosts_groups (hostgroupid, hostid, groupid) VALUES (50022, 99012, 50026);
-INSERT INTO host_discovery (hostid, parent_itemid, host) VALUES (99011, 8735, '');
 INSERT INTO host_discovery (hostid, parent_itemid, host) VALUES (99011, 58735, '');
 INSERT INTO host_discovery (hostid, parent_hostid, host) VALUES (99012, 99011, '{#VALUE}');
 INSERT INTO interface (interfaceid, hostid, main, type, useip, ip, port) VALUES (50026, 99010, 1, 1, 1, '127.0.0.1', '10050');
 INSERT INTO interface (interfaceid, hostid, main, type, useip, ip, port) VALUES (50027, 99012, 1, 1, 1, '127.0.0.1', '10050');
 INSERT INTO interface_discovery (interfaceid, parent_interfaceid) VALUES (50027, 50026);
+
+-- test trigger validation
+INSERT INTO hosts (hostid, host, name, status, description) VALUES (99013, 'Trigger validation test host', 'Trigger validation test host', 0, '');
+INSERT INTO hosts (hostid, host, name, status, description) VALUES (99014, 'Trigger validation test template', 'Trigger validation test template', 3, '');
+INSERT INTO interface (interfaceid, hostid, main, type, useip, ip, dns, port) values (50028, 99013, 1, 1, 1, '127.0.0.1', '', '10050');
+INSERT INTO hstgrp (groupid, name, internal) VALUES (50027, 'Trigger validation test host group', 0);
+INSERT INTO hosts_groups (hostgroupid, hostid, groupid) VALUES (50023, 99013, 50027);
+INSERT INTO hosts_groups (hostgroupid, hostid, groupid) VALUES (50024, 99014, 50027);
+INSERT INTO items (itemid, hostid, interfaceid, type, value_type, name, key_, delay, history, status, params, description, posts, headers) VALUES (58736, 99013, NULL, 2, 3, 'item', 'item', '1d', '90d', 0, '', '', '', '');
+INSERT INTO items (itemid, hostid, interfaceid, type, value_type, name, key_, delay, history, status, params, description, posts, headers) VALUES (58737, 99014, NULL, 2, 3, 'item', 'item', '1d', '90d', 0, '', '', '', '');
+INSERT INTO triggers (triggerid, description, expression, comments) VALUES (50172, 'test-trigger-1', '{50232}=0', '');
+INSERT INTO functions (functionid, triggerid, itemid, name, parameter) VALUES (50232, 50172, 58736, 'last', '');
+INSERT INTO triggers (triggerid, description, expression, comments) VALUES (50173, 'test-trigger-2', '{50233}=0', '');
+INSERT INTO functions (functionid, triggerid, itemid, name, parameter) VALUES (50233, 50173, 58736, 'last', '');
+INSERT INTO triggers (triggerid, description, expression, comments) VALUES (50174, 'template-trigger', '{50234}=0', '');
+INSERT INTO functions (functionid, triggerid, itemid, name, parameter) VALUES (50234, 50174, 58737, 'last', '');

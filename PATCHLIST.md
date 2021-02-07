@@ -86,6 +86,7 @@
 [ZBX-18411] set maxQueryMetrics default values for vcenter depending on its version (https://support.zabbix.com/browse/ZBX-18411)
 [ZBX-18423] fixed inconsistent macro expansion with Oracle DB compared with other databases ((https://support.zabbix.com/browse/ZBX-18423)
 [ZBX-18438] fixed missing asterisk mark for "timeout" field in item, item prototype and LLD rule edit forms (https://support.zabbix.com/browse/ZBX-18438)
+[ZBX-18449] reworked trigger API validation (https://support.zabbix.com/browse/ZBX-18449)
 [ZBX-18462] fixed inconsistent auto-registration behaviour for hosts without metadata on Oracle DB compared to other databases when using Zabbix proxy (https://support.zabbix.com/browse/ZBX-18462)
 [ZBX-18464] fixed javascript Uncaught TypeError when clicking on disabled multiselect item (https://support.zabbix.com/browse/ZBX-18464)
 [ZBX-18486] fixed screen inheritance from a linked template in the full clone case (https://support.zabbix.com/browse/ZBX-18486)

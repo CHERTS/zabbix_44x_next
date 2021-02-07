@@ -57,12 +57,14 @@ class CTriggerExpression {
 	 *
 	 * Supported options:
 	 *   'lldmacros' => true        Enable low-level discovery macros usage in trigger expression.
+	 *   'lowercase_errors' => false     Return error messages in lowercase.
 	 *   'allow_func_only' => true  Allow trigger expression without host:key pair, i.e. {func(param)}.
 	 *
 	 * @var array
 	 */
 	public $options = [
 		'lldmacros' => true,
+		'lowercase_errors' => false,
 		'allow_func_only' => false
 	];
 
@@ -160,6 +162,7 @@ class CTriggerExpression {
 	/**
 	 * @param array $options
 	 * @param bool  $options['lldmacros']
+	 * @param bool  $options['lowercase_errors']
 	 * @param bool  $options['allow_func_only']
 	 */
 	public function __construct(array $options = []) {
@@ -453,15 +456,19 @@ class CTriggerExpression {
 		}
 
 		if ($this->pos == 0) {
-			$this->error = _('Incorrect trigger expression.');
+			$this->error = $this->options['lowercase_errors']
+				? _('incorrect trigger expression')
+				: _('Incorrect trigger expression.');
 			$this->isValid = false;
 		}
 
 		if ($level != 0 || isset($this->expression[$this->pos])
 				|| ($state != self::STATE_AFTER_CLOSE_BRACE && $state != self::STATE_AFTER_CONSTANT)) {
 
-			$this->error = _('Incorrect trigger expression.').' '._s('Check expression part starting from "%1$s".',
-					substr($this->expression, $this->pos == 0 ? 0 : $this->pos - 1));
+			$this->error = $this->options['lowercase_errors']
+				? _('incorrect trigger expression starting from "%1$s"')
+				: _('Incorrect trigger expression.').' '._('Check expression part starting from "%1$s".');
+			$this->error = _params($this->error, [substr($this->expression, $this->pos == 0 ? 0 : $this->pos - 1)]);
 			$this->isValid = false;
 
 			return false;

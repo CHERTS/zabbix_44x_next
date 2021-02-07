@@ -8,6 +8,7 @@ New features:
 Bug fixes:
 ..F....... [ZBX-18209] fixed RegEx delimiter not being escaped in macro resolver (talbergs)
 ...G...... [ZBX-18309] fixed reading log files with NULL character in log line
+A......... [ZBX-18449] reworked trigger API validation (miks)
 ...G...... [ZBX-18872] fixed system.sw.os[name] for cases without quotation mark in /etc/os-release (akozlovs)
 .......PS. [ZBX-18885] fixed SNMP agent item not accepting values that are bigger than 2KB (vso)
 ..F....... [ZBX-18887] fixed user session expiration when notification checks are performed in background (miks)
