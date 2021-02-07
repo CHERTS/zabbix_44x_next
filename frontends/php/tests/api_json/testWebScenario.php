@@ -88,7 +88,7 @@ class testWebScenario extends CAPITest {
 								'no' => 0
 							]
 						]
-					],
+					]
 				],
 				'expected_error' => 'Web scenario "Api web scenario" already exists.'
 			],
@@ -155,7 +155,7 @@ class testWebScenario extends CAPITest {
 						[
 							'name' => 'Homepage',
 							'url' => 'http://zabbix.com',
-							'no' => 0,
+							'no' => 0
 						]
 					]
 				],
@@ -1118,7 +1118,7 @@ class testWebScenario extends CAPITest {
 			[
 				'httptest' => [
 					'name' => 'Api web with wrong verify_peer',
-					'verify_peer' => '☺',
+					'verify_peer' => '☺'
 				],
 				'expected_error' => 'Invalid parameter "/1/verify_peer": an integer is expected.'
 			],
