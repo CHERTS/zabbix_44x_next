@@ -348,7 +348,7 @@
 	function getOnlyHostParam() {
 		return graphs.is_template
 			? {only_hostid: graphs.hostid}
-			: {real_hosts: '1'};
+			: {real_hosts: '1', hostid: graphs.hostid};
 	}
 
 	function rewriteNameLinks() {
@@ -379,8 +379,7 @@
 				popup_options['normal_only'] = '1';
 			}
 
-			if (!graphs.parent_discoveryid && graphs.groupid && graphs.hostid) {
-				popup_options['groupid'] = graphs.groupid,
+			if (!graphs.parent_discoveryid && graphs.hostid) {
 				popup_options['hostid'] = graphs.hostid;
 			}
 
