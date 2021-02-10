@@ -110,6 +110,7 @@
 [ZBX-18796] improved update performance of the preprocessing rules in item.update(), itemprototype.update() and discoveryrule.update() methods (https://support.zabbix.com/browse/ZBX-18796)
 [ZBX-18802] fixed close problem task to be deleted when problem event is deleted (https://support.zabbix.com/browse/ZBX-18802)
 [ZBX-18815] fixed displaying incomplete list of inherited trigger tags under rare circumstances (https://support.zabbix.com/browse/ZBX-18815)
+[ZBX-18825] fixed last year period calculation in service availability report daily mode (https://support.zabbix.com/browse/ZBX-18825)
 [ZBX-18865] fixed dbConditionInt (db.inc.php) returning wrong result in rare cases (https://support.zabbix.com/browse/ZBX-18865)
 [ZBX-18872] fixed system.sw.os[name] for cases without quotation mark in /etc/os-release (https://support.zabbix.com/browse/ZBX-18872)
 [ZBX-18884] fixed crash in web monitoring and web.page.* keys when encoding non ASCII characters in URL (https://support.zabbix.com/browse/ZBX-18884)
