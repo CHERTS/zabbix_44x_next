@@ -6,6 +6,7 @@ New features:
 .......PS. [ZBXNEXT-6443] added sha256() function to JavaScript preprocessing (viktors)
 
 Bug fixes:
+...G...... [ZBX-17543] fixed error in case if wmi.getall returned no items (dgoloscapov)
 ..F....... [ZBX-18209] fixed RegEx delimiter not being escaped in macro resolver (talbergs)
 ...G...... [ZBX-18309] fixed reading log files with NULL character in log line
 A......... [ZBX-18449] reworked trigger API validation (miks)

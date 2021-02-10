@@ -18,6 +18,7 @@
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
 [ZBX-17469] fixed kiosk button margin in history/graph view of the latest data (https://support.zabbix.com/browse/ZBX-17469)
 [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (https://support.zabbix.com/browse/ZBX-17493)
+[ZBX-17543] fixed error in case if wmi.getall returned no items (https://support.zabbix.com/browse/ZBX-17543)
 [ZBX-17595] fixed latest data all applications expansion with every refresh (https://support.zabbix.com/browse/ZBX-17595)
 [ZBX-17624] fixed misleading error message in case of not available datastorage for vmware.hv.datastore.read and vmware.hv.datastore.write metrics (https://support.zabbix.com/browse/ZBX-17624)
 [ZBX-17703] fixed problem negative duration for timed triggers in case of database disconnect (https://support.zabbix.com/browse/ZBX-17703)
