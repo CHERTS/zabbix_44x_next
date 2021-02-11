@@ -14,6 +14,7 @@ A......... [ZBX-18449] reworked trigger API validation (miks)
 ..F....... [ZBX-18825] fixed last year period calculation in service availability report daily mode (miks)
 ...G...... [ZBX-18872] fixed system.sw.os[name] for cases without quotation mark in /etc/os-release (akozlovs)
 .......PS. [ZBX-18885] fixed SNMP agent item not accepting values that are bigger than 2KB (vso)
+...G...... [ZBX-18886] implemented proper resource cleanup when sender terminates by signal (dgoloscapov)
 ..F....... [ZBX-18887] fixed user session expiration when notification checks are performed in background (miks)
 
 --------------------------------------------------------------------------------
