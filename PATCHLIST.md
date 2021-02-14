@@ -119,6 +119,7 @@
 [ZBX-18886] implemented proper resource cleanup when sender terminates by signal (https://support.zabbix.com/browse/ZBX-18886)
 [ZBX-18887] fixed user session expiration when notification checks are performed in background (https://support.zabbix.com/browse/ZBX-18887)
 [ZBX-18892] fixed preprocessing steps wrapping (https://support.zabbix.com/browse/ZBX-18892)
+[ZBX-18966] fixed interface related errors when changing proxy type from passive to active (https://support.zabbix.com/browse/ZBX-18966)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
