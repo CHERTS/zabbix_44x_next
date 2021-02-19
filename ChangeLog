@@ -17,6 +17,7 @@ A......... [ZBX-18449] reworked trigger API validation (miks)
 ...G...... [ZBX-18886] implemented proper resource cleanup when sender terminates by signal (dgoloscapov)
 ..F....... [ZBX-18887] fixed user session expiration when notification checks are performed in background (miks)
 A......... [ZBX-18966] fixed interface related errors when changing proxy type from passive to active (Ivo)
+.......PS. [ZBX-19029] fixed Zabbix server and Zabbix proxy not remembering last log size when preprocessing is used (vso)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.16 (unofficial)
