@@ -18,6 +18,7 @@ A......... [ZBX-18449] reworked trigger API validation (miks)
 ..F....... [ZBX-18887] fixed user session expiration when notification checks are performed in background (miks)
 A......... [ZBX-18966] fixed interface related errors when changing proxy type from passive to active (Ivo)
 .......PS. [ZBX-19029] fixed Zabbix server and Zabbix proxy not remembering last log size when preprocessing is used (vso)
+...G...... [ZBX-19031] fixed build failure on HP-UX and AIX (arimdjonoks)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.16 (unofficial)
