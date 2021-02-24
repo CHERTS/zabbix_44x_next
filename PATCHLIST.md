@@ -157,6 +157,7 @@
 [ZBXNEXT-6364] removed long lists of cloned objects from host and template full clone forms (https://support.zabbix.com/browse/ZBXNEXT-6364)
 [ZBXNEXT-6380] added new key vmware.cl.perfcounter (https://support.zabbix.com/browse/ZBXNEXT-6380)
 [ZBXNEXT-6441] added function to configure HTTP authentication for embedded scripts (https://support.zabbix.com/browse/ZBXNEXT-6441)
+[ZBXNEXT-6442] added ExportType server parameter for better configurability of real-time export (akozlovs)
 [ZBXNEXT-6443] added sha256() function to JavaScript preprocessing (https://support.zabbix.com/browse/ZBXNEXT-6443)
 
 # List of my patches (English)
