@@ -1,6 +1,7 @@
 Changes for 4.4.18rc1
 
 New features:
+.....J.... [ZBXNEXT-2727] added support of JMX TabularData (viktors)
 ........S. [ZBXNEXT-5369] added EVENT.TAGSJSON macro (asestakovs)
 ..F....... [ZBXNEXT-5786] updated the list of user agents (agriscenko)
 .......PS. [ZBXNEXT-5829] replaced uint64 hash function with faster one (wiper)
