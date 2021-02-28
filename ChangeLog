@@ -1,6 +1,7 @@
 Changes for 4.4.18rc1
 
 New features:
+........S. [ZBXNEXT-5369] added EVENT.TAGSJSON macro (asestakovs)
 ........S. [ZBXNEXT-6442] added ExportType server parameter for better configurability of real-time export (akozlovs)
 
 Bug fixes:
