@@ -10,6 +10,7 @@ New features:
 
 Bug fixes:
 ...G...... [ZBX-17541] fixed Zabbix agent compilation on MS Windows (vso)
+A......... [ZBX-19023] fixed inheritance of the permissions for new host groups (Sasha)
 ........S. [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (akozlovs)
 
 --------------------------------------------------------------------------------

@@ -121,6 +121,7 @@
 [ZBX-18887] fixed user session expiration when notification checks are performed in background (https://support.zabbix.com/browse/ZBX-18887)
 [ZBX-18892] fixed preprocessing steps wrapping (https://support.zabbix.com/browse/ZBX-18892)
 [ZBX-18966] fixed interface related errors when changing proxy type from passive to active (https://support.zabbix.com/browse/ZBX-18966)
+[ZBX-19023] fixed inheritance of the permissions for new host groups (https://support.zabbix.com/browse/ZBX-19023)
 [ZBX-19029] fixed Zabbix server and Zabbix proxy not remembering last log size when preprocessing is used (https://support.zabbix.com/browse/ZBX-19029)
 [ZBX-19031] fixed build failure on HP-UX and AIX (https://support.zabbix.com/browse/ZBX-19031)
 [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (https://support.zabbix.com/browse/ZBX-19071)
