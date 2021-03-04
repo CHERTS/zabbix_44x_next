@@ -10,6 +10,7 @@ New features:
 
 Bug fixes:
 ...G...... [ZBX-17541] fixed Zabbix agent compilation on MS Windows (vso)
+........S. [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (akozlovs)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.17
