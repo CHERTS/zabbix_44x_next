@@ -7,6 +7,7 @@ New features:
 ..F....... [ZBXNEXT-5786] updated the list of user agents (agriscenko)
 .......PS. [ZBXNEXT-5829] replaced uint64 hash function with faster one (wiper)
 ........S. [ZBXNEXT-6442] added ExportType server parameter for better configurability of real-time export (akozlovs)
+.......PS. [ZBXNEXT-6503] added protection of Zabbix Server from overloading by proxy data (dgoloscapov, wiper)
 
 Bug fixes:
 ...G...... [ZBX-17541] fixed Zabbix agent compilation on MS Windows (vso)

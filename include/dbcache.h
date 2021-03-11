@@ -954,4 +954,6 @@ void	zbx_dc_get_item_tags_by_functionids(const zbx_uint64_t *functionids, size_t
 char	*zbx_dc_expand_user_macros(const char *text, zbx_uint64_t hostid);
 char	*zbx_dc_expand_user_macros_in_func_params(const char *params, zbx_uint64_t hostid);
 
+int	zbx_hc_check_proxy(zbx_uint64_t proxyid);
+
 #endif

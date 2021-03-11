@@ -123,6 +123,7 @@
 #define ZBX_PROTO_TAG_INTERFACE			"interface"
 #define ZBX_PROTO_TAG_FLAGS			"flags"
 #define ZBX_PROTO_TAG_PARAMETERS		"parameters"
+#define ZBX_PROTO_TAG_PROXY_UPLOAD		"upload"
 
 #define ZBX_PROTO_VALUE_FAILED		"failed"
 #define ZBX_PROTO_VALUE_SUCCESS		"success"
@@ -152,6 +153,9 @@
 
 #define ZBX_PROTO_VALUE_ZABBIX_ALERT_SEND	"alert.send"
 #define ZBX_PROTO_VALUE_PREPROCESSING_TEST	"preprocessing.test"
+
+#define ZBX_PROTO_VALUE_PROXY_UPLOAD_ENABLED	"enabled"
+#define ZBX_PROTO_VALUE_PROXY_UPLOAD_DISABLED	"disabled"
 
 typedef enum
 {

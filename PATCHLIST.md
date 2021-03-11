@@ -167,6 +167,7 @@
 [ZBXNEXT-6441] added function to configure HTTP authentication for embedded scripts (https://support.zabbix.com/browse/ZBXNEXT-6441)
 [ZBXNEXT-6442] added ExportType server parameter for better configurability of real-time export (akozlovs)
 [ZBXNEXT-6443] added sha256() function to JavaScript preprocessing (https://support.zabbix.com/browse/ZBXNEXT-6443)
+[ZBXNEXT-6503] added protection of Zabbix Server from overloading by proxy data (https://support.zabbix.com/browse/ZBXNEXT-6503)
 
 # List of my patches (English)
 
