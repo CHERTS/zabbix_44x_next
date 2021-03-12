@@ -124,6 +124,7 @@
 [ZBX-19023] fixed inheritance of the permissions for new host groups (https://support.zabbix.com/browse/ZBX-19023)
 [ZBX-19029] fixed Zabbix server and Zabbix proxy not remembering last log size when preprocessing is used (https://support.zabbix.com/browse/ZBX-19029)
 [ZBX-19031] fixed build failure on HP-UX and AIX (https://support.zabbix.com/browse/ZBX-19031)
+[ZBX-19046] fixed agent build on solaris 10 (https://support.zabbix.com/browse/ZBX-19046)
 [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (https://support.zabbix.com/browse/ZBX-19071)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
