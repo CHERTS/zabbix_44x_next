@@ -11,7 +11,7 @@ New features:
 
 Bug fixes:
 ...G...... [ZBX-17541] fixed Zabbix agent compilation on MS Windows (vso)
-A......... [ZBX-19023] fixed inheritance of the permissions for new host groups (Sasha)
+A......... [ZBX-19023] fixed inheritance of the permissions and tag filters for new host groups (Sasha)
 ...G...PS. [ZBX-19046] fixed agent build on solaris 10 (asestakovs)
 ........S. [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (akozlovs)
 
