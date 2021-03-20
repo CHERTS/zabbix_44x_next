@@ -170,6 +170,7 @@
 [ZBXNEXT-6442] added ExportType server parameter for better configurability of real-time export (akozlovs)
 [ZBXNEXT-6443] added sha256() function to JavaScript preprocessing (https://support.zabbix.com/browse/ZBXNEXT-6443)
 [ZBXNEXT-6503] added protection of Zabbix Server from overloading by proxy data (https://support.zabbix.com/browse/ZBXNEXT-6503)
+[ZBXNEXT-6528,ZBXNEXT-6565] improved performance of host.create and template.create methods; improved performance of templates linking process; optimized DB::insert() method to send bulk SQL inserts (https://support.zabbix.com/browse/ZBXNEXT-6528, https://support.zabbix.com/browse/ZBXNEXT-6565)
 ~~~~
 
 # List of my patches (English)
