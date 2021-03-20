@@ -126,6 +126,7 @@
 [ZBX-19031] fixed build failure on HP-UX and AIX (https://support.zabbix.com/browse/ZBX-19031)
 [ZBX-19046] fixed agent build on solaris 10 (https://support.zabbix.com/browse/ZBX-19046)
 [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (https://support.zabbix.com/browse/ZBX-19071)
+[ZBX-19111] improved performance of checking circular and double linkages of templates (https://support.zabbix.com/browse/ZBX-19111)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
