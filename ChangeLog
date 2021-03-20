@@ -16,6 +16,7 @@ A......... [ZBX-19023] fixed inheritance of the permissions and tag filters for 
 ...G...PS. [ZBX-19046] fixed agent build on solaris 10 (asestakovs)
 ........S. [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (akozlovs)
 A......... [ZBX-19111] improved performance of checking circular and double linkages of templates (Sasha)
+A......... [ZBX-19117] fixed host deletion, template deletion and maintenance update was not shown in audit log report when it was made via API request (vmaksimovs)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.17
