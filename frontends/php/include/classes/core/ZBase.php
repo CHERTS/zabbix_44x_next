@@ -429,13 +429,13 @@ class ZBase {
 
 		try {
 			if (!class_exists($action_class, true)) {
-				throw new Exception(_s('Class %s not found for action %s.', $action_class, $action_name));
+				throw new Exception(_s('Class %1$s not found for action %2$s.', $action_class, $action_name));
 			}
 
 			$action = new $action_class();
 
 			if (!is_subclass_of($action, CAction::class)) {
-				throw new Exception(_s('Action class %s must extend %s class.', $action_class, CAction::class));
+				throw new Exception(_s('Action class %1$s must extend %2$s class.', $action_class, CAction::class));
 			}
 
 			$action->setAction($action_name);
@@ -503,7 +503,7 @@ class ZBase {
 		// Action has layout?
 		if ($router->getLayout() !== null) {
 			if (!($response instanceof CControllerResponseData)) {
-				throw new Exception(_s('Unexpected response for action %s.', $router->getAction()));
+				throw new Exception(_s('Unexpected response for action %1$s.', $router->getAction()));
 			}
 
 			$layout_data_defaults = [

@@ -123,13 +123,13 @@ class CView {
 	 */
 	public function assign($view) {
 		if (!preg_match("/^[a-z\.]+$/", $view)) {
-			throw new Exception(_s('Invalid view name given "%s". Allowed chars: "a-z" and ".".', $view));
+			throw new Exception(_s('Invalid view name given "%1$s". Allowed chars: "a-z" and ".".', $view));
 		}
 
 		$this->filePath = $this->findFile($view.'.php');
 
 		if (is_null($this->filePath)) {
-			throw new Exception(_s('File provided to a view does not exist. Tried to find "%s".', $this->filePath));
+			throw new Exception(_s('File provided to a view does not exist. Tried to find "%1$s".', $this->filePath));
 		}
 	}
 
@@ -191,7 +191,7 @@ class CView {
 		ob_start();
 		$this->template = include($this->filePath);
 		if ($this->template === false) {
-			throw new Exception(_s('Cannot include view file "%s".', $this->filePath));
+			throw new Exception(_s('Cannot include view file "%1$s".', $this->filePath));
 		}
 		$this->scripts = ob_get_clean();
 
@@ -283,7 +283,7 @@ class CView {
 				include $path;
 			}
 			else if((include $filename) === false) {
-				throw new Exception(_s('Cannot include JS file "%s".', $filename));
+				throw new Exception(_s('Cannot include JS file "%1$s".', $filename));
 			}
 		}
 

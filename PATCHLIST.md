@@ -14,6 +14,7 @@
 [ZBX-17178] fixed multi-line value truncation in snmp lld (https://support.zabbix.com/browse/ZBX-17178)
 [ZBX-17222] fixed unlimited data selection in Latest data view (https://support.zabbix.com/browse/ZBX-17222)
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
+[ZBX-17272] changed translation strings to yield order number in argument (https://support.zabbix.com/browse/ZBX-17272)
 [ZBX-17295] fixed IPMI sensor LLD JSON output (https://support.zabbix.com/browse/ZBX-17295)
 [ZBX-17347] fixed order of setting the Severity in the columns in the filters to vertical (https://support.zabbix.com/browse/ZBX-17347)
 [ZBX-17369] fixed retrieval of decimal values from WMI (https://support.zabbix.com/browse/ZBX-17369)
