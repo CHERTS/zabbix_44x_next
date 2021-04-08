@@ -15,6 +15,7 @@
 [ZBX-17222] fixed unlimited data selection in Latest data view (https://support.zabbix.com/browse/ZBX-17222)
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17295] fixed IPMI sensor LLD JSON output (https://support.zabbix.com/browse/ZBX-17295)
+[ZBX-17347] fixed order of setting the Severity in the columns in the filters to vertical (https://support.zabbix.com/browse/ZBX-17347)
 [ZBX-17369] fixed retrieval of decimal values from WMI (https://support.zabbix.com/browse/ZBX-17369)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
 [ZBX-17469] fixed kiosk button margin in history/graph view of the latest data (https://support.zabbix.com/browse/ZBX-17469)

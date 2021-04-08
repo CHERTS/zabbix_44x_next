@@ -156,21 +156,25 @@ function getSeverityColor($severity, $value = TRIGGER_VALUE_TRUE) {
 /**
  * Generate array with severities options.
  *
- * @param int $min  Minimal severity.
- * @param int $max  Maximum severity.
+ * @param bool $style  True - include style option.
  *
  * @return array
  */
-function getSeverities($min = TRIGGER_SEVERITY_NOT_CLASSIFIED, $max = TRIGGER_SEVERITY_COUNT - 1) {
+function getSeverities($style = false) {
 	$severities = [];
 	$config = select_config();
 
-	foreach (range($min, $max) as $severity) {
-		$severities[] = [
+	foreach (range(TRIGGER_SEVERITY_NOT_CLASSIFIED, TRIGGER_SEVERITY_COUNT - 1) as $severity) {
+		$options = [
 			'name' => getSeverityName($severity, $config),
-			'value' => $severity,
-			'style' => getSeverityStyle($severity)
+			'value' => $severity
 		];
+
+		if ($style) {
+			$options['style'] = getSeverityStyle($severity);
+		}
+
+		$severities[] = $options;
 	}
 
 	return $severities;

@@ -62,7 +62,7 @@ $form_list->addRow(CWidgetHelper::getLabel($fields['problem']), CWidgetHelper::g
 // Severity.
 $form_list->addRow(
 	CWidgetHelper::getLabel($fields['severities']),
-	CWidgetHelper::getSeverities($fields['severities'], $data['config'])
+	CWidgetHelper::getSeverities($fields['severities'])
 );
 
 // Show type.

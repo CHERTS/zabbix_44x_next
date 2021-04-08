@@ -983,7 +983,6 @@ else {
 
 	$data = [
 		'config' => $config,
-		'config_priorities' => getSeverities(),
 		'triggers' => $triggers,
 		'profileIdx' => 'web.triggers.filter',
 		'active_tab' => $active_tab,
