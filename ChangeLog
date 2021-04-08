@@ -3,6 +3,7 @@ Changes for 4.4.19rc1
 New features:
 
 Bug fixes:
+.......PS. [ZBX-16928] upgraded Duktape version from 2.3.0 to 2.4.0 (wiper)
 ..F....... [ZBX-19195] fixed endless loop in graph widget processing if widget size is too small (averza)
 
 --------------------------------------------------------------------------------
