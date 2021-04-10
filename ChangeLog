@@ -6,6 +6,7 @@ Bug fixes:
 .......PS. [ZBX-16928] upgraded Duktape version from 2.3.0 to 2.4.0 (wiper)
 A.F....... [ZBX-17272] changed translation strings to yield order number in argument (Ivo)
 ..F....... [ZBX-17347] fixed order of setting the Severity in the columns in the filters to vertical (vasilijs)
+........S. [ZBX-18912] fixed escalation message is using template message instead of custom message in actions (asestakovs)
 ..F....... [ZBX-19195] fixed endless loop in graph widget processing if widget size is too small (averza)
 
 --------------------------------------------------------------------------------
