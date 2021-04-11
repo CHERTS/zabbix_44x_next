@@ -5379,6 +5379,9 @@ a.link-action:focus {
   transform: translateY(-50%);
 }
 .preloader-container.menu-popup-preloader {
+  position: fixed;
+}
+.preloader-container.menu-popup-preloader, .preloader-container.hintbox-preloader {
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
   border-radius: 0;
@@ -5393,7 +5396,6 @@ a.link-action:focus {
   border: 1px solid #666;
   height: 120px;
   width: 120px;
-  position: fixed;
   right: auto;
   bottom: auto;
   display: flex;

@@ -6301,6 +6301,11 @@ a.overlay-close-btn {
 	@include transform(translateY(-50%));
 
 	&.menu-popup-preloader {
+		position: fixed;
+	}
+
+	&.menu-popup-preloader,
+	&.hintbox-preloader {
 		@include border-radius(0);
 		@include box-shadow(0 4px 20px 0 $action-shadow-color);
 		@include transform(none);
@@ -6308,7 +6313,6 @@ a.overlay-close-btn {
 		border: 1px solid $action-border-color;
 		height: 120px;
 		width: 120px;
-		position: fixed;
 		right: auto;
 		bottom: auto;
 		display: flex;

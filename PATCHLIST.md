@@ -4,6 +4,7 @@
 [ZBX-402] fixed latest data reloading to updating asynchronously (https://support.zabbix.com/browse/ZBX-402)
 [ZBX-5842] fixed ability to detect username existence from unsuccessful login message (https://support.zabbix.com/browse/ZBX-5842)
 [ZBX-8081] fixed 'cmdline' parameter truncation on Solaris 11.3 and later (https://support.zabbix.com/browse/ZBX-8081)
+[ZBX-12867] reworked problem event popup of problems widget to load data only on mouse hover and click (https://support.zabbix.com/browse/ZBX-12867)
 [ZBX-13383] improved performance of the trigger and trigger prototype inheritance (https://support.zabbix.com/browse/ZBX-13383)
 [ZBX-13789] improved performance of "Problems" widget with MySQL backend by removing DISTINCT modifier from SQL statements with tables joined by primary keys (https://support.zabbix.com/browse/ZBX-13789)
 [ZBX-15117] fixed graph configuration with large amount of items (https://support.zabbix.com/browse/ZBX-15117)

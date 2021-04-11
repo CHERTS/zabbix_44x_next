@@ -174,7 +174,7 @@ class CScreenHostTriggers extends CScreenBase {
 			'sort_order' => ZBX_SORT_DOWN
 		];
 
-		$data = CScreenProblem::getData($filter, $config, true, true);
+		$data = CScreenProblem::getData($filter, $config);
 
 		$header = [
 			'hostname' => _('Host'),
@@ -202,7 +202,7 @@ class CScreenHostTriggers extends CScreenBase {
 			min($config['search_limit'], count($data['problems']))
 		);
 		$data['problems'] = array_slice($data['problems'], 0, $filter['limit'], true);
-		$data = CScreenProblem::makeData($data, $filter, true, true);
+		$data = CScreenProblem::makeData($data, $filter);
 
 		$hostids = [];
 		foreach ($data['triggers'] as $trigger) {
@@ -258,9 +258,7 @@ class CScreenHostTriggers extends CScreenBase {
 				$host_name,
 				(new CCol([
 					(new CLinkAction($problem['name']))
-						->setHint(make_popup_eventlist(['comments' => $problem['comments'], 'url' => $problem['url'],
-							'triggerid' => $trigger['triggerid']], $problem['eventid'], $back_url
-						))
+						->setAjaxHint(CHintBoxHelper::getEventList($trigger['triggerid'], $problem['eventid']))
 				]))->addClass(getSeverityStyle($problem['severity'])),
 				$clock,
 				zbx_date2age($problem['clock']),

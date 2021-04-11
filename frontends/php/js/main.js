@@ -366,6 +366,9 @@ var jqBlink = {
  */
 var hintBox = {
 
+	preload_hint_timer: null,
+	show_hint_timer: null,
+
 	/**
 	 * Initialize hint box event handlers.
 	 *
@@ -374,49 +377,164 @@ var hintBox = {
 	 */
 	bindEvents: function () {
 		jQuery(document).on('keydown click mouseenter mouseleave', '[data-hintbox=1]', function (e) {
+			var $target = jQuery(this).hasClass('hint-item')
+				? jQuery(this).siblings('.main-hint')
+				: jQuery(this);
 
-			if (jQuery(this).hasClass('hint-item')) {
-				var target = jQuery(this).siblings('.main-hint');
+			if (e.type === 'keydown') {
+				if (e.which != 13) {
+					return;
+				}
+
+				var offset = $target.offset(),
+					w = jQuery(window);
+
+				// Emulate a click on the left middle point of the target.
+				e.clientX = offset.left - w.scrollLeft();
+				e.clientY = offset.top - w.scrollTop() + ($target.height() / 2);
+				e.preventDefault();
 			}
-			else {
-				var target = jQuery(this);
-			}
 
-			switch (e.type) {
-				case 'mouseenter':
-					hintBox.showHint(e, target[0], target.next('.hint-box').html(), target.data('hintbox-class'), false,
-						target.data('hintbox-style')
-					);
-					break;
+			if ($target.data('hintbox-preload') && $target.next('.hint-box').children().length == 0) {
+				clearTimeout(hintBox.preload_hint_timer);
 
-				case 'mouseleave':
-					hintBox.hideHint(target[0], false);
-					break;
+				// Manually trigger preloaderCloseHandler for the previous preloader.
+				if (jQuery('#hintbox-preloader').length) {
 
-				case 'keydown':
-					if (e.which == 13 && target.data('hintbox-static') == 1) {
-						var offset = target.offset(),
-							w = jQuery(window);
-						// Emulate click on left middle point of link.
-						e.clientX = offset.left - w.scrollLeft();
-						e.clientY = offset.top - w.scrollTop() + (target.height() / 2);
-						e.preventDefault();
-
-						hintBox.showStaticHint(e, target[0], target.data('hintbox-class'), false,
-							target.data('hintbox-style')
-						);
+					// Prevent loading restart on repetitive click and keydown events.
+					if (e.type === 'click' || e.type === 'keydown') {
+						return false;
 					}
-					break;
 
-				case 'click':
-					if (target.data('hintbox-static') == 1) {
-						hintBox.showStaticHint(e, target[0], target.data('hintbox-class'), false,
-							target.data('hintbox-style')
-						);
-					}
-					break;
+					jQuery(document).trigger('click');
+				}
+
+				if (e.type === 'mouseleave') {
+					$target.blur();
+
+					return false;
+				}
+
+				var preloadHintHandler = function() {
+					hintBox.preloadHint(e, $target);
+				}
+
+				if (e.type === 'mouseenter') {
+					hintBox.preload_hint_timer = setTimeout(preloadHintHandler, 400);
+				}
+				else {
+					preloadHintHandler();
+				}
+
+				return false;
 			}
+
+			hintBox.displayHint(e, $target, 400);
+
+			return false;
 		});
+	},
+
+	displayHint: function(e, $target, delay = 0) {
+		clearTimeout(hintBox.show_hint_timer);
+
+		switch (e.handleObj.origType) {
+			case 'mouseenter':
+				var showHintHandler = function() {
+					hintBox.showHint(e, $target[0], $target.next('.hint-box').html(), $target.data('hintbox-class'),
+						false, $target.data('hintbox-style')
+					);
+				}
+				if (delay > 0) {
+					hintBox.show_hint_timer = setTimeout(showHintHandler, delay);
+				}
+				else {
+					showHintHandler();
+				}
+				break;
+
+			case 'mouseleave':
+				hintBox.hideHint($target[0], false);
+				$target.blur();
+				break;
+
+			case 'keydown':
+			case 'click':
+				if ($target.data('hintbox-static') == 1) {
+					hintBox.showStaticHint(e, $target[0], $target.data('hintbox-class'), false,
+						$target.data('hintbox-style')
+					);
+				}
+				break;
+		}
+	},
+
+	preloadHint: function(e, $target) {
+		var url = new Curl('zabbix.php'),
+			data = $target.data('hintbox-preload');
+
+		url.setArgument('action', 'hint.box');
+		url.setArgument('type', data.type);
+
+		var xhr = jQuery.ajax({
+			url: url.getUrl(),
+			method: 'POST',
+			data: {
+				data: data.data
+			},
+			dataType: 'json'
+		});
+
+		var $preloader = hintBox.createPreloader();
+
+		var preloader_timer = setTimeout(function() {
+			$preloader.fadeIn(200);
+			hintBox.positionElement(e, $target[0], $preloader);
+		}, 500);
+
+		addToOverlaysStack($preloader.prop('id'), $target[0], 'preloader', xhr);
+
+		xhr.done(function(resp) {
+			clearTimeout(preloader_timer);
+			overlayPreloaderDestroy($preloader.prop('id'));
+
+			var $hint_box = $target.next('.hint-box').empty();
+
+			if (resp.messages) {
+				$hint_box.append(resp.messages);
+			}
+			if (resp.data) {
+				$hint_box.append(resp.data);
+			}
+
+			hintBox.displayHint(e, $target);
+		});
+
+		jQuery(document)
+			.off('click', hintBox.preloaderCloseHandler)
+			.on('click', {id: $preloader.prop('id')}, hintBox.preloaderCloseHandler);
+	},
+
+	/**
+	 * Create preloader elements for the hint box.
+	 */
+	createPreloader: function() {
+		return jQuery('<div>', {
+			'id': 'hintbox-preloader',
+			'class': 'preloader-container hintbox-preloader'
+		})
+			.append(jQuery('<div>').addClass('preloader'))
+			.appendTo(jQuery('body'))
+			.on('click', function(e) {
+				e.stopPropagation();
+			})
+			.hide();
+	},
+	/**
+	 * Event handler for the preloader elements destroy.
+	 */
+	preloaderCloseHandler: function(event) {
+		overlayPreloaderDestroy(event.data.id);
 	},
 
 	createBox: function(e, target, hintText, className, isStatic, styles, appendTo) {
@@ -493,7 +611,7 @@ var hintBox = {
 
 			if (resizeAfterLoad) {
 				hintText.one('load', function(e) {
-					hintBox.positionHint(e, target);
+					hintBox.positionElement(e, target, target.hintBoxItem);
 				});
 			}
 		}
@@ -505,7 +623,7 @@ var hintBox = {
 		}
 
 		target.hintBoxItem = hintBox.createBox(e, target, hintText, className, isStatic, styles);
-		hintBox.positionHint(e, target);
+		hintBox.positionElement(e, target, target.hintBoxItem);
 		target.hintBoxItem.show();
 
 		if (target.isStatic) {
@@ -513,13 +631,13 @@ var hintBox = {
 		}
 	},
 
-	positionHint: function(e, target) {
+	positionElement: function(e, target, $elem) {
 		var wWidth = jQuery(window).width(),
 			wHeight = jQuery(window).height(),
 			scrollTop = jQuery(window).scrollTop(),
 			scrollLeft = jQuery(window).scrollLeft(),
-			hint_width = jQuery(target.hintBoxItem).outerWidth(),
-			hint_height = jQuery(target.hintBoxItem).outerHeight(),
+			elem_width = $elem.outerWidth(),
+			elem_height = $elem.outerHeight(),
 			top, left;
 
 		// uses stored clientX on afterload positioning when there is no event
@@ -529,25 +647,25 @@ var hintBox = {
 		}
 
 		// doesn't fit in the screen horizontally
-		if (hint_width + 10 > wWidth) {
+		if (elem_width + 10 > wWidth) {
 			left = scrollLeft + 2;
 		}
 		// 10px to right if fit
-		else if (wWidth - target.clientX - 10 > hint_width) {
+		else if (wWidth - target.clientX - 10 > elem_width) {
 			left = scrollLeft + target.clientX + 10;
 		}
 		// 10px from screen right side
 		else {
-			left = scrollLeft + wWidth - 10 - hint_width;
+			left = scrollLeft + wWidth - 10 - elem_width;
 		}
 
 		// 10px below if fit
-		if (wHeight - target.clientY - hint_height - 10 > 0) {
+		if (wHeight - target.clientY - elem_height - 10 > 0) {
 			top = scrollTop + target.clientY + 10;
 		}
 		// 10px above if fit
-		else if (target.clientY - hint_height - 10 > 0) {
-			top = scrollTop + target.clientY - hint_height - 10;
+		else if (target.clientY - elem_height - 10 > 0) {
+			top = scrollTop + target.clientY - elem_height - 10;
 		}
 		// 10px below as fallback
 		else {
@@ -555,21 +673,21 @@ var hintBox = {
 		}
 
 		// fallback if doesn't fit vertically but could fit if aligned to right or left
-		if ((top - scrollTop + hint_height > wHeight)
-				&& (target.clientX - 10 > hint_width || wWidth - target.clientX - 10 > hint_width)) {
+		if ((top - scrollTop + elem_height > wHeight)
+				&& (target.clientX - 10 > elem_width || wWidth - target.clientX - 10 > elem_width)) {
 
 			// align to left if fit
-			if (wWidth - target.clientX - 10 > hint_width) {
+			if (wWidth - target.clientX - 10 > elem_width) {
 				left = scrollLeft + target.clientX + 10;
 			}
 			// align to right
 			else {
-				left = scrollLeft + target.clientX - hint_width - 10;
+				left = scrollLeft + target.clientX - elem_width - 10;
 			}
 
 			// 10px from bottom if fit
-			if (wHeight - 10 > hint_height) {
-				top = scrollTop + wHeight - hint_height - 10;
+			if (wHeight - 10 > elem_height) {
+				top = scrollTop + wHeight - elem_height - 10;
 			}
 			// 10px from top
 			else {
@@ -577,10 +695,9 @@ var hintBox = {
 			}
 		}
 
-		target.hintBoxItem.css({
+		$elem.css({
 			top: top + 'px',
-			left: left + 'px',
-			zIndex: 1001
+			left: left + 'px'
 		});
 	},
 

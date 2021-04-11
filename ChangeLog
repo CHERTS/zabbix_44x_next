@@ -3,6 +3,7 @@ Changes for 4.4.19rc1
 New features:
 
 Bug fixes:
+..F....... [ZBX-12867] reworked problem event popup of problems widget to load data only on mouse hover and click (agriscenko, Sasha)
 .......PS. [ZBX-16928] upgraded Duktape version from 2.3.0 to 2.4.0 (wiper)
 A.F....... [ZBX-17272] changed translation strings to yield order number in argument (Ivo)
 ..F....... [ZBX-17347] fixed order of setting the Severity in the columns in the filters to vertical (vasilijs)
