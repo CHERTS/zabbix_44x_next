@@ -462,7 +462,7 @@ class DB {
 
 		if ($DB['TYPE'] == ZBX_DB_MYSQL) {
 			foreach ($table_schema['fields'] as $name => $field) {
-				if ($field['type'] == self::FIELD_TYPE_TEXT || !$field['null']) {
+				if ($field['type'] == self::FIELD_TYPE_TEXT) {
 					$mandatory_fields += [$name => $field['default']];
 				}
 			}
