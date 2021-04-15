@@ -92,6 +92,7 @@ void	zbx_mock_test_entry(void **state)
 
 	zbx_vector_history_record_reserve(&returned, 1);
 	err = zbx_vc_get_value(itemid, value_type, &ts, &returned.values[0]);
+	zbx_vc_flush_stats();
 	returned.values_num = 1;
 	zbx_mock_assert_result_eq("zbx_vc_get_values() return value", SUCCEED, err);
 

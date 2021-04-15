@@ -64,6 +64,7 @@ int	zbx_vc_precache_values(zbx_uint64_t itemid, int value_type, int seconds, int
 	RDLOCK_CACHE;
 	ret = vch_item_get_values(item, &values, seconds, count, ts);
 	UNLOCK_CACHE;
+	zbx_vc_flush_stats();
 	zbx_history_record_vector_destroy(&values, value_type);
 
 	/* reset cache statistics */
