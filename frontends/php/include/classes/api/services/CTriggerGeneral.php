@@ -780,10 +780,7 @@ abstract class CTriggerGeneral extends CApiService {
 				'triggerid' =>				['type' => API_ID, 'flags' => API_REQUIRED]
 			]]
 		]];
-		if ($this instanceof CTriggerPrototype) {
-			$api_input_rules['fields']['discover'] = ['type' => API_INT32, 'in' => implode(',', [TRIGGER_DISCOVER, TRIGGER_NO_DISCOVER])];
-		}
-		else {
+		if (!$this instanceof CTriggerPrototype) {
 			$api_input_rules['fields']['expression']['flags'] &= ~API_ALLOW_LLD_MACRO;
 			$api_input_rules['fields']['recovery_expression']['flags'] &= ~API_ALLOW_LLD_MACRO;
 		}
@@ -873,10 +870,7 @@ abstract class CTriggerGeneral extends CApiService {
 				'triggerid' =>				['type' => API_ID, 'flags' => API_REQUIRED]
 			]]
 		]];
-		if ($this instanceof CTriggerPrototype) {
-			$api_input_rules['fields']['discover'] = ['type' => API_INT32, 'in' => implode(',', [TRIGGER_DISCOVER, TRIGGER_NO_DISCOVER])];
-		}
-		else {
+		if (!$this instanceof CTriggerPrototype) {
 			$api_input_rules['fields']['expression']['flags'] &= ~API_ALLOW_LLD_MACRO;
 			$api_input_rules['fields']['recovery_expression']['flags'] &= ~API_ALLOW_LLD_MACRO;
 		}
