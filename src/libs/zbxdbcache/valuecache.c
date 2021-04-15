@@ -2784,6 +2784,59 @@ void	zbx_vc_disable(void)
 	vc_state = ZBX_VC_DISABLED;
 }
 
+/******************************************************************************
+ *                                                                            *
+ * Function: zbx_vc_flush_stats                                               *
+ *                                                                            *
+ * Purpose: flush locally cached statistics                                   *
+ *                                                                            *
+ ******************************************************************************/
+void	zbx_vc_flush_stats(void)
+{
+	int		i, now;
+	zbx_vc_item_t	*item = NULL;
+	zbx_uint64_t	itemid = 0;
+
+	if (ZBX_VC_DISABLED == vc_state || 0 == vc_itemupdates.values_num)
+		return;
+
+	zbx_vector_vc_itemupdate_sort(&vc_itemupdates, ZBX_DEFAULT_UINT64_COMPARE_FUNC);
+
+	now = time(NULL);
+
+	WRLOCK_CACHE;
+
+	for (i = 0; i < vc_itemupdates.values_num; i++)
+	{
+		zbx_vc_item_update_t	*update = &vc_itemupdates.values[i];
+
+		if (itemid != update->itemid)
+		{
+			itemid = update->itemid;
+			item = (zbx_vc_item_t *)zbx_hashset_search(&vc_cache->items, &itemid);
+		}
+
+		if (NULL == item)
+			continue;
+
+		switch (update->type)
+		{
+			case ZBX_VC_UPDATE_RANGE:
+				vch_item_update_range(item, update->data[ZBX_VC_UPDATE_RANGE_SECONDS],
+						update->data[ZBX_VC_UPDATE_RANGE_NOW]);
+				break;
+			case ZBX_VC_UPDATE_STATS:
+				vc_update_statistics(item, update->data[ZBX_VC_UPDATE_STATS_HITS],
+						update->data[ZBX_VC_UPDATE_STATS_MISSES], now);
+				break;
+		}
+	}
+
+	UNLOCK_CACHE;
+
+	zbx_vector_vc_itemupdate_clear(&vc_itemupdates);
+}
+
 #ifdef HAVE_TESTS
 #	include "../../../tests/libs/zbxdbcache/valuecache_test.c"
 #endif
