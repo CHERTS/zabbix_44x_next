@@ -1353,8 +1353,6 @@ static int	DBget_history_log_value(zbx_uint64_t itemid, char **replace_to, int r
 	if (SUCCEED != zbx_vc_get_value(itemid, item.value_type, &ts, &value))
 		goto out;
 
-	zbx_vc_flush_stats();
-
 	switch (request)
 	{
 		case ZBX_REQUEST_ITEM_LOG_DATE:
@@ -1466,7 +1464,6 @@ static int	DBitem_get_value(zbx_uint64_t itemid, char **lastvalue, int raw, zbx_
 		{
 			char	tmp[MAX_BUFFER_LEN];
 
-			zbx_vc_flush_stats();
 			zbx_history_value2str(tmp, sizeof(tmp), &vc_value.value, value_type);
 			zbx_history_record_clear(&vc_value, value_type);
 
@@ -4635,8 +4632,6 @@ int	substitute_simple_macros(zbx_uint64_t *actionid, const DB_EVENT *event, cons
 		pos++;
 	}
 
-	zbx_vc_flush_stats();
-
 	zbx_free(expression);
 	zbx_vector_uint64_destroy(&hostids);
 
@@ -5131,8 +5126,6 @@ static void	zbx_evaluate_item_functions(zbx_hashset_t *funcs, zbx_vector_ptr_t *
 					unknown_msgs->values_num - 1);
 		}
 	}
-
-	zbx_vc_flush_stats();
 
 	DCconfig_clean_items(items, errcodes, itemids.values_num);
 	zbx_vector_uint64_destroy(&itemids);

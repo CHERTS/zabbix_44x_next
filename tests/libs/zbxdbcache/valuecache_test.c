@@ -31,6 +31,8 @@ int	zbx_vc_get_cached_values(zbx_uint64_t itemid, unsigned char value_type, zbx_
 	int		i;
 	zbx_vc_chunk_t	*chunk;
 
+	vc_try_lock();
+
 	if (NULL == (item = zbx_hashset_search(&vc_cache->items, &itemid)))
 		return FAIL;
 
@@ -43,6 +45,8 @@ int	zbx_vc_get_cached_values(zbx_uint64_t itemid, unsigned char value_type, zbx_
 			vc_history_record_vector_append(values, value_type, &chunk->slots[i]);
 	}
 
+	vc_try_unlock();
+
 	return SUCCEED;
 }
 
@@ -52,6 +56,8 @@ int	zbx_vc_precache_values(zbx_uint64_t itemid, int value_type, int seconds, int
 	int				ret;
 	zbx_vector_history_record_t	values;
 
+	vc_try_lock();
+
 	/* add item to cache if necessary */
 	if (NULL == (item = (zbx_vc_item_t *)zbx_hashset_search(&vc_cache->items, &itemid)))
 	{
@@ -60,16 +66,17 @@ int	zbx_vc_precache_values(zbx_uint64_t itemid, int value_type, int seconds, int
 	}
 
 	/* perform request to cache values */
+	vc_item_addref(item);
 	zbx_history_record_vector_create(&values);
-	RDLOCK_CACHE;
 	ret = vch_item_get_values(item, &values, seconds, count, ts);
-	UNLOCK_CACHE;
-	zbx_vc_flush_stats();
 	zbx_history_record_vector_destroy(&values, value_type);
+	vc_item_release(item);
 
 	/* reset cache statistics */
 	vc_cache->hits = 0;
 	vc_cache->misses = 0;
+
+	vc_try_unlock();
 
 	return ret;
 }
@@ -79,6 +86,8 @@ int	zbx_vc_get_item_state(zbx_uint64_t itemid, int *status, int *active_range, i
 {
 	zbx_vc_item_t	*item;
 	int		ret = FAIL;
+
+	vc_try_lock();
 
 	if (NULL != (item = (zbx_vc_item_t *)zbx_hashset_search(&vc_cache->items, &itemid)))
 	{
@@ -90,6 +99,8 @@ int	zbx_vc_get_item_state(zbx_uint64_t itemid, int *status, int *active_range, i
 		ret = SUCCEED;
 	}
 
+	vc_try_unlock();
+
 	return ret;
 }
 
@@ -98,9 +109,13 @@ int	zbx_vc_get_cache_state(int *mode, zbx_uint64_t *hits, zbx_uint64_t *misses)
 	if (NULL == vc_cache)
 		return FAIL;
 
+	vc_try_lock();
+
 	*mode = vc_cache->mode;
 	*hits = vc_cache->hits;
 	*misses = vc_cache->misses;
+
+	vc_try_unlock();
 
 	return SUCCEED;
 }
