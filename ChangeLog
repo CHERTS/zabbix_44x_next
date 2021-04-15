@@ -1,7 +1,6 @@
 Changes for 4.4.19rc1
 
 New features:
-........S. [ZBXNEXT-6497] added read/write locking to value cache (wiper)
 
 Bug fixes:
 ..F....... [ZBX-12867] reworked problem event popup of problems widget to load data only on mouse hover and click (agriscenko, Sasha)
@@ -9,6 +8,7 @@ Bug fixes:
 A.F....... [ZBX-17272] changed translation strings to yield order number in argument (Ivo)
 ..F....... [ZBX-17347] fixed order of setting the Severity in the columns in the filters to vertical (vasilijs)
 ........S. [ZBX-18912] fixed escalation message is using template message instead of custom message in actions (asestakovs)
+.......PS. [ZBX-19088] fixed overload memory with unused vmware events (MVekslers)
 ..F....... [ZBX-19195] fixed endless loop in graph widget processing if widget size is too small (averza)
 ..F....... [ZBX-19210] fixed css file versioning for custom themes (ashubin)
 
