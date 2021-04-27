@@ -60,6 +60,7 @@ jobs:
         make dist
     - name: Set variables
       run: |
+        echo "ZABBIX_DEB_VER=1" >> $GITHUB_ENV
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
         echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
         echo "ZABBIX_VERSION_SHORT=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \' | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
@@ -77,7 +78,7 @@ jobs:
         mv src/go/pkg/version/version.go.new src/go/pkg/version/version.go
         wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz
         tar -xf debian.tar.xz
-        dch -v "1:${{ env.ZABBIX_VERSION }}-1+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}"
+        dch -v "1:${{ env.ZABBIX_VERSION }}-${{ env.ZABBIX_DEB_VER }}+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}"
     - name: Build DEB
       working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
       env:

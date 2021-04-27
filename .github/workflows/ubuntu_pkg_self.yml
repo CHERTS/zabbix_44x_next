@@ -25,7 +25,7 @@ jobs:
         make dist
     - name: Set variables
       run: |
-        echo "ZABBIX_DEB_VER=2" >> $GITHUB_ENV
+        echo "ZABBIX_DEB_VER=1" >> $GITHUB_ENV
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
         echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
         echo "ZABBIX_VERSION_SHORT=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \' | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
@@ -70,7 +70,7 @@ jobs:
         make dist
     - name: Set variables
       run: |
-        echo "ZABBIX_DEB_VER=2" >> $GITHUB_ENV
+        echo "ZABBIX_DEB_VER=1" >> $GITHUB_ENV
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
         echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
         echo "ZABBIX_VERSION_SHORT=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \' | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
@@ -115,7 +115,7 @@ jobs:
         make dist
     - name: Set variables
       run: |
-        echo "ZABBIX_DEB_VER=2" >> $GITHUB_ENV
+        echo "ZABBIX_DEB_VER=1" >> $GITHUB_ENV
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
         echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
         echo "ZABBIX_VERSION_SHORT=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \' | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
@@ -160,7 +160,7 @@ jobs:
         make dist
     - name: Set variables
       run: |
-        echo "ZABBIX_DEB_VER=2" >> $GITHUB_ENV
+        echo "ZABBIX_DEB_VER=1" >> $GITHUB_ENV
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
         echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
         echo "ZABBIX_VERSION_SHORT=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \' | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
