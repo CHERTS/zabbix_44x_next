@@ -29,6 +29,9 @@ jobs:
       run: |
         ./bootstrap.sh
         ./configure
+        make dbschema
+        make gettext
+        make css
         make dist
         echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
         echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-7)" >> $GITHUB_ENV

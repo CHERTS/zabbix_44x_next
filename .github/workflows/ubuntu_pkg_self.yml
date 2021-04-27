@@ -19,7 +19,10 @@ jobs:
       run: |
         ./bootstrap.sh
         ./configure
-         make dist
+        make dbschema
+        make gettext
+        make css
+        make dist
     - name: Set variables
       run: |
         echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
