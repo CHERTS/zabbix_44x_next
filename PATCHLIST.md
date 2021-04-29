@@ -134,6 +134,7 @@
 [ZBX-19088] fixed overload memory with unused vmware events (https://support.zabbix.com/browse/ZBX-19088)
 [ZBX-19111] improved performance of checking circular and double linkages of templates (https://support.zabbix.com/browse/ZBX-19111)
 [ZBX-19117] fixed host deletion, template deletion and maintenance update was not shown in audit log report when it was made via API request (https://support.zabbix.com/browse/ZBX-19117)
+[ZBX-19159] added postponing of recovery operation when problem operation still executes, fixed memory leak while saving tags returned by webhook (https://support.zabbix.com/browse/ZBX-19159)
 [ZBX-19195] fixed endless loop in graph widget processing if widget size is too small (https://support.zabbix.com/browse/ZBX-19195)
 [ZBX-19210] fixed css file versioning for custom themes (https://support.zabbix.com/browse/ZBX-19210)
 [ZBX-19233] fixed potential loss of original error when reading vmware events (https://support.zabbix.com/browse/ZBX-19233)
