@@ -3,6 +3,7 @@ Changes for 4.4.20rc1
 New features:
 
 Bug fixes:
+.......PS. [ZBX-19233] fixed potential loss of original error when reading vmware events (MVekslers)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.19
