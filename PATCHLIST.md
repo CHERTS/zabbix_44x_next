@@ -137,6 +137,7 @@
 [ZBX-19117] fixed host deletion, template deletion and maintenance update was not shown in audit log report when it was made via API request (https://support.zabbix.com/browse/ZBX-19117)
 [ZBX-19159] added postponing of recovery operation when problem operation still executes, fixed memory leak while saving tags returned by webhook (https://support.zabbix.com/browse/ZBX-19159)
 [ZBX-19195] fixed endless loop in graph widget processing if widget size is too small (https://support.zabbix.com/browse/ZBX-19195)
+[ZBX-19209] fixed panic in proc plugin for Zabbix agent 2 (https://support.zabbix.com/browse/ZBX-19209)
 [ZBX-19210] fixed css file versioning for custom themes (https://support.zabbix.com/browse/ZBX-19210)
 [ZBX-19233] fixed potential loss of original error when reading vmware events (https://support.zabbix.com/browse/ZBX-19233)
 [ZBX-19241] stopped proxy from overwriting local lastlogsize and mtime (https://support.zabbix.com/browse/ZBX-19241)
