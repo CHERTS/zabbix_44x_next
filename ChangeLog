@@ -1,6 +1,7 @@
 Changes for 4.4.20rc1
 
 New features:
+........S. [ZBXNEXT-4910] added severity in problem real-time export protocol (akozlovs)
 
 Bug fixes:
 ...G...... [ZBX-18883] fixed logrt[] monitoring with copytruncate rotation (Andris)

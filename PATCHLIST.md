@@ -156,6 +156,7 @@
 [ZBXNEXT-3588] improved Zabbix server performance when evaluating trigger, discovery, autoregistration and internal actions (https://support.zabbix.com/browse/ZBXNEXT-3588)
 [ZBXNEXT-3940] added functionality to flush SNMP connections cache (https://support.zabbix.com/browse/ZBXNEXT-3940)
 [ZBXNEXT-4647,ZBXNEXT-6096] added support of digest authentication for HTTP Agent (https://support.zabbix.com/browse/ZBXNEXT-4647)
+[ZBXNEXT-4910] added severity in problem real-time export protocol (https://support.zabbix.com/browse/ZBXNEXT-4910)
 [ZBXNEXT-5369] added EVENT.TAGSJSON macro (https://support.zabbix.com/browse/ZBXNEXT-5369)
 [ZBXNEXT-5486] move Administration->General section to MVC (https://support.zabbix.com/browse/ZBXNEXT-5486)
 [ZBXNEXT-5514] added functionality for Zabbix frontend customization (https://support.zabbix.com/browse/ZBXNEXT-5514)
