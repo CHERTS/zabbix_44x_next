@@ -139,6 +139,7 @@
 [ZBX-19195] fixed endless loop in graph widget processing if widget size is too small (https://support.zabbix.com/browse/ZBX-19195)
 [ZBX-19210] fixed css file versioning for custom themes (https://support.zabbix.com/browse/ZBX-19210)
 [ZBX-19233] fixed potential loss of original error when reading vmware events (https://support.zabbix.com/browse/ZBX-19233)
+[ZBX-19241] stopped proxy from overwriting local lastlogsize and mtime (https://support.zabbix.com/browse/ZBX-19241)
 [ZBX-19274] fixed semaphore not being cleaned up on Solaris when terminating Zabbix sender (https://support.zabbix.com/browse/ZBX-19274)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
