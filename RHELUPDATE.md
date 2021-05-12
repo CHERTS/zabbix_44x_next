@@ -42,5 +42,5 @@ From RHEL/CentOS/OracleLinux 8
 ~~~~
 dnf clean all
 dnf makecache
-dnf update zabbix*
+dnf update zabbix-*
 ~~~~
