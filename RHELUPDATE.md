@@ -35,7 +35,7 @@ From RHEL/CentOS/OracleLinux 6/7
 ~~~~
 yum clean all
 yum makecache fast
-yum update zabbix*
+yum update zabbix-*
 ~~~~
 
 From RHEL/CentOS/OracleLinux 8
