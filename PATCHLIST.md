@@ -145,6 +145,7 @@
 [ZBX-19274] fixed semaphore not being cleaned up on Solaris when terminating Zabbix sender (https://support.zabbix.com/browse/ZBX-19274)
 [ZBX-19321] fixed missing event tags in case of multiple problems (https://support.zabbix.com/browse/ZBX-19321)
 [ZBX-19324] fixed possible deadlocks between configuration and history syncers on proxy (https://support.zabbix.com/browse/ZBX-19324)
+[ZBX-19334] removed redundant ListenIP parameter in server's configuration file (https://support.zabbix.com/browse/ZBX-19334)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)

@@ -33,6 +33,7 @@ A.F....... [ZBX-17272] changed translation strings to yield order number in argu
 .......PS. [ZBX-19088] fixed overload memory with unused vmware events (MVekslers)
 ..F....... [ZBX-19195] fixed endless loop in graph widget processing if widget size is too small (averza)
 ..F....... [ZBX-19210] fixed css file versioning for custom themes (ashubin)
+....I..... [ZBX-19334] removed redundant ListenIP parameter in server's configuration file (dgoloscapov)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.18
