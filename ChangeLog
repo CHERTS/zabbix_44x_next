@@ -29,6 +29,7 @@ Bug fixes:
 A.F....... [ZBX-17272] changed translation strings to yield order number in argument (Ivo)
 ..F....... [ZBX-17347] fixed order of setting the Severity in the columns in the filters to vertical (vasilijs)
 ........S. [ZBX-18912] fixed escalation message is using template message instead of custom message in actions (asestakovs)
+...G...... [ZBX-19065] fixed Zabbix agent 2 logging if the file is moved or removed (esneiders)
 .......PS. [ZBX-19088] fixed overload memory with unused vmware events (MVekslers)
 ..F....... [ZBX-19195] fixed endless loop in graph widget processing if widget size is too small (averza)
 ..F....... [ZBX-19210] fixed css file versioning for custom themes (ashubin)

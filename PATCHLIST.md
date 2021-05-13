@@ -131,6 +131,7 @@
 [ZBX-19029] fixed Zabbix server and Zabbix proxy not remembering last log size when preprocessing is used (https://support.zabbix.com/browse/ZBX-19029)
 [ZBX-19031] fixed build failure on HP-UX and AIX (https://support.zabbix.com/browse/ZBX-19031)
 [ZBX-19046] fixed agent build on solaris 10 (https://support.zabbix.com/browse/ZBX-19046)
+[ZBX-19065] fixed Zabbix agent 2 logging if the file is moved or removed (https://support.zabbix.com/browse/ZBX-19065)
 [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (https://support.zabbix.com/browse/ZBX-19071)
 [ZBX-19088] fixed overload memory with unused vmware events (https://support.zabbix.com/browse/ZBX-19088)
 [ZBX-19111] improved performance of checking circular and double linkages of templates (https://support.zabbix.com/browse/ZBX-19111)
