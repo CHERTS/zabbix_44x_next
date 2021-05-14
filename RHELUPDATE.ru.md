@@ -35,12 +35,12 @@ rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.
 ~~~~
 yum clean all
 yum makecache fast
-yum update zabbix-*
+yum update "zabbix-*"
 ~~~~
 
 Для RHEL/CentOS/OracleLinux 8
 ~~~~
 dnf clean all
 dnf makecache
-dnf update zabbix-*
+dnf update "zabbix-*"
 ~~~~
