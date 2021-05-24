@@ -5106,7 +5106,7 @@ static void	zbx_evaluate_item_functions(zbx_hashset_t *funcs, zbx_vector_ptr_t *
 			ret_unknown = 1;
 		}
 
-		if (0 == ret_unknown && SUCCEED != evaluate_function(&func->value, (DC_ITEM *)item, func->function,
+		if (0 == ret_unknown && SUCCEED != evaluate_function(value, (DC_ITEM *)item, func->function,
 				func->parameter, &func->timespec, &error))
 		{
 			/* compose and store error message for future use */
