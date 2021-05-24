@@ -10,6 +10,7 @@ Bug fixes:
 .......PS. [ZBX-19233] fixed potential loss of original error when reading vmware events (MVekslers)
 .......P.. [ZBX-19241] stopped proxy from overwriting local lastlogsize and mtime (dgoloscapov)
 ...G...PS. [ZBX-19274] fixed semaphore not being cleaned up on Solaris when terminating Zabbix sender (vso)
+........S. [ZBX-19307] improved performance of history syncers by reducing time spent in locks when syncing history and receiving new history from proxy (vso)
 ........S. [ZBX-19321] fixed missing event tags in case of multiple problems (dgoloscapov)
 .......P.. [ZBX-19324] fixed possible deadlocks between configuration and history syncers on proxy (wiper)
 
