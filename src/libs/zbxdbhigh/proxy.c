@@ -4508,7 +4508,7 @@ int	process_proxy_data(const DC_PROXY *proxy, struct zbx_json_parse *jp, zbx_tim
 		}
 
 		if (SUCCEED != (ret = process_history_data_by_itemids(NULL, proxy_item_validator,
-				(void *)&proxy->hostid, &jp_data, session, &error_step
+				(void *)&proxy->hostid, &jp_data, session, &error_step,
 				ZBX_ITEM_GET_PROCESS)))
 		{
 			zbx_strcatnl_alloc(error, &error_alloc, &error_offset, error_step);
