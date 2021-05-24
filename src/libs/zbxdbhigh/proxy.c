@@ -3385,9 +3385,6 @@ static int	proxy_item_validator(DC_ITEM *item, zbx_socket_t *sock, void *args, c
  *                                     unique value of timestamps             *
  *             info         - [OUT] address of a pointer to the info          *
  *                                     string (should be freed by the caller) *
- *             mode       - [IN]  item retrieve mode is used to retrieve only *
- *                                necessary data to reduce time spent holding *
- *                                read lock                                   *
  *                                                                            *
  * Return value:  SUCCEED - processed successfully                            *
  *                FAIL - an error occurred                                    *
@@ -3397,8 +3394,7 @@ static int	proxy_item_validator(DC_ITEM *item, zbx_socket_t *sock, void *args, c
  *                                                                            *
  ******************************************************************************/
 static int	process_history_data_by_itemids(zbx_socket_t *sock, zbx_client_item_validator_t validator_func,
-		void *validator_args, struct zbx_json_parse *jp_data, zbx_data_session_t *session,
-		char **info, unsigned int mode)
+		void *validator_args, struct zbx_json_parse *jp_data, zbx_data_session_t *session, char **info)
 {
 	const char		*pnext = NULL;
 	int			ret = SUCCEED, processed_num = 0, total_num = 0, values_num, read_num, i, *errcodes;
@@ -3419,7 +3415,7 @@ static int	process_history_data_by_itemids(zbx_socket_t *sock, zbx_client_item_v
 	while (SUCCEED == parse_history_data_by_itemids(jp_data, &pnext, values, itemids, &values_num, &read_num,
 			&unique_shift, &error) && 0 != values_num)
 	{
-		DCconfig_get_items_by_itemids_partial(items, itemids, errcodes, (size_t)values_num, mode);
+		DCconfig_get_items_by_itemids(items, itemids, errcodes, values_num);
 
 		for (i = 0; i < values_num; i++)
 		{
@@ -3756,7 +3752,7 @@ static int	process_client_history_data(zbx_socket_t *sock, struct zbx_json_parse
 			session = zbx_dc_get_or_create_data_session(hostid, token);
 
 		if (SUCCEED != (ret = process_history_data_by_itemids(sock, validator_func, validator_args, &jp_data,
-				session, info, ZBX_ITEM_GET_ALL)))
+				session, info)))
 		{
 			goto out;
 		}
@@ -4508,8 +4504,7 @@ int	process_proxy_data(const DC_PROXY *proxy, struct zbx_json_parse *jp, zbx_tim
 		}
 
 		if (SUCCEED != (ret = process_history_data_by_itemids(NULL, proxy_item_validator,
-				(void *)&proxy->hostid, &jp_data, session, &error_step,
-				ZBX_ITEM_GET_PROCESS)))
+				(void *)&proxy->hostid, &jp_data, session, &error_step)))
 		{
 			zbx_strcatnl_alloc(error, &error_alloc, &error_offset, error_step);
 		}

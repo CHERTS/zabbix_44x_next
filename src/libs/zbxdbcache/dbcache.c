@@ -57,7 +57,6 @@ static char		*sql = NULL;
 static size_t		sql_alloc = 4 * ZBX_KIBIBYTE;
 
 extern unsigned char	program_type;
-extern char		*CONFIG_EXPORT_DIR;
 
 #define ZBX_IDS_SIZE	9
 
@@ -1540,17 +1539,12 @@ static void	DCsync_trends(void)
  *                                                                            *
  * Parameters: history           - [IN] array of history data                 *
  *             history_num       - [IN] number of history structures          *
- *             history_itemids   - [IN] the item identifiers                  *
- *                                      (used for item lookup)                *
- *             history_items     - [IN] the items                             *
- *             history_errcodes  - [IN] item error codes                      *
  *             timer_triggerids  - [IN] the timer triggerids to process       *
  *             ts                - [IN] timer trigger timestamp               *
  *             trigger_diff      - [OUT] trigger updates                      *
  *                                                                            *
  ******************************************************************************/
 static void	recalculate_triggers(const ZBX_DC_HISTORY *history, int history_num,
-		const zbx_vector_uint64_t *history_itemids, const DC_ITEM *history_items, const int *history_errcodes,
 		const zbx_vector_uint64_t *timer_triggerids, zbx_timespec_t *ts, zbx_vector_ptr_t *trigger_diff)
 {
 	int			i, item_num = 0;
@@ -1601,7 +1595,7 @@ static void	recalculate_triggers(const ZBX_DC_HISTORY *history, int history_num,
 		zbx_dc_get_timer_triggers_by_triggerids(&trigger_info, &trigger_order, timer_triggerids, ts);
 
 	zbx_vector_ptr_sort(&trigger_order, ZBX_DEFAULT_UINT64_PTR_COMPARE_FUNC);
-	evaluate_expressions(&trigger_order, history_itemids, history_items, history_errcodes);
+	evaluate_expressions(&trigger_order);
 	zbx_process_triggers(&trigger_order, trigger_diff);
 
 	DCfree_triggers(&trigger_order);
@@ -1910,11 +1904,9 @@ static void	normalize_item_value(const DC_ITEM *item, ZBX_DC_HISTORY *hdata)
  ******************************************************************************/
 static zbx_item_diff_t	*calculate_item_update(const DC_ITEM *item, const ZBX_DC_HISTORY *h)
 {
-	zbx_uint64_t	flags;
+	zbx_uint64_t	flags = ZBX_FLAGS_ITEM_DIFF_UPDATE_LASTCLOCK;
 	const char	*item_error = NULL;
 	zbx_item_diff_t	*diff;
-
-	flags = item->host.proxy_hostid == 0 ? ZBX_FLAGS_ITEM_DIFF_UPDATE_LASTCLOCK : 0;
 
 	if (0 != (ZBX_DC_FLAG_META & h->flags))
 	{
@@ -1963,9 +1955,6 @@ static zbx_item_diff_t	*calculate_item_update(const DC_ITEM *item, const ZBX_DC_
 
 	if (NULL != item_error)
 		flags |= ZBX_FLAGS_ITEM_DIFF_UPDATE_ERROR;
-
-	if (0 == flags)
-		return NULL;
 
 	diff = (zbx_item_diff_t *)zbx_malloc(NULL, sizeof(zbx_item_diff_t));
 	diff->itemid = item->itemid;
@@ -2534,9 +2523,8 @@ static void	DCmass_prepare_history(ZBX_DC_HISTORY *history, const zbx_vector_uin
 
 		normalize_item_value(item, h);
 
-		if (NULL != (diff = calculate_item_update(item, h)))
-			zbx_vector_ptr_append(item_diff, diff);
-
+		diff = calculate_item_update(item, h);
+		zbx_vector_ptr_append(item_diff, diff);
 		DCinventory_value_add(inventory_values, item, h);
 	}
 
@@ -2827,14 +2815,11 @@ static void	sync_server_history(int *values_num, int *triggers_num, int *more)
 	static ZBX_HISTORY_LOG		*history_log;
 	int				i, history_num, history_float_num, history_integer_num, history_string_num,
 					history_text_num, history_log_num, txn_error;
-	unsigned int			item_retrieve_mode;
 	time_t				sync_start;
 	zbx_vector_uint64_t		triggerids, timer_triggerids;
 	zbx_vector_ptr_t		history_items, trigger_diff, item_diff, inventory_values;
 	zbx_vector_uint64_pair_t	trends_diff;
 	ZBX_DC_HISTORY			history[ZBX_HC_SYNC_MAX];
-
-	item_retrieve_mode = NULL == CONFIG_EXPORT_DIR ? ZBX_ITEM_GET_SYNC : ZBX_ITEM_GET_SYNC_EXPORT;
 
 	if (NULL == history_float && NULL != history_float_cbs)
 	{
@@ -2890,8 +2875,6 @@ static void	sync_server_history(int *values_num, int *triggers_num, int *more)
 		ZBX_DC_TREND		*trends = NULL;
 		zbx_timespec_t		ts;
 
-		zbx_vector_uint64_create(&itemids);
-
 		*more = ZBX_SYNC_DONE;
 
 		LOCK_CACHE;
@@ -2920,6 +2903,7 @@ static void	sync_server_history(int *values_num, int *triggers_num, int *more)
 			items = (DC_ITEM *)zbx_malloc(NULL, sizeof(DC_ITEM) * (size_t)history_num);
 			errcodes = (int *)zbx_malloc(NULL, sizeof(int) * (size_t)history_num);
 
+			zbx_vector_uint64_create(&itemids);
 			zbx_vector_uint64_reserve(&itemids, history_num);
 
 			for (i = 0; i < history_num; i++)
@@ -2927,8 +2911,7 @@ static void	sync_server_history(int *values_num, int *triggers_num, int *more)
 
 			zbx_vector_uint64_sort(&itemids, ZBX_DEFAULT_UINT64_COMPARE_FUNC);
 
-			DCconfig_get_items_by_itemids_partial(items, itemids.values, errcodes, history_num,
-					item_retrieve_mode);
+			DCconfig_get_items_by_itemids(items, itemids.values, errcodes, history_num);
 
 			DCmass_prepare_history(history, &itemids, items, errcodes, history_num, &item_diff,
 					&inventory_values);
@@ -2982,8 +2965,8 @@ static void	sync_server_history(int *values_num, int *triggers_num, int *more)
 				{
 					DBbegin();
 
-					recalculate_triggers(history, history_num, &itemids, items, errcodes,
-							&timer_triggerids, &ts, &trigger_diff);
+					recalculate_triggers(history, history_num, &timer_triggerids, &ts,
+							&trigger_diff);
 
 					/* process trigger events generated by recalculate_triggers() */
 					zbx_process_events(&trigger_diff, &triggerids);
@@ -3084,6 +3067,7 @@ static void	sync_server_history(int *values_num, int *triggers_num, int *more)
 		if (0 != history_num)
 		{
 			zbx_free(trends);
+			zbx_vector_uint64_destroy(&itemids);
 			DCconfig_clean_items(items, errcodes, history_num);
 			zbx_free(errcodes);
 			zbx_free(items);
@@ -3091,8 +3075,6 @@ static void	sync_server_history(int *values_num, int *triggers_num, int *more)
 			zbx_vector_ptr_clear(&history_items);
 			hc_free_item_values(history, history_num);
 		}
-
-		zbx_vector_uint64_destroy(&itemids);
 
 		/* Exit from sync loop if we have spent too much time here.       */
 		/* This is done to allow syncer process to update its statistics. */
