@@ -35,7 +35,7 @@ rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.
 ~~~~
 yum clean all
 yum makecache fast
-yum list installed | grep zabbix
+yum list installed zabbix\*
 ~~~~
 
 Для RHEL/CentOS/OracleLinux 6/7 обновим нужные пакеты zabbix (у Вас будет свой список пакетов для обновления):
@@ -47,7 +47,7 @@ yum update zabbix-agent zabbix-sender zabbix-get zabbix-server
 ~~~~
 dnf clean all
 dnf makecache
-dnf list installed | grep zabbix
+dnf list installed zabbix\*
 ~~~~
 
 Для RHEL/CentOS/OracleLinux 8 обновим нужные пакеты zabbix (у Вас будет свой список пакетов для обновления):
