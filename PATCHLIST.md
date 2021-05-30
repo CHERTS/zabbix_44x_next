@@ -127,6 +127,7 @@
 [ZBX-18892] fixed preprocessing steps wrapping (https://support.zabbix.com/browse/ZBX-18892)
 [ZBX-18912] fixed escalation message is using template message instead of custom message in actions (https://support.zabbix.com/browse/ZBX-18912)
 [ZBX-18966] fixed interface related errors when changing proxy type from passive to active (https://support.zabbix.com/browse/ZBX-18966)
+[ZBX-19017] fixed massupdate form of discovered hosts with enabled inventory mode ((https://support.zabbix.com/browse/ZBX-19017)
 [ZBX-19023] fixed inheritance of the permissions and tag filters for new host groups (https://support.zabbix.com/browse/ZBX-19023)
 [ZBX-19029] fixed Zabbix server and Zabbix proxy not remembering last log size when preprocessing is used (https://support.zabbix.com/browse/ZBX-19029)
 [ZBX-19031] fixed build failure on HP-UX and AIX (https://support.zabbix.com/browse/ZBX-19031)
