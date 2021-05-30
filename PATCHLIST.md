@@ -143,6 +143,7 @@
 [ZBX-19233] fixed potential loss of original error when reading vmware events (https://support.zabbix.com/browse/ZBX-19233)
 [ZBX-19241] stopped proxy from overwriting local lastlogsize and mtime (https://support.zabbix.com/browse/ZBX-19241)
 [ZBX-19274] fixed semaphore not being cleaned up on Solaris when terminating Zabbix sender (https://support.zabbix.com/browse/ZBX-19274)
+[ZBX-19300] updated jquery version (https://support.zabbix.com/browse/ZBX-19300)
 [ZBX-19321] fixed missing event tags in case of multiple problems (https://support.zabbix.com/browse/ZBX-19321)
 [ZBX-19324] fixed possible deadlocks between configuration and history syncers on proxy (https://support.zabbix.com/browse/ZBX-19324)
 [ZBX-19334] removed redundant ListenIP parameter in server's configuration file (https://support.zabbix.com/browse/ZBX-19334)

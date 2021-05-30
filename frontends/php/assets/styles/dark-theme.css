@@ -36,6 +36,11 @@ table {
   border-spacing: 0;
 }
 
+svg:focus,
+svg *:focus {
+  outline: none;
+}
+
 html {
   position: relative;
   min-height: 100%;
