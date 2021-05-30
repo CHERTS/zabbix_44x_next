@@ -205,6 +205,7 @@
 [DBS-004] Change default setting: ZBX_UNITS_ROUNDOFF_MIDDLE_LIMIT - 4 => 2 and ZBX_DEFAULT_URL - zabbix.php?action=dashboard.view => zabbix.php?action=problem.view
 [DBS-005] Increased the width of the pop-up window on the Problems page
 [DBS-006] Tag column has been moved before the Problem column. The width of the Tag column has also been increased
+[DBS-007] Fixed massupdate form of discovered hosts (group and template operations)
 ~~~~
 
 # List of my patches (Russian)

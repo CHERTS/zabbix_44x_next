@@ -451,7 +451,7 @@ elseif (hasRequest('action') && getRequest('action') === 'host.massupdate' && ha
 		}
 
 		foreach ($hosts as &$host) {
-			if (array_key_exists('groups', $visible)) {
+			if (array_key_exists('groups', $visible) && $host['flags'] != ZBX_FLAG_DISCOVERY_CREATED) {
 				if ($new_groupids && $mass_update_groups == ZBX_ACTION_ADD) {
 					$current_groupids = zbx_objectValues($host['groups'], 'groupid');
 					$host['groups'] = zbx_toObject(array_unique(array_merge($current_groupids, $new_groupids)),
@@ -467,7 +467,7 @@ elseif (hasRequest('action') && getRequest('action') === 'host.massupdate' && ha
 				}
 			}
 
-			if (array_key_exists('templates', $visible)) {
+			if (array_key_exists('templates', $visible) && $host['flags'] != ZBX_FLAG_DISCOVERY_CREATED) {
 				$host_templateids = array_key_exists('parentTemplates', $host)
 					? zbx_objectValues($host['parentTemplates'], 'templateid')
 					: [];
@@ -544,11 +544,12 @@ elseif (hasRequest('action') && getRequest('action') === 'host.massupdate' && ha
 			$host = $new_values + $host;
 
 			/*
-			 * API prevents changing host inventory_mode for discovered hosts. However, inventory values can still be
-			 * updated if inventory mode allows it.
+			 * API prevents changing host inventory_mode, groups and templates for discovered hosts.
 			 */
 			if ($host['flags'] == ZBX_FLAG_DISCOVERY_CREATED) {
 				unset($host['inventory_mode']);
+				unset($host['groups']);
+				unset($host['templates']);
 			}
 			unset($host['flags']);
 		}
