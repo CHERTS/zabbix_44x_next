@@ -32,7 +32,7 @@ else {
 	if ($data['show_inherited_macros']) {
 		if (CWebUser::getType() == USER_TYPE_SUPER_ADMIN) {
 			$link = (new CLink(_('configure'), 'adm.macros.php'))
-				->setAttribute('target', '_blank');
+				->setTarget('_blank');
 			$link = [' (', $link, ')'];
 		}
 		else {
@@ -147,7 +147,7 @@ else {
 						'templates.php?form=update&templateid='.$macro['template']['templateid'])
 					)
 						->addClass('unknown')
-						->setAttribute('target', '_blank');
+						->setTarget('_blank');
 				}
 				else {
 					$link = new CSpan(CHtml::encode($macro['template']['name']));
