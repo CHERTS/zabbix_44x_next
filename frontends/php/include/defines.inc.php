@@ -1872,3 +1872,6 @@ define('ZBX_IFRAME_SANDBOX', '');
  *  - null - disable X-Frame-options header.
  */
 define('X_FRAME_OPTIONS', 'SAMEORIGIN');
+
+// Allows to set "rel" tag value "noreferer" when setting target="_blank".
+define('ZBX_NOREFERER', true);

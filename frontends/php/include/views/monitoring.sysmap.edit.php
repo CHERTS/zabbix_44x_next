@@ -121,7 +121,7 @@ $icon_mapping_link = (new CLink(_('show icon mappings'), (new CUrl('zabbix.php')
 		->setArgument('action', 'iconmap.list')
 		->getUrl()
 	))
-	->setAttribute('target', '_blank');
+	->setTarget('_blank');
 $map_tab->addRow(_('Automatic icon mapping'), [$icon_mapping, SPACE, $icon_mapping_link]);
 
 // Append multiple checkboxes to form list.

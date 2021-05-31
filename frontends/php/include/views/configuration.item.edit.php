@@ -764,7 +764,7 @@ if ($data['config']['hk_history_global']
 				->setArgument('action', 'housekeeping.edit')
 				->getUrl()
 			))
-				->setAttribute('target', '_blank')
+				->setTarget('_blank')
 		: _x('global housekeeping settings', 'item_form');
 
 	$keep_history_hint = (new CDiv(makeInformationIcon([
@@ -800,7 +800,7 @@ if ($data['config']['hk_trends_global']
 				->setArgument('action', 'housekeeping.edit')
 				->getUrl()
 			))
-				->setAttribute('target', '_blank')
+				->setTarget('_blank')
 		: _x('global housekeeping settings', 'item_form');
 
 	$keep_trend_hint = (new CDiv(makeInformationIcon([
@@ -854,7 +854,7 @@ if (CWebUser::getType() == USER_TYPE_SUPER_ADMIN) {
 		(new CLink(_('show value mappings'), (new CUrl('zabbix.php'))
 			->setArgument('action', 'valuemap.list')
 			->getUrl()
-		))->setAttribute('target', '_blank')
+		))->setTarget('_blank')
 	];
 }
 
