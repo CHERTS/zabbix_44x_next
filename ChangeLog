@@ -9,6 +9,7 @@ A......... [ZBX-8999] fixed exporting of images separately from other objects (I
 ..F....... [ZBX-19300] updated jquery version (ashubin)
 ........S. [ZBX-19340] optimized history cache to reduce storage of metadata-only records (wiper)
 .......PS. [ZBX-19358] fixed memory leak in case of duplicate vmware hv uuid (MVekslers)
+.......PS. [ZBX-19359] fixed error in logsource function due to empty source (dgoloscapov)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.20
