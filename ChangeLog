@@ -7,6 +7,7 @@ Bug fixes:
 A......... [ZBX-8999] fixed exporting of images separately from other objects (Ivo)
 ..F....... [ZBX-19017] fixed massupdate form of discovered hosts with enabled inventory mode (Ivo)
 ..F....... [ZBX-19300] updated jquery version (ashubin)
+........S. [ZBX-19340] optimized history cache to reduce storage of metadata-only records (wiper)
 .......PS. [ZBX-19358] fixed memory leak in case of duplicate vmware hv uuid (MVekslers)
 
 --------------------------------------------------------------------------------
