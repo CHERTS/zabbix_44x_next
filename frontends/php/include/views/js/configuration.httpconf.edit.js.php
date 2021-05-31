@@ -495,7 +495,7 @@
 					e.new_node.querySelector('.' + httpconf.ZBX_STYLE_DRAG_ICON).remove();
 				}
 
-				if (type === 'headers') {
+				if (type === 'variables' || type === 'headers') {
 					e.new_node.querySelector('[data-type="value"]').setAttribute('maxlength', 2000);
 				}
 			});
@@ -806,7 +806,7 @@
 				});
 			}
 
-			if (type === 'headers') {
+			if (type === 'variables' || type === 'headers' || type === 'post_fields') {
 				$node.on('dynamic_rows.beforeadd', function(e, dynamic_rows) {
 					e.new_node.querySelector('[data-type="value"]').setAttribute('maxlength', 2000);
 				});
