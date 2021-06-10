@@ -15,6 +15,7 @@ A......... [ZBX-19248] fixed retrieving of all data from separate database table
 .......PS. [ZBX-19358] fixed memory leak in case of duplicate vmware hv uuid (MVekslers)
 .......PS. [ZBX-19359] fixed error in logsource function due to empty source (dgoloscapov)
 ..F....... [ZBX-19373] fixed security vulnerability for links having target="_blank" (Ivo)
+A......... [ZBX-19447] implemented item type validation by API (miks)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.20

@@ -155,6 +155,7 @@
 [ZBX-19358] fixed memory leak in case of duplicate vmware hv uuid (https://support.zabbix.com/browse/ZBX-19358)
 [ZBX-19359] fixed error in logsource function due to empty source (https://support.zabbix.com/browse/ZBX-19359)
 [ZBX-19373] fixed security vulnerability for links having target="_blank" (https://support.zabbix.com/browse/ZBX-19373)
+[ZBX-19447] implemented item type validation by API (https://support.zabbix.com/browse/ZBX-19447)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
