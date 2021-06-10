@@ -156,6 +156,7 @@
 [ZBX-19359] fixed error in logsource function due to empty source (https://support.zabbix.com/browse/ZBX-19359)
 [ZBX-19373] fixed security vulnerability for links having target="_blank" (https://support.zabbix.com/browse/ZBX-19373)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
+[ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
 [ZBXNEXT-1423] added ipmi.get item for IPMI sensor LLD (https://support.zabbix.com/browse/ZBXNEXT-1423)

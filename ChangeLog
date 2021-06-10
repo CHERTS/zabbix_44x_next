@@ -1,6 +1,7 @@
 Changes for 4.4.21rc1
 
 New features:
+...G...... [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (asestakovs)
 ..F....... [ZBXNEXT-6662] increased field size to 2000 characters in web scenario variables and web scenario step variables and post fields (Ivo)
 
 Bug fixes:
