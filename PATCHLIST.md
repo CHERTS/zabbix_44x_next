@@ -120,6 +120,7 @@
 [ZBX-18825] fixed last year period calculation in service availability report daily mode (https://support.zabbix.com/browse/ZBX-18825)
 [ZBX-18865] fixed dbConditionInt (db.inc.php) returning wrong result in rare cases (https://support.zabbix.com/browse/ZBX-18865)
 [ZBX-18872] fixed system.sw.os[name] for cases without quotation mark in /etc/os-release (https://support.zabbix.com/browse/ZBX-18872)
+[ZBX-18879] fixed update vmware info about vCenter fullname and version (https://support.zabbix.com/browse/ZBX-18879)
 [ZBX-18883] fixed logrt[] monitoring with copytruncate rotation (https://support.zabbix.com/browse/ZBX-18883)
 [ZBX-18884] fixed crash in web monitoring and web.page.* keys when encoding non ASCII characters in URL (https://support.zabbix.com/browse/ZBX-18884)
 [ZBX-18885] fixed SNMP agent item not accepting values that are bigger than 2KB (https://support.zabbix.com/browse/ZBX-18885)
