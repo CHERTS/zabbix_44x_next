@@ -151,6 +151,7 @@
 [ZBX-19248] fixed retrieving of all data from separate database tables inside of API methods when empty value for filter is passed (https://support.zabbix.com/browse/ZBX-19248)
 [ZBX-19274] fixed semaphore not being cleaned up on Solaris when terminating Zabbix sender (https://support.zabbix.com/browse/ZBX-19274)
 [ZBX-19300] updated jquery version (https://support.zabbix.com/browse/ZBX-19300)
+[ZBX-19318] added sorting by itemids for trends flush to avoid deadlock (https://support.zabbix.com/browse/ZBX-19318)
 [ZBX-19321] fixed missing event tags in case of multiple problems (https://support.zabbix.com/browse/ZBX-19321)
 [ZBX-19324] fixed possible deadlocks between configuration and history syncers on proxy (https://support.zabbix.com/browse/ZBX-19324)
 [ZBX-19334] removed redundant ListenIP parameter in server's configuration file (https://support.zabbix.com/browse/ZBX-19334)
