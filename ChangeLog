@@ -8,6 +8,7 @@ Bug fixes:
 ..F....... [DBS-007] Fixed massupdate form of discovered hosts (group and template operations) (mgrigorev)
 A......... [ZBX-8999] fixed exporting of images separately from other objects (Ivo)
 ..F....... [ZBX-18265] changed "Latest data" to show Items without data by default (jfreibergs)
+..F....... [ZBX-18695] fixed file_put_contents() runtime error if web server has no write permissions for zabbix.conf.php (agriscenko)
 .......PS. [ZBX-18879] fixed update vmware info about vCenter fullname and version (MVekslers)
 ..F....... [ZBX-19017] fixed massupdate form of discovered hosts with enabled inventory mode (Ivo)
 ..F....... [ZBX-19123] fixed sorting by name or status on action page (jfreibergs)

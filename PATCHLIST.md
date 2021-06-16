@@ -110,6 +110,7 @@
 [ZBX-18662] improved pollers, unreachable pollers, Java pollers and pingers to use less memory (https://support.zabbix.com/browse/ZBX-18662)
 [ZBX-18688] fixed schema name didnt show when available only postgresql (https://support.zabbix.com/browse/ZBX-18688)
 [ZBX-18694] fixed crash when PSK connection is configured but PSK or PSK identity is empty (https://support.zabbix.com/browse/ZBX-18694)
+[ZBX-18695] fixed file_put_contents() runtime error if web server has no write permissions for zabbix.conf.php (https://support.zabbix.com/browse/ZBX-18695)
 [ZBX-18722] fixed runtime error when creating user group without users (https://support.zabbix.com/browse/ZBX-18722)
 [ZBX-18736] added missing idle statistics from lld manager process title (https://support.zabbix.com/browse/ZBX-18736)
 [ZBX-18755] fixed possibility of out of memory error when replacing string in mail, calculated checks, actions and when linking template (https://support.zabbix.com/browse/ZBX-18755)
