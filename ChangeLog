@@ -3,6 +3,7 @@ Changes for 4.4.22rc1
 New features:
 
 Bug fixes:
+...G...PS. [ZBX-19505] fixed automatic log rotation accessing deleted log files for longer than required (vso)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.21
