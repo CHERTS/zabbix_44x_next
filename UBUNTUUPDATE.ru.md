@@ -61,3 +61,7 @@ apt-get install zabbix-server-mysql
 apt-get install zabbix-server-pgsql
 ~~~~
 
+Для обновления Web-интерфейса
+~~~~
+apt-get install zabbix-frontend-php
+~~~~

@@ -35,12 +35,12 @@ From RHEL/CentOS/OracleLinux 6/7
 ~~~~
 yum clean all
 yum makecache fast
-yum update "zabbix-*"
+yum update zabbix\*
 ~~~~
 
 From RHEL/CentOS/OracleLinux 8
 ~~~~
 dnf clean all
 dnf makecache
-dnf update "zabbix-*"
+dnf update zabbix\*
 ~~~~

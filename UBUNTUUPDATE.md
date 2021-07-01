@@ -61,3 +61,7 @@ To update zabbix-server-pgsql
 apt-get install zabbix-server-pgsql
 ~~~~
 
+To update Web-interface
+~~~~
+apt-get install zabbix-frontend-php
+~~~~
