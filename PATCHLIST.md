@@ -162,6 +162,7 @@
 [ZBX-19359] fixed error in logsource function due to empty source (https://support.zabbix.com/browse/ZBX-19359)
 [ZBX-19373] fixed security vulnerability for links having target="_blank" (https://support.zabbix.com/browse/ZBX-19373)
 [ZBX-19388] fixed inherited graph and graph prototype update if user has no permissions to child host or template (https://support.zabbix.com/browse/ZBX-19388)
+[ZBX-19428] fixed high CPU usage and preprocessing workers exiting with timeout when starting numerous poller, trapper and discoverer processes (https://support.zabbix.com/browse/ZBX-19428)
 [ZBX-19447] implemented item type validation by API (https://support.zabbix.com/browse/ZBX-19447)
 [ZBX-19505] fixed automatic log rotation accessing deleted log files for longer than required (https://support.zabbix.com/browse/ZBX-19505)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)

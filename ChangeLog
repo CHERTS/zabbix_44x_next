@@ -4,6 +4,7 @@ New features:
 
 Bug fixes:
 ........S. [ZBX-19134] fixed not supported icmpping item when server catches a signal (dgoloscapov)
+.......PS. [ZBX-19428] fixed high CPU usage and preprocessing workers exiting with timeout when starting numerous poller, trapper and discoverer processes (vso)
 ...G...PS. [ZBX-19505] fixed automatic log rotation accessing deleted log files for longer than required (vso)
 
 --------------------------------------------------------------------------------
