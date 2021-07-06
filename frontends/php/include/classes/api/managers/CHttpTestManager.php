@@ -988,21 +988,21 @@ class CHttpTestManager {
 
 			$stepitems = [
 				[
-					'name' => $this->getStepName(HTTPSTEP_ITEM_TYPE_IN, $httpTest['name'], $webstep['name']),
+					'name' => $this->getStepName(HTTPSTEP_ITEM_TYPE_IN, $http_test['name'], $webstep['name']),
 					'key_' => $this->getStepKey(HTTPSTEP_ITEM_TYPE_IN, $http_test['name'], $webstep['name']),
 					'value_type' => ITEM_VALUE_TYPE_FLOAT,
 					'units' => 'Bps',
 					'httpstepitemtype' => HTTPSTEP_ITEM_TYPE_IN
 				],
 				[
-					'name' => $this->getStepName(HTTPSTEP_ITEM_TYPE_TIME, $httpTest['name'], $webstep['name']),
+					'name' => $this->getStepName(HTTPSTEP_ITEM_TYPE_TIME, $http_test['name'], $webstep['name']),
 					'key_' => $this->getStepKey(HTTPSTEP_ITEM_TYPE_TIME, $http_test['name'], $webstep['name']),
 					'value_type' => ITEM_VALUE_TYPE_FLOAT,
 					'units' => 's',
 					'httpstepitemtype' => HTTPSTEP_ITEM_TYPE_TIME
 				],
 				[
-					'name' => $this->getStepName(HTTPSTEP_ITEM_TYPE_RSPCODE, $httpTest['name'], $webstep['name']),
+					'name' => $this->getStepName(HTTPSTEP_ITEM_TYPE_RSPCODE, $http_test['name'], $webstep['name']),
 					'key_' => $this->getStepKey(HTTPSTEP_ITEM_TYPE_RSPCODE, $http_test['name'], $webstep['name']),
 					'value_type' => ITEM_VALUE_TYPE_UINT64,
 					'units' => '',
