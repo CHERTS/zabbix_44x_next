@@ -5269,9 +5269,8 @@ static int	vmware_service_process_perf_entity_data(zbx_vector_ptr_t *pervalues, 
 			if (0 == strcmp(value, "-1") || SUCCEED != is_uint64(value, &perfvalue->value))
 			{
 				perfvalue->value = UINT64_MAX;
-				zabbix_log(LOG_LEVEL_DEBUG, "PerfCounter inaccessible. type:%s object id:%s "
-						"counter id:" ZBX_FS_UI64 " instance:%s value:%s", perfdata->type,
-						perfdata->id, perfvalue->counterid, perfvalue->instance, value);
+				zabbix_log(LOG_LEVEL_DEBUG, "%s() inaccessible counterid:%s instance:%s value:%s",
+						__func__, counter, perfvalue->instance, value);
 			}
 			else if (FAIL == ret)
 				ret = SUCCEED;
