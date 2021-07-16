@@ -1910,7 +1910,7 @@ abstract class CItemGeneral extends CApiService {
 		if ($options['selectPreprocessing'] !== null && $options['selectPreprocessing'] != API_OUTPUT_COUNT) {
 			$db_item_preproc = API::getApiService()->select('item_preproc', [
 				'output' => $this->outputExtend($options['selectPreprocessing'], ['itemid', 'step']),
-				'filter' => ['itemid' => array_keys($result)],
+				'filter' => ['itemid' => array_keys($result)]
 			]);
 
 			CArrayHelper::sort($db_item_preproc, ['step']);
