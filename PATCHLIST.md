@@ -167,6 +167,7 @@
 [ZBX-19481] fixed alerting problem while being in maintenance (https://support.zabbix.com/browse/ZBX-19481)
 [ZBX-19505] fixed automatic log rotation accessing deleted log files for longer than required (https://support.zabbix.com/browse/ZBX-19505)
 [ZBX-19536] fixed host.get with selectTags = ['tag'] call attempting to retrieve tag value(s) as well (https://support.zabbix.com/browse/ZBX-19536)
+[ZBX-19539] fixed undefined offset error in host prototype API (https://support.zabbix.com/browse/ZBX-19539)
 [ZBX-19715] fixed high memory usage in trappers and proxy pollers when sending configuration to Zabbix proxy (https://support.zabbix.com/browse/ZBX-19715)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
