@@ -672,21 +672,21 @@ class CHttpTestManager {
 	protected function createHttpTestItems(array $http_test) {
 		$checkitems = [
 			[
-				'name'				=> $this->getTestName(HTTPSTEP_ITEM_TYPE_IN, $httpTest['name']),
+				'name'				=> $this->getTestName(HTTPSTEP_ITEM_TYPE_IN, $http_test['name']),
 				'key_'				=> $this->getTestKey(HTTPSTEP_ITEM_TYPE_IN, $http_test['name']),
 				'value_type'		=> ITEM_VALUE_TYPE_FLOAT,
 				'units'				=> 'Bps',
 				'httptestitemtype'	=> HTTPSTEP_ITEM_TYPE_IN
 			],
 			[
-				'name'				=> $this->getTestName(HTTPSTEP_ITEM_TYPE_LASTSTEP, $httpTest['name']),
+				'name'				=> $this->getTestName(HTTPSTEP_ITEM_TYPE_LASTSTEP, $http_test['name']),
 				'key_'				=> $this->getTestKey(HTTPSTEP_ITEM_TYPE_LASTSTEP, $http_test['name']),
 				'value_type'		=> ITEM_VALUE_TYPE_UINT64,
 				'units'				=> '',
 				'httptestitemtype'	=> HTTPSTEP_ITEM_TYPE_LASTSTEP
 			],
 			[
-				'name'				=> $this->getTestName(HTTPSTEP_ITEM_TYPE_LASTERROR, $httpTest['name']),
+				'name'				=> $this->getTestName(HTTPSTEP_ITEM_TYPE_LASTERROR, $http_test['name']),
 				'key_'				=> $this->getTestKey(HTTPSTEP_ITEM_TYPE_LASTERROR, $http_test['name']),
 				'value_type'		=> ITEM_VALUE_TYPE_STR,
 				'units'				=> '',
