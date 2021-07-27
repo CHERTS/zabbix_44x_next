@@ -4,6 +4,7 @@ New features:
 
 Bug fixes:
 A......... [ZBX-18155] removed positional macros from item names on 'Web monitoring' page (kustalovs, vmurzins)
+A......... [ZBX-19124] fixed PHP runtime errors when passed incorrect value for "output" option (Sasha)
 ........S. [ZBX-19134] fixed not supported icmpping item when server catches a signal (dgoloscapov)
 A......... [ZBX-19342] fixed web scenario items not being cloned for graph prototypes (jfreibergs)
 .......PS. [ZBX-19428] fixed high CPU usage and preprocessing workers exiting with timeout when starting numerous poller, trapper and discoverer processes (vso)

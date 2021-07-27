@@ -142,6 +142,7 @@
 [ZBX-19111] improved performance of checking circular and double linkages of templates (https://support.zabbix.com/browse/ZBX-19111)
 [ZBX-19117] fixed host deletion, template deletion and maintenance update was not shown in audit log report when it was made via API request (https://support.zabbix.com/browse/ZBX-19117)
 [ZBX-19123] fixed sorting by name or status on action page (https://support.zabbix.com/browse/ZBX-19123)
+[ZBX-19124] fixed PHP runtime errors when passed incorrect value for "output" option (https://support.zabbix.com/browse/ZBX-19124)
 [ZBX-19134] fixed not supported icmpping item when server catches a signal (https://support.zabbix.com/browse/ZBX-19134)
 [ZBX-19139] fixed memory errors in cmdline parsing on freebsd (https://support.zabbix.com/browse/ZBX-19139)
 [ZBX-19159] added postponing of recovery operation when problem operation still executes, fixed memory leak while saving tags returned by webhook (https://support.zabbix.com/browse/ZBX-19159)
