@@ -140,6 +140,7 @@
 [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (https://support.zabbix.com/browse/ZBX-19071)
 [ZBX-19088] fixed overload memory with unused vmware events (https://support.zabbix.com/browse/ZBX-19088)
 [ZBX-19111] improved performance of checking circular and double linkages of templates (https://support.zabbix.com/browse/ZBX-19111)
+[ZBX-19116] fixed system.cpu.util for agent2 not working in non-English Windows (https://support.zabbix.com/browse/ZBX-19116)
 [ZBX-19117] fixed host deletion, template deletion and maintenance update was not shown in audit log report when it was made via API request (https://support.zabbix.com/browse/ZBX-19117)
 [ZBX-19123] fixed sorting by name or status on action page (https://support.zabbix.com/browse/ZBX-19123)
 [ZBX-19124] fixed PHP runtime errors when passed incorrect value for "output" option (https://support.zabbix.com/browse/ZBX-19124)
