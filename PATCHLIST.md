@@ -172,6 +172,7 @@
 [ZBX-19536] fixed host.get with selectTags = ['tag'] call attempting to retrieve tag value(s) as well (https://support.zabbix.com/browse/ZBX-19536)
 [ZBX-19539] fixed undefined offset error in host prototype API (https://support.zabbix.com/browse/ZBX-19539)
 [ZBX-19670] resolving config file symlink in CConfigFile.php (https://support.zabbix.com/browse/ZBX-19670)
+[ZBX-19703] added fix for json path preprocessing crash (https://support.zabbix.com/browse/ZBX-19703)
 [ZBX-19715] fixed high memory usage in trappers and proxy pollers when sending configuration to Zabbix proxy (https://support.zabbix.com/browse/ZBX-19715)
 [ZBX-19732] fixed Zabbix agent2 not starting when ListenIP is set to 0.0.0.0 (https://support.zabbix.com/browse/ZBX-19732)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
