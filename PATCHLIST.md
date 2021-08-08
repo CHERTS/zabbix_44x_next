@@ -175,6 +175,7 @@
 [ZBX-19703] added fix for json path preprocessing crash (https://support.zabbix.com/browse/ZBX-19703)
 [ZBX-19715] fixed high memory usage in trappers and proxy pollers when sending configuration to Zabbix proxy (https://support.zabbix.com/browse/ZBX-19715)
 [ZBX-19732] fixed Zabbix agent2 not starting when ListenIP is set to 0.0.0.0 (https://support.zabbix.com/browse/ZBX-19732)
+[ZBX-19752] fixed multiple types of media type creation having message templates in one API call (https://support.zabbix.com/browse/ZBX-19752)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
