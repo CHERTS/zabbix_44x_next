@@ -17,6 +17,7 @@ A......... [ZBX-19539] fixed undefined offset error in host prototype API (miks)
 ........S. [ZBX-19703] added fix for json path preprocessing crash (yurii)
 ........S. [ZBX-19715] fixed high memory usage in trappers and proxy pollers when sending configuration to Zabbix proxy (vso)
 ...G...... [ZBX-19732] fixed Zabbix agent2 not starting when ListenIP is set to 0.0.0.0 (vso)
+........S. [ZBX-19737] fixed prometheus preprocessing bug (yurii)
 A......... [ZBX-19752] fixed multiple types of media type creation having message templates in one API call (gcalenko)
 
 --------------------------------------------------------------------------------
