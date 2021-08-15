@@ -135,6 +135,7 @@
 [ZBX-19023] fixed inheritance of the permissions and tag filters for new host groups (https://support.zabbix.com/browse/ZBX-19023)
 [ZBX-19029] fixed Zabbix server and Zabbix proxy not remembering last log size when preprocessing is used (https://support.zabbix.com/browse/ZBX-19029)
 [ZBX-19031] fixed build failure on HP-UX and AIX (https://support.zabbix.com/browse/ZBX-19031)
+[ZBX-19032] fixed percpu param in Zabbix agent 2 system.cpu.load plugin for Windows (https://support.zabbix.com/browse/ZBX-19032)
 [ZBX-19046] fixed agent build on solaris 10 (https://support.zabbix.com/browse/ZBX-19046)
 [ZBX-19065] fixed Zabbix agent 2 logging if the file is moved or removed (https://support.zabbix.com/browse/ZBX-19065)
 [ZBX-19071] fixed server crash after "Check for not supported value" preprocessing step (https://support.zabbix.com/browse/ZBX-19071)
