@@ -187,6 +187,7 @@
 [ZBXNEXT-1578] added ability to use user macros for IPMI user and password (https://support.zabbix.com/browse/ZBXNEXT-1578)
 [ZBXNEXT-1797] added HOST.ID macro support to notifications (https://support.zabbix.com/browse/ZBXNEXT-1797)
 [ZBXNEXT-1839] added LLD for perf_counter; thanks to Ryan Armstrong for the patch (https://support.zabbix.com/browse/ZBXNEXT-1839)
+[ZBXNEXT-1867] added file type include and exclude parameters to item 'vfs.file.exist' (https://support.zabbix.com/browse/ZBXNEXT-1867)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
 [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (https://support.zabbix.com/browse/ZBXNEXT-2480)
 [ZBXNEXT-2727] added support of JMX TabularData (https://support.zabbix.com/browse/ZBXNEXT-2727)
