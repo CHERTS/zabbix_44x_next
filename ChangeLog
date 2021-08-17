@@ -1,6 +1,7 @@
 Changes for 4.4.22rc1
 
 New features:
+...G...... [ZBXNEXT-1839] added LLD for perf_counter; thanks to Ryan Armstrong for the patch (asestakovs)
 
 Bug fixes:
 ...G...... [ZBX-19032] fixed percpu param in Zabbix agent 2 system.cpu.load plugin for Windows (esneiders)
