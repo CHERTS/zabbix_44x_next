@@ -2,6 +2,7 @@ Changes for 4.4.22rc1
 
 New features:
 ...G...... [ZBXNEXT-1839] added LLD for perf_counter; thanks to Ryan Armstrong for the patch (asestakovs)
+........S. [ZBXNEXT-6007] improved Zabbix server performance when evaluating action conditions for network discovery results from Zabbix proxy (vso)
 
 Bug fixes:
 ...G...... [ZBX-19032] fixed percpu param in Zabbix agent 2 system.cpu.load plugin for Windows (esneiders)
