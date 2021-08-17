@@ -3845,7 +3845,7 @@ static void	zbx_drule_free(zbx_drule_t *drule)
  *                                                                            *
  ******************************************************************************/
 static int	process_services(const zbx_vector_ptr_t *services, const char *ip, zbx_uint64_t druleid,
-		zbx_vector_uint64_t *dcheckids, zbx_uint64_t2 unique_dcheckid, int *processed_num, int ip_idx)
+		zbx_vector_uint64_t *dcheckids, zbx_uint64_t unique_dcheckid, int *processed_num, int ip_idx)
 {
 	DB_DHOST		dhost;
 	zbx_service_t		*service;
