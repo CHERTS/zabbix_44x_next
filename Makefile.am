@@ -91,19 +91,19 @@ gettext:
 	frontends/php/locale/make_mo.sh
 
 css_theme_blue:
-	sass --sourcemap=none sass/stylesheets/sass/screen.scss frontends/php/assets/styles/blue-theme.css
+	sass --no-source-map sass/stylesheets/sass/screen.scss frontends/php/assets/styles/blue-theme.css
 	cp frontends/php/assets/styles/blue-theme.css sass/stylesheets/screen.css
 
 css_theme_dark:
-	sass --sourcemap=none sass/stylesheets/sass/dark-theme.scss frontends/php/assets/styles/dark-theme.css
+	sass --no-source-map sass/stylesheets/sass/dark-theme.scss frontends/php/assets/styles/dark-theme.css
 	cp frontends/php/assets/styles/dark-theme.css sass/stylesheets/dark-theme.css
 
 css_hc_light:
-	sass --sourcemap=none sass/stylesheets/sass/hc-light.scss frontends/php/assets/styles/hc-light.css
+	sass --no-source-map sass/stylesheets/sass/hc-light.scss frontends/php/assets/styles/hc-light.css
 	cp frontends/php/assets/styles/hc-light.css sass/stylesheets/hc-light.css
 
 css_hc_dark:
-	sass --sourcemap=none sass/stylesheets/sass/hc-dark.scss frontends/php/assets/styles/hc-dark.css
+	sass --no-source-map sass/stylesheets/sass/hc-dark.scss frontends/php/assets/styles/hc-dark.css
 	cp frontends/php/assets/styles/hc-dark.css sass/stylesheets/hc-dark.css
 
 css_icons:
