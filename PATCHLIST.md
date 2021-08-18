@@ -219,6 +219,8 @@
 [ZBXNEXT-6171] added UserParameterDir config option to agent and agent2 (https://support.zabbix.com/browse/ZBXNEXT-6171)
 [ZBXNEXT-6183] added md5 checksum computation to preprocessing (https://support.zabbix.com/browse/ZBXNEXT-6183)
 [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (https://support.zabbix.com/browse/ZBXNEXT-6247)
+[ZBXNEXT-6269] added hv ip to vmware.hv.discovery and vm metrics for FQDN template (https://support.zabbix.com/browse/ZBXNEXT-6269)
+[ZBXNEXT-6301] extended set of collected VMware metrics for VM and HV (https://support.zabbix.com/browse/ZBXNEXT-6301)
 [ZBXNEXT-6307] added ability to read properties from a file (https://support.zabbix.com/browse/ZBXNEXT-6307)
 [ZBXNEXT-6345] added substitution of SID to account name and domain name in eventlog message (https://support.zabbix.com/browse/ZBXNEXT-6345)
 [ZBXNEXT-6358] removed detailed information from Reports -> Notifications page (https://support.zabbix.com/browse/ZBXNEXT-6358)
@@ -228,6 +230,7 @@
 [ZBXNEXT-6442] added ExportType server parameter for better configurability of real-time export (akozlovs)
 [ZBXNEXT-6443] added sha256() function to JavaScript preprocessing (https://support.zabbix.com/browse/ZBXNEXT-6443)
 [ZBXNEXT-6503] added protection of Zabbix Server from overloading by proxy data (https://support.zabbix.com/browse/ZBXNEXT-6503)
+[ZBXNEXT-6517] added {#VM.FOLDER} macro with chain of vm parent folders to the vmware vm discovery (MVekslers)
 [ZBXNEXT-6528,ZBXNEXT-6565] improved performance of host.create and template.create methods; improved performance of templates linking process; optimized DB::insert() method to send bulk SQL inserts (https://support.zabbix.com/browse/ZBXNEXT-6528, https://support.zabbix.com/browse/ZBXNEXT-6565)
 [ZBXNEXT-6662] increased field size to 2000 characters in web scenario variables and web scenario step variables and post fields (https://support.zabbix.com/browse/ZBXNEXT-6662)
 ~~~~
