@@ -2723,7 +2723,7 @@ static int	vmware_service_get_vm_data(zbx_vmware_service_t *service, CURL *easyh
 					"<ns0:type>Folder</ns0:type>"			\
 					"<ns0:pathSet>name</ns0:pathSet>"		\
 					"<ns0:pathSet>parent</ns0:pathSet>"		\
-				"</ns0:propSet>"
+				"</ns0:propSet>"					\
 				"<ns0:objectSet>"					\
 					"<ns0:obj type=\"VirtualMachine\">%s</ns0:obj>"	\
 					"<ns0:selectSet xsi:type=\"ns0:TraversalSpec\">"\
