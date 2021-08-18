@@ -22,6 +22,7 @@ A......... [ZBX-19342] fixed web scenario items not being cloned for graph proto
 ...G...PS. [ZBX-19505] fixed automatic log rotation accessing deleted log files for longer than required (vso)
 A......... [ZBX-19536] fixed host.get with selectTags = ['tag'] call attempting to retrieve tag value(s) as well (jfreibergs)
 A......... [ZBX-19539] fixed undefined offset error in host prototype API (miks)
+.......PS. [ZBX-19624] fixed incorrect vmware hv ip detection (MVekslers)
 ..F....... [ZBX-19670] resolving config file symlink in CConfigFile.php (yurii)
 ........S. [ZBX-19703] added fix for json path preprocessing crash (yurii)
 ........S. [ZBX-19715] fixed high memory usage in trappers and proxy pollers when sending configuration to Zabbix proxy (vso)
