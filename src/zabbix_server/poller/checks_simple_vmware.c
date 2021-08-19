@@ -1638,8 +1638,7 @@ int	check_vcenter_hv_datastore_discovery(AGENT_REQUEST *request, const char *use
 	for (i = 0; i < hv->dsnames.values_num; i++)
 	{
 		zbx_vmware_dsname_t	*dsname = hv->dsnames.values[i];
-		zbx_uint64_t		total = 0;
-		int			j;
+		int			j, total = 0;
 
 
 		for (j = 0; j < dsname->hvdisks.values_num; j++)
@@ -1647,8 +1646,10 @@ int	check_vcenter_hv_datastore_discovery(AGENT_REQUEST *request, const char *use
 
 		zbx_json_addobject(&json_data, NULL);
 		zbx_json_addstring(&json_data, "{#DATASTORE}", dsname->name, ZBX_JSON_TYPE_STRING);
-		zbx_json_adduint64(&json_data, "{#MULTIPATH.COUNT}", total);
-		zbx_json_adduint64(&json_data, "{#MULTIPATH.PARTITION.COUNT}", dsname->hvdisks.values_num);
+		zbx_json_adduint64(&json_data, "{#MULTIPATH.COUNT}", (unsigned int)total);
+		zbx_json_adduint64(&json_data, "{#MULTIPATH.PARTITION.COUNT}",
+				(unsigned int)dsname->hvdisks.values_num);
+
 		zbx_json_close(&json_data);
 	}
 
@@ -2181,8 +2182,8 @@ int	check_vcenter_hv_datastore_multipath(AGENT_REQUEST *request, const char *use
 	zbx_vmware_service_t	*service;
 	zbx_vmware_hv_t		*hv;
 	zbx_vmware_dsname_t	*dsname;
-	int			ret = SYSINFO_RET_FAIL, i, j;
-	zbx_uint64_t		partitionid = 0, multipath_count = 0;
+	int			ret = SYSINFO_RET_FAIL, i, j, multipath_count = 0;
+	zbx_uint64_t		partitionid = 0;
 
 	zabbix_log(LOG_LEVEL_DEBUG, "In %s()", __func__);
 
@@ -2287,7 +2288,7 @@ int	check_vcenter_hv_datastore_multipath(AGENT_REQUEST *request, const char *use
 		}
 	}
 
-	SET_UI64_RESULT(result, multipath_count);
+	SET_UI64_RESULT(result, (unsigned int)multipath_count);
 	ret = SYSINFO_RET_OK;
 unlock:
 	zbx_vmware_unlock();
@@ -2419,8 +2420,7 @@ int	check_vcenter_datastore_discovery(AGENT_REQUEST *request, const char *userna
 	if (NULL == (service = get_vmware_service(url, username, password, result, &ret)))
 		goto unlock;
 
-	zbx_json_init(&json_data, ZBX_JSON_STAT_BUF_LEN);
-	zbx_json_addarray(&json_data, ZBX_PROTO_TAG_DATA);
+	zbx_json_initarray(&json_data, ZBX_JSON_STAT_BUF_LEN);
 
 	for (i = 0; i < service->data->datastores.values_num; i++)
 	{
@@ -3719,8 +3719,7 @@ int	check_vcenter_dc_discovery(AGENT_REQUEST *request, const char *username, con
 	if (NULL == (service = get_vmware_service(url, username, password, result, &ret)))
 		goto unlock;
 
-	zbx_json_init(&json_data, ZBX_JSON_STAT_BUF_LEN);
-	zbx_json_addarray(&json_data, ZBX_PROTO_TAG_DATA);
+	zbx_json_initarray(&json_data, ZBX_JSON_STAT_BUF_LEN);
 
 	for (i = 0; i < service->data->datacenters.values_num; i++)
 	{

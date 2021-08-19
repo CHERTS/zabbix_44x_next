@@ -155,6 +155,7 @@
 [ZBX-19241] stopped proxy from overwriting local lastlogsize and mtime (https://support.zabbix.com/browse/ZBX-19241)
 [ZBX-19248] fixed retrieving of all data from separate database tables inside of API methods when empty value for filter is passed (https://support.zabbix.com/browse/ZBX-19248)
 [ZBX-19274] fixed semaphore not being cleaned up on Solaris when terminating Zabbix sender (https://support.zabbix.com/browse/ZBX-19274)
+[ZBX-19281] fixed json format of vmware.datastore.discovery item (https://support.zabbix.com/browse/ZBX-19281)
 [ZBX-19300] updated jquery version (https://support.zabbix.com/browse/ZBX-19300)
 [ZBX-19318] added sorting by itemids for trends flush to avoid deadlock (https://support.zabbix.com/browse/ZBX-19318)
 [ZBX-19321] fixed missing event tags in case of multiple problems (https://support.zabbix.com/browse/ZBX-19321)
