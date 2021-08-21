@@ -45,9 +45,11 @@ jobs:
         rm -f /etc/localtime /etc/timezone
         apt-get install -q -y tzdata
         dpkg-reconfigure -f noninteractive tzdata
-        apt-get install -q -y autoconf automake gcc make wget unzip gettext sass libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
+        apt-get install -q -y autoconf automake gcc make wget unzip gettext libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
         apt-get install -q -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
         apt-get install -q -y libmysqlclient-dev libpq-dev libsqlite3-dev
+	sudo wget https://github.com/sass/dart-sass/releases/download/1.38.0/dart-sass-1.38.0-linux-x64.tar.gz -O /tmp/dart-sass-linux-x64.tar.gz
+	sudo tar -zxf /tmp/dart-sass-linux-x64.tar.gz -C /tmp && yes | sudo cp /tmp/dart-sass/sass /usr/local/sbin && sudo rm -rf /tmp/dart-sass dart-sass-linux-x64.tar.gz
     - name: Code checkout
       uses: actions/checkout@v2
     - name: Build zabbix distr
