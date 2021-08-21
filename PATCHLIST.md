@@ -177,6 +177,7 @@
 [ZBX-19536] fixed host.get with selectTags = ['tag'] call attempting to retrieve tag value(s) as well (https://support.zabbix.com/browse/ZBX-19536)
 [ZBX-19539] fixed undefined offset error in host prototype API (https://support.zabbix.com/browse/ZBX-19539)
 [ZBX-19624] fixed incorrect vmware hv ip detection (https://support.zabbix.com/browse/ZBX-19624)
+[ZBX-19658] added query batching when reading event data during maintenance processing (https://support.zabbix.com/browse/ZBX-19658)
 [ZBX-19670] resolving config file symlink in CConfigFile.php (https://support.zabbix.com/browse/ZBX-19670)
 [ZBX-19703] added fix for json path preprocessing crash (https://support.zabbix.com/browse/ZBX-19703)
 [ZBX-19715] fixed high memory usage in trappers and proxy pollers when sending configuration to Zabbix proxy (https://support.zabbix.com/browse/ZBX-19715)
