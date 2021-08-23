@@ -9,8 +9,8 @@ New features:
 .......PS. [ZBXNEXT-6517] added {#VM.FOLDER} macro with chain of vm parent folders to the vmware vm discovery (MVekslers)
 
 Bug fixes:
-...G...... [ZBX-19032] fixed percpu param in Zabbix agent 2 system.cpu.load plugin for Windows (esneiders)
 A......... [ZBX-18155] removed positional macros from item names on 'Web monitoring' page (kustalovs, vmurzins)
+...G...... [ZBX-19032] fixed percpu param in Zabbix agent 2 system.cpu.load plugin for Windows (esneiders)
 .......PS. [ZBX-19114] fixed slow detection of vmware hv multipath values for medium and huge vc instances (MVekslers)
 ...G...... [ZBX-19116] fixed system.cpu.util for agent2 not working in non-English Windows (arimdjonoks)
 A......... [ZBX-19124] fixed PHP runtime errors when passed incorrect value for "output" option (Sasha)
