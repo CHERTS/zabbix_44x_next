@@ -20,7 +20,6 @@
 package redis
 
 import (
-	"fmt"
 	"github.com/mediocregopher/radix/v3"
 	"zabbix.com/pkg/zbxerr"
 )

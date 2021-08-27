@@ -22,7 +22,6 @@ package redis
 import (
 	"bufio"
 	"encoding/json"
-	"fmt"
 	"regexp"
 	"strings"
 

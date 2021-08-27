@@ -128,19 +128,15 @@ func (p *Plugin) Export(key string, params []string, ctx plugin.ContextProvider)
 
 		p.Errf(err.Error())
 
-		return nil, errors.New(formatZabbixError(err.Error()))
+		return nil, err
 	}
 
 	result, err = handleMetric(conn, handlerParams)
 	if err != nil {
 		p.Errf(err.Error())
-
-		if errors.As(err, &zbxErr) {
-			return nil, zbxErr
-		}
 	}
 
-	return result, nil
+	return result, err
 }
 
 // Start implements the Runner interface and performs initialization when plugin is activated.
