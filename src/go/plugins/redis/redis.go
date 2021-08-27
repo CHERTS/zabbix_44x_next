@@ -88,7 +88,6 @@ func (p *Plugin) Export(key string, params []string, ctx plugin.ContextProvider)
 	var (
 		handleMetric  handlerFunc
 		handlerParams []string
-		zbxErr        zabbixError
 	)
 
 	uri, err := whereToConnect(params, p.options.Sessions, p.options.URI)
