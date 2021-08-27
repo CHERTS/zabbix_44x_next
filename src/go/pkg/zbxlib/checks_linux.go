@@ -128,8 +128,6 @@ func resolveMetric(key string) (cfunc unsafe.Pointer) {
 		cfunc = unsafe.Pointer(C.VFS_FS_SIZE)
 	case "vfs.fs.get":
 		cfunc = unsafe.Pointer(C.VFS_FS_GET)
-	case "vm.memory.size":
-		cfunc = unsafe.Pointer(C.VM_MEMORY_SIZE)
 	}
 	return
 }

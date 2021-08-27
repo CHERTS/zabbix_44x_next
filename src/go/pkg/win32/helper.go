@@ -1,4 +1,4 @@
-// +build !windows
+// +build windows
 
 /*
 ** Zabbix
@@ -19,28 +19,23 @@
 ** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 **/
 
-package proc
+package win32
 
-import (
-	"syscall"
-	"testing"
-)
-
-func BenchmarkRead2k(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		_, _ = read2k("/proc/self/stat")
-	}
-}
-
-func BenchmarkSyscallRead(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		buffer := make([]byte, 2048)
-		fd, err := syscall.Open("/proc/self/stat", syscall.O_RDONLY, 0)
-		if err != nil {
-			return
+func NextField(buf []uint16) (field []uint16, left []uint16) {
+	start := -1
+	for i, c := range buf {
+		if c != 0 {
+			start = i
+			break
 		}
-
-		syscall.Read(fd, buffer)
-		syscall.Close(fd)
 	}
+	if start == -1 {
+		return []uint16{}, []uint16{}
+	}
+	for i, c := range buf[start:] {
+		if c == 0 {
+			return buf[start : start+i], buf[start+i+1:]
+		}
+	}
+	return buf[start:], []uint16{}
 }

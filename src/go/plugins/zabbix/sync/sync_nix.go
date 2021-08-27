@@ -39,6 +39,5 @@ func getMetrics() []string {
 		"vfs.fs.inode", "Number or percentage of inodes.",
 		"vfs.fs.size", "Disk space in bytes or in percentage from total.",
 		"vfs.fs.get", "List of mounted filesystems with statistics.",
-		"vm.memory.size", "Memory size in bytes or in percentage from total.",
 	}
 }

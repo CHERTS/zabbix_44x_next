@@ -227,6 +227,7 @@
 [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (https://support.zabbix.com/browse/ZBXNEXT-6247)
 [ZBXNEXT-6269] added hv ip to vmware.hv.discovery and vm metrics for FQDN template (https://support.zabbix.com/browse/ZBXNEXT-6269)
 [ZBXNEXT-6301] extended set of collected VMware metrics for VM and HV (https://support.zabbix.com/browse/ZBXNEXT-6301)
+[ZBXNEXT-6306] added native linux support for key vm.memory.size in Zabbix agent 2 (https://support.zabbix.com/browse/ZBXNEXT-6306)
 [ZBXNEXT-6307] added ability to read properties from a file (https://support.zabbix.com/browse/ZBXNEXT-6307)
 [ZBXNEXT-6345] added substitution of SID to account name and domain name in eventlog message (https://support.zabbix.com/browse/ZBXNEXT-6345)
 [ZBXNEXT-6358] removed detailed information from Reports -> Notifications page (https://support.zabbix.com/browse/ZBXNEXT-6358)
