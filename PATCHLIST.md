@@ -217,6 +217,7 @@
 [ZBXNEXT-5879] added filter to Configuration->Templates/Hosts->Discovery rules (https://support.zabbix.com/browse/ZBXNEXT-5879)
 [ZBXNEXT-5898] added user macro expanding in item description (https://support.zabbix.com/browse/ZBXNEXT-5898)
 [ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)
+[ZBXNEXT-5931] added TLS/SSL website certificates validation plugin to Zabbix agent 2 (https://support.zabbix.com/browse/ZBXNEXT-5931)
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
 [ZBXNEXT-6007] improved Zabbix server performance when evaluating action conditions for network discovery results from Zabbix proxy (https://support.zabbix.com/browse/ZBXNEXT-6007)
 [ZBXNEXT-6042] optimized trigger, calculated item processing by resolving user macros during configuration cache synchronization (https://support.zabbix.com/browse/ZBXNEXT-6042)

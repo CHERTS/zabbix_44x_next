@@ -3,6 +3,7 @@ Changes for 4.4.22rc1
 New features:
 ...G...... [ZBXNEXT-1839] added LLD for perf_counter; thanks to Ryan Armstrong for the patch (asestakovs)
 ...G...... [ZBXNEXT-1867] added file type include and exclude parameters to item 'vfs.file.exist' (Andris, viktors)
+...G...... [ZBXNEXT-5931] added TLS/SSL website certificates validation plugin to Zabbix agent 2 (esneiders)
 ........S. [ZBXNEXT-6007] improved Zabbix server performance when evaluating action conditions for network discovery results from Zabbix proxy (vso)
 .......PS. [ZBXNEXT-6269] added hv ip to vmware.hv.discovery and vm metrics for FQDN template (MVekslers)
 .......PS. [ZBXNEXT-6301] extended set of collected VMware metrics for VM and HV (asestakovs)
