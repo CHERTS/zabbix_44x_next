@@ -15,6 +15,7 @@
 [ZBX-16928] upgraded Duktape version from 2.3.0 to 2.4.0 (https://support.zabbix.com/browse/ZBX-16928)
 [ZBX-17178] fixed multi-line value truncation in snmp lld (https://support.zabbix.com/browse/ZBX-17178)
 [ZBX-17222] fixed unlimited data selection in Latest data view (https://support.zabbix.com/browse/ZBX-17222)
+[ZBX-17245] fixed agent2 not logging to system log code (https://support.zabbix.com/browse/ZBX-17245)
 [ZBX-17252] fixed building of Zabbix daemons with link time optimization (https://support.zabbix.com/browse/ZBX-17252)
 [ZBX-17272] changed translation strings to yield order number in argument (https://support.zabbix.com/browse/ZBX-17272)
 [ZBX-17295] fixed IPMI sensor LLD JSON output (https://support.zabbix.com/browse/ZBX-17295)

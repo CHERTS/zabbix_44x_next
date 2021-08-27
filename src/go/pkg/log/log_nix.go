@@ -1,6 +1,8 @@
+// +build !windows
+
 /*
 ** Zabbix
-** Copyright (C) 2001-2020 Zabbix SIA
+** Copyright (C) 2001-2021 Zabbix SIA
 **
 ** This program is free software; you can redistribute it and/or modify
 ** it under the terms of the GNU General Public License as published by
@@ -17,39 +19,32 @@
 ** Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 **/
 
-package plugin
+package log
 
 import (
-	"zabbix.com/pkg/log"
+	"fmt"
+	"log/syslog"
 )
 
-type Accessor interface {
-	Init(name string)
-	Name() string
-	Capacity() int
-	SetCapacity(capactity int)
+var syslogWriter *syslog.Writer
+
+func createSyslog() (err error) {
+	syslogWriter, err = syslog.New(syslog.LOG_WARNING|syslog.LOG_DAEMON, "zabbix_agent2")
+	return
 }
 
-type Base struct {
-	log.Logger
-	name     string
-	capacity int
-}
-
-func (b *Base) Init(name string) {
-	b.Logger = log.New(name)
-	b.name = name
-	b.capacity = DefaultCapacity
-}
-
-func (b *Base) Name() string {
-	return b.name
-}
-
-func (b *Base) Capacity() int {
-	return b.capacity
-}
-
-func (b *Base) SetCapacity(capacity int) {
-	b.capacity = capacity
+func procSysLog(format string, args []interface{}, level int) {
+	switch level {
+	case Info:
+		syslogWriter.Info(fmt.Sprintf(format, args...))
+	case Crit:
+		syslogWriter.Crit(fmt.Sprintf(format, args...))
+	case Err:
+		syslogWriter.Err(fmt.Sprintf(format, args...))
+	case Warning:
+		syslogWriter.Warning(fmt.Sprintf(format, args...))
+	case Debug, Trace:
+		syslogWriter.Debug(fmt.Sprintf(format, args...))
+	}
+	return
 }
