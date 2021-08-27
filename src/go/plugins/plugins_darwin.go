@@ -22,6 +22,7 @@ package plugins
 import (
 	_ "zabbix.com/plugins/log"
 	_ "zabbix.com/plugins/redis"
+	_ "zabbix.com/plugins/system/sw"
 	_ "zabbix.com/plugins/systemrun"
 	_ "zabbix.com/plugins/web/certificate"
 	_ "zabbix.com/plugins/web/page"
