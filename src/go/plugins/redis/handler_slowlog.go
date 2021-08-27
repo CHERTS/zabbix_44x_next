@@ -22,6 +22,7 @@ package redis
 import (
 	"fmt"
 	"github.com/mediocregopher/radix/v3"
+	"zabbix.com/pkg/zbxerr"
 )
 
 const slowlogMaxParams = 0
@@ -37,16 +38,16 @@ func getLastSlowlogID(sl slowlog) (int64, error) {
 
 	item, ok := sl[0].(logItem)
 	if !ok {
-		return 0, errorCannotParseData
+		return 0, zbxerr.ErrorCannotParseResult
 	}
 
 	if len(item) == 0 {
-		return 0, errorCannotParseData
+		return 0, zbxerr.ErrorCannotParseResult
 	}
 
 	id, ok := item[0].(int64)
 	if !ok {
-		return 0, errorCannotParseData
+		return 0, zbxerr.ErrorCannotParseResult
 	}
 
 	return id + 1, nil
@@ -57,11 +58,11 @@ func slowlogHandler(conn redisClient, params []string) (interface{}, error) {
 	var res []interface{}
 
 	if len(params) > slowlogMaxParams {
-		return nil, errorInvalidParams
+		return nil, zbxerr.ErrorInvalidParams
 	}
 
 	if err := conn.Query(radix.Cmd(&res, "SLOWLOG", "GET", "1")); err != nil {
-		return nil, fmt.Errorf("%s (%w)", err.Error(), errorCannotFetchData)
+		return nil, zbxerr.ErrorCannotFetchData.Wrap(err)
 	}
 
 	lastID, err := getLastSlowlogID(slowlog(res))

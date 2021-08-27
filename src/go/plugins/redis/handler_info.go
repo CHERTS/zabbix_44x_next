@@ -26,6 +26,8 @@ import (
 	"regexp"
 	"strings"
 
+	"zabbix.com/pkg/zbxerr"
+
 	"github.com/mediocregopher/radix/v3"
 )
 
@@ -94,7 +96,7 @@ func parseRedisInfo(info string) (res redisInfo, err error) {
 		}
 
 		if len(section) == 0 {
-			return nil, errorInvalidFormat
+			return nil, zbxerr.ErrorCannotParseResult
 		}
 
 		res[section][key] = value
@@ -105,7 +107,7 @@ func parseRedisInfo(info string) (res redisInfo, err error) {
 	}
 
 	if len(res) == 0 {
-		return nil, errorEmptyResult
+		return nil, zbxerr.ErrorEmptyResult
 	}
 
 	return res, nil
@@ -116,7 +118,7 @@ func infoHandler(conn redisClient, params []string) (interface{}, error) {
 	var res string
 
 	if len(params) > infoMaxParams {
-		return nil, errorInvalidParams
+		return nil, zbxerr.ErrorInvalidParams
 	}
 
 	section := infoSection("default")
@@ -125,7 +127,7 @@ func infoHandler(conn redisClient, params []string) (interface{}, error) {
 	}
 
 	if err := conn.Query(radix.Cmd(&res, "INFO", string(section))); err != nil {
-		return nil, fmt.Errorf("%s (%w)", err.Error(), errorCannotFetchData)
+		return nil, zbxerr.ErrorCannotFetchData.Wrap(err)
 	}
 
 	redisInfo, err := parseRedisInfo(res)
@@ -135,7 +137,7 @@ func infoHandler(conn redisClient, params []string) (interface{}, error) {
 
 	jsonRes, err := json.Marshal(redisInfo)
 	if err != nil {
-		return nil, fmt.Errorf("%s (%w)", err.Error(), errorCannotMarshalJSON)
+		return nil, zbxerr.ErrorCannotMarshalJSON.Wrap(err)
 	}
 
 	return string(jsonRes), nil

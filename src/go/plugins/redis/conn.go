@@ -25,6 +25,7 @@ import (
 	"sync"
 	"time"
 	"zabbix.com/pkg/log"
+	"zabbix.com/pkg/zbxerr"
 )
 
 const hkInterval = 10
@@ -186,6 +187,10 @@ func (c *ConnManager) GetConnection(uri URI) (conn *RedisConn, err error) {
 
 	if conn == nil {
 		conn, err = c.create(uri)
+	}
+
+	if err != nil {
+		err = zbxerr.ErrorConnectionFailed.Wrap(err)
 	}
 
 	return conn, err

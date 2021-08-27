@@ -24,6 +24,7 @@ import (
 	"fmt"
 	"github.com/mediocregopher/radix/v3"
 	"strings"
+	"zabbix.com/pkg/zbxerr"
 )
 
 const configMaxParams = 1
@@ -46,7 +47,7 @@ func configHandler(conn redisClient, params []string) (interface{}, error) {
 	}
 
 	if err := conn.Query(radix.Cmd(&res, "CONFIG", "GET", pattern)); err != nil {
-		return nil, fmt.Errorf("%s (%w)", err.Error(), errorCannotFetchData)
+		return nil, zbxerr.ErrorCannotFetchData.Wrap(err)
 	}
 
 	if len(res) == 0 {
@@ -56,7 +57,7 @@ func configHandler(conn redisClient, params []string) (interface{}, error) {
 	if strings.ContainsAny(pattern, globChars) {
 		jsonRes, err := json.Marshal(res)
 		if err != nil {
-			return nil, fmt.Errorf("%s (%w)", err.Error(), errorCannotMarshalJSON)
+			return nil, zbxerr.ErrorCannotMarshalJSON.Wrap(err)
 		}
 
 		return string(jsonRes), nil

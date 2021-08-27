@@ -20,9 +20,9 @@
 package redis
 
 import (
-	"errors"
 	"time"
 	"zabbix.com/pkg/plugin"
+	"zabbix.com/pkg/zbxerr"
 )
 
 const pluginName = "Redis"
@@ -115,7 +115,7 @@ func (p *Plugin) Export(key string, params []string, ctx plugin.ContextProvider)
 		handleMetric = slowlogHandler // redis.slowlog[[connString][,password]]
 
 	default:
-		return nil, errorUnsupportedMetric
+		return nil, zbxerr.ErrorUnsupportedMetric
 	}
 
 	conn, err := p.connMgr.GetConnection(*uri)
