@@ -225,6 +225,7 @@
 [ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (https://support.zabbix.com/browse/ZBXNEXT-6139)
 [ZBXNEXT-6171] added UserParameterDir config option to agent and agent2 (https://support.zabbix.com/browse/ZBXNEXT-6171)
 [ZBXNEXT-6183] added md5 checksum computation to preprocessing (https://support.zabbix.com/browse/ZBXNEXT-6183)
+[ZBXNEXT-6210] added native support for proc.mem key in Zabbix agent 2 (https://support.zabbix.com/browse/ZBXNEXT-6210)
 [ZBXNEXT-6247] improved LLD rule processing after reconnecting to proxy (https://support.zabbix.com/browse/ZBXNEXT-6247)
 [ZBXNEXT-6269] added hv ip to vmware.hv.discovery and vm metrics for FQDN template (https://support.zabbix.com/browse/ZBXNEXT-6269)
 [ZBXNEXT-6301] extended set of collected VMware metrics for VM and HV (https://support.zabbix.com/browse/ZBXNEXT-6301)
