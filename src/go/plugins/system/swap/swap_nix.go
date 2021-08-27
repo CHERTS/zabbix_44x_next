@@ -1,4 +1,4 @@
-// +build windows
+// +build !windows
 
 /*
 ** Zabbix
@@ -21,23 +21,13 @@
 
 package swap
 
-import (
-	"zabbix.com/pkg/win32"
-)
+import "syscall"
 
 func getSwap() (uint64, uint64, error) {
-	m, err := win32.GlobalMemoryStatusEx()
-	if err != nil {
-		return 0, 0, nil
+	info := &syscall.Sysinfo_t{}
+	if err := syscall.Sysinfo(info); err != nil {
+		return 0, 0, err
 	}
 
-	var total, avail uint64
-	if m.TotalPageFile > m.TotalPhys {
-		total = m.TotalPageFile - m.TotalPhys
-	}
-	if m.AvailPageFile > m.AvailPhys {
-		avail = m.AvailPageFile - m.AvailPhys
-	}
-
-	return total, avail, nil
+	return uint64(info.Totalswap), uint64(info.Freeswap), nil
 }
