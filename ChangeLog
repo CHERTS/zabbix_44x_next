@@ -4,6 +4,7 @@ New features:
 
 Bug fixes:
 ...G...PS. [ZBX-7933] added configurable parameter for TCP queue maximum size (dgoloscapov)
+A......... [ZBX-19857] dropped support for the non-working option "with_gui_access" in the usergroup.get() method (Sasha)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.22
