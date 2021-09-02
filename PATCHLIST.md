@@ -155,6 +155,7 @@
 [ZBX-19209] fixed panic in proc plugin for Zabbix agent 2 (https://support.zabbix.com/browse/ZBX-19209)
 [ZBX-19210] fixed css file versioning for custom themes (https://support.zabbix.com/browse/ZBX-19210)
 [ZBX-19233] fixed potential loss of original error when reading vmware events (https://support.zabbix.com/browse/ZBX-19233)
+[ZBX-19236] fixed task manager constantly busy with close_problem task if trigger no longer exists but event still exist (https://support.zabbix.com/browse/ZBX-19236)
 [ZBX-19241] stopped proxy from overwriting local lastlogsize and mtime (https://support.zabbix.com/browse/ZBX-19241)
 [ZBX-19248] fixed retrieving of all data from separate database tables inside of API methods when empty value for filter is passed (https://support.zabbix.com/browse/ZBX-19248)
 [ZBX-19274] fixed semaphore not being cleaned up on Solaris when terminating Zabbix sender (https://support.zabbix.com/browse/ZBX-19274)
