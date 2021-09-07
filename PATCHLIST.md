@@ -178,6 +178,7 @@
 [ZBX-19481] fixed alerting problem while being in maintenance (https://support.zabbix.com/browse/ZBX-19481)
 [ZBX-19482] fixed block device discovery of cd-roms and linked devices (https://support.zabbix.com/browse/ZBX-19482)
 [ZBX-19505] fixed automatic log rotation accessing deleted log files for longer than required (https://support.zabbix.com/browse/ZBX-19505)
+[ZBX-19510] fixed re-reading of old Windows events for various Windows event system synchronization problems (https://support.zabbix.com/browse/ZBX-19510)
 [ZBX-19536] fixed host.get with selectTags = ['tag'] call attempting to retrieve tag value(s) as well (https://support.zabbix.com/browse/ZBX-19536)
 [ZBX-19539] fixed undefined offset error in host prototype API (https://support.zabbix.com/browse/ZBX-19539)
 [ZBX-19624] fixed incorrect vmware hv ip detection (https://support.zabbix.com/browse/ZBX-19624)
