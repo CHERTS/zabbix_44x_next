@@ -13,6 +13,7 @@
 [ZBX-15904] added check of required cache size for vmware event messages (https://support.zabbix.com/browse/ZBX-15904)
 [ZBX-15927] removed problem calculation for dependent triggers when master trigger is in problem state (https://support.zabbix.com/browse/ZBX-15927)
 [ZBX-16216] fixed semaphore not being cleaned up when stopping Zabbix agent (https://support.zabbix.com/browse/ZBX-16216)
+[ZBX-16803] fixed ability to use Interface Guid in network interface LLD (https://support.zabbix.com/browse/ZBX-16803)
 [ZBX-16928] upgraded Duktape version from 2.3.0 to 2.4.0 (https://support.zabbix.com/browse/ZBX-16928)
 [ZBX-17178] fixed multi-line value truncation in snmp lld (https://support.zabbix.com/browse/ZBX-17178)
 [ZBX-17222] fixed unlimited data selection in Latest data view (https://support.zabbix.com/browse/ZBX-17222)
