@@ -26,6 +26,12 @@ jobs:
       run: ./bootstrap.sh
     - name: Get current Zabbix version
       run: echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
+    - name: Run backend build tests with Zabbix-agent 2...
+      run: ant -f build-backend.xml agent2-tests
+    - name: Cleanup
+      run: |
+        rm -rf ./sources
+        rm -rf ./zabbix-${ZABBIX_VERSION}
     - name: Run backend build tests with MySQL...
       run: ant -DDBTYPE=MYSQL -f build-backend.xml
     - name: Cleanup
@@ -58,9 +64,9 @@ jobs:
         rm -rf ./zabbix-${ZABBIX_VERSION}
     - name: Run backend test cmocka-tests...
       run: ant -f build-backend.xml cmocka-tests
-#    - name: Cleanup
-#      run: |
-#        rm -rf ./sources
-#        rm -rf ./zabbix-${ZABBIX_VERSION}
+    - name: Cleanup
+      run: |
+        rm -rf ./sources
+        rm -rf ./zabbix-${ZABBIX_VERSION}
 #    - name: Run backend test cmocka-ora-tests...
 #      run: ant -f build-backend.xml cmocka-ora-tests
