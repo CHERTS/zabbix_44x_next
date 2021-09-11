@@ -174,6 +174,7 @@
 [ZBX-19388] fixed inherited graph and graph prototype update if user has no permissions to child host or template (https://support.zabbix.com/browse/ZBX-19388)
 [ZBX-19428] fixed high CPU usage and preprocessing workers exiting with timeout when starting numerous poller, trapper and discoverer processes (https://support.zabbix.com/browse/ZBX-19428)
 [ZBX-19439] fixed Action log dashboard widget missing Remote command entries (https://support.zabbix.com/browse/ZBX-19439)
+[ZBX-19440] added utf-8 support to zbx_set_json_strerror (https://support.zabbix.com/browse/ZBX-19440)
 [ZBX-19447] implemented item type validation by API (https://support.zabbix.com/browse/ZBX-19447)
 [ZBX-19481] fixed alerting problem while being in maintenance (https://support.zabbix.com/browse/ZBX-19481)
 [ZBX-19482] fixed block device discovery of cd-roms and linked devices (https://support.zabbix.com/browse/ZBX-19482)
