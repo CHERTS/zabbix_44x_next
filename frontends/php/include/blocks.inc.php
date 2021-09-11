@@ -267,11 +267,6 @@ function getSystemStatusData(array $filter) {
 				'output' => ['alias', 'name', 'surname'],
 				'userids' => array_keys($actions['userids']),
 				'preservekeys' => true
-			]),
-			'mediatypes' => API::MediaType()->get([
-				'output' => ['name', 'maxattempts'],
-				'mediatypeids' => array_keys($actions['mediatypeids']),
-				'preservekeys' => true
 			])
 		];
 
@@ -868,9 +863,7 @@ function makeProblemsPopup(array $problems, array $triggers, $backurl, array $ac
 			($show_opdata == OPERATIONAL_DATA_SHOW_SEPARATELY) ? $opdata : null,
 			zbx_date2age($problem['clock']),
 			$ack,
-			makeEventActionsIcons($problem['eventid'], $actions['all_actions'], $actions['mediatypes'],
-				$actions['users'], $config
-			),
+			makeEventActionsIcons($problem['eventid'], $actions['all_actions'], $actions['users'], $config),
 			$tags[$problem['eventid']]
 		]));
 	}

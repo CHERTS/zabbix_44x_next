@@ -272,9 +272,7 @@ class CScreenHostTriggers extends CScreenBase {
 					)
 					->addClass($problem['acknowledged'] ? ZBX_STYLE_GREEN : ZBX_STYLE_RED)
 					->addClass(ZBX_STYLE_LINK_ALT),
-				makeEventActionsIcons($problem['eventid'], $data['actions'], $data['mediatypes'], $data['users'],
-					$config
-				)
+				makeEventActionsIcons($problem['eventid'], $data['actions'], $data['users'], $config)
 			]);
 		}
 

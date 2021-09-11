@@ -5,6 +5,7 @@ New features:
 Bug fixes:
 ...G...PS. [ZBX-7933] added configurable parameter for TCP queue maximum size (dgoloscapov)
 ...G...... [ZBX-16803] fixed ability to use Interface Guid in network interface LLD (akozlovs)
+A.F....... [ZBX-16822] fixed performance issues for installations with a lot of historical alerts (miks, talbergs)
 ........S. [ZBX-19236] fixed task manager constantly busy with close_problem task if trigger no longer exists but event still exist (dgoloscapov)
 ........S. [ZBX-19440] added utf-8 support to zbx_set_json_strerror (dgoloscapov)
 ...G...... [ZBX-19510] fixed re-reading of old Windows events for various Windows event system synchronization problems (MVekslers)

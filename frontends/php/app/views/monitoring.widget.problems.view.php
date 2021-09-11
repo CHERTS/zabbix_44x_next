@@ -258,9 +258,7 @@ foreach ($data['data']['problems'] as $eventid => $problem) {
 		(new CLink($problem['acknowledged'] == EVENT_ACKNOWLEDGED ? _('Yes') : _('No'), $problem_update_url))
 			->addClass($problem['acknowledged'] == EVENT_ACKNOWLEDGED ? ZBX_STYLE_GREEN : ZBX_STYLE_RED)
 			->addClass(ZBX_STYLE_LINK_ALT),
-		makeEventActionsIcons($problem['eventid'], $data['data']['actions'], $data['data']['mediatypes'],
-			$data['data']['users'], $data['config']
-		),
+		makeEventActionsIcons($problem['eventid'], $data['data']['actions'], $data['data']['users'], $data['config']),
 		$data['fields']['show_tags'] ? $data['data']['tags'][$problem['eventid']] : null
 	]));
 }
