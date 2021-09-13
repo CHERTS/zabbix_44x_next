@@ -13,6 +13,7 @@ A.F....... [ZBX-16822] fixed performance issues for installations with a lot of 
 ...G...... [ZBX-19613] fixed Zabbix agent 2 redis plugin to closer match redis-cli connection (esneiders)
 ...G...... [ZBX-19614] fixed proc.num,proc.cpu.utilization,proc.mem metrics not working properly when compiled with unsupported Go version and improved performance by using functions introduced in Go 1.16 (esneiders, vso)
 A......... [ZBX-19857] dropped support for the non-working option "with_gui_access" in the usergroup.get() method (Sasha)
+.......PS. [ZBX-19931] fixed crash on big-endian systems when processing history (vso)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.22
