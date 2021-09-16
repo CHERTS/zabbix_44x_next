@@ -195,6 +195,7 @@
 [ZBX-19743] fixed proxy crash when data sending has failed (https://support.zabbix.com/browse/ZBX-19743)
 [ZBX-19737] fixed prometheus preprocessing bug (https://support.zabbix.com/browse/ZBX-19737)
 [ZBX-19752] fixed multiple types of media type creation having message templates in one API call (https://support.zabbix.com/browse/ZBX-19752)
+[ZBX-19814] added ignoring final result in case if fping quits on a signal (https://support.zabbix.com/browse/ZBX-19814)
 [ZBX-19857] dropped support for the non-working option "with_gui_access" in the usergroup.get() method (https://support.zabbix.com/browse/ZBX-19857)
 [ZBX-19931] fixed crash on big-endian systems when processing history (https://support.zabbix.com/browse/ZBX-19931)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
