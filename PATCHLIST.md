@@ -244,6 +244,7 @@
 [ZBXNEXT-6301] extended set of collected VMware metrics for VM and HV (https://support.zabbix.com/browse/ZBXNEXT-6301)
 [ZBXNEXT-6306] added native linux support for key vm.memory.size in Zabbix agent 2 (https://support.zabbix.com/browse/ZBXNEXT-6306)
 [ZBXNEXT-6307] added ability to read properties from a file (https://support.zabbix.com/browse/ZBXNEXT-6307)
+[ZBXNEXT-6332] added {ITEM.VALUETYPE} macro (https://support.zabbix.com/browse/ZBXNEXT-6332)
 [ZBXNEXT-6345] added substitution of SID to account name and domain name in eventlog message (https://support.zabbix.com/browse/ZBXNEXT-6345)
 [ZBXNEXT-6358] removed detailed information from Reports -> Notifications page (https://support.zabbix.com/browse/ZBXNEXT-6358)
 [ZBXNEXT-6364] removed long lists of cloned objects from host and template full clone forms (https://support.zabbix.com/browse/ZBXNEXT-6364)
