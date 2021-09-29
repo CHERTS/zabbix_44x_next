@@ -156,7 +156,7 @@ int	SYSTEM_SWAP_SIZE(AGENT_REQUEST *request, AGENT_RESULT *result)
 	{
 		SET_UI64_RESULT(result, real_swap_total);
 	}
-	else
+	else if (0 == strcmp(mode, "free"))
 	{
 		SET_UI64_RESULT(result, real_swap_avail);
 	}
