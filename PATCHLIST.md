@@ -259,6 +259,7 @@
 [ZBXNEXT-6596] added native linux proc.num support plugin to Zabbix agent 2 (https://support.zabbix.com/browse/ZBXNEXT-6596)
 [ZBXNEXT-6662] increased field size to 2000 characters in web scenario variables and web scenario step variables and post fields (https://support.zabbix.com/browse/ZBXNEXT-6662)
 [ZBXNEXT-6784] removed item being unsupported when swap is not configured (https://support.zabbix.com/browse/ZBXNEXT-6784)
+[ZBXNEXT-6809] changed behavior of the vmware event log, the 'skip' option of the new item resets the VMware event cache (https://support.zabbix.com/browse/ZBXNEXT-6809)
 ~~~~
 
 # List of my patches (English)
