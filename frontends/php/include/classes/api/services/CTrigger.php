@@ -123,7 +123,7 @@ class CTrigger extends CTriggerGeneral {
 			$permission = $options['editable'] ? PERM_READ_WRITE : PERM_READ;
 			$userGroups = getUserGroupsByUserId(self::$userData['userid']);
 
-			$sqlParts['where'][] = 'NOT EXISTS ('.
+			$sqlParts['where'][] = 'EXISTS ('.
 				'SELECT NULL'.
 				' FROM functions f,items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
@@ -133,9 +133,8 @@ class CTrigger extends CTriggerGeneral {
 					' AND f.itemid=i.itemid'.
 					' AND i.hostid=hgg.hostid'.
 				' GROUP BY i.hostid'.
-				' HAVING MAX(permission)<'.zbx_dbstr($permission).
-					' OR MIN(permission) IS NULL'.
-					' OR MIN(permission)='.PERM_DENY.
+				' HAVING MIN(r.permission)>'.PERM_DENY.
+				' AND MAX(r.permission)>='.zbx_dbstr($permission).
 			')';
 		}
 
