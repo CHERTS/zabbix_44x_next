@@ -5,6 +5,7 @@ New features:
 
 Bug fixes:
 ....I..PS. [ZBX-20001] fixed crash and invalid bytecode error being generated on big-sendian systems when javascript is used; upgraded duktape to version 2.6 (vso)
+...G...... [ZBX-20008] removed curl and ldap linkage from agent2 (yurii)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.23

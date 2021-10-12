@@ -199,6 +199,7 @@
 [ZBX-19857] dropped support for the non-working option "with_gui_access" in the usergroup.get() method (https://support.zabbix.com/browse/ZBX-19857)
 [ZBX-19931] fixed crash on big-endian systems when processing history (https://support.zabbix.com/browse/ZBX-19931)
 [ZBX-20001] fixed crash and invalid bytecode error being generated on big-sendian systems when javascript is used; upgraded duktape to version 2.6 (https://support.zabbix.com/browse/ZBX-20001)
+[ZBX-20008] removed curl and ldap linkage from agent2 (https://support.zabbix.com/browse/ZBX-20008)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)

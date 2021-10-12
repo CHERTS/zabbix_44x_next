@@ -164,6 +164,7 @@ tests/libs/zbxsysinfo/linux/VFS_FS_DISCOVERY
 tests/libs/zbxsysinfo/linux/SYSTEM_HW_CHASSIS
 tests/libs/zbxsysinfo/parse_item_key
 tests/libs/zbxsysinfo/process
+tests/libs/zbxsysinfo/process_http
 tests/libs/zbxdbcache/is_item_processed_by_server
 tests/zabbix_server/preprocessor/item_preproc_csv_to_json
 tests/libs/zbxcommon/convert_to_utf8
