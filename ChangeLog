@@ -1,6 +1,7 @@
 Changes for 4.4.24rc1
 
 New features:
+...G...... [ZBXNEXT-6080] add telnet support for net.tcp.service/.perf key and enable it on linux/darwin (esneiders)
 .......PS. [ZBXNEXT-6809] changed behavior of the vmware event log, the 'skip' option of the new item resets the VMware event cache (MVekslers)
 
 Bug fixes:

@@ -237,6 +237,7 @@
 [ZBXNEXT-6004] added host info to vmware event message log (https://support.zabbix.com/browse/ZBXNEXT-6004)
 [ZBXNEXT-6007] improved Zabbix server performance when evaluating action conditions for network discovery results from Zabbix proxy (https://support.zabbix.com/browse/ZBXNEXT-6007)
 [ZBXNEXT-6042] optimized trigger, calculated item processing by resolving user macros during configuration cache synchronization (https://support.zabbix.com/browse/ZBXNEXT-6042)
+[ZBXNEXT-6080] add telnet support for net.tcp.service/.perf key and enable it on linux/darwin (https://support.zabbix.com/browse/ZBXNEXT-6080)
 [ZBXNEXT-6139] added GetHeaders method to CurlHttpRequest javascript object (https://support.zabbix.com/browse/ZBXNEXT-6139)
 [ZBXNEXT-6171] added UserParameterDir config option to agent and agent2 (https://support.zabbix.com/browse/ZBXNEXT-6171)
 [ZBXNEXT-6183] added md5 checksum computation to preprocessing (https://support.zabbix.com/browse/ZBXNEXT-6183)
