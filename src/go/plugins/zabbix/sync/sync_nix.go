@@ -27,8 +27,6 @@ func getMetrics() []string {
 		"net.dns.record", "Performs DNS query.",
 		"system.hw.chassis", "Chassis information.",
 		"system.hw.devices", "Listing of PCI or USB devices.",
-		"net.tcp.service", "Checks if service is running and accepting TCP connections.",
-		"net.tcp.service.perf", "Checks performance of TCP service.",
 		"system.users.num", "Number of users logged in.",
 		"vfs.dir.count", "Directory entry count.",
 		"vfs.dir.size", "Directory size (in bytes).",
