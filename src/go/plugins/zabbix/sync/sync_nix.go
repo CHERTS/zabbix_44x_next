@@ -30,8 +30,5 @@ func getMetrics() []string {
 		"system.users.num", "Number of users logged in.",
 		"vfs.dir.count", "Directory entry count.",
 		"vfs.dir.size", "Directory size (in bytes).",
-		"vfs.fs.inode", "Number or percentage of inodes.",
-		"vfs.fs.size", "Disk space in bytes or in percentage from total.",
-		"vfs.fs.get", "List of mounted filesystems with statistics.",
 	}
 }
