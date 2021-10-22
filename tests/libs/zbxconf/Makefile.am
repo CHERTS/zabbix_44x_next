@@ -30,6 +30,7 @@ parse_cfg_file_LDADD = \
 	$(top_srcdir)/src/zabbix_server/scripts/libzbxscripts.a \
 	$(top_srcdir)/src/zabbix_server/preprocessor/libpreprocessor.a \
 	$(top_srcdir)/src/libs/zbxsysinfo/libzbxserversysinfo.a \
+	$(top_srcdir)/src/libs/zbxxml/libzbxxml.a \
 	$(top_srcdir)/src/libs/zbxsysinfo/common/libcommonsysinfo.a \
 	$(top_srcdir)/src/libs/zbxsysinfo/simple/libsimplesysinfo.a \
 	$(top_srcdir)/src/libs/zbxserver/libzbxserver.a \

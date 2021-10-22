@@ -1586,4 +1586,11 @@ int	zbx_variant_to_value_type(zbx_variant_t *value, unsigned char value_type, ch
 
 int	zbx_str_extract(const char *text, size_t len, char **value);
 
+int	zbx_xmlnode_to_json(void *xml_node, char **jstr);
+int	zbx_xml_to_json(char *xml_data, char **jstr, char **errmsg);
+#ifdef HAVE_LIBXML2
+int	zbx_open_xml(char *data, int options, int maxerrlen, void **xml_doc, void **root_node, char **errmsg);
+int	zbx_check_xml_memory(char *mem, int maxerrlen, char **errmsg);
+#endif
+
 #endif
