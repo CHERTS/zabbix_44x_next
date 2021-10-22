@@ -265,6 +265,7 @@
 [ZBXNEXT-6517] added {#VM.FOLDER} macro with chain of vm parent folders to the vmware vm discovery (MVekslers)
 [ZBXNEXT-6528,ZBXNEXT-6565] improved performance of host.create and template.create methods; improved performance of templates linking process; optimized DB::insert() method to send bulk SQL inserts (https://support.zabbix.com/browse/ZBXNEXT-6528, https://support.zabbix.com/browse/ZBXNEXT-6565)
 [ZBXNEXT-6596] added native linux proc.num support plugin to Zabbix agent 2 (https://support.zabbix.com/browse/ZBXNEXT-6596)
+[ZBXNEXT-6644] added support for vmware key named 'vmware.hv.maintenance' (https://support.zabbix.com/browse/ZBXNEXT-6644)
 [ZBXNEXT-6662] increased field size to 2000 characters in web scenario variables and web scenario step variables and post fields (https://support.zabbix.com/browse/ZBXNEXT-6662)
 [ZBXNEXT-6784] removed item being unsupported when swap is not configured (https://support.zabbix.com/browse/ZBXNEXT-6784)
 [ZBXNEXT-6809] changed behavior of the vmware event log, the 'skip' option of the new item resets the VMware event cache (https://support.zabbix.com/browse/ZBXNEXT-6809)
