@@ -345,12 +345,12 @@ static zbx_uint64_t	evt_req_chunk_size;
 
 #define ZBX_HVPROPMAP_EXT(property, func)								\
 	{property, ZBX_XPATH_PROP_OBJECTS(ZBX_VMWARE_SOAP_HV) ZBX_XPATH_PROP_NAME_NODE(property), func}
-#define ZBX_HVPROPMAP(property)	ZBX_HVPROPMAP_EXT(property, NULL)
+#define ZBX_HVPROPMAP(property)										\
+	ZBX_HVPROPMAP_EXT(property, NULL)
+#define ZBX_VMPROPMAP(property)										\
+	{property, ZBX_XPATH_PROP_OBJECTS(ZBX_VMWARE_SOAP_VM) ZBX_XPATH_PROP_NAME_NODE(property), NULL}
 
 typedef int	(*nodeprocfunc_t)(void *, char **);
-
-#define ZBX_VMPROPMAP(property)										\
-	{property, ZBX_XPATH_PROP_OBJECTS(ZBX_VMWARE_SOAP_VM) ZBX_XPATH_PROP_NAME_NODE(property)}
 
 typedef struct
 {
@@ -6619,11 +6619,16 @@ out:
 void	zbx_vmware_destroy(void)
 {
 	zabbix_log(LOG_LEVEL_DEBUG, "In %s()", __func__);
+	if (NULL != vmware_mem)
+	{
 #if defined(HAVE_LIBXML2) && defined(HAVE_LIBCURL)
-	zbx_hashset_destroy(&vmware->strpool);
-	zbx_hashset_destroy(&evt_msg_strpool);
+		zbx_hashset_destroy(&vmware->strpool);
+		zbx_hashset_destroy(&evt_msg_strpool);
 #endif
-	zbx_mutex_destroy(&vmware_lock);
+		zbx_mem_destroy(vmware_mem);
+		vmware_mem = NULL;
+		zbx_mutex_destroy(&vmware_lock);
+	}
 
 	zabbix_log(LOG_LEVEL_DEBUG, "End of %s()", __func__);
 }
