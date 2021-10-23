@@ -211,6 +211,7 @@
 [ZBXNEXT-1839] added LLD for perf_counter; thanks to Ryan Armstrong for the patch (https://support.zabbix.com/browse/ZBXNEXT-1839)
 [ZBXNEXT-1867] added file type include and exclude parameters to item 'vfs.file.exist' (https://support.zabbix.com/browse/ZBXNEXT-1867)
 [ZBXNEXT-1961] added support for connection string to db.odbc.* items (https://support.zabbix.com/browse/ZBXNEXT-1961)
+[ZBXNEXT-2475] added handling of compressed content to web monitoring (https://support.zabbix.com/browse/ZBXNEXT-2475)
 [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (https://support.zabbix.com/browse/ZBXNEXT-2480)
 [ZBXNEXT-2727] added support of JMX TabularData (https://support.zabbix.com/browse/ZBXNEXT-2727)
 [ZBXNEXT-3205] added regex context matching support to user macros (https://support.zabbix.com/browse/ZBXNEXT-3205)

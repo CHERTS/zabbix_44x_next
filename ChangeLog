@@ -1,6 +1,7 @@
 Changes for 4.4.24rc1
 
 New features:
+.......PS. [ZBXNEXT-2475] added handling of compressed content to web monitoring (akozlovs)
 ...G...... [ZBXNEXT-6080] add telnet support for net.tcp.service/.perf key and enable it on linux/darwin (esneiders)
 ...G...... [ZBXNEXT-6100] add native linux vfs.fs.size[fs,<mode>] metric support to agent2 (esneiders)
 ...G...... [ZBXNEXT-6101] add native linux vfs.fs.inode[fs,<mode>] metric support to agent2 (esneiders)
