@@ -3023,9 +3023,7 @@ static int	vmware_service_get_diskextents_list(xmlDoc *doc, zbx_vector_vmware_di
 
 	ret = SUCCEED;
 out:
-	if (NULL != xpathObj)
-		xmlXPathFreeObject(xpathObj);
-
+	xmlXPathFreeObject(xpathObj);
 	xmlXPathFreeContext(xpathCtx);
 
 	return ret;
@@ -6773,7 +6771,7 @@ void	zbx_vmware_unlock(void)
  *                                                                            *
  * Parameters: stats   - [OUT] the vmware collector statistics                *
  *                                                                            *
- * Return value: SUCCEEED - the statistics were retrieved successfully        *
+ * Return value: SUCCEED - the statistics were retrieved successfully         *
  *               FAIL     - no vmware collectors are running                  *
  *                                                                            *
  ******************************************************************************/
