@@ -197,6 +197,7 @@
 [ZBX-19737] fixed prometheus preprocessing bug (https://support.zabbix.com/browse/ZBX-19737)
 [ZBX-19752] fixed multiple types of media type creation having message templates in one API call (https://support.zabbix.com/browse/ZBX-19752)
 [ZBX-19814] added ignoring final result in case if fping quits on a signal (https://support.zabbix.com/browse/ZBX-19814)
+[ZBX-19848] fixed vmware perf counters that return percentage values (https://support.zabbix.com/browse/ZBX-19848)
 [ZBX-19857] dropped support for the non-working option "with_gui_access" in the usergroup.get() method (https://support.zabbix.com/browse/ZBX-19857)
 [ZBX-19931] fixed crash on big-endian systems when processing history (https://support.zabbix.com/browse/ZBX-19931)
 [ZBX-20001] fixed crash and invalid bytecode error being generated on big-sendian systems when javascript is used; upgraded duktape to version 2.6 (https://support.zabbix.com/browse/ZBX-20001)
