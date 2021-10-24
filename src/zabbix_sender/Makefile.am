@@ -16,7 +16,7 @@ zabbix_sender_LDADD = \
 	$(top_builddir)/src/libs/zbxnix/libzbxnix.a \
 	$(top_builddir)/src/libs/zbxcrypto/libzbxcrypto.a \
 	$(top_builddir)/src/libs/zbxconf/libzbxconf.a \
-	$(top_builddir)/src/libs/zbxcompress/libzbxcompress.a 
+	$(top_builddir)/src/libs/zbxcompress/libzbxcompress.a \
 	$(SENDER_LIBS)
 
 zabbix_sender_LDFLAGS = $(SENDER_LDFLAGS)
