@@ -19,6 +19,6 @@ libzbxalgo_a_SOURCES = \
 	linked_list.c \
 	int128.c \
 	prediction.c \
+	queue.c \
 	vector.c \
-	vectorimpl.h \
-	queue.c
+	vectorimpl.h

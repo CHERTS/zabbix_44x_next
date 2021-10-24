@@ -3,5 +3,5 @@
 noinst_LIBRARIES = libzbxmedia.a
 
 libzbxmedia_a_SOURCES = \
-			email.c \
-			sms.c
+	email.c \
+	sms.c

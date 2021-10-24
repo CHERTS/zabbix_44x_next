@@ -3,10 +3,14 @@
 noinst_LIBRARIES = libzbxembed.a
 
 libzbxembed_a_SOURCES = \
-	embed.c embed.h \
-	httprequest.c httprequest.h \
-	zabbix.c zabbix.h \
-	global.c global.h \
-	duktape.c duktape.h \
-	duk_config.h
-
+	duk_config.h \
+	duktape.c \
+	duktape.h \
+	embed.c \
+	embed.h \
+	global.c \
+	global.h \
+	httprequest.c \
+	httprequest.h \
+	zabbix.c \
+	zabbix.h
