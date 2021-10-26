@@ -4059,7 +4059,7 @@ button.icon-cal[disabled] {
 .multilineinput-modal .multilineinput-textarea::-webkit-scrollbar {
   height: 9px;
 }
-.multilineinput-modal .multilineinput-symbols-remaining {
+.multilineinput-modal .multilineinput-char-count {
   color: #737373;
   float: left;
   line-height: 24px;

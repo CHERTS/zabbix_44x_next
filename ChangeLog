@@ -13,6 +13,7 @@ New features:
 
 Bug fixes:
 ....I..... [ZBX-11764] fixed automake scripts; thanks to Tomasz Kłoczko for the patch (akozlovs)
+..F....... [ZBX-18975] fixed item value being truncated in item test form (agriscenko)
 ........S. [ZBX-19457] fixed failed query when updating application names longer than 255 characters (asestakovs)
 .......PS. [ZBX-19848] fixed vmware perf counters that return percentage values (MVekslers)
 ....I..PS. [ZBX-20001] fixed crash and invalid bytecode error being generated on big-sendian systems when javascript is used; upgraded duktape to version 2.6 (vso)

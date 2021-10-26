@@ -209,7 +209,6 @@ jQuery(document).ready(function($) {
 		placeholder: <?= CJs::encodeJson(_('value')) ?>,
 		value: <?= CJs::encodeJson($data['value']) ?>,
 		monospace_font: false,
-		maxlength: 65535,
 		autofocus: true,
 		readonly: false,
 		grow: 'auto',
@@ -220,7 +219,6 @@ jQuery(document).ready(function($) {
 		placeholder: <?= $data['show_prev'] ? CJs::encodeJson(_('value')) : '""' ?>,
 		value: <?= CJs::encodeJson($data['prev_value']) ?>,
 		monospace_font: false,
-		maxlength: 65535,
 		disabled: <?= $data['show_prev'] ? 'false' : 'true' ?>,
 		grow: 'auto',
 		rows: 0
