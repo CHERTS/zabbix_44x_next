@@ -1489,7 +1489,7 @@ class testGraphWidget extends CWebTest {
 						'fields' => [
 							'Show problems' => true,
 							'Selected items only' => false,
-							'Problem hosts' => ['Simple form test host', 'ЗАББИКС Сервер'],
+							'Problem hosts' => ['Simple form test host'],
 							'Severity' => ['Information', 'Average'],
 							'Problem' => '2_trigger_*',
 							'Tags' => 'Or'
