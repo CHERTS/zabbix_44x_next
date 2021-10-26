@@ -114,6 +114,7 @@ class testGraphWidget extends CWebTest {
 			}
 
 			$this->page->removeFocus();
+			sleep(1);
 			// Collect all screenshot errors.
 			try {
 				$this->assertScreenshotExcept($overlay, [$element], 'tab_'.$tab);
@@ -150,7 +151,7 @@ class testGraphWidget extends CWebTest {
 				$form->selectTab($tab);
 				$this->fillOverrides(CTestArrayHelper::get($data, 'Overrides'));
 
-				// Remove all overide options.
+				// Remove all override options.
 				if (CTestArrayHelper::get($data, 'remove_override_options', false)) {
 					$form->query('xpath://button[@class="subfilter-disable-btn"]')->all()->click();
 				}
@@ -418,7 +419,7 @@ class testGraphWidget extends CWebTest {
 			$data[] = $item;
 		}
 
-		// Add aditional test cases to data provider.
+		// Add additional test cases to data provider.
 		return array_merge($data, [
 			// Empty host and/or item field.
 			[
@@ -523,7 +524,7 @@ class testGraphWidget extends CWebTest {
 				[
 					'Time period' => [
 						'Set custom time period' => true,
-						'From' => '2019-07-31 15:53:07',
+						'From' => '2021-07-04 15:53:07',
 						'To' => ''
 					],
 					'error' => 'Invalid parameter "To": cannot be empty.'
@@ -534,7 +535,7 @@ class testGraphWidget extends CWebTest {
 					'Time period' => [
 						'Set custom time period' => true,
 						'From' => '',
-						'To' => '2019-07-31 15:53:07'
+						'To' => '2021-07-04 15:53:07'
 					],
 					'error' => [
 						'Invalid parameter "From": cannot be empty.',
@@ -548,7 +549,7 @@ class testGraphWidget extends CWebTest {
 					'Time period' => [
 						'Set custom time period' => true,
 						'From' => '1',
-						'To' => '2019-07-31 15:53:07'
+						'To' => '2021-07-04 15:53:07'
 					],
 					'error' => [
 						'Invalid parameter "From": a time range is expected.',
@@ -560,7 +561,7 @@ class testGraphWidget extends CWebTest {
 				[
 					'Time period' => [
 						'Set custom time period' => true,
-						'From' => '2019-07-31 15:53:07',
+						'From' => '2021-07-04 15:53:07',
 						'To' => 'abc'
 					],
 					'error' => 'Invalid parameter "To": a time range is expected.'
@@ -570,8 +571,8 @@ class testGraphWidget extends CWebTest {
 				[
 					'Time period' => [
 						'Set custom time period' => true,
-						'From' => '5:53:06 2019-07-31',
-						'To' => '2019-07-31 15:53:07'
+						'From' => '5:53:06 2021-07-31',
+						'To' => '2021-07-04 15:53:07'
 					],
 					'error' => [
 						'Invalid parameter "From": a time range is expected.',
@@ -583,8 +584,8 @@ class testGraphWidget extends CWebTest {
 				[
 					'Time period' => [
 						'Set custom time period' => true,
-						'From' => '2019-02-30 00:00:00',
-						'To' => '2019-07-31 15:53:07'
+						'From' => '2021-02-30 00:00:00',
+						'To' => '2021-07-04 15:53:07'
 					],
 					'error' => [
 						'Invalid parameter "From": a time range is expected.',
@@ -596,8 +597,8 @@ class testGraphWidget extends CWebTest {
 				[
 					'Time period' => [
 						'Set custom time period' => true,
-						'From' => '2019-05-02 00:00:00',
-						'To' => '2019-25-09 00:00:00'
+						'From' => '2021-05-02 00:00:00',
+						'To' => '2021-25-09 00:00:00'
 					],
 					'error' => 'Invalid parameter "To": a time range is expected.'
 				]
@@ -606,8 +607,8 @@ class testGraphWidget extends CWebTest {
 				[
 					'Time period' => [
 						'Set custom time period' => true,
-						'From' => '2019-05-02 00:00:00',
-						'To' => '2019.07.31 15:53:07'
+						'From' => '2021-05-02 00:00:00',
+						'To' => '2021.07.31 15:53:07'
 					],
 					'error' => 'Invalid parameter "To": a time range is expected.'
 				]
@@ -616,7 +617,7 @@ class testGraphWidget extends CWebTest {
 				[
 					'Time period' => [
 						'Set custom time period' => true,
-						'From' => '2019-07-04 12:53:00',
+						'From' => '2021-07-04 12:53:00',
 						'To' => 'now-s'
 					],
 					'error' => 'Invalid parameter "To": a time range is expected.'
@@ -627,18 +628,8 @@ class testGraphWidget extends CWebTest {
 				[
 					'Time period' => [
 						'Set custom time period' => true,
-						'From' => '2019-07-04 12:53:00',
-						'To' => '2019-07-04 12:52:59'
-					],
-					'error' => 'Minimum time period to display is 1 minute.'
-				]
-			],
-			[
-				[
-					'Time period' => [
-						'Set custom time period' => true,
-						'From' => '2019-07-04 12:53:00',
-						'To' => '2019-07-04 12:52:59'
+						'From' => '2021-07-04 12:53:00',
+						'To' => '2021-07-04 12:52:59'
 					],
 					'error' => 'Minimum time period to display is 1 minute.'
 				]
@@ -1307,7 +1298,7 @@ class testGraphWidget extends CWebTest {
 							'host' => ',Zabbix, Server,',
 							'item' => 'Zabbix configuration cache, % used',
 							'Aggregation function' => 'count',
-							'Aggregation interval' => '24h',
+							'Aggregation interval' => '24h'
 						]
 					],
 					'Overrides' => [
@@ -1332,7 +1323,7 @@ class testGraphWidget extends CWebTest {
 							'options' => [
 								['Draw', 'Bar']
 							]
-						],
+						]
 					],
 					'check_form' => true
 				]
@@ -1441,7 +1432,7 @@ class testGraphWidget extends CWebTest {
 					'check_form' => true
 				]
 			],
-			// All posible fields.
+			// All possible fields.
 			[
 				[
 					'main_fields' => [
@@ -1641,7 +1632,7 @@ class testGraphWidget extends CWebTest {
 							'Missing data' => 'Treat as 0',
 							'Time shift' => '-788400000',
 							'Aggregation function' => 'avg',
-							'Aggregation interval' => '788400000',
+							'Aggregation interval' => '788400000'
 						],
 						[
 							'host' => 'Two host',
@@ -1698,7 +1689,7 @@ class testGraphWidget extends CWebTest {
 							'host' => ',Zabbix, Server,',
 							'item' => 'Zabbix configuration cache, % used',
 							'Aggregation function' => 'count',
-							'Aggregation interval' => '24h',
+							'Aggregation interval' => '24h'
 						]
 					],
 					'Overrides' => [
@@ -1706,7 +1697,7 @@ class testGraphWidget extends CWebTest {
 							'host' => 'Zabbix,Server',
 							'item' => 'Agent,Ping',
 							'options' => [
-								['Point size', '5'],
+								['Point size', '5']
 							]
 						],
 						[
@@ -1723,12 +1714,12 @@ class testGraphWidget extends CWebTest {
 							'options' => [
 								['Draw', 'Bar']
 							]
-						],
+						]
 					],
 					'check_form' => true
 				]
 			],
-			// All posible fields.
+			// All possible fields.
 			[
 				[
 					'main_fields' => [
@@ -1790,7 +1781,7 @@ class testGraphWidget extends CWebTest {
 						'fields' => [
 							'Show problems' => true,
 							'Selected items only' => false,
-							'Problem hosts' => ['ЗАББИКС Сервер', 'Simple form test host'],
+							'Problem hosts' => ['Simple form test host', 'ЗАББИКС Сервер'],
 							'Severity' => ['Information', 'Average'],
 							'Problem' => '2_trigger_*',
 							'Tags' => 'Or'
@@ -1902,7 +1893,6 @@ class testGraphWidget extends CWebTest {
 			switch ($tab) {
 				case 'Problems':
 					$form->fill(CTestArrayHelper::get($data['Problems'], 'fields', []));
-
 					if (array_key_exists('tags', $data['Problems'])) {
 						$this->setFilterSelector('id:tags_table_tags');
 						$this->setTags($data['Problems']['tags']);
@@ -2129,7 +2119,7 @@ class testGraphWidget extends CWebTest {
 			[
 				[
 					'main_fields' => [
-						'Name' => 'Add new graph widget and cancle dashboard update'
+						'Name' => 'Add new graph widget and cancel dashboard update'
 					],
 					'Data set' => [
 						'host' => 'Zabbix*, new widget',
