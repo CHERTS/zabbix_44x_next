@@ -41,7 +41,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 						'Type' => 'Webhook',
 						'Script' => ' '
 					],
-					'error_message' => 'Invalid parameter "/2/script": cannot be empty.'
+					'error_message' => 'Invalid parameter "/1/script": cannot be empty.'
 				]
 			],
 			// Attepmt to add a webhook media type with a name that is already taken.
@@ -80,7 +80,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 							'value' => '{BLANK.NAME}'
 						]
 					],
-					'error_message' => 'Invalid parameter "/2/parameters/5/name": cannot be empty.'
+					'error_message' => 'Invalid parameter "/1/parameters/6/name": cannot be empty.'
 				]
 			],
 			// Attempt to add a webhook without specifying the script field.
@@ -90,7 +90,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 						'Name' => 'Webhook with empty script field',
 						'Type' => 'Webhook'
 					],
-					'error_message' => 'Invalid parameter "/2/script": cannot be empty.'
+					'error_message' => 'Invalid parameter "/1/script": cannot be empty.'
 				]
 			],
 			// Attempt to add a webhook with timeout equal to zero.
@@ -102,7 +102,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 						'Script' => 'Zero timeout',
 						'Timeout' => '0'
 					],
-					'error_message' => 'Invalid parameter "/2/timeout": value must be one of 1-60.'
+					'error_message' => 'Invalid parameter "/1/timeout": value must be one of 1-60.'
 				]
 			],
 			// Attempt to add a webhook with too large timeout.
@@ -114,7 +114,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 						'Script' => 'Large timeout',
 						'Timeout' => '61s'
 					],
-					'error_message' => 'Invalid parameter "/2/timeout": value must be one of 1-60.'
+					'error_message' => 'Invalid parameter "/1/timeout": value must be one of 1-60.'
 				]
 			],
 			// Attempt to add a webhook with too large timeout #2.
@@ -126,7 +126,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 						'Script' => 'Large timeout',
 						'Timeout' => '2m'
 					],
-					'error_message' => 'Invalid parameter "/2/timeout": value must be one of 1-60.'
+					'error_message' => 'Invalid parameter "/1/timeout": value must be one of 1-60.'
 				]
 			],
 			// Attempt to add a webhook with a string in the timeout field.
@@ -138,7 +138,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 						'Script' => 'String in timeout',
 						'Timeout' => '30seconds'
 					],
-					'error_message' => 'Invalid parameter "/2/timeout": a time unit is expected.'
+					'error_message' => 'Invalid parameter "/1/timeout": a time unit is expected.'
 				]
 			],
 			// Attempt to add a webhook with empty menu entry name.
