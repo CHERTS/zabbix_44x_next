@@ -76,8 +76,8 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 					],
 					'parameters' => [
 						[
-							'name' => '',
-							'value' => '{BLANK.NAME}'
+							'Name' => '',
+							'Value' => '{BLANK.NAME}'
 						]
 					],
 					'error_message' => 'Invalid parameter "/1/parameters/6/name": cannot be empty.'
@@ -286,8 +286,8 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 						[
 							'action' => USER_ACTION_UPDATE,
 							'index' => 1,
-							'name' => '',
-							'value' => '{BLANK.NAME}'
+							'Name' => '',
+							'Value' => '{BLANK.NAME}'
 						]
 					],
 					'error_message' => 'Invalid parameter "/1/parameters/2/name": cannot be empty.'
@@ -502,7 +502,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 
 		$this->page->login()->open('zabbix.php?action=mediatype.list');
 		$button = CTestArrayHelper::get($data, 'update', false) ? 'link:Validation webhook' : 'button:Create media type';
-		$this->query($button)->one()->WaitUntilClickable()->click();
+		$this->query($button)->one()->waitUntilClickable()->click();
 		$form = $this->query('id:media_type_form')->asForm()->waitUntilVisible()->one();
 		$form->fill($data['fields']);
 		// Fill webhook parameters if needed.
@@ -583,16 +583,16 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 					'concurrent_sessions' => 'Unlimited',
 					'parameters' => [
 						[
-							'name' => '1st new parameter',
-							'value' => '1st new parameter value'
+							'Name' => '1st new parameter',
+							'Value' => '1st new parameter value'
 						],
 						[
-							'name' => '2nd parameter',
-							'value' => '{2ND.PARAMETER}'
+							'Name' => '2nd parameter',
+							'Value' => '{2ND.PARAMETER}'
 						],
 						[
 							'action' => USER_ACTION_REMOVE,
-							'name' => 'URL'
+							'Name' => 'URL'
 						]
 					]
 				]
@@ -661,24 +661,24 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 					],
 					'parameters' => [
 						[
-							'name' => '1st new parameter',
-							'value' => '{1ST.PARAMETER}'
+							'Name' => '1st new parameter',
+							'Value' => '{1ST.PARAMETER}'
 						],
 						[
 							'action' => USER_ACTION_UPDATE,
 							'index' => 1,
-							'name' => '1st updated parameter',
-							'value' => '1st updated parameter value'
+							'Name' => '1st updated parameter',
+							'Value' => '1st updated parameter value'
 						],
 						[
 							'action' => USER_ACTION_UPDATE,
 							'index' => 2,
-							'name' => '2nd updated parameter',
-							'value' => '{2ND.PARAMETER}'
+							'Name' => '2nd updated parameter',
+							'Value' => '{2ND.PARAMETER}'
 						],
 						[
 							'action' => USER_ACTION_REMOVE,
-							'name' => 'URL'
+							'Name' => 'URL'
 						]
 					]
 				]
@@ -893,12 +893,13 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 	 * the values obtained from the media type configuration form.
 	 */
 	private function checkParameters($data) {
-		// Check creation, update and deletion of webhook parameters, or check that all 4 default prameters are present.
+		// Check creation, update and deletion of webhook parameters, or check that all default parameters are present.
 		$expected_params = [
-			['name' => 'Message', 'value' => '{ALERT.MESSAGE}'],
-			['name' => 'Subject', 'value' => '{ALERT.SUBJECT}'],
-			['name' => 'To', 'value' => '{ALERT.SENDTO}'],
-			['name' => 'URL', 'value' => '']
+			['Name' => 'HTTPProxy', 'Value' => ''],
+			['Name' => 'Message', 'Value' => '{ALERT.MESSAGE}'],
+			['Name' => 'Subject', 'Value' => '{ALERT.SUBJECT}'],
+			['Name' => 'To', 'Value' => '{ALERT.SENDTO}'],
+			['Name' => 'URL', 'Value' => '']
 		];
 		// Add, substitute or remove parameters from the reference array based on parameter actions in data provider.
 		if (CTestArrayHelper::get($data, 'parameters', false)) {
@@ -909,12 +910,12 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 						array_push($expected_params, $parameter);
 						break;
 					case USER_ACTION_UPDATE:
-						$remplacement = [$parameter['index'] => ['name' => $parameter['name'], 'value' => $parameter['value']]];
+						$remplacement = [$parameter['index'] => ['Name' => $parameter['Name'], 'Value' => $parameter['Value']]];
 						$expected_params = array_replace($expected_params, $remplacement);
 						break;
 					case USER_ACTION_REMOVE:
 						$expected_params = array_filter($expected_params, function($p) use ($parameter){
-							return $p['name'] != $parameter['name'];
+							return $p['Name'] != $parameter['Name'];
 						});
 						break;
 				}
@@ -922,7 +923,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 		}
 		// Sort the parameters in reference array alphabetically.
 		usort($expected_params, function ($a, $b) {
-			return strcmp($a['name'], $b['name']);
+			return strcmp($a['Name'], $b['Name']);
 		});
 		// If parameters were not deleted from the media type, compare them with the reference array.
 		$this->assertValues((CTestArrayHelper::get($data, 'remove_parameters', false)) ? [] : $expected_params);
