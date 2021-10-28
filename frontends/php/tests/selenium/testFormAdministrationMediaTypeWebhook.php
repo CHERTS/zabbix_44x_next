@@ -822,29 +822,9 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 	}
 
 	/**
-	 * Get table element with mapping set.
-	 */
-	protected function getTable() {
-		return $this->query('id:parameters_table')->asMultifieldTable([
-			'mapping' => [
-				'Name' => [
-					'name' => 'name',
-					'selector' => 'xpath:./input',
-					'class' => 'CElement'
-				],
-				'Value' => [
-					'name' => 'value',
-					'selector' => 'xpath:./input',
-					'class' => 'CElement'
-				]
-			]
-		])->one();
-	}
-
-	/**
-	 * Function used to popullate fields located in the Operations tab.
+	 * Function used to populate fields located in the Operations tab.
 	 * Field concurrent sessions has two input elelents - one of them is displayed only if concurrent sessions = Custom.
-	 * Therefore, fill() method cannot be used for this field, and it needs to be popullated separately.
+	 * Therefore, fill() method cannot be used for this field, and it needs to be populated separately.
 	 */
 	private function fillOperationsTab($data, $form) {
 		if (CTestArrayHelper::get($data, 'options', false)) {
