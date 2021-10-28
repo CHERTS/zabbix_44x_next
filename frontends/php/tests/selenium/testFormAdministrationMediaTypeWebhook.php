@@ -19,14 +19,11 @@
 **/
 
 require_once dirname(__FILE__).'/../include/CWebTest.php';
-require_once dirname(__FILE__).'/traits/FormParametersTrait.php';
 
 /**
  * @backup media_type
  */
 class testFormAdministrationMediaTypeWebhook extends CWebTest {
-
-	use FormParametersTrait;
 
 	// SQL query to get media_type and media_type_param tables to compare hash values.
 	private $sql = 'SELECT * FROM media_type mt INNER JOIN media_type_param mtp ON mt.mediatypeid=mtp.mediatypeid';
@@ -507,7 +504,7 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 		$form->fill($data['fields']);
 		// Fill webhook parameters if needed.
 		if (array_key_exists('parameters', $data)) {
-			$this->fillParameters($data['parameters']);
+			$this->query('id:parameters_table')->asMultifieldTable()->one()->fill($data['parameters']);
 		}
 		// Fill fields in Operations tab if needed.
 		if (CTestArrayHelper::get($data, 'options', false) || CTestArrayHelper::get($data, 'concurrent_sessions', false)) {
@@ -700,11 +697,11 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 		$form->fill($data['fields']);
 		// Fill webhook parameters if needed.
 		if (array_key_exists('parameters', $data)) {
-			$this->fillParameters($data['parameters']);
+			$this->query('id:parameters_table')->asMultifieldTable()->one()->fill($data['parameters']);
 		}
 		// Remove all parameters if corresponding flag exists.
 		if (array_key_exists('remove_parameters', $data)) {
-			$this->removeParameters();
+			$this->query('id:parameters_table')->asMultifieldTable()->one()->clear();
 		}
 		// Fill fields in Operations tab if needed.
 		if (CTestArrayHelper::get($data, 'options', false) || CTestArrayHelper::get($data, 'concurrent_sessions', false)) {
@@ -926,7 +923,9 @@ class testFormAdministrationMediaTypeWebhook extends CWebTest {
 			return strcmp($a['Name'], $b['Name']);
 		});
 		// If parameters were not deleted from the media type, compare them with the reference array.
-		$this->assertValues((CTestArrayHelper::get($data, 'remove_parameters', false)) ? [] : $expected_params);
+		$this->query('id:parameters_table')->asMultifieldTable()->one()->checkValue(
+				(CTestArrayHelper::get($data, 'remove_parameters', false)) ? [] : $expected_params
+		);
 	}
 
 	/**
