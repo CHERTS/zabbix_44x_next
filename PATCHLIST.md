@@ -276,6 +276,7 @@
 [ZBXNEXT-6596] added native linux proc.num support plugin to Zabbix agent 2 (https://support.zabbix.com/browse/ZBXNEXT-6596)
 [ZBXNEXT-6608] added support for vmware key named 'vmware.hv.sensors.get' (https://support.zabbix.com/browse/ZBXNEXT-6608)
 [ZBXNEXT-6644] added support for vmware key named 'vmware.hv.maintenance' (https://support.zabbix.com/browse/ZBXNEXT-6644)
+[ZBXNEXT-6651] added new item agent.variant for Agent and Agent2 (https://support.zabbix.com/browse/ZBXNEXT-6651)
 [ZBXNEXT-6662] increased field size to 2000 characters in web scenario variables and web scenario step variables and post fields (https://support.zabbix.com/browse/ZBXNEXT-6662)
 [ZBXNEXT-6784] removed item being unsupported when swap is not configured (https://support.zabbix.com/browse/ZBXNEXT-6784)
 [ZBXNEXT-6809] changed behavior of the vmware event log, the 'skip' option of the new item resets the VMware event cache (https://support.zabbix.com/browse/ZBXNEXT-6809)
