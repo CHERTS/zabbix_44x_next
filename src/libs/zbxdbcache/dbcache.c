@@ -1917,7 +1917,7 @@ static void	normalize_item_value(const DC_ITEM *item, ZBX_DC_HISTORY *hdata)
  * Comments: Will generate internal events when item state switches.          *
  *                                                                            *
  ******************************************************************************/
-static zbx_item_diff_t	*calculate_item_update(const DC_ITEM *item, const ZBX_DC_HISTORY *h)
+static zbx_item_diff_t	*calculate_item_update(DC_ITEM *item, const ZBX_DC_HISTORY *h)
 {
 	zbx_uint64_t	flags = ZBX_FLAGS_ITEM_DIFF_UPDATE_LASTCLOCK;
 	const char	*item_error = NULL;
@@ -1983,7 +1983,10 @@ static zbx_item_diff_t	*calculate_item_update(const DC_ITEM *item, const ZBX_DC_
 		diff->mtime = h->mtime;
 
 	if (0 != (ZBX_FLAGS_ITEM_DIFF_UPDATE_STATE & flags))
+	{
 		diff->state = h->state;
+		item->state = h->state;
+	}
 
 	if (0 != (ZBX_FLAGS_ITEM_DIFF_UPDATE_ERROR & flags))
 		diff->error = item_error;
@@ -2469,7 +2472,7 @@ static void	DCmass_proxy_add_history(ZBX_DC_HISTORY *history, int history_num)
  *                                                                            *
  ******************************************************************************/
 static void	DCmass_prepare_history(ZBX_DC_HISTORY *history, const zbx_vector_uint64_t *itemids,
-		const DC_ITEM *items, const int *errcodes, int history_num, zbx_vector_ptr_t *item_diff,
+		DC_ITEM *items, const int *errcodes, int history_num, zbx_vector_ptr_t *item_diff,
 		zbx_vector_ptr_t *inventory_values)
 {
 	int	i;
@@ -2482,7 +2485,7 @@ static void	DCmass_prepare_history(ZBX_DC_HISTORY *history, const zbx_vector_uin
 	for (i = 0; i < history_num; i++)
 	{
 		ZBX_DC_HISTORY	*h = &history[i];
-		const DC_ITEM	*item;
+		DC_ITEM		*item;
 		zbx_item_diff_t	*diff;
 		int		index;
 
@@ -2538,6 +2541,7 @@ static void	DCmass_prepare_history(ZBX_DC_HISTORY *history, const zbx_vector_uin
 
 		normalize_item_value(item, h);
 
+		/* calculate item update and update already retrieved item status for trigger calculation */
 		diff = calculate_item_update(item, h);
 		zbx_vector_ptr_append(item_diff, diff);
 		DCinventory_value_add(inventory_values, item, h);
