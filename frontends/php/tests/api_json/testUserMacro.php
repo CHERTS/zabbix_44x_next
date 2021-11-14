@@ -87,7 +87,7 @@ class testUserMacro extends CAPITest {
 				'globalmacro' => [
 					'macro' => '{$HOSTID}',
 					'value' => 'test',
-					'hostid ' => '100084'
+					'hostid' => '100084'
 				],
 				'expected_error' => 'Invalid parameter "/1": unexpected parameter "hostid ".'
 			],
