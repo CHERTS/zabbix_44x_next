@@ -92,7 +92,7 @@ class CHostInterface extends CApiService {
 
 			$sqlParts['where'][] = 'EXISTS ('.
 				'SELECT NULL'.
-				' FROM hosts_groups hgg'.
+				' FROM interface hi,hosts_groups hgg'.
 					' JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
