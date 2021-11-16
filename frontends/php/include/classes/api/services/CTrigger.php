@@ -125,7 +125,7 @@ class CTrigger extends CTriggerGeneral {
 
 			$sqlParts['where'][] = 'EXISTS ('.
 				'SELECT NULL'.
-				' FROM functions f,items i,hosts_groups hgg'.
+				' FROM triggers t,functions f,items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
