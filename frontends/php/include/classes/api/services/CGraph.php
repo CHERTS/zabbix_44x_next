@@ -133,7 +133,7 @@ class CGraph extends CGraphGeneral {
 			// check permissions by Y max item
 			$sqlParts['where'][] = 'NOT EXISTS ('.
 				'SELECT NULL'.
-				' FROM items i,hosts_groups hgg'.
+				' FROM graphs g,items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
