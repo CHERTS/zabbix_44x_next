@@ -126,7 +126,7 @@ class CItemPrototype extends CItemGeneral {
 
 			$sqlParts['where'][] = 'EXISTS ('.
 					'SELECT NULL'.
-					' FROM hosts_groups hgg'.
+					' FROM items i, hosts_groups hgg'.
 						' JOIN rights r'.
 							' ON r.id=hgg.groupid'.
 								' AND '.dbConditionInt('r.groupid', $userGroups).
