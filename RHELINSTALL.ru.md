@@ -233,7 +233,6 @@ systemctl start httpd.service
 
 Если будет использоваться веб-сервер Nginx + PHP-FPM, то выполните
 ~~~~
-dnf install epel-release
 dnf install nginx
 dnf install zabbix-web-mysql zabbix-nginx-conf
 systemctl enable nginx.service
