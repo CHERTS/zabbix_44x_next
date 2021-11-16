@@ -103,7 +103,7 @@ allow zabbix_t zabbix_var_run_t:sock_file unlink;
 EOF
 )>/root/zabbixserver.te
 
-semodule -r zabbixserver
+semodule -r zabbixserver 2>/dev/null
 rm -f /root/zabbixserver.mod /root/zabbixserver.pp
 checkmodule -M -m -o /root/zabbixserver.mod /root/zabbixserver.te
 semodule_package -o /root/zabbixserver.pp -m /root/zabbixserver.mod
@@ -279,7 +279,7 @@ allow zabbix_t zabbix_var_run_t:sock_file unlink;
 EOF
 )>/root/zabbixserver.te
 
-semodule -r zabbixserver
+semodule -r zabbixserver 2>/dev/null
 rm -f /root/zabbixserver.mod /root/zabbixserver.pp
 checkmodule -M -m -o /root/zabbixserver.mod /root/zabbixserver.te
 semodule_package -o /root/zabbixserver.pp -m /root/zabbixserver.mod
