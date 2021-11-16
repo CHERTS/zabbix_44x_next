@@ -343,7 +343,7 @@ systemctl enable zabbix-server zabbix-agent
 systemctl restart zabbix-server zabbix-agent
 ~~~~
 
-### 9. Настройка nginx (если используется он)
+### 8. Настройка nginx (если используется он)
 
 Отредактируйте файл/etc/nginx/conf.d/zabbix.conf
 
@@ -354,7 +354,7 @@ systemctl restart zabbix-server zabbix-agent
 nginx -t && nginx -s reload
 ~~~~
 
-### 10. Настройте веб-интерфейс Zabbix
+### 9. Настройте веб-интерфейс Zabbix
 
 Откройте в веб-браузере интерфейс Zabbix: http://server_ip_or_name или http://server_ip_or_name/zabbix
 
