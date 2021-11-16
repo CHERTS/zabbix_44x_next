@@ -24,10 +24,16 @@ yum-config-manager --enable ol7_developer_EPEL
 yum-config-manager --enable rhel-7-server-optional-rpms
 ~~~~
 
+Если Вы используете CentOS 7, то устанавливаем репозиторий EPEL
+
+~~~~
+yum localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+~~~~
+
 Установка репозитория DBService
 
 ~~~~
-rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/7/x86_64/dbs-release-4.4-1.el7.noarch.rpm
+yum localinstall https://repo.dbservice.tech/zabbix/4.4/rhel/7/x86_64/dbs-release-4.4-1.el7.noarch.rpm
 yum clean all
 yum makecache fast
 ~~~~
@@ -199,10 +205,11 @@ systemctl restart zabbix-server zabbix-agent
 # RedHat 8
 ## Новая устанока из пакетов для RedHat / CentOS / Oracle Linux 8
 
-### 1. Установка репозитория DBService
+### 1. Установка репозитория DBService и EPEL
 
 ~~~~
-rpm -Uvh https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.el8.noarch.rpm
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf install https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.el8.noarch.rpm
 dnf clean all
 dnf makecache
 ~~~~
