@@ -343,8 +343,19 @@ systemctl enable zabbix-server zabbix-agent
 systemctl restart zabbix-server zabbix-agent
 ~~~~
 
-### 8. Настройте веб-интерфейс Zabbix
+### 9. Настройка nginx (если используется он)
 
-Откройте в веб-браузере интерфейс Zabbix: http://server_ip_or_name/zabbix
+Отредактируйте файл/etc/nginx/conf.d/zabbix.conf
+
+Раскоментируйте параметры listen и server_name, в server_name пропишите ваш домен где будет веб-интерфейс Zabbix.
+
+Далее выполните
+~~~~
+nginx -t && nginx -s reload
+~~~~
+
+### 10. Настройте веб-интерфейс Zabbix
+
+Откройте в веб-браузере интерфейс Zabbix: http://server_ip_or_name или http://server_ip_or_name/zabbix
 
 Настройте веб-интерфейс по официальной документации: [Установка веб-интерфейса](https://www.zabbix.com/documentation/4.4/ru/manual/installation/install#%D1%83%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_%D0%B2%D0%B5%D0%B1-%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%D0%B0_zabbix)

@@ -338,8 +338,19 @@ systemctl enable zabbix-server zabbix-agent
 systemctl restart zabbix-server zabbix-agent
 ~~~~
 
-### 8. Configure Zabbix frontend
+### 8. Configure nginx (if use)
 
-Connect to your newly installed Zabbix frontend: http://server_ip_or_name/zabbix
+Edit file файл/etc/nginx/conf.d/zabbix.conf
+
+Uncomment the listen and server_name parameters, in server_name write your domain where the Zabbix frontend will be.
+
+Next run
+~~~~
+nginx -t && nginx -s reload
+~~~~
+
+### 9. Configure Zabbix frontend
+
+Connect to your newly installed Zabbix frontend: http://server_ip_or_name OR http://server_ip_or_name/zabbix
 
 Follow steps described in official Zabbix documentation: [Installing frontend](https://www.zabbix.com/documentation/4.4/manual/installation/install#installing_frontend)
