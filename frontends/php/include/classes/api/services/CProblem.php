@@ -123,9 +123,9 @@ class CProblem extends CApiService {
 							' AND f.itemid=i.itemid'.
 							' AND i.hostid=hgg.hostid'.
 						' GROUP BY i.hostid'.
-						' HAVING MAX(permission)<'.($options['editable'] ? PERM_READ_WRITE : PERM_READ).
-							' OR MIN(permission) IS NULL'.
-							' OR MIN(permission)='.PERM_DENY.
+						' HAVING MAX(r.permission)<'.($options['editable'] ? PERM_READ_WRITE : PERM_READ).
+							' OR MIN(r.permission) IS NULL'.
+							' OR MIN(r.permission)='.PERM_DENY.
 					')';
 				}
 

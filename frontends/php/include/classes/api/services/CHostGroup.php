@@ -101,7 +101,7 @@ class CHostGroup extends CApiService {
 
 			$sqlParts['where'][] = 'EXISTS ('.
 				'SELECT NULL'.
-				' FROM rights r'.
+				' FROM hstgrp g,rights r'.
 				' WHERE g.groupid=r.id'.
 					' AND '.dbConditionInt('r.groupid', $userGroups).
 				' GROUP BY r.id'.

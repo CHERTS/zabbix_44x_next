@@ -110,9 +110,9 @@ class CGraphPrototype extends CGraphGeneral {
 					' AND gi.itemid=i.itemid'.
 					' AND i.hostid=hgg.hostid'.
 				' GROUP BY i.hostid'.
-				' HAVING MAX(permission)<'.zbx_dbstr($permission).
-					' OR MIN(permission) IS NULL'.
-					' OR MIN(permission)='.PERM_DENY.
+				' HAVING MAX(r.permission)<'.zbx_dbstr($permission).
+					' OR MIN(r.permission) IS NULL'.
+					' OR MIN(r.permission)='.PERM_DENY.
 				')';
 			// check permissions by Y min item
 			$sqlParts['where'][] = 'NOT EXISTS ('.
@@ -125,9 +125,9 @@ class CGraphPrototype extends CGraphGeneral {
 					' AND g.ymin_itemid=i.itemid'.
 					' AND i.hostid=hgg.hostid'.
 				' GROUP BY i.hostid'.
-				' HAVING MAX(permission)<'.$permission.
-					' OR MIN(permission) IS NULL'.
-					' OR MIN(permission)='.PERM_DENY.
+				' HAVING MAX(r.permission)<'.$permission.
+					' OR MIN(r.permission) IS NULL'.
+					' OR MIN(r.permission)='.PERM_DENY.
 				')';
 			// check permissions by Y max item
 			$sqlParts['where'][] = 'NOT EXISTS ('.
@@ -140,9 +140,9 @@ class CGraphPrototype extends CGraphGeneral {
 					' AND g.ymax_itemid=i.itemid'.
 					' AND i.hostid=hgg.hostid'.
 				' GROUP BY i.hostid'.
-				' HAVING MAX(permission)<'.$permission.
-					' OR MIN(permission) IS NULL'.
-					' OR MIN(permission)='.PERM_DENY.
+				' HAVING MAX(r.permission)<'.$permission.
+					' OR MIN(r.permission) IS NULL'.
+					' OR MIN(r.permission)='.PERM_DENY.
 				')';
 		}
 

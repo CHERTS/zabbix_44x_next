@@ -148,7 +148,7 @@ class CHost extends CHostGeneral {
 
 			$sqlParts['where'][] = 'EXISTS ('.
 					'SELECT NULL'.
-					' FROM hosts_groups hgg'.
+					' FROM hosts h,hosts_groups hgg'.
 						' JOIN rights r'.
 							' ON r.id=hgg.groupid'.
 								' AND '.dbConditionInt('r.groupid', $userGroups).
