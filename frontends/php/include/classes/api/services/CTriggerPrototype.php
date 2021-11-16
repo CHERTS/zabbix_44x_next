@@ -100,7 +100,7 @@ class CTriggerPrototype extends CTriggerGeneral {
 
 			$sqlParts['where'][] = 'NOT EXISTS ('.
 				'SELECT NULL'.
-				' FROM triggers t,functions f,items i,hosts_groups hgg'.
+				' FROM functions f,items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
@@ -108,9 +108,9 @@ class CTriggerPrototype extends CTriggerGeneral {
 					' AND f.itemid=i.itemid'.
 					' AND i.hostid=hgg.hostid'.
 				' GROUP BY i.hostid'.
-				' HAVING MAX(r.permission)<'.zbx_dbstr($permission).
-					' OR MIN(r.permission) IS NULL'.
-					' OR MIN(r.permission)='.PERM_DENY.
+				' HAVING MAX(permission)<'.zbx_dbstr($permission).
+					' OR MIN(permission) IS NULL'.
+					' OR MIN(permission)='.PERM_DENY.
 			')';
 		}
 

@@ -103,7 +103,7 @@ class CGraph extends CGraphGeneral {
 			// check permissions by graph items
 			$sqlParts['where'][] = 'NOT EXISTS ('.
 				'SELECT NULL'.
-				' FROM graphs g,graphs_items gi,items i,hosts_groups hgg'.
+				' FROM graphs_items gi,items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
@@ -111,14 +111,14 @@ class CGraph extends CGraphGeneral {
 					' AND gi.itemid=i.itemid'.
 					' AND i.hostid=hgg.hostid'.
 				' GROUP BY i.hostid'.
-				' HAVING MAX(r.permission)<'.zbx_dbstr($permission).
-					' OR MIN(r.permission) IS NULL'.
-					' OR MIN(r.permission)='.PERM_DENY.
+				' HAVING MAX(permission)<'.zbx_dbstr($permission).
+					' OR MIN(permission) IS NULL'.
+					' OR MIN(permission)='.PERM_DENY.
 				')';
 			// check permissions by Y min item
 			$sqlParts['where'][] = 'NOT EXISTS ('.
 				'SELECT NULL'.
-				' FROM graphs g,items i,hosts_groups hgg'.
+				' FROM items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
@@ -126,14 +126,14 @@ class CGraph extends CGraphGeneral {
 					' AND g.ymin_itemid=i.itemid'.
 					' AND i.hostid=hgg.hostid'.
 				' GROUP BY i.hostid'.
-				' HAVING MAX(r.permission)<'.zbx_dbstr($permission).
-					' OR MIN(r.permission) IS NULL'.
-					' OR MIN(r.permission)='.PERM_DENY.
+				' HAVING MAX(permission)<'.zbx_dbstr($permission).
+					' OR MIN(permission) IS NULL'.
+					' OR MIN(permission)='.PERM_DENY.
 				')';
 			// check permissions by Y max item
 			$sqlParts['where'][] = 'NOT EXISTS ('.
 				'SELECT NULL'.
-				' FROM graphs g,items i,hosts_groups hgg'.
+				' FROM items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
@@ -141,9 +141,9 @@ class CGraph extends CGraphGeneral {
 					' AND g.ymax_itemid=i.itemid'.
 					' AND i.hostid=hgg.hostid'.
 				' GROUP BY i.hostid'.
-				' HAVING MAX(r.permission)<'.zbx_dbstr($permission).
-					' OR MIN(r.permission) IS NULL'.
-					' OR MIN(r.permission)='.PERM_DENY.
+				' HAVING MAX(permission)<'.zbx_dbstr($permission).
+					' OR MIN(permission) IS NULL'.
+					' OR MIN(permission)='.PERM_DENY.
 				')';
 		}
 

@@ -97,7 +97,7 @@ class CApplication extends CApiService {
 
 			$sqlParts['where'][] = 'EXISTS ('.
 					'SELECT NULL'.
-					' FROM applications a,hosts_groups hgg'.
+					' FROM hosts_groups hgg'.
 						' JOIN rights r'.
 							' ON r.id=hgg.groupid'.
 								' AND '.dbConditionInt('r.groupid', $userGroups).
