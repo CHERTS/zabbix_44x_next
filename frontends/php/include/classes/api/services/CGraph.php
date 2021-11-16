@@ -103,7 +103,7 @@ class CGraph extends CGraphGeneral {
 			// check permissions by graph items
 			$sqlParts['where'][] = 'NOT EXISTS ('.
 				'SELECT NULL'.
-				' FROM graphs_items gi,items i,hosts_groups hgg'.
+				' FROM graphs g,graphs_items gi,items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
@@ -118,7 +118,7 @@ class CGraph extends CGraphGeneral {
 			// check permissions by Y min item
 			$sqlParts['where'][] = 'NOT EXISTS ('.
 				'SELECT NULL'.
-				' FROM items i,hosts_groups hgg'.
+				' FROM graphs g,items i,hosts_groups hgg'.
 					' LEFT JOIN rights r'.
 						' ON r.id=hgg.groupid'.
 							' AND '.dbConditionInt('r.groupid', $userGroups).
