@@ -319,15 +319,28 @@ DBPassword=password
 
 ### 6. Configure PHP for Zabbix frontend
 
-Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for you.
+If use Nginx + PHP-FPM:
+
+Edit file /etc/php-fpm.d/zabbix.conf, uncomment and set the right timezone for you
 ~~~~
-; php_value[date.timezone] = Europe/Riga
+php_value[date.timezone] = Europe/Riga
 ~~~~
 
-Start php-fpm processes and make it start at system boot.
+Start php-fpm processes and make it start at system boot
 ~~~~
 systemctl enable php-fpm
 systemctl start php-fpm
+~~~~
+
+Edit Nginx config file /etc/nginx/conf.d/zabbix.conf and change listen and server_name settings
+~~~~
+listen          80;
+server_name     <enter your domain>;
+~~~~
+
+Restart Nginx web-server
+~~~~
+nginx -t && nginx -s reload
 ~~~~
 
 ### 7. Start Zabbix server and agent processes
@@ -338,18 +351,7 @@ systemctl enable zabbix-server zabbix-agent
 systemctl restart zabbix-server zabbix-agent
 ~~~~
 
-### 8. Configure nginx (if use)
-
-Edit file файл/etc/nginx/conf.d/zabbix.conf
-
-Uncomment the listen and server_name parameters, in server_name write your domain where the Zabbix frontend will be.
-
-Next run
-~~~~
-nginx -t && nginx -s reload
-~~~~
-
-### 9. Configure Zabbix frontend
+### 8. Configure Zabbix frontend
 
 Connect to your newly installed Zabbix frontend: http://server_ip_or_name OR http://server_ip_or_name/zabbix
 

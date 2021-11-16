@@ -324,15 +324,28 @@ DBPassword=password
 
 ### 6. Настройка PHP для работы веб-интерфейса Zabbix
 
-Отредактируйте файл /etc/php-fpm.d/zabbix.conf (раскоментируйте параметр отвечающий за временную зону, укажите свою зону)
+Если будет использоваться веб-сервер Nginx с PHP-FPM, то
+
+а) Отредактируйте файл /etc/php-fpm.d/zabbix.conf (раскоментируйте параметр отвечающий за временную зону, укажите свою зону)
 ~~~~
 php_value[date.timezone] = Europe/Riga
 ~~~~
 
-Запустите php-fpm, выполните
+б) Запустите php-fpm, выполните
 ~~~~
 systemctl enable php-fpm
 systemctl start php-fpm
+~~~~
+
+в) Отредактируйте файл /etc/nginx/conf.d/zabbix.conf (уберите коментарий из директив listen и server_name, введите свои данные)
+~~~~
+listen          80;
+server_name     <enter your domain>;
+~~~~
+
+г) Перезапустите Nginx
+~~~~
+nginx -t && nginx -s reload
 ~~~~
 
 ### 7. Запуск Zabbix server и agent
@@ -343,18 +356,7 @@ systemctl enable zabbix-server zabbix-agent
 systemctl restart zabbix-server zabbix-agent
 ~~~~
 
-### 8. Настройка nginx (если используется он)
-
-Отредактируйте файл/etc/nginx/conf.d/zabbix.conf
-
-Раскоментируйте параметры listen и server_name, в server_name пропишите ваш домен где будет веб-интерфейс Zabbix.
-
-Далее выполните
-~~~~
-nginx -t && nginx -s reload
-~~~~
-
-### 9. Настройте веб-интерфейс Zabbix
+### 8. Настройте веб-интерфейс Zabbix
 
 Откройте в веб-браузере интерфейс Zabbix: http://server_ip_or_name или http://server_ip_or_name/zabbix
 
