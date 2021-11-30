@@ -6139,11 +6139,12 @@ static void	substitute_macros_in_xml_elements(const DC_ITEM *item, const struct 
 				}
 				else
 				{
-					substitute_lld_macros(&value_tmp, jp_row, lld_macro_paths, ZBX_MACRO_XML, NULL,
+					substitute_lld_macros(&value_tmp, jp_row, lld_macro_paths, ZBX_MACRO_ANY, NULL,
 							0);
 				}
 
-				xmlNodeSetContent(node, (xmlChar *)value_tmp);
+				xmlNodeSetContent(node, NULL);
+				xmlNodeAddContent(node, (xmlChar *)value_tmp);
 
 				zbx_free(value_tmp);
 				xmlFree(value);
@@ -6165,7 +6166,8 @@ static void	substitute_macros_in_xml_elements(const DC_ITEM *item, const struct 
 							0);
 				}
 
-				xmlNodeSetContent(node, (xmlChar *)value_tmp);
+				xmlNodeSetContent(node, NULL);
+				xmlNodeAddContent(node, (xmlChar *)value_tmp);
 
 				zbx_free(value_tmp);
 				xmlFree(value);
@@ -6185,8 +6187,10 @@ static void	substitute_macros_in_xml_elements(const DC_ITEM *item, const struct 
 								NULL, 0);
 					}
 					else
+					{
 						substitute_lld_macros(&value_tmp, jp_row, lld_macro_paths,
-								ZBX_MACRO_XML, NULL, 0);
+								ZBX_MACRO_ANY, NULL, 0);
+					}
 
 					xmlSetProp(node, attr->name, (xmlChar *)value_tmp);
 
