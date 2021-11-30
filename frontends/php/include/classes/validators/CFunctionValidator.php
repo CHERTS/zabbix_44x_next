@@ -111,14 +111,6 @@ class CFunctionValidator extends CValidator {
 				'args' => $argsIgnored,
 				'value_types' => $valueTypesAll
 			],
-			'changecount' => [
-				'args' => [
-					['type' => 'sec_num', 'mandat' => true],
-					['type' => 'sec_zero', 'can_be_empty' => true],
-					['type' => 'changecount_mode', 'can_be_empty' => true]
-				],
-				'value_types' => $valueTypesAll
-			],
 			'count' => [
 				'args' => [
 					['type' => 'sec_num', 'mandat' => true],
@@ -404,9 +396,6 @@ class CFunctionValidator extends CValidator {
 			case 'mode':
 				return $this->validateMode($param);
 
-			case 'changecount_mode':
-				return $this->validateChangeCountMode($param);
-
 			case 'percent':
 				return $this->validatePercent($param);
 
@@ -530,18 +519,6 @@ class CFunctionValidator extends CValidator {
 	 */
 	private function validateMode($param) {
 		return preg_match('/^(value|max|min|delta|avg|)$/', $param);
-	}
-
-	/**
-	 * Validate changecount trigger function parameter which can contain mode (inc, dec, all) or
-	 * an empty value.
-	 *
-	 * @param string $param
-	 *
-	 * @return bool
-	 */
-	private function validateChangeCountMode($param) {
-		return preg_match('/^(inc|dec|all|)$/', $param);
 	}
 
 	/**

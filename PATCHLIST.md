@@ -286,7 +286,6 @@
 [ZBXNEXT-6708] fixed 3rd parameter for Zabbix agent 2 web.certificate.get plugin (https://support.zabbix.com/browse/ZBXNEXT-6708)
 [ZBXNEXT-6784] removed item being unsupported when swap is not configured (https://support.zabbix.com/browse/ZBXNEXT-6784)
 [ZBXNEXT-6809] changed behavior of the vmware event log, the 'skip' option of the new item resets the VMware event cache (https://support.zabbix.com/browse/ZBXNEXT-6809)
-[ZBXNEXT-6950] implemented changecount() trigger function (https://support.zabbix.com/browse/ZBXNEXT-6950)
 ~~~~
 
 # List of my patches (English)
