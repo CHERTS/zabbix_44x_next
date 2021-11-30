@@ -1980,6 +1980,7 @@ function get_item_function_info($expr) {
 		'band' => $rules['integer'],
 		'change' => $rules['numeric'] + $rules['string_as_0or1'],
 		'count' => $rules['numeric_as_uint'] + $rules['string_as_uint'],
+		'changecount' => $rules['numeric_as_uint'] + $rules['string_as_uint'],
 		'date' => $rules['date'],
 		'dayofmonth' => $rules['day_of_month'],
 		'dayofweek' => $rules['day_of_week'],

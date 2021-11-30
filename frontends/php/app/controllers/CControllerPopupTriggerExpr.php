@@ -27,6 +27,7 @@ class CControllerPopupTriggerExpr extends CController {
 	private $param2SecCount = [];
 	private $param3SecVal = [];
 	private $param3SecPercent = [];
+	private $param2SecCountMode = [];
 	private $paramSecIntCount = [];
 	private $paramForecast = [];
 	private $paramTimeleft = [];
@@ -116,6 +117,25 @@ class CControllerPopupTriggerExpr extends CController {
 			'shift' => [
 				'C' => _('Time shift'),
 				'T' => T_ZBX_INT,
+				'A' => false
+			]
+		];
+
+		$this->param2SecCountMode = [
+			'last' => [
+				'C' => _('Last of').' (T)',
+				'T' => T_ZBX_INT,
+				'M' => $this->metrics,
+				'A' => true
+			],
+			'shift' => [
+				'C' => _('Time shift'),
+				'T' => T_ZBX_INT,
+				'A' => false
+			],
+			'mode' => [
+				'C' => 'Mode',
+				'T' => T_ZBX_STR,
 				'A' => false
 			]
 		];
@@ -258,6 +278,12 @@ class CControllerPopupTriggerExpr extends CController {
 			],
 			'change' => [
 				'description' => _('change() - Difference between last and previous value'),
+				'allowed_types' => $this->allowedTypesAny,
+				'operators' => ['=', '<>', '>', '<', '>=', '<=']
+			],
+			'changecount' => [
+				'description' => _('changecount() - Number of changes between adjacent values, Mode (all - all changes, inc - only increases, dec - only decreases)'),
+				'params' => $this->param2SecCountMode,
 				'allowed_types' => $this->allowedTypesAny,
 				'operators' => ['=', '<>', '>', '<', '>=', '<=']
 			],
