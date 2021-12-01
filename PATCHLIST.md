@@ -214,6 +214,7 @@
 [ZBX-20065] fixed count() function gt,ge,lt,le operations (https://support.zabbix.com/browse/ZBX-20065)
 [ZBX-20097] added celsius support to vmware unitInfo (https://support.zabbix.com/browse/ZBX-20097)
 [ZBX-20176] fixed trigger not being calculated for first value when item changes state to supported; fixed build failure when DES is disabled in Net-SNMP; fixed tests on big-endian systems (https://support.zabbix.com/browse/ZBX-20076)
+[ZBX-20192] fixed quote expansion in command execution in agent2 on windows (https://support.zabbix.com/browse/ZBX-20192)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)

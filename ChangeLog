@@ -6,6 +6,7 @@ New features:
 Bug fixes:
 ..F....... [ZBX-18611] fixed division by zero error due to small graph size when using gradient lines (Ivo)
 ........S. [ZBX-19872] removed redundant escaping in XML data of HTTP agent POST request (asestakovs)
+...G...... [ZBX-20192] fixed quote expansion in command execution in agent2 on windows (dgoloscapov)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.25
