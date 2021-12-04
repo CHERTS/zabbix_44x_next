@@ -2,6 +2,7 @@ Changes for 4.4.26rc1
 
 New features:
 ...G...... [ZBXNEXT-6708] fixed 3rd parameter for Zabbix agent 2 web.certificate.get plugin (esneiders)
+...G...... [ZBXNEXT-6782] added new parameters for system.hostname (dgoloscapov)
 
 Bug fixes:
 ..F....... [ZBX-18611] fixed division by zero error due to small graph size when using gradient lines (Ivo)
