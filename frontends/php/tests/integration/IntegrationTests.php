@@ -22,6 +22,8 @@ require_once dirname(__FILE__).'/testDataCollection.php';
 require_once dirname(__FILE__).'/testLowLevelDiscovery.php';
 require_once dirname(__FILE__).'/testGoAgentDataCollection.php';
 require_once dirname(__FILE__).'/testItemState.php';
+require_once dirname(__FILE__).'/testEscalations.php';
+require_once dirname(__FILE__).'/testTriggerState.php';
 
 class IntegrationTests {
 	public static function suite() {
@@ -30,6 +32,8 @@ class IntegrationTests {
 		$suite->addTestSuite('testLowLevelDiscovery');
 		$suite->addTestSuite('testGoAgentDataCollection');
 		$suite->addTestSuite('testItemState');
+		$suite->addTestSuite('testEscalations');
+		$suite->addTestSuite('testTriggerState');
 
 		return $suite;
 	}
