@@ -8,6 +8,7 @@ Bug fixes:
 ..F....... [ZBX-18611] fixed division by zero error due to small graph size when using gradient lines (Ivo)
 ........S. [ZBX-19651] fixed problem escalation when at least one of the hosts in a trigger expression is not in maintenance (dgoloscapov)
 ........S. [ZBX-19872] removed redundant escaping in XML data of HTTP agent POST request (asestakovs)
+...G...PS. [ZBX-20236] improved memory consumption in Zabbix proxy trappers by moving configuration sync between database and cache to configuration syncer; improved trappers and listeners memory consumption by freeing received data after it was processed instead of after new data is received (vso)
 ...G...... [ZBX-20192] fixed quote expansion in command execution in agent2 on windows (dgoloscapov)
 
 --------------------------------------------------------------------------------
