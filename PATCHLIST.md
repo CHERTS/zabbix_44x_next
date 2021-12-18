@@ -172,6 +172,7 @@
 [ZBX-19334] removed redundant ListenIP parameter in server's configuration file (https://support.zabbix.com/browse/ZBX-19334)
 [ZBX-19340] optimized history cache to reduce storage of metadata-only records (https://support.zabbix.com/browse/ZBX-19340)
 [ZBX-19342] fixed web scenario items not being cloned for graph prototypes (https://support.zabbix.com/browse/ZBX-19342)
+[ZBX-19351] fixed event correlation query failure on Oracle (https://support.zabbix.com/browse/ZBX-19351)
 [ZBX-19358] fixed memory leak in case of duplicate vmware hv uuid (https://support.zabbix.com/browse/ZBX-19358)
 [ZBX-19359] fixed error in logsource function due to empty source (https://support.zabbix.com/browse/ZBX-19359)
 [ZBX-19373] fixed security vulnerability for links having target="_blank" (https://support.zabbix.com/browse/ZBX-19373)
