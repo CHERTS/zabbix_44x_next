@@ -18,6 +18,9 @@ Bug fixes:
 ...G...PS. [ZBX-20236] improved memory consumption in Zabbix proxy trappers by moving configuration sync between database and cache to configuration syncer; improved trappers and listeners memory consumption by freeing received data after it was processed instead of after new data is received (vso)
 ...G...... [ZBX-20192] fixed quote expansion in command execution in agent2 on windows (dgoloscapov)
 ........S. [ZBX-20249] fixed escalator query failure on Oracle (ssimonenko)
+.....J.... [ZBX-20383] updated logback-core, logback-classic and slf4j-api jars to the latest stable versions (vso)
+..F.I..... [ZBX-20384] fixed possibility to view setup pages by non-superadmin if config already file exists (averza)
+..F....... [ZBX-20388] fixed XSS vulnerability in multiselect (agriscenko)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.25
