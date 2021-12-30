@@ -65,6 +65,7 @@ zbx_libxml_error_t;
 #define ZBX_REQUEST_PROXY_NAME			112
 #define ZBX_REQUEST_PROXY_DESCRIPTION		113
 #define ZBX_REQUEST_ITEM_VALUETYPE		114
+#define	ZBX_REQUEST_ITEM_ERROR			115
 
 /* DBget_history_log_value() */
 #define ZBX_REQUEST_ITEM_LOG_DATE		201
@@ -964,9 +965,10 @@ static int	DBget_item_value(zbx_uint64_t itemid, char **replace_to, int request)
 	}
 
 	result = DBselect(
-			"select h.proxy_hostid,h.description,i.itemid,i.name,i.key_,i.description,i.value_type"
+			"select h.proxy_hostid,h.description,i.itemid,i.name,i.key_,i.description,i.value_type,ir.error"
 			" from items i"
 				" join hosts h on h.hostid=i.hostid"
+				" left join item_rtdata ir on ir.itemid=i.itemid"
 			" where i.itemid=" ZBX_FS_UI64, itemid);
 
 	if (NULL != (row = DBfetch(result)))
@@ -1046,10 +1048,38 @@ static int	DBget_item_value(zbx_uint64_t itemid, char **replace_to, int request)
 				*replace_to = zbx_strdup(*replace_to, row[6]);
 				ret = SUCCEED;
 				break;
+			case ZBX_REQUEST_ITEM_ERROR:
+				*replace_to = zbx_strdup(*replace_to, FAIL == DBis_null(row[7]) ? row[7] : "");
+				ret = SUCCEED;
+				break;
 		}
 	}
 	DBfree_result(result);
 
+	zabbix_log(LOG_LEVEL_DEBUG, "End of %s():%s", __func__, zbx_result_string(ret));
+
+	return ret;
+}
+
+static int	DBget_trigger_error(const DB_TRIGGER *trigger, char **replace_to)
+{
+	int		ret = SUCCEED;
+	DB_RESULT	result;
+	DB_ROW		row;
+
+	zabbix_log(LOG_LEVEL_DEBUG, "In %s()", __func__);
+
+	if (NULL == (result = DBselect("select error from triggers where triggerid=" ZBX_FS_UI64,
+			trigger->triggerid)))
+	{
+		ret = FAIL;
+		goto out;
+	}
+
+	*replace_to = zbx_strdup(*replace_to, (NULL == (row = DBfetch(result))) ?  "" : row[0]);
+
+	DBfree_result(result);
+out:
 	zabbix_log(LOG_LEVEL_DEBUG, "End of %s():%s", __func__, zbx_result_string(ret));
 
 	return ret;
@@ -1835,6 +1865,7 @@ static int	get_autoreg_value_by_event(const DB_EVENT *event, char **replace_to, 
 #define MVAR_ITEM_LOG_SEVERITY		"{ITEM.LOG.SEVERITY}"
 #define MVAR_ITEM_LOG_NSEVERITY		"{ITEM.LOG.NSEVERITY}"
 #define MVAR_ITEM_LOG_EVENTID		"{ITEM.LOG.EVENTID}"
+#define	MVAR_ITEM_STATE_ERROR		"{ITEM.STATE.ERROR}"
 
 #define MVAR_TRIGGER_DESCRIPTION		"{TRIGGER.DESCRIPTION}"
 #define MVAR_TRIGGER_COMMENT			"{TRIGGER.COMMENT}"		/* deprecated */
@@ -1857,6 +1888,7 @@ static int	get_autoreg_value_by_event(const DB_EVENT *event, char **replace_to, 
 #define MVAR_TRIGGER_EVENTS_UNACK		"{TRIGGER.EVENTS.UNACK}"
 #define MVAR_TRIGGER_EVENTS_PROBLEM_ACK		"{TRIGGER.EVENTS.PROBLEM.ACK}"
 #define MVAR_TRIGGER_EVENTS_PROBLEM_UNACK	"{TRIGGER.EVENTS.PROBLEM.UNACK}"
+#define	MVAR_TRIGGER_STATE_ERROR		"{TRIGGER.STATE.ERROR}"
 
 #define MVAR_LLDRULE_DESCRIPTION		"{LLDRULE.DESCRIPTION}"
 #define MVAR_LLDRULE_DESCRIPTION_ORIG		"{LLDRULE.DESCRIPTION.ORIG}"
@@ -1866,6 +1898,7 @@ static int	get_autoreg_value_by_event(const DB_EVENT *event, char **replace_to, 
 #define MVAR_LLDRULE_NAME			"{LLDRULE.NAME}"
 #define MVAR_LLDRULE_NAME_ORIG			"{LLDRULE.NAME.ORIG}"
 #define MVAR_LLDRULE_STATE			"{LLDRULE.STATE}"
+#define MVAR_LLDRULE_STATE_ERROR		"{LLDRULE.STATE.ERROR}"
 
 #define MVAR_INVENTORY				"{INVENTORY."			/* a prefix for all inventory macros */
 #define MVAR_INVENTORY_TYPE			MVAR_INVENTORY "TYPE}"
@@ -3488,6 +3521,10 @@ int	substitute_simple_macros(zbx_uint64_t *actionid, const DB_EVENT *event, cons
 				{
 					replace_to = zbx_strdup(replace_to, zbx_trigger_state_string(c_event->value));
 				}
+				else if (0 == strcmp(m, MVAR_TRIGGER_STATE_ERROR))
+				{
+					ret = DBget_trigger_error(&event->trigger, &replace_to);
+				}
 				else if (0 == strcmp(m, MVAR_TRIGGER_TEMPLATE_NAME))
 				{
 					ret = DBget_trigger_template_name(c_event->objectid, userid, &replace_to);
@@ -3888,6 +3925,11 @@ int	substitute_simple_macros(zbx_uint64_t *actionid, const DB_EVENT *event, cons
 					if (NULL != alert)
 						replace_to = zbx_strdup(replace_to, alert->message);
 				}
+				else if (0 == strcmp(m, MVAR_ITEM_STATE_ERROR))
+				{
+					ret = DBget_item_value(c_event->objectid, &replace_to,
+							ZBX_REQUEST_ITEM_ERROR);
+				}
 			}
 			else if (0 == indexed_macro && EVENT_SOURCE_INTERNAL == c_event->source &&
 					EVENT_OBJECT_LLDRULE == c_event->object)
@@ -4024,6 +4066,11 @@ int	substitute_simple_macros(zbx_uint64_t *actionid, const DB_EVENT *event, cons
 				{
 					if (NULL != alert)
 						replace_to = zbx_strdup(replace_to, alert->message);
+				}
+				else if (0 == strcmp(m, MVAR_LLDRULE_STATE_ERROR))
+				{
+					ret = DBget_item_value(c_event->objectid, &replace_to,
+							ZBX_REQUEST_ITEM_ERROR);
 				}
 			}
 		}

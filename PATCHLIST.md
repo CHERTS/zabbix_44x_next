@@ -235,6 +235,7 @@
 [ZBXNEXT-2475] added handling of compressed content to web monitoring (https://support.zabbix.com/browse/ZBXNEXT-2475)
 [ZBXNEXT-2480] removed autocomplete from fields having sensitive data (https://support.zabbix.com/browse/ZBXNEXT-2480)
 [ZBXNEXT-2727] added support of JMX TabularData (https://support.zabbix.com/browse/ZBXNEXT-2727)
+[ZBXNEXT-3140] added {ITEM.STATE.ERROR},{LLDRULE.STATE.ERROR},{TRIGGER.STATE.ERROR} macros to indicate error messages in internal monitoring alerts (https://support.zabbix.com/browse/ZBXNEXT-3140)
 [ZBXNEXT-3205] added regex context matching support to user macros (https://support.zabbix.com/browse/ZBXNEXT-3205)
 [ZBXNEXT-3588] improved Zabbix server performance when evaluating trigger, discovery, autoregistration and internal actions (https://support.zabbix.com/browse/ZBXNEXT-3588)
 [ZBXNEXT-3940] added functionality to flush SNMP connections cache (https://support.zabbix.com/browse/ZBXNEXT-3940)
