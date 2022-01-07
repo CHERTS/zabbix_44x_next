@@ -5,6 +5,7 @@ New features:
 
 Bug fixes:
 ........S. [ZBX-19012] fixed {HOST.NAME} macros substitution (ssimonenko)
+........S. [ZBX-20330] added handling of nan/inf values in ipmi discovery (dgoloscapov)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.26

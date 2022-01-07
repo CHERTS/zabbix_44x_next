@@ -220,6 +220,7 @@
 [ZBX-20192] fixed quote expansion in command execution in agent2 on windows (https://support.zabbix.com/browse/ZBX-20192)
 [ZBX-20236] improved memory consumption in Zabbix proxy trappers by moving configuration sync between database and cache to configuration syncer; improved trappers and listeners memory consumption by freeing received data after it was processed instead of after new data is received (https://support.zabbix.com/browse/ZBX-20236)
 [ZBX-20249] fixed escalator query failure on Oracle (https://support.zabbix.com/browse/ZBX-20249)
+[ZBX-20330] added handling of nan/inf values in ipmi discovery (https://support.zabbix.com/browse/ZBX-20330)
 [ZBX-20383] updated logback-core, logback-classic and slf4j-api jars to the latest stable versions (https://support.zabbix.com/browse/ZBX-20383)
 [ZBX-20384] fixed possibility to view setup pages by non-superadmin if config already file exists (https://support.zabbix.com/browse/ZBX-20384)
 [ZBX-20388] fixed XSS vulnerability in multiselect (https://support.zabbix.com/browse/ZBX-20388)
