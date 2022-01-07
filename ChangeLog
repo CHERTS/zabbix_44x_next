@@ -5,6 +5,7 @@ New features:
 
 Bug fixes:
 ........S. [ZBX-19012] fixed {HOST.NAME} macros substitution (ssimonenko)
+...G...... [ZBX-20143] fixed tcp timeout not working in net.dns.record (dgoloscapov)
 ........S. [ZBX-20330] added handling of nan/inf values in ipmi discovery (dgoloscapov)
 
 --------------------------------------------------------------------------------
