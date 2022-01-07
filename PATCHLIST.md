@@ -196,6 +196,7 @@
 [ZBX-19624] fixed incorrect vmware hv ip detection (https://support.zabbix.com/browse/ZBX-19624)
 [ZBX-19651] fixed problem escalation when at least one of the hosts in a trigger expression is not in maintenance (https://support.zabbix.com/browse/ZBX-19651)
 [ZBX-19658] added query batching when reading event data during maintenance processing (https://support.zabbix.com/browse/ZBX-19658)
+[ZBX-19669] fixed success message not showing when no fields were changed in Administration->Authentication page (https://support.zabbix.com/browse/ZBX-19669)
 [ZBX-19670] resolving config file symlink in CConfigFile.php (https://support.zabbix.com/browse/ZBX-19670)
 [ZBX-19703] added fix for json path preprocessing crash (https://support.zabbix.com/browse/ZBX-19703)
 [ZBX-19715] fixed high memory usage in trappers and proxy pollers when sending configuration to Zabbix proxy (https://support.zabbix.com/browse/ZBX-19715)
