@@ -8,6 +8,7 @@ Bug fixes:
 ..F....... [ZBX-19669] fixed success message not showing when no fields were changed in Administration->Authentication page (Ivo)
 ...G...... [ZBX-20143] fixed tcp timeout not working in net.dns.record (dgoloscapov)
 ...G...... [ZBX-20204] fixed range check for perfcounter in agent2 on windows (dgoloscapov)
+.......PS. [ZBX-20246] fixed unpredictable choice of vmware hv ip for HA mode of management interface (MVekslers)
 ...G...... [ZBX-20269] added handling of performance counter with negative denominator value (arimdjonoks)
 ........S. [ZBX-20330] added handling of nan/inf values in ipmi discovery (dgoloscapov)
 .......PS. [ZBX-20341] moved zbx_ipc_service_init_env() to MAIN_ZABBIX_ENTRY (vso, yurii)
