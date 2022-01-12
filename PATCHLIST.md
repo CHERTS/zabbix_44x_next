@@ -220,6 +220,7 @@
 [ZBX-20143] fixed tcp timeout not working in net.dns.record (https://support.zabbix.com/browse/ZBX-20143)
 [ZBX-20176] fixed trigger not being calculated for first value when item changes state to supported; fixed build failure when DES is disabled in Net-SNMP; fixed tests on big-endian systems (https://support.zabbix.com/browse/ZBX-20076)
 [ZBX-20192] fixed quote expansion in command execution in agent2 on windows (https://support.zabbix.com/browse/ZBX-20192)
+[ZBX-20204] fixed range check for perfcounter in agent2 on windows (https://support.zabbix.com/browse/ZBX-20204)
 [ZBX-20236] improved memory consumption in Zabbix proxy trappers by moving configuration sync between database and cache to configuration syncer; improved trappers and listeners memory consumption by freeing received data after it was processed instead of after new data is received (https://support.zabbix.com/browse/ZBX-20236)
 [ZBX-20249] fixed escalator query failure on Oracle (https://support.zabbix.com/browse/ZBX-20249)
 [ZBX-20269] added handling of performance counter with negative denominator value (https://support.zabbix.com/browse/ZBX-20269)
