@@ -248,7 +248,7 @@ static duk_ret_t	es_httprequest_query(duk_context *ctx, const char *http_request
 
 	if (elapsed_ms >= timeout_ms)
 	{
-		err_index = duk_push_error_object(ctx, DUK_RET_EVAL_ERROR, "script execution timeout occurred");
+		ret = duk_error(ctx, DUK_RET_TYPE_ERROR, "script execution timeout occurred");
 		goto out;
 	}
 
