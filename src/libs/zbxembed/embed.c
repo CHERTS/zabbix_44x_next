@@ -133,7 +133,7 @@ int	zbx_es_check_timeout(void *udata)
 {
 	zbx_es_env_t	*env = (zbx_es_env_t *)udata;
 
-	if (time(NULL) - env->start_time.sec > env->timeout)
+	if (time(NULL) - env->start_time > env->timeout)
 		return 1;
 
 	return 0;
@@ -436,8 +436,6 @@ int	zbx_es_execute(zbx_es_t *es, const char *script, const char *code, int size,
 
 	zabbix_log(LOG_LEVEL_DEBUG, "In %s() param:%s", __func__, param);
 
-	zbx_timespec(&es->env->start_time);
-
 	if (SUCCEED == zbx_es_fatal_error(es))
 	{
 		*error = zbx_strdup(*error, "cannot continue javascript processing after fatal scripting engine error");
@@ -456,6 +454,8 @@ int	zbx_es_execute(zbx_es_t *es, const char *script, const char *code, int size,
 	memcpy(buffer, code, size);
 	duk_load_function(es->env->ctx);
 	duk_push_string(es->env->ctx, param);
+
+	es->env->start_time = time(NULL);
 
 	if (DUK_EXEC_SUCCESS != duk_pcall(es->env->ctx, 1))
 	{
@@ -522,19 +522,4 @@ out:
 void	zbx_es_set_timeout(zbx_es_t *es, int timeout)
 {
 	es->env->timeout = timeout;
-}
-
-zbx_es_env_t	*zbx_es_get_env(duk_context *ctx)
-{
-	zbx_es_env_t	*env;
-
-	duk_push_global_stash(ctx);
-
-	if (1 != duk_get_prop_string(ctx, -1, "\xff""\xff""zbx_env"))
-		return NULL;
-
-	env = (zbx_es_env_t *)duk_to_pointer(ctx, -1);
-	duk_pop(ctx);
-
-	return env;
 }

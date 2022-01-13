@@ -12,7 +12,6 @@ Bug fixes:
 ...G...... [ZBX-20269] added handling of performance counter with negative denominator value (arimdjonoks)
 ........S. [ZBX-20330] added handling of nan/inf values in ipmi discovery (dgoloscapov)
 .......PS. [ZBX-20341] moved zbx_ipc_service_init_env() to MAIN_ZABBIX_ENTRY (vso, yurii)
-.......PS. [ZBX-20405] improved timeouts in JS (dgoloscapov, wiper)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.26
