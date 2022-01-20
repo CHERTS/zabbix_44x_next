@@ -1,6 +1,23 @@
 name: TestBuild
 
 on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - ".github/**"
+      - "bin/**"
+      - "build/**"
+      - "conf/**"
+      - "create/**"
+      - "database/**"
+      - "man/**"
+      - "misc/**"
+      - "packages/**"
+      - "sass/**"
+      - "templates/**"
+      - "tests/**"
+      - "frontends/**"
 #  schedule:
 #    - cron: "0 18 * * 1-5"
 #  push:
