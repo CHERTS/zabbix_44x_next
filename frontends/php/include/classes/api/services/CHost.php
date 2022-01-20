@@ -1475,7 +1475,7 @@ class CHost extends CHostGeneral {
 		}
 
 		DB::delete('operations', [
-			'operationid' => $delOperationids,
+			'operationid' => $delOperationids
 		]);
 
 		$db_hosts = API::Host()->get([
