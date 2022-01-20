@@ -225,6 +225,7 @@
 [ZBX-20246] fixed unpredictable choice of vmware hv ip for HA mode of management interface (https://support.zabbix.com/browse/ZBX-20246)
 [ZBX-20249] fixed escalator query failure on Oracle (https://support.zabbix.com/browse/ZBX-20249)
 [ZBX-20269] added handling of performance counter with negative denominator value (https://support.zabbix.com/browse/ZBX-20269)
+[ZBX-20293] fixed icmpping items group becomes not supported due to error in interval detection (https://support.zabbix.com/browse/ZBX-20293)
 [ZBX-20330] added handling of nan/inf values in ipmi discovery (https://support.zabbix.com/browse/ZBX-20330)
 [ZBX-20341] moved zbx_ipc_service_init_env() to MAIN_ZABBIX_ENTRY (https://support.zabbix.com/browse/ZBX-20341)
 [ZBX-20383] updated logback-core, logback-classic and slf4j-api jars to the latest stable versions (https://support.zabbix.com/browse/ZBX-20383)
