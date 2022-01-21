@@ -189,6 +189,7 @@
 [ZBX-19510] fixed re-reading of old Windows events for various Windows event system synchronization problems (https://support.zabbix.com/browse/ZBX-19510)
 [ZBX-19536] fixed host.get with selectTags = ['tag'] call attempting to retrieve tag value(s) as well (https://support.zabbix.com/browse/ZBX-19536)
 [ZBX-19539] fixed undefined offset error in host prototype API (https://support.zabbix.com/browse/ZBX-19539)
+[ZBX-19558] fixed creating of dependent item prototypes (https://support.zabbix.com/browse/ZBX-19558)
 [ZBX-19580] fixed date format mismatch in UI elements that are loaded via JavaScript (https://support.zabbix.com/browse/ZBX-19580)
 [ZBX-19587] fixed Zabbix Java gateway error message when object or attribute is not found (https://support.zabbix.com/browse/ZBX-19587)
 [ZBX-19613] fixed Zabbix agent 2 redis plugin to closer match redis-cli connection (https://support.zabbix.com/browse/ZBX-19613)

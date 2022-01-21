@@ -5,6 +5,7 @@ New features:
 
 Bug fixes:
 ........S. [ZBX-19012] fixed {HOST.NAME} macros substitution (ssimonenko)
+A......... [ZBX-19558] fixed creating of dependent item prototypes (Sasha)
 ..F....... [ZBX-19669] fixed success message not showing when no fields were changed in Administration->Authentication page (Ivo)
 ...G...... [ZBX-20143] fixed tcp timeout not working in net.dns.record (dgoloscapov)
 ...G...... [ZBX-20204] fixed range check for perfcounter in agent2 on windows (dgoloscapov)
