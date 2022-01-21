@@ -14,6 +14,7 @@ A......... [ZBX-19558] fixed creating of dependent item prototypes (Sasha)
 .......PS. [ZBX-20293] fixed icmpping items group becomes not supported due to error in interval detection (akozlovs)
 ........S. [ZBX-20330] added handling of nan/inf values in ipmi discovery (dgoloscapov)
 .......PS. [ZBX-20341] moved zbx_ipc_service_init_env() to MAIN_ZABBIX_ENTRY (vso, yurii)
+..F.I..... [ZBX-20387] fixed default language of the setup routine for logged in superadmin users (averza)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.26
