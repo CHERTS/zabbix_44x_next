@@ -115,6 +115,7 @@ A.F....... [ZBX-16822] fixed performance issues for installations with a lot of 
 ........S. [ZBX-19814] added ignoring final result in case if fping quits on a signal (dgoloscapov)
 A......... [ZBX-19857] dropped support for the non-working option "with_gui_access" in the usergroup.get() method (Sasha)
 .......PS. [ZBX-19931] fixed crash on big-endian systems when processing history (vso)
+...G...PS. [ZBX-20228] improved error reporting when SSL_write() or SSL_read() functions fail, removed redundant code that resulted in timeout on windows (vso)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.22
