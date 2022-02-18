@@ -212,6 +212,7 @@
 [ZBX-19872] removed redundant escaping in XML data of HTTP agent POST request (https://support.zabbix.com/browse/ZBX-19872)
 [ZBX-19926] fixed Zabbix agent crashing when reading event log on Windows Server 2022 (https://support.zabbix.com/browse/ZBX-19926)
 [ZBX-19931] fixed crash on big-endian systems when processing history (https://support.zabbix.com/browse/ZBX-19931)
+[ZBX-19956] fixed missing proxy address after cloning proxy; fixed proxy address trimming on save (https://support.zabbix.com/browse/ZBX-19956)
 [ZBX-19997] fixed too long URL error when performing background page refresh (https://support.zabbix.com/browse/ZBX-19997)
 [ZBX-20001] fixed crash and invalid bytecode error being generated on big-sendian systems when javascript is used; upgraded duktape to version 2.6 (https://support.zabbix.com/browse/ZBX-20001)
 [ZBX-20008] removed curl and ldap linkage from agent2 (https://support.zabbix.com/browse/ZBX-20008)
