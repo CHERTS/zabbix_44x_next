@@ -217,6 +217,7 @@
 [ZBX-20008] removed curl and ldap linkage from agent2 (https://support.zabbix.com/browse/ZBX-20008)
 [ZBX-20021] fixed impossibility to import media types of type script with parameters from previous versions (https://support.zabbix.com/browse/ZBX-20021)
 [ZBX-20032] fixed server crash when restarting monitored vmware vc (https://support.zabbix.com/browse/ZBX-20032)
+[ZBX-20059] fixed duplicate metric values being inserted when there is network issue between Zabbix server and Zabbix proxy (https://support.zabbix.com/browse/ZBX-20059)
 [ZBX-20065] fixed count() function gt,ge,lt,le operations (https://support.zabbix.com/browse/ZBX-20065)
 [ZBX-20097] added celsius support to vmware unitInfo (https://support.zabbix.com/browse/ZBX-20097)
 [ZBX-20143] fixed tcp timeout not working in net.dns.record (https://support.zabbix.com/browse/ZBX-20143)
