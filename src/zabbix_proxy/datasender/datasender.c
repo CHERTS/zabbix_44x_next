@@ -164,9 +164,16 @@ static int	proxy_data_sender(int *more, int now, int *hist_upload_state)
 
 		zbx_json_addstring(&j, ZBX_PROTO_TAG_VERSION, ZABBIX_VERSION, ZBX_JSON_TYPE_STRING);
 
+		update_selfmon_counter(ZBX_PROCESS_STATE_IDLE);
+
 		/* retry till have a connection */
 		if (FAIL == connect_to_server(&sock, 600, CONFIG_PROXYDATA_FREQUENCY))
+		{
+			update_selfmon_counter(ZBX_PROCESS_STATE_BUSY);
 			goto clean;
+		}
+
+		update_selfmon_counter(ZBX_PROCESS_STATE_BUSY);
 
 		zbx_timespec(&ts);
 		zbx_json_adduint64(&j, ZBX_PROTO_TAG_CLOCK, ts.sec);
