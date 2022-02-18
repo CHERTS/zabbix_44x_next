@@ -5,6 +5,7 @@ New features:
 
 Bug fixes:
 ........S. [ZBX-19012] fixed {HOST.NAME} macros substitution (ssimonenko)
+.......PS. [ZBX-19038] fixed lld manager not to process lld rules on same host in parallel to avoid duplicated item keys being discovered; fixed crash when duplicated item key on same host exists (vso)
 A......... [ZBX-19558] fixed creating of dependent item prototypes (Sasha)
 ..F....... [ZBX-19669] fixed success message not showing when no fields were changed in Administration->Authentication page (Ivo)
 ........S. [ZBX-19789] added SourceIP support to ldap simple checks (dgoloscapov)

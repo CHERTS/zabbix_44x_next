@@ -30,13 +30,15 @@
  * Function: zbx_lld_serialize_item_value                                     *
  *                                                                            *
  ******************************************************************************/
-zbx_uint32_t	zbx_lld_serialize_item_value(unsigned char **data, zbx_uint64_t itemid, const char *value,
-		const zbx_timespec_t *ts, unsigned char meta, zbx_uint64_t lastlogsize, int mtime, const char *error)
+zbx_uint32_t	zbx_lld_serialize_item_value(unsigned char **data, zbx_uint64_t itemid, zbx_uint64_t hostid,
+		const char *value, const zbx_timespec_t *ts, unsigned char meta, zbx_uint64_t lastlogsize, int mtime,
+		const char *error)
 {
 	unsigned char	*ptr;
 	zbx_uint32_t	data_len = 0, value_len, error_len;
 
 	zbx_serialize_prepare_value(data_len, itemid);
+	zbx_serialize_prepare_value(data_len, hostid);
 	zbx_serialize_prepare_str(data_len, value);
 	zbx_serialize_prepare_value(data_len, *ts);
 	zbx_serialize_prepare_str(data_len, error);
@@ -52,6 +54,7 @@ zbx_uint32_t	zbx_lld_serialize_item_value(unsigned char **data, zbx_uint64_t ite
 
 	ptr = *data;
 	ptr += zbx_serialize_value(ptr, itemid);
+	ptr += zbx_serialize_value(ptr, hostid);
 	ptr += zbx_serialize_str(ptr, value, value_len);
 	ptr += zbx_serialize_value(ptr, *ts);
 	ptr += zbx_serialize_str(ptr, error, error_len);
@@ -70,12 +73,14 @@ zbx_uint32_t	zbx_lld_serialize_item_value(unsigned char **data, zbx_uint64_t ite
  * Function: zbx_lld_deserialize_item_value                                   *
  *                                                                            *
  ******************************************************************************/
-void	zbx_lld_deserialize_item_value(const unsigned char *data, zbx_uint64_t *itemid, char **value,
-		zbx_timespec_t *ts, unsigned char *meta, zbx_uint64_t *lastlogsize, int *mtime, char **error)
+void	zbx_lld_deserialize_item_value(const unsigned char *data, zbx_uint64_t *itemid, zbx_uint64_t *hostid,
+		char **value, zbx_timespec_t *ts, unsigned char *meta, zbx_uint64_t *lastlogsize, int *mtime,
+		char **error)
 {
 	zbx_uint32_t	value_len, error_len;
 
 	data += zbx_deserialize_value(data, itemid);
+	data += zbx_deserialize_value(data, hostid);
 	data += zbx_deserialize_str(data, value, value_len);
 	data += zbx_deserialize_value(data, ts);
 	data += zbx_deserialize_str(data, error, error_len);
@@ -94,13 +99,14 @@ void	zbx_lld_deserialize_item_value(const unsigned char *data, zbx_uint64_t *ite
  * Purpose: process low level discovery value/error                           *
  *                                                                            *
  * Parameters: itemid - [IN] the LLD rule id                                  *
+ *             hostid - [IN] the host id                                      *
  *             value  - [IN] the rule value (can be NULL if error is set)     *
  *             ts     - [IN] the value timestamp                              *
  *             error  - [IN] the error message (can be NULL)                  *
  *                                                                            *
  ******************************************************************************/
-void	zbx_lld_process_value(zbx_uint64_t itemid, const char *value, const zbx_timespec_t *ts, unsigned char meta,
-		zbx_uint64_t lastlogsize, int mtime, const char *error)
+void	zbx_lld_process_value(zbx_uint64_t itemid, zbx_uint64_t hostid, const char *value, const zbx_timespec_t *ts,
+		unsigned char meta, zbx_uint64_t lastlogsize, int mtime, const char *error)
 {
 	static zbx_ipc_socket_t	socket;
 	char			*errmsg = NULL;
@@ -114,7 +120,7 @@ void	zbx_lld_process_value(zbx_uint64_t itemid, const char *value, const zbx_tim
 		exit(EXIT_FAILURE);
 	}
 
-	data_len = zbx_lld_serialize_item_value(&data, itemid, value, ts, meta, lastlogsize, mtime, error);
+	data_len = zbx_lld_serialize_item_value(&data, itemid, hostid, value, ts, meta, lastlogsize, mtime, error);
 
 	if (FAIL == zbx_ipc_socket_write(&socket, ZBX_IPC_LLD_REQUEST, data, data_len))
 	{
@@ -132,12 +138,14 @@ void	zbx_lld_process_value(zbx_uint64_t itemid, const char *value, const zbx_tim
  * Purpose: process low level discovery agent result                          *
  *                                                                            *
  * Parameters: itemid - [IN] the LLD rule id                                  *
+ *             hostid - [IN] the host id                                      *
  *             result - [IN] the agent result                                 *
  *             ts     - [IN] the value timestamp                              *
  *             error  - [IN] the error message (can be NULL)                  *
  *                                                                            *
  ******************************************************************************/
-void	zbx_lld_process_agent_result(zbx_uint64_t itemid, AGENT_RESULT *result, zbx_timespec_t *ts, char *error)
+void	zbx_lld_process_agent_result(zbx_uint64_t itemid, zbx_uint64_t hostid, AGENT_RESULT *result,
+		zbx_timespec_t *ts, char *error)
 {
 	const char	*value = NULL;
 	unsigned char	meta = 0;
@@ -158,7 +166,7 @@ void	zbx_lld_process_agent_result(zbx_uint64_t itemid, AGENT_RESULT *result, zbx
 	}
 
 	if (NULL != value || NULL != error || 0 != meta)
-		zbx_lld_process_value(itemid, value, ts, meta, lastlogsize, mtime, error);
+		zbx_lld_process_value(itemid, hostid, value, ts, meta, lastlogsize, mtime, error);
 }
 
 /******************************************************************************

@@ -48,6 +48,9 @@ extern int	CONFIG_LLDWORKER_FORKS;
 
 typedef struct zbx_lld_value
 {
+	/* the LLD rule id */
+	zbx_uint64_t		itemid;
+
 	char			*value;
 	char			*error;
 	zbx_timespec_t		ts;
@@ -56,20 +59,21 @@ typedef struct zbx_lld_value
 	int			mtime;
 	unsigned char		meta;
 
+	struct	zbx_lld_value	*prev;
 	struct	zbx_lld_value	*next;
 }
 zbx_lld_data_t;
 
-/* queue of values for one LLD rule */
+/* queue of values for one host */
 typedef struct
 {
-	/* the LLD rule id */
-	zbx_uint64_t	itemid;
-
-	/* the oldest value in queue */
-	zbx_lld_data_t	*tail;
+	/* the LLD rule host id */
+	zbx_uint64_t	hostid;
 
 	/* the newest value in queue */
+	zbx_lld_data_t	*tail;
+
+	/* the oldest value in queue */
 	zbx_lld_data_t	*head;
 }
 zbx_lld_rule_t;
@@ -329,7 +333,7 @@ static void	lld_register_worker(zbx_lld_manager_t *manager, zbx_ipc_client_t *cl
  ******************************************************************************/
 static void	lld_queue_rule(zbx_lld_manager_t *manager, zbx_lld_rule_t *rule)
 {
-	zbx_binary_heap_elem_t	elem = {rule->itemid, rule};
+	zbx_binary_heap_elem_t	elem = {rule->hostid, rule};
 
 	zbx_binary_heap_insert(&manager->rule_queue, &elem);
 }
@@ -346,7 +350,7 @@ static void	lld_queue_rule(zbx_lld_manager_t *manager, zbx_lld_rule_t *rule)
  ******************************************************************************/
 static void	lld_queue_request(zbx_lld_manager_t *manager, const zbx_ipc_message_t *message)
 {
-	zbx_uint64_t	itemid;
+	zbx_uint64_t	hostid;
 	zbx_lld_rule_t	*rule;
 	zbx_lld_data_t	*data;
 
@@ -354,32 +358,49 @@ static void	lld_queue_request(zbx_lld_manager_t *manager, const zbx_ipc_message_
 
 	data = (zbx_lld_data_t *)zbx_malloc(NULL, sizeof(zbx_lld_data_t));
 	data->next = NULL;
-	zbx_lld_deserialize_item_value(message->data, &itemid, &data->value, &data->ts, &data->meta, &data->lastlogsize,
-			&data->mtime, &data->error);
 
-	if (NULL == (rule = zbx_hashset_search(&manager->rule_index, &itemid)))
+	zbx_lld_deserialize_item_value(message->data, &data->itemid, &hostid, &data->value, &data->ts, &data->meta,
+			&data->lastlogsize, &data->mtime, &data->error);
+
+	if (NULL == (rule = zbx_hashset_search(&manager->rule_index, &hostid)))
 	{
-		zbx_lld_rule_t	rule_local = {itemid, data, data};
+		zbx_lld_rule_t	rule_local = {.hostid = hostid, .values_num = 0, .tail = data, .head = data};
+
+		data->prev = NULL;
 
 		rule = zbx_hashset_insert(&manager->rule_index, &rule_local, sizeof(rule_local));
 		lld_queue_rule(manager, rule);
 	}
 	else
 	{
-		if (0 == data->meta && 0 == zbx_strcmp_null(data->error, rule->tail->error) &&
-				0 == zbx_strcmp_null(data->value, rule->tail->value))
+		if (0 == data->meta)
 		{
-			zabbix_log(LOG_LEVEL_DEBUG, "skip repeating discovery rule values: " ZBX_FS_UI64, itemid);
+			zbx_lld_data_t	*data_ptr;
 
-			lld_data_free(data);
-			goto out;
+			for (data_ptr = rule->tail; NULL != data_ptr; data_ptr = data_ptr->prev)
+			{
+				/* if there are multiple values then they should be different, check only last one */
+				if (data_ptr->itemid == data->itemid)
+					break;
+			}
+
+			if (NULL != data_ptr && 0 == zbx_strcmp_null(data->error, data_ptr->error) &&
+					0 == zbx_strcmp_null(data->value, data_ptr->value))
+			{
+				zabbix_log(LOG_LEVEL_DEBUG, "skip repeating values for discovery rule:" ZBX_FS_UI64,
+						data->itemid);
+
+				lld_data_free(data);
+				goto out;
+			}
 		}
 
+		data->prev = rule->tail;
 		rule->tail->next = data;
 		rule->tail = data;
 	}
 
-	zabbix_log(LOG_LEVEL_DEBUG, "queuing discovery rule: " ZBX_FS_UI64, itemid);
+	zabbix_log(LOG_LEVEL_DEBUG, "queuing discovery rule:" ZBX_FS_UI64, data->itemid);
 
 	manager->queued_num++;
 out:
@@ -408,7 +429,7 @@ static void	lld_process_next_request(zbx_lld_manager_t *manager, zbx_lld_worker_
 	zbx_binary_heap_remove_min(&manager->rule_queue);
 
 	data = worker->rule->head;
-	buf_len = zbx_lld_serialize_item_value(&buf, worker->rule->itemid, data->value, &data->ts, data->meta,
+	buf_len = zbx_lld_serialize_item_value(&buf, data->itemid, 0, data->value, &data->ts, data->meta,
 			data->lastlogsize, data->mtime, data->error);
 	zbx_ipc_client_send(worker->client, ZBX_IPC_LLD_TASK, buf, buf_len);
 	zbx_free(buf);
@@ -456,7 +477,7 @@ static void	lld_process_result(zbx_lld_manager_t *manager, zbx_ipc_client_t *cli
 
 	worker = lld_get_worker_by_client(manager, client);
 
-	zabbix_log(LOG_LEVEL_DEBUG, "discovery rule:" ZBX_FS_UI64 " has been processed", worker->rule->itemid);
+	zabbix_log(LOG_LEVEL_DEBUG, "discovery rule:" ZBX_FS_UI64 " has been processed", worker->rule->head->itemid);
 
 	rule = worker->rule;
 	worker->rule = NULL;
@@ -465,9 +486,14 @@ static void	lld_process_result(zbx_lld_manager_t *manager, zbx_ipc_client_t *cli
 	rule->head = rule->head->next;
 
 	if (NULL == rule->head)
+	{
 		zbx_hashset_remove_direct(&manager->rule_index, rule);
+	}
 	else
+	{
+		rule->head->prev = NULL;
 		lld_queue_rule(manager, rule);
+	}
 
 	lld_data_free(data);
 
