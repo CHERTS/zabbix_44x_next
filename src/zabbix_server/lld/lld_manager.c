@@ -364,7 +364,7 @@ static void	lld_queue_request(zbx_lld_manager_t *manager, const zbx_ipc_message_
 
 	if (NULL == (rule = zbx_hashset_search(&manager->rule_index, &hostid)))
 	{
-		zbx_lld_rule_t	rule_local = {.hostid = hostid, .values_num = 0, .tail = data, .head = data};
+		zbx_lld_rule_t	rule_local = {.hostid = hostid, .tail = data, .head = data};
 
 		data->prev = NULL;
 
