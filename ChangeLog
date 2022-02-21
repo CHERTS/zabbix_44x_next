@@ -20,6 +20,7 @@ A......... [ZBX-19558] fixed creating of dependent item prototypes (Sasha)
 .......PS. [ZBX-20341] moved zbx_ipc_service_init_env() to MAIN_ZABBIX_ENTRY (vso, yurii)
 .......P.. [ZBX-20373] fixed conf syncer appearing to be busy on proxy on network problem (dgoloscapov, vso)
 ..F.I..... [ZBX-20387] fixed default language of the setup routine for logged in superadmin users (averza)
+....I..... [ZBX-20570] fixed --with-libevent option on FreeBSD (asestakovs)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.26
