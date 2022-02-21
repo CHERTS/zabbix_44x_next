@@ -7,6 +7,7 @@
 [ZBX-8081] fixed 'cmdline' parameter truncation on Solaris 11.3 and later (https://support.zabbix.com/browse/ZBX-8081)
 [ZBX-8999] fixed exporting of images separately from other objects (https://support.zabbix.com/browse/ZBX-8999)
 [ZBX-11764] fixed automake scripts; thanks to Tomasz Kłoczko for the patch (https://support.zabbix.com/browse/ZBX-11764)
+[ZBX-12852] fixed redundant query of vmware hv sensors info (https://support.zabbix.com/browse/ZBX-12852)
 [ZBX-12867] reworked problem event popup of problems widget to load data only on mouse hover and click (https://support.zabbix.com/browse/ZBX-12867)
 [ZBX-13383] improved performance of the trigger and trigger prototype inheritance (https://support.zabbix.com/browse/ZBX-13383)
 [ZBX-13789] improved performance of "Problems" widget with MySQL backend by removing DISTINCT modifier from SQL statements with tables joined by primary keys (https://support.zabbix.com/browse/ZBX-13789)

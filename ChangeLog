@@ -4,6 +4,7 @@ New features:
 ........S. [ZBXNEXT-3140] added {ITEM.STATE.ERROR},{LLDRULE.STATE.ERROR},{TRIGGER.STATE.ERROR} macros to indicate error messages in internal monitoring alerts (arimdjonoks)
 
 Bug fixes:
+.......PS. [ZBX-12852] fixed redundant query of vmware hv sensors info (MVekslers)
 ........S. [ZBX-19012] fixed {HOST.NAME} macros substitution (ssimonenko)
 .......PS. [ZBX-19038] fixed lld manager not to process lld rules on same host in parallel to avoid duplicated item keys being discovered; fixed crash when duplicated item key on same host exists (vso)
 A......... [ZBX-19558] fixed creating of dependent item prototypes (Sasha)
