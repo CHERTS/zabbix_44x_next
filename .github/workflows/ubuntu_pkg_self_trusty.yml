@@ -1,0 +1,55 @@
+name: CreateUbuntuDEBSelfTrusty
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Create Ubuntu packages'
+
+jobs:
+  ubuntu-trusty:
+    name: Ubuntu (Trusty)
+    runs-on: [self-hosted, linux, ubuntu-trusty]
+    steps:
+    - name: Code checkout
+      uses: actions/checkout@v2
+    - name: Build zabbix distr
+      run: |
+        ./bootstrap.sh
+        ./configure
+        make dbschema
+        make gettext
+        make css
+        make dist
+    - name: Set variables
+      run: |
+        echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
+        echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
+        echo "ZABBIX_VERSION_SHORT=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \' | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
+        echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-7)" >> $GITHUB_ENV
+    - name: Extract distr
+      run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
+    - name: Prepare build DEB
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
+      run: |
+        cat include/version.h | sed "s@define ZABBIX_VERSION_REVISION.*@define ZABBIX_VERSION_REVISION ${GITHUB_SHA_SHORT}@g" > include/version.h.new
+        mv include/version.h.new include/version.h
+        cat src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java | sed "s@REVISION = \".*\";@REVISION = \"${GITHUB_SHA_SHORT}\";@g" > src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new
+        mv src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java
+        cat src/go/pkg/version/version.go | sed "s@ZABBIX_VERSION_REVISION = \".*\"@ZABBIX_VERSION_REVISION = \"${GITHUB_SHA_SHORT}\"@g" > src/go/pkg/version/version.go.new
+        mv src/go/pkg/version/version.go.new src/go/pkg/version/version.go
+        wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.gz" -O debian.tar.gz
+        tar -zxf debian.tar.gz
+        dch -v "1:${{ env.ZABBIX_VERSION }}-${{ secrets.REPO_DEB_SUB_VER }}+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}-${{ secrets.REPO_DEB_SUB_VER }}"
+    - name: Build DEB
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
+      env:
+        GO111MODULE: on
+      run: |
+        export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
+        dpkg-buildpackage -b -k${{ secrets.GPG_KEYID }}
+    - name: Upload deb from dev server
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
+      run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s)/
