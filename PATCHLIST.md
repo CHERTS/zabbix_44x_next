@@ -241,6 +241,7 @@
 [ZBX-20387] fixed default language of the setup routine for logged in superadmin users (https://support.zabbix.com/browse/ZBX-20387)
 [ZBX-20388] fixed XSS vulnerability in multiselect (https://support.zabbix.com/browse/ZBX-20388)
 [ZBX-20570] fixed --with-libevent option on FreeBSD (https://support.zabbix.com/browse/ZBX-20570)
+[ZBX-20680] fixed reflected XSS issues (https://support.zabbix.com/browse/ZBX-20680)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
