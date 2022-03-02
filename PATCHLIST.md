@@ -273,6 +273,7 @@
 [ZBXNEXT-5759] added Oracle DB tnsnames.ora service name lookup support (https://support.zabbix.com/browse/ZBXNEXT-5759)
 [ZBXNEXT-5786] updated the list of user agents (https://support.zabbix.com/browse/ZBXNEXT-5786)
 [ZBXNEXT-5829] replaced uint64 hash function with faster one (https://support.zabbix.com/browse/ZBXNEXT-5829)
+[ZBXNEXT-5839] added SNI in encrypted TCP connections (https://support.zabbix.com/browse/ZBXNEXT-5839)
 [ZBXNEXT-5879] added filter to Configuration->Templates/Hosts->Discovery rules (https://support.zabbix.com/browse/ZBXNEXT-5879)
 [ZBXNEXT-5898] added user macro expanding in item description (https://support.zabbix.com/browse/ZBXNEXT-5898)
 [ZBXNEXT-5903] added vmware datacenters discovery (https://support.zabbix.com/browse/ZBXNEXT-5903)

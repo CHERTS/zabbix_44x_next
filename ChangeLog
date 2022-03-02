@@ -1,6 +1,7 @@
 Changes for 4.4.28rc1
 
 New features:
+...G...PS. [ZBXNEXT-5839] added SNI in encrypted TCP connections (yurii)
 
 Bug fixes:
 ..F....... [ZBX-20680] fixed reflected XSS issues (averza)
