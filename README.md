@@ -8,7 +8,7 @@
 
 Support for Zabbix version 4.4.10 is end of live, but it is still used by many companies and i have.<br>
 
-I decided to continue the development of version 4.4.x by backporting (transferring) the ZBX and ZBXNEXT patches from Zabbix 5.0/5.2<br>
+I decided to continue the development of version 4.4.x by backporting (transferring) the ZBX and ZBXNEXT patches from Zabbix 5.0/5.2/5.4/6.0<br>
 
 Zabbix version numbers in this repository will continue under 4.4.11 and so on, but these are unofficial versions and should not be confused with those versions located on the official website.<br>
 
