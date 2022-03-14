@@ -241,6 +241,7 @@
 [ZBX-20384] fixed possibility to view setup pages by non-superadmin if config already file exists (https://support.zabbix.com/browse/ZBX-20384)
 [ZBX-20387] fixed default language of the setup routine for logged in superadmin users (https://support.zabbix.com/browse/ZBX-20387)
 [ZBX-20388] fixed XSS vulnerability in multiselect (https://support.zabbix.com/browse/ZBX-20388)
+[ZBX-20390] fixed Oracle Solaris vm.memory.size[available] item kstats memory read (https://support.zabbix.com/browse/ZBX-20390)
 [ZBX-20487] fixed agent handling of invalid time intervals (https://support.zabbix.com/browse/ZBX-20487)
 [ZBX-20570] fixed --with-libevent option on FreeBSD (https://support.zabbix.com/browse/ZBX-20570)
 [ZBX-20680] fixed reflected XSS issues (https://support.zabbix.com/browse/ZBX-20680)
