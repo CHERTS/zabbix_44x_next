@@ -14,16 +14,31 @@
 		<mkdir dir="runtime"/>
 	</target>
 
-	<target name="create-configs" depends="init-common">
-		<property name="url" value="${URL}"/>
-		<property name="screenshot_dir" value="${SCREENSHOT_DIR}"/>
-		<property name="screenshot_url" value="${SCREENSHOT_URL}"/>
+	<target name="create-frontend-configs">
 		<property name="dbtype" value="${DBTYPE}"/>
 		<property name="dbhost" value="${DBHOST}"/>
 		<property name="dbname" value="${DBNAME}"/>
 		<property name="dbuser" value="${DBUSER}"/>
 		<property name="dbpassword" value="${DBPASSWORD}"/>
 		<property name="phpunit_error_log" value="${PHPUNIT_ERROR_LOG}"/>
+		<property name="phpunit_port_prefix" value="${PHPUNIT_PORT_PREFIX}"/>
+
+		<!-- Create PHP config file -->
+		<copy overwrite="true" file="frontends/php/tests/templates/zabbix.conf.php" tofile="frontends/php/conf/zabbix.conf.php"/>
+		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBTYPE}" value="${dbtype}"/>
+		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBHOST}" value="${dbhost}"/>
+		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBNAME}" value="${dbname}"/>
+		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBUSER}" value="${dbuser}"/>
+		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBPASSWORD}" value="${dbpassword}"/>
+		<replace file="frontends/php/conf/zabbix.conf.php" token="{PHPUNIT_ERROR_LOG}" value="${phpunit_error_log}"/>
+		<replace file="frontends/php/conf/zabbix.conf.php" token="{SERVER_PORT}" value="${phpunit_port_prefix}51"/>	<!-- 51 - CIntegrationTest::SERVER_PORT_SUFFIX -->
+		<chmod file="frontends/php/conf/zabbix.conf.php" perm="go+rw"/>
+	</target>
+
+	<target name="create-configs" depends="init-common,create-frontend-configs">
+		<property name="url" value="${URL}"/>
+		<property name="screenshot_dir" value="${SCREENSHOT_DIR}"/>
+		<property name="screenshot_url" value="${SCREENSHOT_URL}"/>
 		<property name="phpunit_port_prefix" value="${PHPUNIT_PORT_PREFIX}"/>
 		<property name="screenshot_references_dir" value="${SCREENSHOT_REFERENCES_DIR}"/>
 		<condition property="phpunit_driver_address" value="${PHPUNIT_DRIVER_ADDRESS}" else="localhost">
@@ -47,17 +62,6 @@
 		<replace file="frontends/php/tests/bootstrap.php" token="{PORT_PREFIX}" value="${phpunit_port_prefix}"/>
 		<replace file="frontends/php/tests/bootstrap.php" token="{SCREENSHOT_REFERENCES_DIR}" value="${screenshot_references_dir}"/>
 		<replace file="frontends/php/tests/bootstrap.php" token="{PHPUNIT_DRIVER_ADDRESS}" value="${phpunit_driver_address}"/>
-
-		<!-- Create PHP config file -->
-		<copy overwrite="true" file="frontends/php/tests/templates/zabbix.conf.php" tofile="frontends/php/conf/zabbix.conf.php"/>
-		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBTYPE}" value="${dbtype}"/>
-		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBHOST}" value="${dbhost}"/>
-		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBNAME}" value="${dbname}"/>
-		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBUSER}" value="${dbuser}"/>
-		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBPASSWORD}" value="${dbpassword}"/>
-		<replace file="frontends/php/conf/zabbix.conf.php" token="{PHPUNIT_ERROR_LOG}" value="${phpunit_error_log}"/>
-		<replace file="frontends/php/conf/zabbix.conf.php" token="{SERVER_PORT}" value="${phpunit_port_prefix}51"/>	<!-- 51 - CIntegrationTest::SERVER_PORT_SUFFIX -->
-		<chmod file="frontends/php/conf/zabbix.conf.php" perm="go+rw"/>
 	</target>
 
 	<target name="init-integration">
@@ -226,6 +230,8 @@
 		</exec>
 	</target>
 
+	<target name="init-dast-postgresql" depends="create-frontend-configs,make-dbschema,create-db-postgresql"/>
+
 	<target name="make-binaries-mysql">
 		<!-- Binaries for integration tests -->
 		<exec executable="./bootstrap.sh" failonerror="on"/>
@@ -337,6 +343,8 @@
 		</exec>
 	</target>
 
+	<target name="init-dast-mysql" depends="create-frontend-configs,make-dbschema,create-db-mysql"/>
+
 	<target name="test-phpunit" depends="init-common">
 		<exec executable="phpunit" dir="frontends/php/tests/unit" failonerror="off">
 			<arg line="--log-junit=${basedir}/build/logs/phpunit.xml"/>
@@ -379,6 +387,8 @@
 	<target name="build-api-postgresql" depends="init-api-postgresql,test-api"/>
 	<target name="build-integration-mysql" depends="init-integration-mysql,test-integration"/>
 	<target name="build-integration-postgresql" depends="init-integration-postgresql,test-integration"/>
+	<target name="build-dast-mysql" depends="init-dast-mysql"/>
+	<target name="build-dast-postgresql" depends="init-dast-postgresql"/>
 
 	<!-- Default target -->
 	<target name="build" depends="build-phpunit,build-mysql,build-postgresql,build-integration-mysql,build-integration-postgresql"/>
