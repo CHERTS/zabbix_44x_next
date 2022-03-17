@@ -181,6 +181,7 @@
 [ZBX-19359] fixed error in logsource function due to empty source (https://support.zabbix.com/browse/ZBX-19359)
 [ZBX-19373] fixed security vulnerability for links having target="_blank" (https://support.zabbix.com/browse/ZBX-19373)
 [ZBX-19388] fixed inherited graph and graph prototype update if user has no permissions to child host or template (https://support.zabbix.com/browse/ZBX-19388)
+[ZBX-19407] removed redundant encoding check in get_codepage() for Windows (https://support.zabbix.com/browse/ZBX-19407)
 [ZBX-19428] fixed high CPU usage and preprocessing workers exiting with timeout when starting numerous poller, trapper and discoverer processes (https://support.zabbix.com/browse/ZBX-19428)
 [ZBX-19439] fixed Action log dashboard widget missing Remote command entries (https://support.zabbix.com/browse/ZBX-19439)
 [ZBX-19440] added utf-8 support to zbx_set_json_strerror (https://support.zabbix.com/browse/ZBX-19440)

@@ -5,6 +5,7 @@ New features:
 
 Bug fixes:
 ..F....... [ZBX-19223] fixed disabled hosts not listed in latest data view (averza)
+...G...... [ZBX-19407] removed redundant encoding check in get_codepage() for Windows (arimdjonoks)
 ...G...... [ZBX-20390] fixed Oracle Solaris vm.memory.size[available] item kstats memory read (arimdjonoks)
 ...G...... [ZBX-20487] fixed agent handling of invalid time intervals (wiper)
 ..F....... [ZBX-20680] fixed reflected XSS issues (averza)
