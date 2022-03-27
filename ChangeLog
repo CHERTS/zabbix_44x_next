@@ -9,6 +9,7 @@ Bug fixes:
 ...G...... [ZBX-20390] fixed Oracle Solaris vm.memory.size[available] item kstats memory read (arimdjonoks)
 ...G...... [ZBX-20487] fixed agent handling of invalid time intervals (wiper)
 ..F....... [ZBX-20680] fixed reflected XSS issues (averza)
+.D........ [ZBX-20762] fixed StartAlerters and StartEscalators range in configuration file comments (akozlovs)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.27
