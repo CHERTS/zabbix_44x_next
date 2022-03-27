@@ -245,6 +245,7 @@
 [ZBX-20390] fixed Oracle Solaris vm.memory.size[available] item kstats memory read (https://support.zabbix.com/browse/ZBX-20390)
 [ZBX-20487] fixed agent handling of invalid time intervals (https://support.zabbix.com/browse/ZBX-20487)
 [ZBX-20570] fixed --with-libevent option on FreeBSD (https://support.zabbix.com/browse/ZBX-20570)
+[ZBX-20634] fixed handling of multiline FTP response (https://support.zabbix.com/browse/ZBX-20634)
 [ZBX-20680] fixed reflected XSS issues (https://support.zabbix.com/browse/ZBX-20680)
 [ZBX-20762] fixed StartAlerters and StartEscalators range in configuration file comments (https://support.zabbix.com/browse/ZBX-20762)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
