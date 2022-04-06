@@ -243,6 +243,7 @@
 [ZBX-20387] fixed default language of the setup routine for logged in superadmin users (https://support.zabbix.com/browse/ZBX-20387)
 [ZBX-20388] fixed XSS vulnerability in multiselect (https://support.zabbix.com/browse/ZBX-20388)
 [ZBX-20390] fixed Oracle Solaris vm.memory.size[available] item kstats memory read (https://support.zabbix.com/browse/ZBX-20390)
+[ZBX-20398] added mitigation for pid file not being created in time (https://support.zabbix.com/browse/ZBX-20398)
 [ZBX-20487] fixed agent handling of invalid time intervals (https://support.zabbix.com/browse/ZBX-20487)
 [ZBX-20570] fixed --with-libevent option on FreeBSD (https://support.zabbix.com/browse/ZBX-20570)
 [ZBX-20634] fixed handling of multiline FTP response (https://support.zabbix.com/browse/ZBX-20634)
