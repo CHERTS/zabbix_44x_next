@@ -346,7 +346,7 @@ static void	*preprocessor_get_next_task(zbx_preprocessing_manager_t *manager, zb
 		if (ITEM_STATE_NOTSUPPORTED == request->value.state)
 		{
 			zbx_preproc_history_t	*vault;
-			zbx_list_item_t		*node = iterator.current
+			zbx_list_item_t		*node = iterator.current;
 
 			if (NULL != (vault = (zbx_preproc_history_t *) zbx_hashset_search(&manager->history_cache,
 					&request->value.itemid)))
