@@ -9,6 +9,7 @@ Bug fixes:
 ...G...... [ZBX-20390] fixed Oracle Solaris vm.memory.size[available] item kstats memory read (arimdjonoks)
 ...G...PS. [ZBX-20398] added mitigation for pid file not being created in time (MVekslers, yurii)
 ...G...... [ZBX-20487] fixed agent handling of invalid time intervals (wiper)
+.......PS. [ZBX-20567] improved preprocessor queue performance with items taking long time to preprocess (wiper)
 ...G...... [ZBX-20634] fixed handling of multiline FTP response (ssimonenko)
 ..F....... [ZBX-20680] fixed reflected XSS issues (averza)
 .D........ [ZBX-20762] fixed StartAlerters and StartEscalators range in configuration file comments (akozlovs)
