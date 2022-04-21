@@ -250,6 +250,7 @@
 [ZBX-20634] fixed handling of multiline FTP response (https://support.zabbix.com/browse/ZBX-20634)
 [ZBX-20680] fixed reflected XSS issues (https://support.zabbix.com/browse/ZBX-20680)
 [ZBX-20762] fixed StartAlerters and StartEscalators range in configuration file comments (https://support.zabbix.com/browse/ZBX-20762)
+[ZBX-20844] fixed external check becoming unsupported when Zabbix server or Zabbix proxy is stopped (https://support.zabbix.com/browse/ZBX-20844)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
