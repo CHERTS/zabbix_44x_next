@@ -12,6 +12,7 @@ Bug fixes:
 .......PS. [ZBX-20567] improved preprocessor queue performance with items taking long time to preprocess (wiper)
 ...G...... [ZBX-20634] fixed handling of multiline FTP response (ssimonenko)
 ..F....... [ZBX-20680] fixed reflected XSS issues (averza)
+..F....... [ZBX-20746] fixed auto-suggest in graph widget configuration not showing discovered item names (agriscenko)
 .D........ [ZBX-20762] fixed StartAlerters and StartEscalators range in configuration file comments (akozlovs)
 .......PS. [ZBX-20844] fixed external check becoming unsupported when Zabbix server or Zabbix proxy is stopped (vso)
 
