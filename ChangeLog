@@ -11,6 +11,7 @@ Bug fixes:
 ...G...PS. [ZBX-20398] added mitigation for pid file not being created in time (MVekslers, yurii)
 ...G...... [ZBX-20487] fixed agent handling of invalid time intervals (wiper)
 .......PS. [ZBX-20567] improved preprocessor queue performance with items taking long time to preprocess (wiper)
+.......PS. [ZBX-20600] fixed vmware hv.datastore.latency item when multiple datastores with duplicate name (MVekslers)
 ...G...... [ZBX-20634] fixed handling of multiline FTP response (ssimonenko)
 ..F....... [ZBX-20680] fixed reflected XSS issues (averza)
 ..F....... [ZBX-20746] fixed auto-suggest in graph widget configuration not showing discovered item names (agriscenko)
