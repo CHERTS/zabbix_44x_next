@@ -237,6 +237,7 @@
 [ZBX-20293] fixed icmpping items group becomes not supported due to error in interval detection (https://support.zabbix.com/browse/ZBX-20293)
 [ZBX-20330] added handling of nan/inf values in ipmi discovery (https://support.zabbix.com/browse/ZBX-20330)
 [ZBX-20341] moved zbx_ipc_service_init_env() to MAIN_ZABBIX_ENTRY (https://support.zabbix.com/browse/ZBX-20341)
+[ZBX-20356] fixed perfomance counters not working when removed and added again on Zabbix agent2 (https://support.zabbix.com/browse/ZBX-20356)
 [ZBX-20373] fixed conf syncer appearing to be busy on proxy on network problem (https://support.zabbix.com/browse/ZBX-20373)
 [ZBX-20383] updated logback-core, logback-classic and slf4j-api jars to the latest stable versions (https://support.zabbix.com/browse/ZBX-20383)
 [ZBX-20384] fixed possibility to view setup pages by non-superadmin if config already file exists (https://support.zabbix.com/browse/ZBX-20384)
