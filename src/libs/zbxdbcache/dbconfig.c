@@ -6320,7 +6320,7 @@ static void	DCget_host(DC_HOST *dst_host, const ZBX_DC_HOST *src_host)
 	}
 
 	if (NULL != (host_inventory = (ZBX_DC_HOST_INVENTORY *)zbx_hashset_search(&config->host_inventories, &src_host->hostid)))
-		dst_host->inventory_mode = (char)host_inventory->inventory_mode;
+		dst_host->inventory_mode = (signed char)host_inventory->inventory_mode;
 	else
 		dst_host->inventory_mode = HOST_INVENTORY_DISABLED;
 }

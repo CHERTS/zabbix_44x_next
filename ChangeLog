@@ -15,6 +15,7 @@ Bug fixes:
 ..F....... [ZBX-20680] fixed reflected XSS issues (averza)
 ..F....... [ZBX-20746] fixed auto-suggest in graph widget configuration not showing discovered item names (agriscenko)
 .D........ [ZBX-20762] fixed StartAlerters and StartEscalators range in configuration file comments (akozlovs)
+........S. [ZBX-20823] fixed inability to update hosts that were created by LLD on aarch64 (vso)
 .......PS. [ZBX-20844] fixed external check becoming unsupported when Zabbix server or Zabbix proxy is stopped (vso)
 
 --------------------------------------------------------------------------------

@@ -125,7 +125,7 @@ typedef struct
 		ZBX_FLAG_LLD_HOST_UPDATE_TLS_PSK)
 
 	zbx_uint64_t		flags;
-	char			inventory_mode;
+	signed char		inventory_mode;
 }
 zbx_lld_host_t;
 
@@ -207,7 +207,7 @@ zbx_lld_group_rights_t;
  *                                                                            *
  ******************************************************************************/
 static void	lld_hosts_get(zbx_uint64_t parent_hostid, zbx_vector_ptr_t *hosts, zbx_uint64_t proxy_hostid,
-		char ipmi_authtype, unsigned char ipmi_privilege, const char *ipmi_username, const char *ipmi_password,
+		signed char ipmi_authtype, unsigned char ipmi_privilege, const char *ipmi_username, const char *ipmi_password,
 		unsigned char tls_connect, unsigned char tls_accept, const char *tls_issuer,
 		const char *tls_subject, const char *tls_psk_identity, const char *tls_psk)
 {
@@ -248,7 +248,7 @@ static void	lld_hosts_get(zbx_uint64_t parent_hostid, zbx_vector_ptr_t *hosts, z
 		if (db_proxy_hostid != proxy_hostid)
 			host->flags |= ZBX_FLAG_LLD_HOST_UPDATE_PROXY;
 
-		if ((char)atoi(row[7]) != ipmi_authtype)
+		if ((signed char)atoi(row[7]) != ipmi_authtype)
 			host->flags |= ZBX_FLAG_LLD_HOST_UPDATE_IPMI_AUTH;
 
 		if ((unsigned char)atoi(row[8]) != ipmi_privilege)
@@ -1881,10 +1881,10 @@ static void	lld_templates_make(zbx_uint64_t parent_hostid, zbx_vector_ptr_t *hos
  *                                                                            *
  ******************************************************************************/
 static void	lld_hosts_save(zbx_uint64_t parent_hostid, zbx_vector_ptr_t *hosts, const char *host_proto,
-		zbx_uint64_t proxy_hostid, char ipmi_authtype, unsigned char ipmi_privilege, const char *ipmi_username,
-		const char *ipmi_password, unsigned char status, char inventory_mode, unsigned char tls_connect,
-		unsigned char tls_accept, const char *tls_issuer, const char *tls_subject, const char *tls_psk_identity,
-		const char *tls_psk, const zbx_vector_uint64_t *del_hostgroupids)
+		zbx_uint64_t proxy_hostid, signed char ipmi_authtype, unsigned char ipmi_privilege,
+		const char *ipmi_username, const char *ipmi_password, unsigned char status, char inventory_mode,
+		unsigned char tls_connect, unsigned char tls_accept, const char *tls_issuer, const char *tls_subject,
+		const char *tls_psk_identity, const char *tls_psk, const zbx_vector_uint64_t *del_hostgroupids)
 {
 	int			i, j, new_hosts = 0, new_host_inventories = 0, upd_hosts = 0, new_hostgroups = 0,
 				new_hostmacros = 0, upd_hostmacros = 0, new_interfaces = 0, upd_interfaces = 0;
@@ -3092,7 +3092,7 @@ void	lld_update_hosts(zbx_uint64_t lld_ruleid, const zbx_vector_ptr_t *lld_rows,
 	zbx_uint64_t		proxy_hostid;
 	char			*ipmi_username = NULL, *ipmi_password, *tls_issuer, *tls_subject, *tls_psk_identity,
 				*tls_psk;
-	char			ipmi_authtype, inventory_mode;
+	signed char		ipmi_authtype, inventory_mode;
 	unsigned char		ipmi_privilege, tls_connect, tls_accept;
 
 	zabbix_log(LOG_LEVEL_DEBUG, "In %s()", __func__);
@@ -3108,7 +3108,7 @@ void	lld_update_hosts(zbx_uint64_t lld_ruleid, const zbx_vector_ptr_t *lld_rows,
 	if (NULL != (row = DBfetch(result)))
 	{
 		ZBX_DBROW2UINT64(proxy_hostid, row[0]);
-		ipmi_authtype = (char)atoi(row[1]);
+		ipmi_authtype = (signed char)atoi(row[1]);
 		ZBX_STR2UCHAR(ipmi_privilege, row[2]);
 		ipmi_username = zbx_strdup(NULL, row[3]);
 		ipmi_password = zbx_strdup(NULL, row[4]);
@@ -3163,7 +3163,7 @@ void	lld_update_hosts(zbx_uint64_t lld_ruleid, const zbx_vector_ptr_t *lld_rows,
 		if (SUCCEED == DBis_null(row[4]))
 			inventory_mode = HOST_INVENTORY_DISABLED;
 		else
-			inventory_mode = (char)atoi(row[4]);
+			inventory_mode = (signed char)atoi(row[4]);
 
 		lld_hosts_get(parent_hostid, &hosts, proxy_hostid, ipmi_authtype, ipmi_privilege, ipmi_username,
 				ipmi_password, tls_connect, tls_accept, tls_issuer, tls_subject,
