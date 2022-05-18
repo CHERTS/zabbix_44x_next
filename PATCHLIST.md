@@ -105,6 +105,7 @@
 [ZBX-18464] fixed javascript Uncaught TypeError when clicking on disabled multiselect item (https://support.zabbix.com/browse/ZBX-18464)
 [ZBX-18486] fixed screen inheritance from a linked template in the full clone case (https://support.zabbix.com/browse/ZBX-18486)
 [ZBX-18487] increased trapper verbosity for DebugLevel=4 when rejecting sender data (https://support.zabbix.com/browse/ZBX-18487)
+[ZBX-18520] fixed showing of fields that do not belong to selected item type in item edit form (https://support.zabbix.com/browse/ZBX-18520)
 [ZBX-18553] increased ssh.run[] item data limit to 512KB for pre-processing, data storage limit still remains at 64KB (https://support.zabbix.com/browse/ZBX-18553)
 [ZBX-18564] moved taskid calculation to transaction when creating remote command task (https://support.zabbix.com/browse/ZBX-18564)
 [ZBX-18611] fixed division by zero error due to small graph size when using gradient lines (https://support.zabbix.com/browse/ZBX-18611)
