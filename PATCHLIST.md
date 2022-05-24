@@ -257,6 +257,7 @@
 [ZBX-20823] fixed inability to update hosts that were created by LLD on aarch64 (https://support.zabbix.com/browse/ZBX-20823)
 [ZBX-20844] fixed external check becoming unsupported when Zabbix server or Zabbix proxy is stopped (https://support.zabbix.com/browse/ZBX-20844)
 [ZBX-20886] fixed handle leak on Zabbix agent 2 in vfs.fs.get (https://support.zabbix.com/browse/ZBX-20886)
+[ZBX-20911] added process state check in PROC_NUM() for Oracle Solaris (https://support.zabbix.com/browse/ZBX-20911)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
