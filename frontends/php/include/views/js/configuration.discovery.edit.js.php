@@ -746,9 +746,9 @@
 	jQuery(document).ready(function() {
 		addPopupValues(<?= zbx_jsvalue(array_values($this->data['drule']['dchecks'])) ?>);
 
-		jQuery("input:radio[name='uniqueness_criteria'][value=<?= zbx_jsvalue($this->data['drule']['uniqueness_criteria']) ?>]").attr('checked', 'checked');
-		jQuery("input:radio[name='host_source'][value=<?= zbx_jsvalue($this->data['drule']['host_source']) ?>]").attr('checked', 'checked');
-		jQuery("input:radio[name='name_source'][value=<?= zbx_jsvalue($this->data['drule']['name_source']) ?>]").attr('checked', 'checked');
+		jQuery("input:radio[name='uniqueness_criteria'][value='+jQuery.escapeSelector(<?= zbx_jsvalue($this->data['drule']['uniqueness_criteria']) ?>)+']").attr('checked', 'checked');
+		jQuery("input:radio[name='host_source'][value='+jQuery.escapeSelector(<?= zbx_jsvalue($this->data['drule']['host_source']) ?>)+']").attr('checked', 'checked');
+		jQuery("input:radio[name='name_source'][value='+jQuery.escapeSelector(<?= zbx_jsvalue($this->data['drule']['name_source']) ?>)+']").attr('checked', 'checked');
 
 		jQuery('#newCheck').click(showNewCheckForm);
 		jQuery('#clone').click(function() {
