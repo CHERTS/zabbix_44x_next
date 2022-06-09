@@ -2729,7 +2729,6 @@ int	zbx_dbsync_compare_action_ops(zbx_dbsync_t *sync)
 	return SUCCEED;
 }
 
-
 /******************************************************************************
  *                                                                            *
  * Function: dbsync_compare_action_condition                                  *
@@ -3276,7 +3275,6 @@ int	zbx_dbsync_compare_corr_conditions(zbx_dbsync_t *sync)
 
 	return SUCCEED;
 }
-
 
 /******************************************************************************
  *                                                                            *

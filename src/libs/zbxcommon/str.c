@@ -3589,7 +3589,6 @@ static int	zbx_token_parse_objectid(const char *expression, const char *macro, z
 	if (1 == ptr - macro)
 		return FAIL;
 
-
 	offset = macro - expression;
 
 	/* initialize token */

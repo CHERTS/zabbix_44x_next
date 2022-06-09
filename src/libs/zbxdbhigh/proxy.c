@@ -84,7 +84,6 @@ typedef struct
 }
 zbx_id_offset_t;
 
-
 typedef int	(*zbx_client_item_validator_t)(DC_ITEM *item, zbx_socket_t *sock, void *args, char **error);
 
 typedef struct
@@ -1682,7 +1681,6 @@ static int	process_proxyconfig_table(const ZBX_TABLE *table, struct zbx_json_par
 		ZBX_STR2UINT64(recid, buf);
 		if (FAIL != zbx_vector_uint64_bsearch(&ins, recid, ZBX_DEFAULT_UINT64_COMPARE_FUNC))
 			continue;
-
 
 		if (1 == fields_count)	/* only primary key given, no update needed */
 			continue;

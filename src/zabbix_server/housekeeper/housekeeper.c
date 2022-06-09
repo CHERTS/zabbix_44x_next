@@ -1094,7 +1094,6 @@ static int	housekeeping_proxy_dhistory(int now)
 	return deleted;
 }
 
-
 static int	get_housekeeping_period(double time_slept)
 {
 	if (SEC_PER_HOUR > time_slept)

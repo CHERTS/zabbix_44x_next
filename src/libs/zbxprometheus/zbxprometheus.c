@@ -1734,7 +1734,6 @@ int	zbx_prometheus_validate_label(const char *label)
 	return SUCCEED;
 }
 
-
 #ifdef HAVE_TESTS
 #	include "../../../tests/libs/zbxprometheus/prometheus_test.c"
 #endif

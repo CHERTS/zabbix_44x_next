@@ -32,7 +32,6 @@
 #define ZBX_FLAGS_TRIGGER_CREATE_EVENT										\
 		(ZBX_FLAGS_TRIGGER_CREATE_TRIGGER_EVENT | ZBX_FLAGS_TRIGGER_CREATE_INTERNAL_EVENT)
 
-
 /******************************************************************************
  *                                                                            *
  * Function: zbx_process_trigger                                              *

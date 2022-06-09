@@ -57,7 +57,6 @@ const char	*help_message[] = {
 	NULL	/* end of text */
 };
 
-
 /* long options */
 struct zbx_option	longopts[] =
 {
@@ -242,7 +241,6 @@ int	main(int argc, char **argv)
 		zbx_error("cannot open log: %s", error);
 		goto clean;
 	}
-
 
 	if (NULL == script_file || (NULL == input_file && NULL == param))
 	{

@@ -2075,7 +2075,6 @@ out:
 	zabbix_log(LOG_LEVEL_DEBUG, "End of %s():%s error:'%s'", __func__, check_escalation_result_string(ret),
 			ZBX_NULL2EMPTY_STR(*error));
 
-
 	return ret;
 }
 

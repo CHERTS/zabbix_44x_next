@@ -25,7 +25,6 @@ Released into the Public Domain by Ulrich Drepper <drepper@redhat.com>.  */
 #include <sys/param.h>
 #include <sys/types.h>
 
-
 /* Structure to save state of computation between the single steps.  */
 struct sha256_ctx
 {
@@ -36,7 +35,6 @@ struct sha256_ctx
 	char buffer[128];	/* NB: always correctly aligned for uint32_t.  */
 };
 
-
 #if __BYTE_ORDER == __LITTLE_ENDIAN
 # define SWAP(n) \
 	(((n) << 24) | (((n) & 0xff00) << 8) | (((n) >> 8) & 0xff00) | ((n) >> 24))
@@ -44,11 +42,9 @@ struct sha256_ctx
 # define SWAP(n) (n)
 #endif
 
-
 /* This array contains the bytes used to pad the buffer to the next
 64-byte boundary.  (FIPS 180-2:5.1.1)  */
 static const unsigned char fillbuf[64] = { 0x80, 0 /* , 0, 0, ...  */ };
-
 
 /* Constants for SHA256 from FIPS 180-2:4.2.2.  */
 static const uint32_t K[64] =
@@ -70,7 +66,6 @@ static const uint32_t K[64] =
 	0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208,
 	0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
 };
-
 
 /* Process LEN bytes of BUFFER, accumulating context into CTX.
 It is assumed that LEN % 64 == 0.  */
@@ -174,7 +169,6 @@ cyclic rotation.  Hope the C compiler is smart enough.  */
 	ctx->H[7] = h;
 }
 
-
 /* Initialize structure containing state of computation.
 (FIPS 180-2:5.3.2)  */
 static void
@@ -192,7 +186,6 @@ sha256_init_ctx (struct sha256_ctx *ctx)
 	ctx->total[0] = ctx->total[1] = 0;
 	ctx->buflen = 0;
 }
-
 
 /* Process the remaining bytes in the internal buffer and the usual
 prolog according to the standard and write the result to RESBUF.
@@ -229,7 +222,6 @@ sha256_finish_ctx (struct sha256_ctx *ctx, void *resbuf)
 
 	return resbuf;
 }
-
 
 static void
 sha256_process_bytes (const void *buffer, size_t len, struct sha256_ctx *ctx)

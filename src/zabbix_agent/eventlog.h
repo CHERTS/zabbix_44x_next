@@ -180,8 +180,6 @@ typedef enum	_EVT_VARIANT_TYPE
 }
 EVT_VARIANT_TYPE;
 
-
-
 int			process_eventslog(const char *server, unsigned short port, const char *eventlog_name,
 			zbx_vector_ptr_t *regexps, const char *pattern, const char *key_severity,
 			const char *key_source, const char *key_logeventid, int rate,
@@ -214,4 +212,3 @@ BOOL WINAPI		EvtFormatMessage(EVT_HANDLE PublisherMetadata, EVT_HANDLE Event, DW
 			PDWORD BufferUsed);
 
 #endif	/* ZABBIX_EVENTLOG_H */
-
