@@ -36,8 +36,6 @@ static zbx_mutex_t	kstat_lock = ZBX_MUTEX_NULL;
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_kstat_refresh                                                *
- *                                                                            *
  * Purpose: refreshes kstat environment                                       *
  *                                                                            *
  * Parameters: error - [OUT] the error message                                *
@@ -77,8 +75,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_kstat_init                                                   *
  *                                                                            *
  * Purpose: initialize kstat environment                                      *
  *                                                                            *
@@ -146,8 +142,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_kstat_collect                                                *
- *                                                                            *
  * Purpose: collect kstat stats                                               *
  *                                                                            *
  * Comments: This function is called every second to collect statistics.      *
@@ -191,8 +185,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_kstat_get_freemem                                            *
  *                                                                            *
  * Purpose: get free memory size                                              *
  *                                                                            *

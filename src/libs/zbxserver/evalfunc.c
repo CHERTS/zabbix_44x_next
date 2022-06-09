@@ -55,8 +55,6 @@ static const char	*zbx_type_string(zbx_value_type_t type)
 
 /******************************************************************************
  *                                                                            *
- * Function: get_function_parameter_int                                       *
- *                                                                            *
  * Purpose: get the value of sec|#num trigger function parameter              *
  *                                                                            *
  * Parameters: parameters     - [IN] trigger function parameters              *
@@ -189,8 +187,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_LOGEVENTID                                              *
- *                                                                            *
  * Purpose: evaluate function 'logeventid' for the item                       *
  *                                                                            *
  * Parameters: item - item (performance metric)                               *
@@ -282,8 +278,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_LOGSOURCE                                               *
- *                                                                            *
  * Purpose: evaluate function 'logsource' for the item                        *
  *                                                                            *
  * Parameters: item - item (performance metric)                               *
@@ -369,8 +363,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_LOGSEVERITY                                             *
  *                                                                            *
  * Purpose: evaluate function 'logseverity' for the item                      *
  *                                                                            *
@@ -521,8 +513,6 @@ static void	count_one_str(int *count, int op, const char *value, const char *pat
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_COUNT                                                   *
  *                                                                            *
  * Purpose: evaluate function 'count' for the item                            *
  *                                                                            *
@@ -835,8 +825,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_SUM                                                     *
- *                                                                            *
  * Purpose: evaluate function 'sum' for the item                              *
  *                                                                            *
  * Parameters: item - item (performance metric)                               *
@@ -935,8 +923,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_AVG                                                     *
  *                                                                            *
  * Purpose: evaluate function 'avg' for the item                              *
  *                                                                            *
@@ -1042,8 +1028,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_LAST                                                    *
- *                                                                            *
  * Purpose: evaluate functions 'last' and 'prev' for the item                 *
  *                                                                            *
  * Parameters: value - buffer of size MAX_BUFFER_LEN                          *
@@ -1117,8 +1101,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_MIN                                                     *
  *                                                                            *
  * Purpose: evaluate function 'min' for the item                              *
  *                                                                            *
@@ -1229,8 +1211,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_MAX                                                     *
  *                                                                            *
  * Purpose: evaluate function 'max' for the item                              *
  *                                                                            *
@@ -1356,8 +1336,6 @@ static int	__history_record_uint64_compare(const zbx_history_record_t *d1, const
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_PERCENTILE                                              *
- *                                                                            *
  * Purpose: evaluate function 'percentile' for the item                       *
  *                                                                            *
  * Parameters: item       - [IN] item (performance metric)                    *
@@ -1466,8 +1444,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_DELTA                                                   *
  *                                                                            *
  * Purpose: evaluate function 'delta' for the item                            *
  *                                                                            *
@@ -1592,8 +1568,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_NODATA                                                  *
- *                                                                            *
  * Purpose: evaluate function 'nodata' for the item                           *
  *                                                                            *
  * Parameters: item - item (performance metric)                               *
@@ -1664,8 +1638,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_ABSCHANGE                                               *
  *                                                                            *
  * Purpose: evaluate function 'abschange' for the item                        *
  *                                                                            *
@@ -1740,8 +1712,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_CHANGE                                                  *
- *                                                                            *
  * Purpose: evaluate function 'change' for the item                           *
  *                                                                            *
  * Parameters: item - item (performance metric)                               *
@@ -1812,8 +1782,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_DIFF                                                    *
- *                                                                            *
  * Purpose: evaluate function 'diff' for the item                             *
  *                                                                            *
  * Parameters: item - item (performance metric)                               *
@@ -1880,8 +1848,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_STR                                                     *
  *                                                                            *
  * Purpose: evaluate function 'str' for the item                              *
  *                                                                            *
@@ -2073,8 +2039,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_STRLEN                                                  *
- *                                                                            *
  * Purpose: evaluate function 'strlen' for the item                           *
  *                                                                            *
  * Parameters: value - buffer of size MAX_BUFFER_LEN                          *
@@ -2111,8 +2075,6 @@ clean:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_FUZZYTIME                                               *
  *                                                                            *
  * Purpose: evaluate function 'fuzzytime' for the item                        *
  *                                                                            *
@@ -2192,8 +2154,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_BAND                                                    *
- *                                                                            *
  * Purpose: evaluate logical bitwise function 'and' for the item              *
  *                                                                            *
  * Parameters: value - buffer of size MAX_BUFFER_LEN                          *
@@ -2257,8 +2217,6 @@ clean:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_FORECAST                                                *
  *                                                                            *
  * Purpose: evaluate function 'forecast' for the item                         *
  *                                                                            *
@@ -2420,8 +2378,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_TIMELEFT                                                *
- *                                                                            *
  * Purpose: evaluate function 'timeleft' for the item                         *
  *                                                                            *
  * Parameters: item - item (performance metric)                               *
@@ -2570,8 +2526,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_function                                                *
  *                                                                            *
  * Purpose: evaluate function                                                 *
  *                                                                            *
@@ -2735,8 +2689,6 @@ int	evaluate_function(char *value, DC_ITEM *item, const char *function, const ch
 
 /******************************************************************************
  *                                                                            *
- * Function: add_value_suffix_uptime                                          *
- *                                                                            *
  * Purpose: Process suffix 'uptime'                                           *
  *                                                                            *
  * Parameters: value - value for adjusting                                    *
@@ -2780,8 +2732,6 @@ static void	add_value_suffix_uptime(char *value, size_t max_len)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: add_value_suffix_s                                               *
  *                                                                            *
  * Purpose: Process suffix 's'                                                *
  *                                                                            *
@@ -2868,8 +2818,6 @@ clean:
 
 /******************************************************************************
  *                                                                            *
- * Function: is_blacklisted_unit                                              *
- *                                                                            *
  * Purpose:  check if unit is blacklisted or not                              *
  *                                                                            *
  * Parameters: unit - unit to check                                           *
@@ -2892,8 +2840,6 @@ static int	is_blacklisted_unit(const char *unit)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: add_value_units_no_kmgt                                          *
  *                                                                            *
  * Purpose: add only units to the value                                       *
  *                                                                            *
@@ -2930,8 +2876,6 @@ static void	add_value_units_no_kmgt(char *value, size_t max_len, const char *uni
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: add_value_units_with_kmgt                                        *
  *                                                                            *
  * Purpose: add units with K,M,G,T prefix to the value                        *
  *                                                                            *
@@ -2998,8 +2942,6 @@ static void	add_value_units_with_kmgt(char *value, size_t max_len, const char *u
 
 /******************************************************************************
  *                                                                            *
- * Function: add_value_suffix                                                 *
- *                                                                            *
  * Purpose: Add suffix for value                                              *
  *                                                                            *
  * Parameters: value - value for replacing                                    *
@@ -3047,8 +2989,6 @@ static void	add_value_suffix(char *value, size_t max_len, const char *units, uns
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: replace_value_by_map                                             *
  *                                                                            *
  * Purpose: replace value by mapping value                                    *
  *                                                                            *
@@ -3099,8 +3039,6 @@ clean:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_format_value                                                 *
- *                                                                            *
  * Purpose: replace value by value mapping or by units                        *
  *                                                                            *
  * Parameters: value      - [IN/OUT] value for replacing                      *
@@ -3134,8 +3072,6 @@ void	zbx_format_value(char *value, size_t max_len, zbx_uint64_t valuemapid,
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_macro_function                                          *
  *                                                                            *
  * Purpose: evaluate function used in simple macro                            *
  *                                                                            *
@@ -3216,8 +3152,6 @@ int	evaluate_macro_function(char **result, const char *host, const char *key, co
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluatable_for_notsupported                                     *
  *                                                                            *
  * Purpose: check is function to be evaluated for NOTSUPPORTED items          *
  *                                                                            *

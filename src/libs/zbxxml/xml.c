@@ -50,8 +50,6 @@ ZBX_PTR_VECTOR_IMPL(xml_node_ptr, zbx_xml_node_t *)
 
 /******************************************************************************
  *                                                                            *
- * Function: xml_escape_dyn                                                   *
- *                                                                            *
  * Purpose: replace <> symbols in string with &lt;&gt; so the resulting       *
  *          string can be written into xml field                              *
  *                                                                            *
@@ -145,8 +143,6 @@ char	*xml_escape_dyn(const char *data)
 
 /**********************************************************************************
  *                                                                                *
- * Function: xml_escape_xpath_stringsize                                          *
- *                                                                                *
  * Purpose: calculate a string size after symbols escaping                        *
  *                                                                                *
  * Parameters: string - [IN] the string to check                                  *
@@ -170,8 +166,6 @@ static size_t	xml_escape_xpath_stringsize(const char *string)
 
 /**********************************************************************************
  *                                                                                *
- * Function: xml_escape_xpath_string                                              *
- *                                                                                *
  * Purpose: replace " symbol in string with ""                                    *
  *                                                                                *
  * Parameters: string - [IN] the xpath string to escape                           *
@@ -192,8 +186,6 @@ static void xml_escape_xpath_string(char *p, const char *string)
 }
 
 /**********************************************************************************
- *                                                                                *
- * Function: xml_escape_xpath                                                     *
  *                                                                                *
  * Purpose: escaping of symbols for using in xpath expression                     *
  *                                                                                *
@@ -217,8 +209,6 @@ void xml_escape_xpath(char **data)
 
 #ifdef HAVE_LIBXML2
 /******************************************************************************
- *                                                                            *
- * Function: compare_xml_nodes_by_name                                        *
  *                                                                            *
  * Purpose: compare two xml nodes by name                                     *
  *                                                                            *
@@ -245,8 +235,6 @@ static void	zbx_xml_node_free(zbx_xml_node_t *node)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: xml_to_vector                                                    *
  *                                                                            *
  * Purpose: to collect content of XML document nodes into vector              *
  *                                                                            *
@@ -360,8 +348,6 @@ static void	xml_to_vector(xmlNode *xml_node, zbx_vector_xml_node_ptr_t *nodes)
 
 /******************************************************************************
  *                                                                            *
- * Function: is_data                                                          *
- *                                                                            *
  * Purpose: to check if node is leaf node with text content                   *
  *                                                                            *
  * Parameters: node       - [IN] node structure                               *
@@ -382,8 +368,6 @@ static int	is_data(zbx_xml_node_t *node)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: vector_to_json                                                   *
  *                                                                            *
  * Purpose: to write content of vector into JSON document                     *
  *                                                                            *
@@ -475,8 +459,6 @@ static void	vector_to_json(zbx_vector_xml_node_ptr_t *nodes, struct zbx_json *js
 #ifdef HAVE_LIBXML2
 /******************************************************************************
  *                                                                            *
- * Function: zbx_open_xml                                                     *
- *                                                                            *
  * Purpose: to create xmlDoc and it's root node for input data                *
  *                                                                            *
  * Parameters: data      - [IN] input data                                    *
@@ -536,8 +518,6 @@ int	zbx_open_xml(char *data, int options, int maxerrlen, void **xml_doc, void **
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_check_xml_memory                                             *
- *                                                                            *
  * Purpose: to check xml memory to be valid                                   *
  *                                                                            *
  * Parameters: mem       - [IN] pointer to memory                             *
@@ -573,8 +553,6 @@ int	zbx_check_xml_memory(char *mem, int maxerrlen, char **errmsg)
 #endif
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_xml_to_json                                                  *
  *                                                                            *
  * Purpose: convert XML format value to JSON format                           *
  *                                                                            *
@@ -616,8 +594,6 @@ exit:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_xmlnode_to_json                                              *
  *                                                                            *
  * Purpose: convert XML format value to JSON format                           *
  *                                                                            *

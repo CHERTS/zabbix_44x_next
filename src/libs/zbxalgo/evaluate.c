@@ -735,8 +735,6 @@ int	evaluate(double *value, const char *expression, char *error, size_t max_erro
 
 /******************************************************************************
  *                                                                            *
- * Function: evaluate_unknown                                                 *
- *                                                                            *
  * Purpose: evaluate an expression like "(26.416>10) and not(0=ZBX_UNKNOWN0)" *
  *                                                                            *
  * Parameters: expression    - [IN]  expression to evaluate                   *
@@ -783,8 +781,6 @@ int	evaluate_unknown(const char *expression, double *value, char *error, size_t 
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: evaluate_string_to_double                                        *
  *                                                                            *
  * Purpose: cast string to a double, expand suffixes and parse negative sign  *
  *                                                                            *

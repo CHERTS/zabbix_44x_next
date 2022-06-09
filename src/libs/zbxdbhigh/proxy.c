@@ -132,8 +132,6 @@ static const char	*availability_tag_error[ZBX_AGENT_MAX] = {ZBX_PROTO_TAG_ERROR,
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_proxy_check_permissions                                      *
- *                                                                            *
  * Purpose: check proxy connection permissions (encryption configuration and  *
  *          if peer proxy address is allowed)                                 *
  *                                                                            *
@@ -227,8 +225,6 @@ int	zbx_proxy_check_permissions(const DC_PROXY *proxy, const zbx_socket_t *sock,
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_host_check_permissions                                       *
- *                                                                            *
  * Purpose: checks host connection permissions (encryption configuration)     *
  *                                                                            *
  * Parameters:                                                                *
@@ -314,8 +310,6 @@ static int	zbx_host_check_permissions(const DC_HOST *host, const zbx_socket_t *s
 
 /******************************************************************************
  *                                                                            *
- * Function: get_active_proxy_from_request                                    *
- *                                                                            *
  * Purpose:                                                                   *
  *     Extract a proxy name from JSON and find the proxy ID in configuration  *
  *     cache, and check access rights. The proxy must be configured in active *
@@ -353,8 +347,6 @@ int	get_active_proxy_from_request(struct zbx_json_parse *jp, DC_PROXY *proxy, ch
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: check_access_passive_proxy                                       *
  *                                                                            *
  * Purpose:                                                                   *
  *     Check access rights to a passive proxy for the given connection and    *
@@ -435,8 +427,6 @@ int	check_access_passive_proxy(zbx_socket_t *sock, int send_response, const char
 
 /******************************************************************************
  *                                                                            *
- * Function: proxyconfig_add_row                                              *
- *                                                                            *
  * Purpose: add database row to the proxy config json data                    *
  *                                                                            *
  * Parameters: j     - [OUT] the output json                                  *
@@ -482,8 +472,6 @@ typedef struct
 zbx_proxy_item_config_t;
 
 /******************************************************************************
- *                                                                            *
- * Function: get_proxyconfig_table_items                                      *
  *                                                                            *
  * Purpose: prepare items table proxy configuration data                      *
  *                                                                            *
@@ -652,8 +640,6 @@ skip_data:
 
 /******************************************************************************
  *                                                                            *
- * Function: get_proxyconfig_table_items                                      *
- *                                                                            *
  * Purpose: prepare items table proxy configuration data                      *
  *                                                                            *
  ******************************************************************************/
@@ -738,8 +724,6 @@ skip_data:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: get_proxyconfig_table                                            *
  *                                                                            *
  * Purpose: prepare proxy configuration data                                  *
  *                                                                            *
@@ -942,8 +926,6 @@ static void	get_proxy_monitored_httptests(zbx_uint64_t proxy_hostid, zbx_vector_
 
 /******************************************************************************
  *                                                                            *
- * Function: get_proxyconfig_data                                             *
- *                                                                            *
  * Purpose: prepare proxy configuration data                                  *
  *                                                                            *
  ******************************************************************************/
@@ -1027,8 +1009,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: remember_record                                                  *
- *                                                                            *
  * Purpose: A record is stored as a sequence of fields and flag bytes for     *
  *          handling NULL values. A field is stored as a null-terminated      *
  *          string to preserve field boundaries. If a field value can be NULL *
@@ -1087,8 +1067,6 @@ static int	id_offset_compare_func(const void *d1, const void *d2)
 
 /******************************************************************************
  *                                                                            *
- * Function: find_field_by_name                                               *
- *                                                                            *
  * Purpose: find a number of the field                                        *
  *                                                                            *
  ******************************************************************************/
@@ -1106,8 +1084,6 @@ static int	find_field_by_name(const ZBX_FIELD **fields, int fields_count, const 
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: compare_nth_field                                                *
  *                                                                            *
  * Purpose: This function compares a value from JSON record with the value    *
  *          of the n-th field of DB record. For description how DB record is  *
@@ -1187,8 +1163,6 @@ static int	compare_nth_field(const ZBX_FIELD **fields, const char *rec_data, int
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_proxyconfig_table                                        *
  *                                                                            *
  * Purpose: update configuration table                                        *
  *                                                                            *
@@ -1827,8 +1801,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: process_proxyconfig                                              *
- *                                                                            *
  * Purpose: update configuration                                              *
  *                                                                            *
  ******************************************************************************/
@@ -1940,8 +1912,6 @@ int	process_proxyconfig(struct zbx_json_parse *jp_data)
 
 /******************************************************************************
  *                                                                            *
- * Function: get_host_availability_data                                       *
- *                                                                            *
  * Return value:  SUCCEED - processed successfully                            *
  *                FAIL - no host availability has been changed                *
  *                                                                            *
@@ -1990,8 +1960,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_host_availability_contents                               *
  *                                                                            *
  * Purpose: parses host availability data contents and processes it           *
  *                                                                            *
@@ -2114,8 +2082,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: process_host_availability                                        *
- *                                                                            *
  * Purpose: update proxy hosts availability                                   *
  *                                                                            *
  * Return value:  SUCCEED - processed successfully                            *
@@ -2148,8 +2114,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: proxy_get_lastid                                                 *
- *                                                                            *
  ******************************************************************************/
 static void	proxy_get_lastid(const char *table_name, const char *lastidfield, zbx_uint64_t *lastid)
 {
@@ -2171,8 +2135,6 @@ static void	proxy_get_lastid(const char *table_name, const char *lastidfield, zb
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: proxy_set_lastid                                                 *
  *                                                                            *
  ******************************************************************************/
 static void	proxy_set_lastid(const char *table_name, const char *lastidfield, const zbx_uint64_t lastid)
@@ -2215,8 +2177,6 @@ void	proxy_set_areg_lastid(const zbx_uint64_t lastid)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: proxy_get_history_data_simple                                    *
  *                                                                            *
  * Purpose: Get history data from the database.                               *
  *                                                                            *
@@ -2325,8 +2285,6 @@ typedef struct
 zbx_history_data_t;
 
 /******************************************************************************
- *                                                                            *
- * Function: proxy_get_history_data                                           *
  *                                                                            *
  * Purpose: read proxy history data from the database                         *
  *                                                                            *
@@ -2469,8 +2427,6 @@ try_again:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: proxy_add_hist_data                                              *
  *                                                                            *
  * Purpose: add history records to output json                                *
  *                                                                            *
@@ -2778,8 +2734,6 @@ void	calc_timestamp(const char *line, int *timestamp, const char *format)
 
 /******************************************************************************
  *                                                                            *
- * Function: process_item_value                                               *
- *                                                                            *
  * Purpose: processes item value depending on proxy/flags settings            *
  *                                                                            *
  * Parameters: item    - [IN] the item to process                             *
@@ -2808,8 +2762,6 @@ static void	process_item_value(const DC_ITEM *item, AGENT_RESULT *result, zbx_ti
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_history_data_value                                       *
  *                                                                            *
  * Purpose: process single value from incoming history data                   *
  *                                                                            *
@@ -2908,8 +2860,6 @@ static int	process_history_data_value(DC_ITEM *item, zbx_agent_value_t *value)
 
 /******************************************************************************
  *                                                                            *
- * Function: process_history_data                                             *
- *                                                                            *
  * Purpose: process new item values                                           *
  *                                                                            *
  * Parameters: items      - [IN] the items to process                         *
@@ -2959,8 +2909,6 @@ int	process_history_data(DC_ITEM *items, zbx_agent_value_t *values, int *errcode
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_agent_values_clean                                           *
- *                                                                            *
  * Purpose: frees resources allocated to store agent values                   *
  *                                                                            *
  * Parameters: values     - [IN] the values to clean                          *
@@ -2979,8 +2927,6 @@ static void	zbx_agent_values_clean(zbx_agent_value_t *values, size_t values_num)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: log_client_timediff                                              *
  *                                                                            *
  * Purpose: calculates difference between server and client (proxy, active    *
  *          agent or sender) time and log it                                  *
@@ -3033,8 +2979,6 @@ static void	log_client_timediff(int level, struct zbx_json_parse *jp, const zbx_
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: parse_history_data_row_value                                     *
  *                                                                            *
  * Purpose: parses agent value from history data json row                     *
  *                                                                            *
@@ -3134,8 +3078,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: parse_history_data_row_itemid                                    *
- *                                                                            *
  * Purpose: parses item identifier from history data json row                 *
  *                                                                            *
  * Parameters: jp_row - [IN] JSON with history data row                       *
@@ -3158,8 +3100,6 @@ static int	parse_history_data_row_itemid(const struct zbx_json_parse *jp_row, zb
 	return SUCCEED;
 }
 /******************************************************************************
- *                                                                            *
- * Function: parse_history_data_row_hostkey                                   *
  *                                                                            *
  * Purpose: parses host,key pair from history data json row                   *
  *                                                                            *
@@ -3191,8 +3131,6 @@ static int	parse_history_data_row_hostkey(const struct zbx_json_parse *jp_row, z
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: parse_history_data                                               *
  *                                                                            *
  * Purpose: parses up to ZBX_HISTORY_VALUES_MAX item values and host,key      *
  *          pairs from history data json                                      *
@@ -3262,8 +3200,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: parse_history_data_by_itemids                                    *
  *                                                                            *
  * Purpose: parses up to ZBX_HISTORY_VALUES_MAX item values and item          *
  *          identifiers from history data json                                *
@@ -3340,8 +3276,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: proxy_item_validator                                             *
- *                                                                            *
  * Purpose: validates item received from proxy                                *
  *                                                                            *
  * Parameters: item  - [IN/OUT] the item data                                 *
@@ -3372,8 +3306,6 @@ static int	proxy_item_validator(DC_ITEM *item, zbx_socket_t *sock, void *args, c
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_history_data_by_itemids                                  *
  *                                                                            *
  * Purpose: parses history data array and process the data                    *
  *                                                                            *
@@ -3488,8 +3420,6 @@ static int	process_history_data_by_itemids(zbx_socket_t *sock, zbx_client_item_v
 
 /******************************************************************************
  *                                                                            *
- * Function: agent_item_validator                                             *
- *                                                                            *
  * Purpose: validates item received from active agent                         *
  *                                                                            *
  * Parameters: item  - [IN] the item data                                     *
@@ -3521,8 +3451,6 @@ static int	agent_item_validator(DC_ITEM *item, zbx_socket_t *sock, void *args, c
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: sender_item_validator                                            *
  *                                                                            *
  * Purpose: validates item received from sender                               *
  *                                                                            *
@@ -3687,8 +3615,6 @@ static void	process_history_data_by_keys(zbx_socket_t *sock, zbx_client_item_val
 
 /******************************************************************************
  *                                                                            *
- * Function: process_client_history_data                                      *
- *                                                                            *
  * Purpose: process history data sent by proxy/agent/sender                   *
  *                                                                            *
  * Parameters: sock           - [IN] the connection socket                    *
@@ -3778,8 +3704,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: process_agent_history_data                                       *
- *                                                                            *
  * Purpose: process history data received from Zabbix active agent            *
  *                                                                            *
  * Parameters: sock         - [IN] the connection socket                      *
@@ -3800,8 +3724,6 @@ int	process_agent_history_data(zbx_socket_t *sock, struct zbx_json_parse *jp, zb
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_sender_history_data                                      *
  *                                                                            *
  * Purpose: process history data received from Zabbix sender                  *
  *                                                                            *
@@ -3838,8 +3760,6 @@ static void	zbx_drule_free(zbx_drule_t *drule)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_services                                                 *
  *                                                                            *
  * Purpose: process services discovered on IP address                         *
  *                                                                            *
@@ -4013,8 +3933,6 @@ fail:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_discovery_data_contents                                  *
  *                                                                            *
  * Purpose: parse discovery data contents and process it                      *
  *                                                                            *
@@ -4203,8 +4121,6 @@ json_parse_return:
 
 /******************************************************************************
  *                                                                            *
- * Function: process_auto_registration_contents                               *
- *                                                                            *
  * Purpose: parse auto registration data contents and process it              *
  *                                                                            *
  * Parameters: jp_data         - [IN] JSON with auto registration data        *
@@ -4355,8 +4271,6 @@ static int	process_auto_registration_contents(struct zbx_json_parse *jp_data, zb
 
 /******************************************************************************
  *                                                                            *
- * Function: proxy_get_history_count                                          *
- *                                                                            *
  * Purpose: get the number of values waiting to be sent to the sever          *
  *                                                                            *
  * Return value: the number of history values                                 *
@@ -4387,8 +4301,6 @@ int	proxy_get_history_count(void)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_get_proxy_protocol_version                                   *
- *                                                                            *
  * Purpose: extracts protocol version from json data                          *
  *                                                                            *
  * Parameters:                                                                *
@@ -4415,8 +4327,6 @@ int	zbx_get_proxy_protocol_version(struct zbx_json_parse *jp)
 
 /******************************************************************************
  *                                                                            *
- * Function: process_tasks_contents                                           *
- *                                                                            *
  * Purpose: parse tasks contents and saves the received tasks                 *
  *                                                                            *
  * Parameters: jp_tasks - [IN] JSON with tasks data                           *
@@ -4440,8 +4350,6 @@ static void	process_tasks_contents(struct zbx_json_parse *jp_tasks)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_strcatnl_alloc                                               *
- *                                                                            *
  * Purpose: appends text to the string on a new line                          *
  *                                                                            *
  ******************************************************************************/
@@ -4454,8 +4362,6 @@ static void	zbx_strcatnl_alloc(char **info, size_t *info_alloc, size_t *info_off
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_proxy_data                                               *
  *                                                                            *
  * Purpose: process 'proxy data' request                                      *
  *                                                                            *
@@ -4541,8 +4447,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_db_flush_proxy_lastaccess                                    *
- *                                                                            *
  * Purpose: flushes lastaccess changes for proxies every                      *
  *          ZBX_PROXY_LASTACCESS_UPDATE_FREQUENCY seconds                     *
  *                                                                            *
@@ -4593,8 +4497,6 @@ static void	zbx_db_flush_proxy_lastaccess(void)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_update_proxy_data                                            *
- *                                                                            *
  * Purpose: updates proxy runtime properties in cache and database.           *
  *                                                                            *
  * Parameters: proxy      - [IN/OUT] the proxy                                *
@@ -4638,8 +4540,6 @@ void	zbx_update_proxy_data(DC_PROXY *proxy, int version, int lastaccess, int com
 }
 /******************************************************************************
  *                                                                            *
- * Function: zbx_update_proxy_lasterror                                       *
- *                                                                            *
  * Purpose: flushes last_version_error_time changes runtime                   *
  *          variable for proxies structures                                   *
  *                                                                            *
@@ -4656,8 +4556,6 @@ static void	zbx_update_proxy_lasterror(DC_PROXY *proxy)
 	zbx_dc_update_proxy(&diff);
 }
 /******************************************************************************
- *                                                                            *
- * Function: zbx_check_protocol_version                                       *
  *                                                                            *
  * Purpose: check server and proxy versions and compatibility rules           *
  *                                                                            *

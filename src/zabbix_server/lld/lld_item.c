@@ -575,8 +575,6 @@ static void	lld_item_free(zbx_lld_item_t *item)
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_items_get                                                    *
- *                                                                            *
  * Purpose: retrieves existing items for the specified item prototypes        *
  *                                                                            *
  * Parameters: item_prototypes - [IN] item prototypes                         *
@@ -893,8 +891,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: is_user_macro                                                    *
- *                                                                            *
  * Purpose: checks if string is user macro                                    *
  *                                                                            *
  * Parameters: str - [IN] string to validate                                  *
@@ -919,8 +915,6 @@ static int	is_user_macro(const char *str)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_validate_item_field                                          *
  *                                                                            *
  ******************************************************************************/
 static void	lld_validate_item_field(zbx_lld_item_t *item, char **field, char **field_orig, zbx_uint64_t flag,
@@ -1020,8 +1014,6 @@ static void	lld_validate_item_field(zbx_lld_item_t *item, char **field, char **f
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_item_dependence_add                                          *
- *                                                                            *
  * Purpose: add a new dependency                                              *
  *                                                                            *
  * Parameters: item_dependencies - [IN\OUT] list of dependencies              *
@@ -1050,8 +1042,6 @@ static zbx_item_dependence_t	*lld_item_dependence_add(zbx_vector_ptr_t *item_dep
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_item_dependencies_get                                        *
  *                                                                            *
  * Purpose: recursively get dependencies with dependent items taking into     *
  *          account item prototypes                                           *
@@ -1185,8 +1175,6 @@ static void	lld_item_dependencies_get(const zbx_vector_ptr_t *item_prototypes, z
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_item_dependencies_count                                      *
- *                                                                            *
  * Purpose: recursively count the number of dependencies                      *
  *                                                                            *
  * Parameters: itemid            - [IN] item ID to be checked                 *
@@ -1255,8 +1243,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_item_dependencies_check                                      *
  *                                                                            *
  * Purpose: check the limits of dependent items                               *
  *                                                                            *
@@ -1336,8 +1322,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_items_preproc_step_validate                                  *
  *                                                                            *
  * Purpose: validation of a item preprocessing step expressions for discovery *
  *          process                                                           *
@@ -1512,8 +1496,6 @@ static int	lld_items_preproc_step_validate(const zbx_lld_item_preproc_t * pp, zb
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_items_validate                                               *
  *                                                                            *
  * Parameters: hostid            - [IN] host id                               *
  *             items             - [IN] list of items                         *
@@ -1797,8 +1779,6 @@ static void	lld_items_validate(zbx_uint64_t hostid, zbx_vector_ptr_t *items, zbx
 
 /******************************************************************************
  *                                                                            *
- * Function: substitute_formula_macros                                        *
- *                                                                            *
  * Purpose: substitutes lld macros in calculated item formula expression      *
  *                                                                            *
  * Parameters: data            - [IN/OUT] the expression                      *
@@ -1877,8 +1857,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_item_make                                                    *
  *                                                                            *
  * Purpose: creates a new item based on item prototype and lld data row       *
  *                                                                            *
@@ -2086,8 +2064,6 @@ static zbx_lld_item_t	*lld_item_make(const zbx_lld_item_prototype_t *item_protot
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_item_update                                                  *
  *                                                                            *
  * Purpose: updates an existing item based on item prototype and lld data row *
  *                                                                            *
@@ -2419,8 +2395,6 @@ static void	lld_item_update(const zbx_lld_item_prototype_t *item_prototype, cons
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_items_make                                                   *
- *                                                                            *
  * Purpose: updates existing items and creates new ones based on item         *
  *          item prototypes and lld data                                      *
  *                                                                            *
@@ -2531,8 +2505,6 @@ static void	lld_items_make(const zbx_vector_ptr_t *item_prototypes, zbx_vector_p
 
 /******************************************************************************
  *                                                                            *
- * Function: substitute_lld_macors_in_preproc_params                          *
- *                                                                            *
  * Purpose: escaping of a symbols in items preprocessing steps for discovery  *
  *          process                                                           *
  *                                                                            *
@@ -2612,8 +2584,6 @@ static void	substitute_lld_macros_in_preproc_params(int type, const zbx_lld_row_
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_items_preproc_make                                           *
  *                                                                            *
  * Purpose: updates existing items preprocessing operations and create new    *
  *          based on item item prototypes                                     *
@@ -2735,8 +2705,6 @@ static void	lld_items_preproc_make(const zbx_vector_ptr_t *item_prototypes,
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_item_save                                                    *
- *                                                                            *
  * Purpose: recursively prepare LLD item bulk insert if any and               *
  *          update dependent items with their masters                         *
  *                                                                            *
@@ -2817,8 +2785,6 @@ static void	lld_item_save(zbx_uint64_t hostid, const zbx_vector_ptr_t *item_prot
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_item_prepare_update                                          *
  *                                                                            *
  * Purpose: prepare sql to update LLD item                                    *
  *                                                                            *
@@ -3180,8 +3146,6 @@ static void	lld_item_prepare_update(const zbx_lld_item_prototype_t *item_prototy
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_item_discovery_prepare_update                                *
- *                                                                            *
  * Purpose: prepare sql to update key in LLD item discovery                   *
  *                                                                            *
  * Parameters: item_prototype       - [IN] item prototype                     *
@@ -3214,8 +3178,6 @@ static void lld_item_discovery_prepare_update(const zbx_lld_item_prototype_t *it
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_items_save                                                   *
  *                                                                            *
  * Parameters: hostid          - [IN] parent host id                          *
  *             item_prototypes - [IN] item prototypes                         *
@@ -3430,8 +3392,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_items_preproc_save                                           *
- *                                                                            *
  * Purpose: saves/updates/removes item preprocessing operations               *
  *                                                                            *
  * Parameters: hostid      - [IN] parent host id                              *
@@ -3615,8 +3575,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_applications_save                                            *
  *                                                                            *
  * Parameters: hostid                 - [IN] host id                          *
  *             applications           - [IN/OUT] applications to save         *
@@ -3828,8 +3786,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_item_application_validate                                    *
- *                                                                            *
  * Purpose: validates undiscovered item-application link to determine if it   *
  *          should be removed                                                 *
  *                                                                            *
@@ -3859,8 +3815,6 @@ static int	lld_item_application_validate(const zbx_lld_item_application_t *item_
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_items_applications_save                                      *
  *                                                                            *
  * Parameters: items_applications - [IN] item-application links               *
  *                                                                            *
@@ -3949,8 +3903,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_remove_lost_items                                            *
  *                                                                            *
  * Purpose: updates item_discovery.lastcheck and item_discovery.ts_delete     *
  *          fields; removes lost resources                                    *
@@ -4076,8 +4028,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_remove_lost_applications                                     *
  *                                                                            *
  * Purpose: updates application_discovery lastcheck and ts_delete fields,     *
  *          removes lost resources                                            *
@@ -4307,8 +4257,6 @@ void	lld_item_links_sort(zbx_vector_ptr_t *lld_rows)
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_application_prototypes_get                                   *
- *                                                                            *
  * Purpose: gets the discovery rule application prototypes from database      *
  *                                                                            *
  * Parameters: lld_ruleid             - [IN] the discovery rule id            *
@@ -4350,8 +4298,6 @@ static void	lld_application_prototypes_get(zbx_uint64_t lld_ruleid, zbx_vector_p
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_item_application_prototypes_get                              *
  *                                                                            *
  * Purpose: gets the discovery rule item-application link prototypes from     *
  *          database                                                          *
@@ -4459,8 +4405,6 @@ static void	lld_item_application_prototypes_get(const zbx_vector_ptr_t *item_pro
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_applications_get                                             *
- *                                                                            *
  * Purpose: gets applications previously discovered by the discovery rule     *
  *                                                                            *
  * Parameters: lld_ruleid   - [IN] the discovery rule id                      *
@@ -4507,8 +4451,6 @@ static void	lld_applications_get(zbx_uint64_t lld_ruleid, zbx_vector_ptr_t *appl
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_application_make                                             *
  *                                                                            *
  * Purpose: create a new application or mark an existing application as       *
  *          discovered based on prototype and lld row                         *
@@ -4591,8 +4533,6 @@ static void	lld_application_make(const zbx_lld_application_prototype_t *applicat
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_applications_make                                            *
- *                                                                            *
  * Purpose: makes new applications and marks old applications as discovered   *
  *          based on application prototypes and lld rows                      *
  *                                                                            *
@@ -4661,8 +4601,6 @@ static void	lld_applications_make(const zbx_vector_ptr_t *application_prototypes
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_applications_validate                                        *
  *                                                                            *
  * Purpose: validates the discovered and renamed applications                 *
  *                                                                            *
@@ -4934,8 +4872,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_items_applications_get                                       *
- *                                                                            *
  * Purpose: gets item-application links for the lld rule                      *
  *                                                                            *
  * Parameters: lld_rule           - [IN] the lld rule                         *
@@ -4976,8 +4912,6 @@ static void	lld_items_applications_get(zbx_uint64_t lld_ruleid, zbx_hashset_t *i
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_items_applications_make                                      *
  *                                                                            *
  * Purpose: makes new item-application links and marks existing links as      *
  *          discovered based on item_prototypes applications links            *
@@ -5073,8 +5007,6 @@ static void	lld_items_applications_make(const zbx_vector_ptr_t *item_prototypes,
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_item_prototypes_get                                          *
  *                                                                            *
  * Purpose: load discovery rule item prototypes                               *
  *                                                                            *
@@ -5225,8 +5157,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_link_dependent_items                                         *
- *                                                                            *
  * Purpose: create dependent item index in master item data                   *
  *                                                                            *
  * Parameters: items       - [IN/OUT] the lld items                           *
@@ -5262,8 +5192,6 @@ static void	lld_link_dependent_items(zbx_vector_ptr_t *items, zbx_hashset_t *ite
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_update_items                                                 *
  *                                                                            *
  * Purpose: add or update discovered items                                    *
  *                                                                            *

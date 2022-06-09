@@ -544,8 +544,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: set_defaults                                                     *
- *                                                                            *
  * Purpose: set configuration defaults                                        *
  *                                                                            *
  * Author: Vladimir Levijev, Rudolfs Kreicbergs                               *
@@ -608,8 +606,6 @@ static void	set_defaults(void)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_validate_config                                              *
  *                                                                            *
  * Purpose: validate configuration parameters                                 *
  *                                                                            *
@@ -728,8 +724,6 @@ static int	add_serveractive_host_cb(const char *host, unsigned short port)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_load_config                                                  *
  *                                                                            *
  * Purpose: load configuration from config file                               *
  *                                                                            *
@@ -886,8 +880,6 @@ static void	zbx_load_config(int requirement, ZBX_TASK_EX *task)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_free_config                                                  *
  *                                                                            *
  * Purpose: free configuration memory                                         *
  *                                                                            *
@@ -1135,8 +1127,6 @@ int	MAIN_ZABBIX_ENTRY(int flags)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_free_service_resources                                       *
  *                                                                            *
  * Purpose: free service resources allocated by main thread                   *
  *                                                                            *

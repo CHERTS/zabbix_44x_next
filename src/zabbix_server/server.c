@@ -452,8 +452,6 @@ int	get_process_info_by_thread(int local_server_num, unsigned char *local_proces
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_set_defaults                                                 *
- *                                                                            *
  * Purpose: set configuration defaults                                        *
  *                                                                            *
  * Author: Vladimir Levijev                                                   *
@@ -515,8 +513,6 @@ static void	zbx_set_defaults(void)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_validate_config                                              *
  *                                                                            *
  * Purpose: validate configuration parameters                                 *
  *                                                                            *
@@ -614,8 +610,6 @@ static void	zbx_validate_config(ZBX_TASK_EX *task)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_load_config                                                  *
  *                                                                            *
  * Purpose: parse config file and update configuration parameters             *
  *                                                                            *
@@ -828,8 +822,6 @@ static void	zbx_load_config(ZBX_TASK_EX *task)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_free_config                                                  *
- *                                                                            *
  * Purpose: free configuration memory                                         *
  *                                                                            *
  ******************************************************************************/
@@ -839,8 +831,6 @@ static void	zbx_free_config(void)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: main                                                             *
  *                                                                            *
  * Purpose: executes server processes                                         *
  *                                                                            *

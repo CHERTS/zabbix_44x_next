@@ -35,8 +35,6 @@ static sigset_t		orig_mask;
 
 /******************************************************************************
  *                                                                            *
- * Function: block_signals                                                    *
- *                                                                            *
  * Purpose: block signals to avoid interruption                               *
  *                                                                            *
  ******************************************************************************/
@@ -57,8 +55,6 @@ static	void	block_signals(void)
 
 /******************************************************************************
  *                                                                            *
- * Function: unblock_signals                                                  *
- *                                                                            *
  * Purpose: unblock signals after blocking                                    *
  *                                                                            *
  ******************************************************************************/
@@ -69,8 +65,6 @@ static	void	unblock_signals(void)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: main_dbsyncer_loop                                               *
  *                                                                            *
  * Purpose: periodically synchronises data in memory cache with database      *
  *                                                                            *

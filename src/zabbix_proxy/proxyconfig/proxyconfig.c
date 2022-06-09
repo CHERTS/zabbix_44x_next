@@ -50,8 +50,6 @@ static void	zbx_proxyconfig_sigusr_handler(int flags)
 
 /******************************************************************************
  *                                                                            *
- * Function: process_configuration_sync                                       *
- *                                                                            *
  ******************************************************************************/
 static void	process_configuration_sync(size_t *data_size)
 {
@@ -131,8 +129,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: main_proxyconfig_loop                                            *
  *                                                                            *
  * Purpose: periodically request config data                                  *
  *                                                                            *

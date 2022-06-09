@@ -139,8 +139,6 @@ zbx_oracle_column_type_t;
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_oracle_column_type                                           *
- *                                                                            *
  * Purpose: determine whether column type is character or numeric             *
  *                                                                            *
  * Parameters: field_type - [IN] column type in Zabbix definitions            *

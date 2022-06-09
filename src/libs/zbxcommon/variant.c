@@ -111,8 +111,6 @@ void	zbx_variant_set_bin(zbx_variant_t *value, void *value_bin)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_variant_copy                                                 *
- *                                                                            *
  * Purpose: copy variant contents from source to value                        *
  *                                                                            *
  * Comments: String and binary data are cloned, which is different from       *
@@ -363,8 +361,6 @@ int	zbx_validate_value_dbl(double value)
 
 /******************************************************************************
  *                                                                            *
- * Function: variant_compare_empty                                            *
- *                                                                            *
  * Purpose: compares two variant values when at least one is empty (having    *
  *          type of ZBX_VARIANT_NONE)                                         *
  *                                                                            *
@@ -383,8 +379,6 @@ static int	variant_compare_empty(const zbx_variant_t *value1, const zbx_variant_
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: variant_compare_bin                                              *
  *                                                                            *
  * Purpose: compare two variant values when at least one contains binary data *
  *                                                                            *
@@ -409,8 +403,6 @@ static int	variant_compare_bin(const zbx_variant_t *value1, const zbx_variant_t 
 
 /******************************************************************************
  *                                                                            *
- * Function: variant_compare_str                                              *
- *                                                                            *
  * Purpose: compare two variant values when at least one is string            *
  *                                                                            *
  ******************************************************************************/
@@ -423,8 +415,6 @@ static int	variant_compare_str(const zbx_variant_t *value1, const zbx_variant_t 
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: variant_compare_dbl                                              *
  *                                                                            *
  * Purpose: compare two variant values when at least one is double and the    *
  *          other is double, uint64 or a string representing a valid double   *
@@ -478,8 +468,6 @@ static int	variant_compare_dbl(const zbx_variant_t *value1, const zbx_variant_t 
 
 /******************************************************************************
  *                                                                            *
- * Function: variant_compare_ui64                                             *
- *                                                                            *
  * Purpose: compare two variant values when both are uint64                   *
  *                                                                            *
  ******************************************************************************/
@@ -490,8 +478,6 @@ static int	variant_compare_ui64(const zbx_variant_t *value1, const zbx_variant_t
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_variant_compare                                              *
  *                                                                            *
  * Purpose: compare two variant values                                        *
  *                                                                            *

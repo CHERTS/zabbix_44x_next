@@ -21,8 +21,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_field_str_rollback                                           *
- *                                                                            *
  * Author: Alexander Vladishev                                                *
  *                                                                            *
  ******************************************************************************/
@@ -39,8 +37,6 @@ void	lld_field_str_rollback(char **field, char **field_orig, zbx_uint64_t *flags
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_field_uint64_rollback                                        *
- *                                                                            *
  * Author: Alexander Vladishev                                                *
  *                                                                            *
  ******************************************************************************/
@@ -55,8 +51,6 @@ void	lld_field_uint64_rollback(zbx_uint64_t *field, zbx_uint64_t *field_orig, zb
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_end_of_life                                                  *
  *                                                                            *
  * Purpose: calculate when to delete lost resources in an overflow-safe way   *
  *                                                                            *

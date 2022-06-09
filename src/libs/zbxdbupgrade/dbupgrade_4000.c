@@ -36,8 +36,6 @@ static int	DBpatch_4000000(void)
 
 /******************************************************************************
  *                                                                            *
- * Function: str_rename_macro                                                 *
- *                                                                            *
  * Purpose: rename macros in the string                                       *
  *                                                                            *
  * Parameters: in        - [IN] the input string                              *
@@ -90,8 +88,6 @@ static int	str_rename_macro(const char *in, const char *oldmacro, const char *ne
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: db_rename_macro                                                  *
  *                                                                            *
  * Purpose: rename macro in the specified database fields                     *
  *                                                                            *

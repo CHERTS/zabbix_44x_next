@@ -867,8 +867,6 @@ static int	get_cpu_status(int pc_status)
 
 /******************************************************************************
  *                                                                            *
- * Function: get_cpus                                                         *
- *                                                                            *
  * Purpose: Retrieve list of available CPUs in the collector                  *
  *                                                                            *
  * Parameters: vector [OUT] - vector for CPUNUM/STATUS pairs                  *

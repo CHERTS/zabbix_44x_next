@@ -35,8 +35,6 @@ extern int		server_num, process_num;
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_register_worker                                              *
- *                                                                            *
  * Purpose: registers lld worker with lld manager                             *
  *                                                                            *
  * Parameters: socket - [IN] the connections socket                           *
@@ -52,8 +50,6 @@ static void	lld_register_worker(zbx_ipc_socket_t *socket)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_process_task                                                 *
  *                                                                            *
  * Purpose: processes lld task and updates rule state/error in configuration  *
  *          cache and database                                                *

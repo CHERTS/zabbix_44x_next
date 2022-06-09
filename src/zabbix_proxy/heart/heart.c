@@ -32,8 +32,6 @@ extern int		server_num, process_num;
 
 /******************************************************************************
  *                                                                            *
- * Function: send_heartbeat                                                   *
- *                                                                            *
  ******************************************************************************/
 static int	send_heartbeat(void)
 {
@@ -66,8 +64,6 @@ static int	send_heartbeat(void)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: main_heart_loop                                                  *
  *                                                                            *
  * Purpose: periodically send heartbeat message to the server                 *
  *                                                                            *

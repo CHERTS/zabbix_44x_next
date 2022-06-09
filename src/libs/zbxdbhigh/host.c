@@ -58,8 +58,6 @@ static char	*get_template_names(const zbx_vector_uint64_t *templateids)
 
 /******************************************************************************
  *                                                                            *
- * Function: DBget_screenitems_by_resource_types_ids                          *
- *                                                                            *
  * Description: gets a vector of screen item identifiers used with the        *
  *              specified resource types and identifiers                      *
  *                                                                            *
@@ -89,8 +87,6 @@ static void	DBget_screenitems_by_resource_types_ids(zbx_vector_uint64_t *screen_
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBget_profiles_by_source_idxs_values                             *
  *                                                                            *
  * Description: gets a vector of profile identifiers used with the specified  *
  *              source, indexes and value identifiers                         *
@@ -130,8 +126,6 @@ static void	DBget_profiles_by_source_idxs_values(zbx_vector_uint64_t *profileids
 
 /******************************************************************************
  *                                                                            *
- * Function: DBget_sysmapelements_by_element_type_ids                         *
- *                                                                            *
  * Description: gets a vector of sysmap element identifiers used with the     *
  *              specified element type and identifiers                        *
  *                                                                            *
@@ -162,8 +156,6 @@ static void	DBget_sysmapelements_by_element_type_ids(zbx_vector_uint64_t *seleme
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: validate_linked_templates                                        *
  *                                                                            *
  * Description: Check collisions between linked templates                     *
  *                                                                            *
@@ -367,8 +359,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBcmp_triggers                                                   *
- *                                                                            *
  * Purpose: compare two triggers                                              *
  *                                                                            *
  * Parameters: triggerid1 - first trigger identificator from database         *
@@ -425,8 +415,6 @@ static int	DBcmp_triggers(zbx_uint64_t triggerid1, const char *expression1, cons
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: validate_inventory_links                                         *
  *                                                                            *
  * Description: Check collisions in item inventory links                      *
  *                                                                            *
@@ -516,8 +504,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: validate_httptests                                               *
  *                                                                            *
  * Description: checking collisions on linking of web scenarios               *
  *                                                                            *
@@ -653,8 +639,6 @@ static void	DBget_graphitems(const char *sql, ZBX_GRAPH_ITEMS **gitems, size_t *
 
 /******************************************************************************
  *                                                                            *
- * Function: DBcmp_graphitems                                                 *
- *                                                                            *
  * Purpose: Compare graph items from two graphs                               *
  *                                                                            *
  * Parameters: gitems1     - [IN] first graph items, sorted by itemid         *
@@ -691,8 +675,6 @@ clean:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: validate_host                                                    *
  *                                                                            *
  * Description: Check collisions between host and linked template             *
  *                                                                            *
@@ -911,8 +893,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_action_conditions                                       *
- *                                                                            *
  * Purpose: delete action conditions by condition type and id                 *
  *                                                                            *
  * Author: Alexander Vladishev                                                *
@@ -983,8 +963,6 @@ static void	DBdelete_action_conditions(int conditiontype, zbx_uint64_t elementid
 
 /******************************************************************************
  *                                                                            *
- * Function: DBadd_to_housekeeper                                             *
- *                                                                            *
  * Purpose:  adds table and field with specific id to housekeeper list        *
  *                                                                            *
  * Parameters: ids       - [IN] identificators for data removal               *
@@ -1025,8 +1003,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_triggers                                                *
  *                                                                            *
  * Purpose: delete trigger from database                                      *
  *                                                                            *
@@ -1085,8 +1061,6 @@ static void	DBdelete_triggers(zbx_vector_uint64_t *triggerids)
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_trigger_hierarchy                                       *
- *                                                                            *
  * Purpose: delete parent triggers and auto-created children from database    *
  *                                                                            *
  * Parameters: triggerids - [IN] trigger identificators from database         *
@@ -1121,8 +1095,6 @@ static void	DBdelete_trigger_hierarchy(zbx_vector_uint64_t *triggerids)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_triggers_by_itemids                                     *
  *                                                                            *
  * Purpose: delete triggers by itemid                                         *
  *                                                                            *
@@ -1159,8 +1131,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_graphs                                                  *
  *                                                                            *
  * Purpose: delete graph from database                                        *
  *                                                                            *
@@ -1226,8 +1196,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_graph_hierarchy                                         *
- *                                                                            *
  * Purpose: delete parent graphs and auto-created children from database      *
  *                                                                            *
  * Parameters: graphids - [IN] array of graph id's from database              *
@@ -1262,8 +1230,6 @@ static void	DBdelete_graph_hierarchy(zbx_vector_uint64_t *graphids)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_graphs_by_itemids                                       *
  *                                                                            *
  * Parameters: itemids - [IN] item identificators from database               *
  *                                                                            *
@@ -1326,8 +1292,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_items                                                   *
  *                                                                            *
  * Purpose: delete items from database                                        *
  *                                                                            *
@@ -1419,8 +1383,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_httptests                                               *
- *                                                                            *
  * Purpose: delete web tests from database                                    *
  *                                                                            *
  * Parameters: httptestids - [IN] array of httptest id's from database        *
@@ -1478,8 +1440,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_application                                             *
  *                                                                            *
  * Purpose: delete application                                                *
  *                                                                            *
@@ -1564,8 +1524,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBgroup_prototypes_delete                                        *
- *                                                                            *
  * Parameters: del_group_prototypeids - [IN] list of group_prototypeids which *
  *                                      will be deleted                       *
  *                                                                            *
@@ -1602,8 +1560,6 @@ static void	DBgroup_prototypes_delete(zbx_vector_uint64_t *del_group_prototypeid
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_host_prototypes                                         *
  *                                                                            *
  * Purpose: deletes host prototypes from database                             *
  *                                                                            *
@@ -1661,8 +1617,6 @@ static void	DBdelete_host_prototypes(zbx_vector_uint64_t *host_prototypeids)
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_template_httptests                                      *
- *                                                                            *
  * Purpose: delete template web scenatios from host                           *
  *                                                                            *
  * Parameters: hostid      - [IN] host identificator from database            *
@@ -1700,8 +1654,6 @@ static void	DBdelete_template_httptests(zbx_uint64_t hostid, const zbx_vector_ui
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_template_graphs                                         *
  *                                                                            *
  * Purpose: delete template graphs from host                                  *
  *                                                                            *
@@ -1745,8 +1697,6 @@ static void	DBdelete_template_graphs(zbx_uint64_t hostid, const zbx_vector_uint6
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_template_triggers                                       *
- *                                                                            *
  * Purpose: delete template triggers from host                                *
  *                                                                            *
  * Parameters: hostid      - [IN] host identificator from database            *
@@ -1787,8 +1737,6 @@ static void	DBdelete_template_triggers(zbx_uint64_t hostid, const zbx_vector_uin
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_template_host_prototypes                                *
  *                                                                            *
  * Purpose: delete template host prototypes from host                         *
  *                                                                            *
@@ -1831,8 +1779,6 @@ static void	DBdelete_template_host_prototypes(zbx_uint64_t hostid, zbx_vector_ui
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_template_items                                          *
- *                                                                            *
  * Purpose: delete template items from host                                   *
  *                                                                            *
  * Parameters: hostid      - [IN] host identificator from database            *
@@ -1873,8 +1819,6 @@ static void	DBdelete_template_items(zbx_uint64_t hostid, const zbx_vector_uint64
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_template_applications                                   *
  *                                                                            *
  * Purpose: delete host applications that belong to an unlinked template      *
  *                                                                            *
@@ -1952,8 +1896,6 @@ static void	DBdelete_template_applications(zbx_uint64_t hostid, const zbx_vector
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_template_discovered_applications                        *
  *                                                                            *
  * Purpose: delete host applications that belong to an unlinked template      *
  *                                                                            *
@@ -2056,8 +1998,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBcopy_trigger_to_host                                           *
  *                                                                            *
  * Purpose: copy specified trigger to host                                    *
  *                                                                            *
@@ -2274,8 +2214,6 @@ static int	DBcopy_trigger_to_host(zbx_uint64_t *new_triggerid, zbx_uint64_t *cur
 
 /******************************************************************************
  *                                                                            *
- * Function: DBresolve_template_trigger_dependencies                          *
- *                                                                            *
  * Purpose: resolves trigger dependencies for the specified triggers based on *
  *          host and linked templates                                         *
  *                                                                            *
@@ -2399,8 +2337,6 @@ static void	DBresolve_template_trigger_dependencies(zbx_uint64_t hostid, const z
 
 /******************************************************************************
  *                                                                            *
- * Function: DBadd_template_dependencies_for_new_triggers                     *
- *                                                                            *
  * Purpose: update trigger dependencies for specified host                    *
  *                                                                            *
  * Parameters: hostid    - [IN] host identificator from database              *
@@ -2449,8 +2385,6 @@ static int	DBadd_template_dependencies_for_new_triggers(zbx_uint64_t hostid, zbx
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBcopy_template_trigger_tags                                     *
  *                                                                            *
  * Purpose: copies tags from template triggers to created/linked triggers     *
  *                                                                            *
@@ -2530,8 +2464,6 @@ static int	DBcopy_template_trigger_tags(const zbx_vector_uint64_t *new_triggerid
 
 /******************************************************************************
  *                                                                            *
- * Function: get_templates_by_hostid                                          *
- *                                                                            *
  * Description: Retrieve already linked templates for specified host          *
  *                                                                            *
  * Parameters: hostid      - [IN] host identificator from database            *
@@ -2563,8 +2495,6 @@ static void	get_templates_by_hostid(zbx_uint64_t hostid, zbx_vector_uint64_t *te
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBdelete_template_elements                                       *
  *                                                                            *
  * Purpose: delete template elements from host                                *
  *                                                                            *
@@ -2663,8 +2593,6 @@ static void	zbx_application_clean(zbx_application_t *application)
 
 /******************************************************************************
  *                                                                            *
- * Function: DBcopy_template_application_prototypes                           *
- *                                                                            *
  * Purpose: copy application prototypes from templates to host                *
  *                                                                            *
  * Parameters: hostid      - [IN] host id                                     *
@@ -2727,8 +2655,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBcopy_template_item_application_prototypes                      *
  *                                                                            *
  * Purpose: copy application prototypes from templates to host                *
  *                                                                            *
@@ -2797,8 +2723,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBcopy_template_applications                                     *
  *                                                                            *
  * Purpose: copy applications from templates to host                          *
  *                                                                            *
@@ -2990,8 +2914,6 @@ static void	DBhost_prototypes_clean(zbx_vector_ptr_t *host_prototypes)
 
 /******************************************************************************
  *                                                                            *
- * Function: DBis_regular_host                                                *
- *                                                                            *
  * Comments: auxiliary function for DBcopy_template_host_prototypes()         *
  *                                                                            *
  ******************************************************************************/
@@ -3014,8 +2936,6 @@ static int	DBis_regular_host(zbx_uint64_t hostid)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBhost_prototypes_make                                           *
  *                                                                            *
  * Comments: auxiliary function for DBcopy_template_host_prototypes()         *
  *                                                                            *
@@ -3121,8 +3041,6 @@ static void	DBhost_prototypes_make(zbx_uint64_t hostid, zbx_vector_uint64_t *tem
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBhost_prototypes_templates_make                                 *
  *                                                                            *
  * Parameters: host_prototypes     - [IN/OUT] list of host prototypes         *
  *                                   should be sorted by templateid           *
@@ -3245,8 +3163,6 @@ static void	DBhost_prototypes_templates_make(zbx_vector_ptr_t *host_prototypes,
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBhost_prototypes_groups_make                                    *
  *                                                                            *
  * Parameters: host_prototypes        - [IN/OUT] list of host prototypes      *
  *                                      should be sorted by templateid        *
@@ -3388,8 +3304,6 @@ static void	DBhost_prototypes_groups_make(zbx_vector_ptr_t *host_prototypes,
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBhost_prototypes_save                                           *
  *                                                                            *
  * Comments: auxiliary function for DBcopy_template_host_prototypes()         *
  *                                                                            *
@@ -3563,8 +3477,6 @@ static void	DBhost_prototypes_save(zbx_vector_ptr_t *host_prototypes, zbx_vector
 
 /******************************************************************************
  *                                                                            *
- * Function: DBcopy_template_host_prototypes                                  *
- *                                                                            *
  * Purpose: copy host prototypes from templates and create links between      *
  *          them and discovery rules                                          *
  *                                                                            *
@@ -3604,8 +3516,6 @@ static void	DBcopy_template_host_prototypes(zbx_uint64_t hostid, zbx_vector_uint
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBcopy_template_triggers                                         *
  *                                                                            *
  * Purpose: Copy template triggers to host                                    *
  *                                                                            *
@@ -3694,8 +3604,6 @@ static int	DBcopy_template_triggers(zbx_uint64_t hostid, const zbx_vector_uint64
 
 /******************************************************************************
  *                                                                            *
- * Function: DBget_same_itemid                                                *
- *                                                                            *
  * Purpose: get same itemid for selected host by itemid from template         *
  *                                                                            *
  * Parameters: hostid - host identificator from database                      *
@@ -3736,8 +3644,6 @@ static zbx_uint64_t	DBget_same_itemid(zbx_uint64_t hostid, zbx_uint64_t titemid)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBcopy_graph_to_host                                             *
  *                                                                            *
  * Purpose: copy specified graph to host                                      *
  *                                                                            *
@@ -3945,8 +3851,6 @@ static void	DBcopy_graph_to_host(zbx_uint64_t hostid, zbx_uint64_t graphid,
 
 /******************************************************************************
  *                                                                            *
- * Function: DBcopy_template_graphs                                           *
- *                                                                            *
  * Purpose: copy graphs from template to host                                 *
  *                                                                            *
  * Parameters: hostid      - [IN] host identificator from database            *
@@ -4079,8 +3983,6 @@ typedef struct
 httpfield_t;
 
 /******************************************************************************
- *                                                                            *
- * Function: DBget_httptests                                                  *
  *                                                                            *
  *                                                                            *
  ******************************************************************************/
@@ -4513,8 +4415,6 @@ static void	DBget_httptests(zbx_uint64_t hostid, const zbx_vector_uint64_t *temp
 
 /******************************************************************************
  *                                                                            *
- * Function: DBsave_httptests                                                 *
- *                                                                            *
  *                                                                            *
  ******************************************************************************/
 static void	DBsave_httptests(zbx_uint64_t hostid, zbx_vector_ptr_t *httptests)
@@ -4735,8 +4635,6 @@ static void	DBsave_httptests(zbx_uint64_t hostid, zbx_vector_ptr_t *httptests)
 
 /******************************************************************************
  *                                                                            *
- * Function: clean_httptests                                                  *
- *                                                                            *
  *                                                                            *
  ******************************************************************************/
 static void	clean_httptests(zbx_vector_ptr_t *httptests)
@@ -4813,8 +4711,6 @@ static void	clean_httptests(zbx_vector_ptr_t *httptests)
 
 /******************************************************************************
  *                                                                            *
- * Function: DBcopy_template_httptests                                        *
- *                                                                            *
  * Purpose: copy web scenarios from template to host                          *
  *                                                                            *
  * Parameters: hostid      - [IN] host identificator from database            *
@@ -4839,8 +4735,6 @@ static void	DBcopy_template_httptests(zbx_uint64_t hostid, const zbx_vector_uint
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBcopy_template_elements                                         *
  *                                                                            *
  * Purpose: copy elements from specified template                             *
  *                                                                            *
@@ -4930,8 +4824,6 @@ clean:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_hosts                                                   *
- *                                                                            *
  * Purpose: delete hosts from database with all elements                      *
  *                                                                            *
  * Parameters: hostids - [IN] host identificators from database               *
@@ -5019,8 +4911,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_hosts_with_prototypes                                   *
- *                                                                            *
  * Purpose: delete hosts from database, check if there are any host           *
  *          prototypes and delete them first                                  *
  *                                                                            *
@@ -5057,8 +4947,6 @@ void	DBdelete_hosts_with_prototypes(zbx_vector_uint64_t *hostids)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBadd_interface                                                  *
  *                                                                            *
  * Purpose: add new interface to specified host                               *
  *                                                                            *
@@ -5198,8 +5086,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_groups_validate                                         *
- *                                                                            *
  * Purpose: removes the groupids from the list which cannot be deleted        *
  *          (host or template can remain without groups or it's an internal   *
  *          group or it's used by a host prototype)                           *
@@ -5327,8 +5213,6 @@ static void	DBdelete_groups_validate(zbx_vector_uint64_t *groupids)
 
 /******************************************************************************
  *                                                                            *
- * Function: DBdelete_groups                                                  *
- *                                                                            *
  * Purpose: delete host groups from database                                  *
  *                                                                            *
  * Parameters: groupids - [IN] array of group identificators from database    *
@@ -5415,8 +5299,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBadd_host_inventory                                             *
- *                                                                            *
  * Purpose: adds host inventory to the host                                   *
  *                                                                            *
  * Parameters: hostid         - [IN] host identifier                          *
@@ -5434,8 +5316,6 @@ void	DBadd_host_inventory(zbx_uint64_t hostid, int inventory_mode)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBset_host_inventory                                             *
  *                                                                            *
  * Purpose: sets host inventory mode for the specified host                   *
  *                                                                            *

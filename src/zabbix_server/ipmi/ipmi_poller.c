@@ -39,8 +39,6 @@ extern int		server_num, process_num;
 
 /******************************************************************************
  *                                                                            *
- * Function: ipmi_poller_register                                             *
- *                                                                            *
  * Purpose: registers IPMI poller with IPMI manager                           *
  *                                                                            *
  * Parameters: socket - [IN] the connections socket                           *
@@ -56,8 +54,6 @@ static void	ipmi_poller_register(zbx_ipc_async_socket_t *socket)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: ipmi_poller_send_result                                          *
  *                                                                            *
  * Purpose: sends IPMI poll result to manager                                 *
  *                                                                            *
@@ -82,8 +78,6 @@ static void	ipmi_poller_send_result(zbx_ipc_async_socket_t *socket, zbx_uint32_t
 }
 
 /********************************************************************************
- *                                                                              *
- * Function: ipmi_poller_process_value_request                                  *
  *                                                                              *
  * Purpose: gets IPMI sensor value from the specified host or discovers sensors *
  *                                                                              *
@@ -132,8 +126,6 @@ static void	ipmi_poller_process_value_request(zbx_ipc_async_socket_t *socket, co
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: ipmi_poller_process_command_request                              *
  *                                                                            *
  * Purpose:sets IPMI sensor value                                             *
  *                                                                            *

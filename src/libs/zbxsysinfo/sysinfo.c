@@ -58,8 +58,6 @@ static ZBX_METRIC	*commands = NULL;
 
 /******************************************************************************
  *                                                                            *
- * Function: parse_command_dyn                                                *
- *                                                                            *
  * Purpose: parses item key and splits it into command and parameters         *
  *                                                                            *
  * Return value: ZBX_COMMAND_ERROR - error                                    *
@@ -99,8 +97,6 @@ static int	parse_command_dyn(const char *command, char **cmd, char **param)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: add_metric                                                       *
  *                                                                            *
  * Purpose: registers a new item key into the system                          *
  *                                                                            *
@@ -292,8 +288,6 @@ void	free_result(AGENT_RESULT *result)
 
 /******************************************************************************
  *                                                                            *
- * Function: init_request                                                     *
- *                                                                            *
  * Purpose: initialize the request structure                                  *
  *                                                                            *
  * Parameters: request - pointer to the structure                             *
@@ -310,8 +304,6 @@ void	init_request(AGENT_REQUEST *request)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: free_request_params                                              *
  *                                                                            *
  * Purpose: free memory used by the request parameters                        *
  *                                                                            *
@@ -332,8 +324,6 @@ static void	free_request_params(AGENT_REQUEST *request)
 
 /******************************************************************************
  *                                                                            *
- * Function: free_request                                                     *
- *                                                                            *
  * Purpose: free memory used by the request                                   *
  *                                                                            *
  * Parameters: request - pointer to the request structure                     *
@@ -346,8 +336,6 @@ void	free_request(AGENT_REQUEST *request)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: add_request_param                                                *
  *                                                                            *
  * Purpose: add a new parameter                                               *
  *                                                                            *
@@ -367,8 +355,6 @@ static void	add_request_param(AGENT_REQUEST *request, char *pvalue, zbx_request_
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: parse_item_key                                                   *
  *                                                                            *
  * Purpose: parse item command (key) and fill AGENT_REQUEST structure         *
  *                                                                            *
@@ -574,8 +560,6 @@ static int	replace_param(const char *cmd, const AGENT_REQUEST *request, char **o
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process                                                          *
  *                                                                            *
  * Purpose: execute agent check                                               *
  *                                                                            *
@@ -922,8 +906,6 @@ static zbx_log_t	*get_result_log_value(AGENT_RESULT *result)
 
 /******************************************************************************
  *                                                                            *
- * Function: get_result_value_by_type                                         *
- *                                                                            *
  * Purpose: return value of result in special type                            *
  *          if value missing, convert existing value to requested type        *
  *                                                                            *
@@ -972,8 +954,6 @@ void	*get_result_value_by_type(AGENT_RESULT *result, int require_type)
 
 /******************************************************************************
  *                                                                            *
- * Function: unquote_key_param                                                *
- *                                                                            *
  * Purpose: unquotes special symbols in item key parameter                    *
  *                                                                            *
  * Parameters: param - [IN/OUT] item key parameter                            *
@@ -1001,8 +981,6 @@ void	unquote_key_param(char *param)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: quote_key_param                                                  *
  *                                                                            *
  * Purpose: quotes special symbols in item key parameter                      *
  *                                                                            *
@@ -1081,8 +1059,6 @@ int	zbx_execute_threaded_metric(zbx_metric_func_t metric_func, AGENT_REQUEST *re
 }
 #else
 /******************************************************************************
- *                                                                            *
- * Function: serialize_agent_result                                           *
  *                                                                            *
  * Purpose: serialize agent result to transfer over pipe/socket               *
  *                                                                            *
@@ -1169,8 +1145,6 @@ static void	serialize_agent_result(char **data, size_t *data_alloc, size_t *data
 
 /******************************************************************************
  *                                                                            *
- * Function: deserialize_agent_result                                         *
- *                                                                            *
  * Purpose: deserialize agent result                                          *
  *                                                                            *
  * Parameters: data        - [IN] the data to deserialize                     *
@@ -1219,8 +1193,6 @@ static int	deserialize_agent_result(char *data, AGENT_RESULT *result)
 
 /******************************************************************************
  *                                                                            *
- * Function: write_all                                                        *
- *                                                                            *
  * Purpose: call write in a loop, iterating until all the data is written.    *
  *                                                                            *
  * Parameters: fd      - [IN] descriptor                                      *
@@ -1250,8 +1222,6 @@ static int	write_all(int fd, const char *buf, size_t n)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_execute_threaded_metric                                      *
  *                                                                            *
  * Purpose: execute metric in a separate process/thread so it can be          *
  *          killed/terminated when timeout is detected                        *
@@ -1426,8 +1396,6 @@ ZBX_THREAD_ENTRY(agent_metric_thread, data)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_execute_threaded_metric                                      *
- *                                                                            *
  * Purpose: execute metric in a separate process/thread so it can be          *
  *          killed/terminated when timeout is detected                        *
  *                                                                            *
@@ -1536,8 +1504,6 @@ int	zbx_execute_threaded_metric(zbx_metric_func_t metric_func, AGENT_REQUEST *re
 #endif
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_mpoints_free                                                 *
  *                                                                            *
  * Purpose: frees previously allocated mount-point structure                  *
  *                                                                            *

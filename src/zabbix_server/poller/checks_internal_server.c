@@ -25,8 +25,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_get_value_internal_ext                                       *
- *                                                                            *
  * Purpose: processes program type (server) specific internal checks          *
  *                                                                            *
  * Parameters: param1  - [IN] the first parameter                             *

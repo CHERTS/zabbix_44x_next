@@ -81,8 +81,6 @@ zbx_mock_handle_t	zbx_mock_get_object_member_handle(zbx_mock_handle_t object, co
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_mock_str_to_token_type                                       *
- *                                                                            *
  * Purpose: converts token type from text format                              *
  *                                                                            *
  ******************************************************************************/
@@ -116,8 +114,6 @@ void	zbx_mock_str_to_token_type(const char *str, int *out)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_mock_str_to_value_type                                       *
- *                                                                            *
  * Purpose: converts item value type from text format                         *
  *                                                                            *
  ******************************************************************************/
@@ -143,8 +139,6 @@ unsigned char	zbx_mock_str_to_value_type(const char *str)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_mock_str_to_item_type                                        *
  *                                                                            *
  * Purpose: converts item type from text format                               *
  *                                                                            *
@@ -215,8 +209,6 @@ int	zbx_mock_str_to_item_type(const char *str)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_mock_str_to_variant                                          *
  *                                                                            *
  * Purpose: converts variant from text format                                 *
  *                                                                            *
@@ -301,8 +293,6 @@ double	zbx_mock_get_object_member_float(zbx_mock_handle_t object, const char *na
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_mock_str_to_return_code                                      *
- *                                                                            *
  * Purpose: converts common function return code from text format             *
  *                                                                            *
  ******************************************************************************/
@@ -343,8 +333,6 @@ int	zbx_mock_str_to_return_code(const char *str)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_mock_str_to_value_type                                       *
  *                                                                            *
  * Purpose: converts item value type from text format                         *
  *                                                                            *

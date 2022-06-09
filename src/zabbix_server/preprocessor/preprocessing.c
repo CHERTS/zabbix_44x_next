@@ -49,8 +49,6 @@ static int			cached_values;
 
 /******************************************************************************
  *                                                                            *
- * Function: message_pack_data                                                *
- *                                                                            *
  * Purpose: helper for data packing based on defined format                   *
  *                                                                            *
  * Parameters: message - [OUT] IPC message, can be NULL for buffer size       *
@@ -126,8 +124,6 @@ static zbx_uint32_t	message_pack_data(zbx_ipc_message_t *message, zbx_packed_fie
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_pack_value                                          *
- *                                                                            *
  * Purpose: pack item value data into a single buffer that can be used in IPC *
  *                                                                            *
  * Parameters: message - [OUT] IPC message                                    *
@@ -189,8 +185,6 @@ static zbx_uint32_t	preprocessor_pack_value(zbx_ipc_message_t *message, zbx_prep
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_pack_variant                                        *
- *                                                                            *
  * Purpose: packs variant value for serialization                             *
  *                                                                            *
  * Parameters: fields - [OUT] the packed fields                               *
@@ -232,8 +226,6 @@ static int	preprocessor_pack_variant(zbx_packed_field_t *fields, const zbx_varia
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_pack_history                                        *
- *                                                                            *
  * Purpose: packs preprocessing history for serialization                     *
  *                                                                            *
  * Parameters: fields  - [OUT] the packed fields                              *
@@ -266,8 +258,6 @@ static int	preprocessor_pack_history(zbx_packed_field_t *fields, const zbx_vecto
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_pack_step                                           *
- *                                                                            *
  * Purpose: packs preprocessing step for serialization                        *
  *                                                                            *
  * Parameters: fields - [OUT] the packed fields                               *
@@ -291,8 +281,6 @@ static int	preprocessor_pack_step(zbx_packed_field_t *fields, const zbx_preproc_
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_pack_steps                                          *
  *                                                                            *
  * Purpose: packs preprocessing steps for serialization                       *
  *                                                                            *
@@ -318,8 +306,6 @@ static int	preprocessor_pack_steps(zbx_packed_field_t *fields, const zbx_preproc
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocesser_unpack_variant                                      *
  *                                                                            *
  * Purpose: unpacks serialized variant value                                  *
  *                                                                            *
@@ -360,8 +346,6 @@ static int	preprocesser_unpack_variant(const unsigned char *data, zbx_variant_t 
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocesser_unpack_history                                      *
- *                                                                            *
  * Purpose: unpacks serialized preprocessing history                          *
  *                                                                            *
  * Parameters: data    - [IN] the serialized data                             *
@@ -401,8 +385,6 @@ static int	preprocesser_unpack_history(const unsigned char *data, zbx_vector_ptr
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_unpack_step                                         *
- *                                                                            *
  * Purpose: unpacks serialized preprocessing step                             *
  *                                                                            *
  * Parameters: data - [IN] the serialized data                                *
@@ -425,8 +407,6 @@ static int	preprocessor_unpack_step(const unsigned char *data, zbx_preproc_op_t 
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_unpack_steps                                        *
  *                                                                            *
  * Purpose: unpacks serialized preprocessing steps                            *
  *                                                                            *
@@ -456,8 +436,6 @@ static int	preprocessor_unpack_steps(const unsigned char *data, zbx_preproc_op_t
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_preprocessor_pack_task                                       *
  *                                                                            *
  * Purpose: pack preprocessing task data into a single buffer that can be     *
  *          used in IPC                                                       *
@@ -517,8 +495,6 @@ zbx_uint32_t	zbx_preprocessor_pack_task(unsigned char **data, zbx_uint64_t itemi
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_preprocessor_pack_result                                     *
- *                                                                            *
  * Purpose: pack preprocessing result data into a single buffer that can be   *
  *          used in IPC                                                       *
  *                                                                            *
@@ -559,8 +535,6 @@ zbx_uint32_t	zbx_preprocessor_pack_result(unsigned char **data, zbx_variant_t *v
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_preprocessor_pack_test_result                                *
  *                                                                            *
  * Purpose: pack preprocessing result data into a single buffer that can be   *
  *          used in IPC                                                       *
@@ -612,8 +586,6 @@ zbx_uint32_t	zbx_preprocessor_pack_test_result(unsigned char **data, const zbx_p
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_preprocessor_unpack_value                                    *
  *                                                                            *
  * Purpose: unpack item value data from IPC data buffer                       *
  *                                                                            *
@@ -687,8 +659,6 @@ zbx_uint32_t	zbx_preprocessor_unpack_value(zbx_preproc_item_value_t *value, unsi
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_preprocessor_unpack_task                                     *
- *                                                                            *
  * Purpose: unpack preprocessing task data from IPC data buffer               *
  *                                                                            *
  * Parameters: itemid        - [OUT] itemid                                   *
@@ -730,8 +700,6 @@ void	zbx_preprocessor_unpack_task(zbx_uint64_t *itemid, unsigned char *value_typ
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_preprocessor_unpack_result                                   *
- *                                                                            *
  * Purpose: unpack preprocessing task data from IPC data buffer               *
  *                                                                            *
  * Parameters: value         - [OUT] result value                             *
@@ -753,8 +721,6 @@ void	zbx_preprocessor_unpack_result(zbx_variant_t *value, zbx_vector_ptr_t *hist
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_preprocessor_unpack_test_result                              *
  *                                                                            *
  * Purpose: unpack preprocessing test data from IPC data buffer               *
  *                                                                            *
@@ -790,8 +756,6 @@ void	zbx_preprocessor_unpack_test_result(zbx_vector_ptr_t *results, zbx_vector_p
 	(void)zbx_deserialize_str(offset, error, value_len);
 }
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_send                                                *
  *                                                                            *
  * Purpose: sends command to preprocessor manager                             *
  *                                                                            *
@@ -830,8 +794,6 @@ static void	preprocessor_send(zbx_uint32_t code, unsigned char *data, zbx_uint32
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_preprocess_item_value                                        *
  *                                                                            *
  * Purpose: perform item value preprocessing and dependent item processing    *
  *                                                                            *
@@ -898,8 +860,6 @@ void	zbx_preprocess_item_value(zbx_uint64_t itemid, zbx_uint64_t hostid, unsigne
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_preprocessor_flush                                           *
- *                                                                            *
  * Purpose: send flush command to preprocessing manager                       *
  *                                                                            *
  ******************************************************************************/
@@ -916,8 +876,6 @@ void	zbx_preprocessor_flush(void)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_preprocessor_get_queue_size                                  *
  *                                                                            *
  * Purpose: get queue size (enqueued value count) of preprocessing manager    *
  *                                                                            *
@@ -939,8 +897,6 @@ zbx_uint64_t	zbx_preprocessor_get_queue_size(void)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_preproc_op_free                                              *
- *                                                                            *
  * Purpose: frees preprocessing step                                          *
  *                                                                            *
  ******************************************************************************/
@@ -953,8 +909,6 @@ void	zbx_preproc_op_free(zbx_preproc_op_t *op)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_preproc_result_free                                          *
- *                                                                            *
  * Purpose: frees preprocessing step test result                              *
  *                                                                            *
  ******************************************************************************/
@@ -966,8 +920,6 @@ void	zbx_preproc_result_free(zbx_preproc_result_t *result)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_pack_test_request                                   *
  *                                                                            *
  * Purpose: packs preprocessing step request for serialization                *
  *                                                                            *
@@ -1013,8 +965,6 @@ static zbx_uint32_t	preprocessor_pack_test_request(unsigned char **data, unsigne
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_preprocessor_unpack_test_request                             *
- *                                                                            *
  * Purpose: unpack preprocessing test request data from IPC data buffer       *
  *                                                                            *
  * Parameters: value_type    - [OUT] item value type                          *
@@ -1043,8 +993,6 @@ void	zbx_preprocessor_unpack_test_request(unsigned char *value_type, char **valu
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_preprocessor_test                                            *
  *                                                                            *
  * Purpose: tests item preprocessing with the specified input value and steps *
  *                                                                            *

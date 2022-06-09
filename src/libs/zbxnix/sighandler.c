@@ -48,8 +48,6 @@ static void	exit_with_failure(void)
 
 /******************************************************************************
  *                                                                            *
- * Function: fatal_signal_handler                                             *
- *                                                                            *
  * Purpose: handle fatal signals: SIGILL, SIGFPE, SIGSEGV, SIGBUS             *
  *                                                                            *
  ******************************************************************************/
@@ -62,8 +60,6 @@ static void	fatal_signal_handler(int sig, siginfo_t *siginfo, void *context)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: metric_thread_signal_handler                                     *
  *                                                                            *
  * Purpose: same as fatal_signal_handler() but customized for metric thread - *
  *          does not log memory map                                           *
@@ -79,8 +75,6 @@ static void	metric_thread_signal_handler(int sig, siginfo_t *siginfo, void *cont
 
 /******************************************************************************
  *                                                                            *
- * Function: alarm_signal_handler                                             *
- *                                                                            *
  * Purpose: handle alarm signal SIGALRM                                       *
  *                                                                            *
  ******************************************************************************/
@@ -92,8 +86,6 @@ static void	alarm_signal_handler(int sig, siginfo_t *siginfo, void *context)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: terminate_signal_handler                                         *
  *                                                                            *
  * Purpose: handle terminate signals: SIGHUP, SIGINT, SIGTERM, SIGUSR2        *
  *                                                                            *
@@ -141,8 +133,6 @@ static void	terminate_signal_handler(int sig, siginfo_t *siginfo, void *context)
 
 /******************************************************************************
  *                                                                            *
- * Function: child_signal_handler                                             *
- *                                                                            *
  * Purpose: handle child signal SIGCHLD                                       *
  *                                                                            *
  ******************************************************************************/
@@ -167,8 +157,6 @@ static void	child_signal_handler(int sig, siginfo_t *siginfo, void *context)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_set_common_signal_handlers                                   *
  *                                                                            *
  * Purpose: set the commonly used signal handlers                             *
  *                                                                            *
@@ -201,8 +189,6 @@ void	zbx_set_common_signal_handlers(void)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_set_child_signal_handler                                     *
- *                                                                            *
  * Purpose: set the handlers for child process signals                        *
  *                                                                            *
  ******************************************************************************/
@@ -220,8 +206,6 @@ void 	zbx_set_child_signal_handler(void)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_set_metric_thread_signal_handler                             *
  *                                                                            *
  * Purpose: set the handlers for child process signals                        *
  *                                                                            *

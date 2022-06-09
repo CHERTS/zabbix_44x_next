@@ -24,8 +24,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_get_events_by_eventids                                       *
- *                                                                            *
  * Purpose: get events and flags that indicate what was filled in DB_EVENT    *
  *          structure                                                         *
  *                                                                            *
@@ -210,8 +208,6 @@ void	zbx_db_get_events_by_eventids(zbx_vector_uint64_t *eventids, zbx_vector_ptr
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_db_trigger_clean                                             *
- *                                                                            *
  * Purpose: frees resources allocated to store trigger data                   *
  *                                                                            *
  * Parameters: trigger -                                                      *
@@ -228,8 +224,6 @@ void	zbx_db_trigger_clean(DB_TRIGGER *trigger)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_free_event                                                   *
  *                                                                            *
  * Purpose: deallocate memory allocated in function 'get_db_events_info'      *
  *                                                                            *
@@ -252,8 +246,6 @@ void	zbx_db_free_event(DB_EVENT *event)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: get_db_eventid_r_eventid_pairs                                   *
  *                                                                            *
  * Purpose: get recovery event IDs by event IDs then map them together also   *
  *          additional create a separate array of recovery event IDs          *

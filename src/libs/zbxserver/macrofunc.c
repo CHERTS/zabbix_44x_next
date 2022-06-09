@@ -23,8 +23,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: macrofunc_regsub                                                 *
- *                                                                            *
  * Purpose: calculates regular expression substitution                        *
  *                                                                            *
  * Parameters: func - [IN] the function data                                  *
@@ -55,8 +53,6 @@ static int	macrofunc_regsub(char **params, size_t nparam, char **out)
 
 /******************************************************************************
  *                                                                            *
- * Function: macrofunc_iregsub                                                *
- *                                                                            *
  * Purpose: calculates case insensitive regular expression substitution       *
  *                                                                            *
  * Parameters: func - [IN] the function data                                  *
@@ -86,8 +82,6 @@ static int	macrofunc_iregsub(char **params, size_t nparam, char **out)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_calculate_macro_function                                     *
  *                                                                            *
  * Purpose: calculates macro function value                                   *
  *                                                                            *

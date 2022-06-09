@@ -3402,8 +3402,6 @@ static int	vmware_service_hv_get_multipath_data(const zbx_vmware_service_t *serv
 
 /******************************************************************************
  *                                                                            *
- * Function: vmware_ds_uuid_compare                                           *
- *                                                                            *
  * Purpose: sorting function to sort Datastore vector by uuid                 *
  *                                                                            *
  ******************************************************************************/
@@ -3416,8 +3414,6 @@ int	vmware_ds_uuid_compare(const void *d1, const void *d2)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: vmware_ds_name_compare                                           *
  *                                                                            *
  * Purpose: sorting function to sort Datastore vector by name                 *
  *                                                                            *
@@ -3536,8 +3532,6 @@ clean:
 }
 
 /******************************************************************************
- * Function: vmware_v4mask2pefix                                              *
- *                                                                            *
  * Purpose: Convert ipv4 netmask to cidr prefix                               *
  *                                                                            *
  * Parameters: mask      - [IN] net mask string                               *
@@ -3567,8 +3561,6 @@ static int	vmware_v4mask2pefix(const char *mask)
 }
 
 /******************************************************************************
- * Function: vmware_hv_ip_search                                              *
- *                                                                            *
  * Purpose: Search HV management interface ip value from a xml data           *
  *                                                                            *
  * Parameters: xdoc   - [IN] XML document                                     *
@@ -6945,8 +6937,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_xml_node_read_value                                          *
- *                                                                            *
  * Purpose: retrieve a value from xml data relative to the specified node     *
  *                                                                            *
  * Parameters: doc    - [IN] the XML document                                 *
@@ -7016,8 +7006,6 @@ static char	*zbx_xml_doc_read_value(xmlDoc *xdoc, const char *xpath)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_xml_doc_read_num                                             *
- *                                                                            *
  * Purpose: retrieves numeric xpath value                                     *
  *                                                                            *
  * Parameters: xdoc  - [IN] xml document                                      *
@@ -7054,8 +7042,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_xml_read_values                                              *
- *                                                                            *
  * Purpose: populate array of values from an xml data                         *
  *                                                                            *
  * Parameters: xdoc   - [IN] XML document                                     *
@@ -7072,8 +7058,6 @@ static int	zbx_xml_read_values(xmlDoc *xdoc, const char *xpath, zbx_vector_str_t
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_xml_node_read_values                                         *
  *                                                                            *
  * Purpose: populate array of values from an xml data                         *
  *                                                                            *

@@ -37,8 +37,6 @@ zbx_dcheck_source_t;
 
 /******************************************************************************
  *                                                                            *
- * Function: select_discovered_host                                           *
- *                                                                            *
  * Purpose: select hostid of discovered host                                  *
  *                                                                            *
  * Parameters: dhostid - discovered host id                                   *
@@ -124,8 +122,6 @@ exit:
 
 /******************************************************************************
  *                                                                            *
- * Function: add_discovered_host_groups                                       *
- *                                                                            *
  * Purpose: add group to host if not added already                            *
  *                                                                            *
  * Author: Alexander Vladishev                                                *
@@ -194,8 +190,6 @@ static void	add_discovered_host_groups(zbx_uint64_t hostid, zbx_vector_uint64_t 
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: add_discovered_host                                              *
  *                                                                            *
  * Purpose: add discovered host if it was not added already                   *
  *                                                                            *
@@ -578,8 +572,6 @@ clean:
 
 /******************************************************************************
  *                                                                            *
- * Function: is_discovery_or_auto_registration                                *
- *                                                                            *
  * Purpose: checks if the event is discovery or auto registration event       *
  *                                                                            *
  * Return value: SUCCEED - it's discovery or auto registration event          *
@@ -602,8 +594,6 @@ static int	is_discovery_or_auto_registration(const DB_EVENT *event)
 
 /******************************************************************************
  *                                                                            *
- * Function: op_host_add                                                      *
- *                                                                            *
  * Purpose: add discovered host                                               *
  *                                                                            *
  * Parameters: trigger - trigger data                                         *
@@ -625,8 +615,6 @@ void	op_host_add(const DB_EVENT *event)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: op_host_del                                                      *
  *                                                                            *
  * Purpose: delete host                                                       *
  *                                                                            *
@@ -659,8 +647,6 @@ void	op_host_del(const DB_EVENT *event)
 
 /******************************************************************************
  *                                                                            *
- * Function: op_host_enable                                                   *
- *                                                                            *
  * Purpose: enable discovered                                                 *
  *                                                                            *
  * Author: Alexander Vladishev                                                *
@@ -689,8 +675,6 @@ void	op_host_enable(const DB_EVENT *event)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: op_host_disable                                                  *
  *                                                                            *
  * Purpose: disable host                                                      *
  *                                                                            *
@@ -721,8 +705,6 @@ void	op_host_disable(const DB_EVENT *event)
 
 /******************************************************************************
  *                                                                            *
- * Function: op_host_inventory_mode                                           *
- *                                                                            *
  * Purpose: sets host inventory mode                                          *
  *                                                                            *
  * Parameters: event          - [IN] the source event                         *
@@ -752,8 +734,6 @@ void	op_host_inventory_mode(const DB_EVENT *event, int inventory_mode)
 
 /******************************************************************************
  *                                                                            *
- * Function: op_groups_add                                                    *
- *                                                                            *
  * Purpose: add groups to discovered host                                     *
  *                                                                            *
  * Parameters: event    - [IN] event data                                     *
@@ -780,8 +760,6 @@ void	op_groups_add(const DB_EVENT *event, zbx_vector_uint64_t *groupids)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: op_groups_del                                                    *
  *                                                                            *
  * Purpose: delete groups from discovered host                                *
  *                                                                            *
@@ -845,8 +823,6 @@ void	op_groups_del(const DB_EVENT *event, zbx_vector_uint64_t *groupids)
 
 /******************************************************************************
  *                                                                            *
- * Function: op_template_add                                                  *
- *                                                                            *
  * Purpose: link host with template                                           *
  *                                                                            *
  * Parameters: event           - [IN] event data                              *
@@ -878,8 +854,6 @@ void	op_template_add(const DB_EVENT *event, zbx_vector_uint64_t *lnk_templateids
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: op_template_del                                                  *
  *                                                                            *
  * Purpose: unlink and clear host from template                               *
  *                                                                            *

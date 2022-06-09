@@ -27,8 +27,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_lld_serialize_item_value                                     *
- *                                                                            *
  ******************************************************************************/
 zbx_uint32_t	zbx_lld_serialize_item_value(unsigned char **data, zbx_uint64_t itemid, zbx_uint64_t hostid,
 		const char *value, const zbx_timespec_t *ts, unsigned char meta, zbx_uint64_t lastlogsize, int mtime,
@@ -70,8 +68,6 @@ zbx_uint32_t	zbx_lld_serialize_item_value(unsigned char **data, zbx_uint64_t ite
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_lld_deserialize_item_value                                   *
- *                                                                            *
  ******************************************************************************/
 void	zbx_lld_deserialize_item_value(const unsigned char *data, zbx_uint64_t *itemid, zbx_uint64_t *hostid,
 		char **value, zbx_timespec_t *ts, unsigned char *meta, zbx_uint64_t *lastlogsize, int *mtime,
@@ -93,8 +89,6 @@ void	zbx_lld_deserialize_item_value(const unsigned char *data, zbx_uint64_t *ite
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_lld_process_value                                            *
  *                                                                            *
  * Purpose: process low level discovery value/error                           *
  *                                                                            *
@@ -133,8 +127,6 @@ void	zbx_lld_process_value(zbx_uint64_t itemid, zbx_uint64_t hostid, const char 
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_lld_process_agent_result                                     *
- *                                                                            *
  * Purpose: process low level discovery agent result                          *
  *                                                                            *
  * Parameters: itemid - [IN] the LLD rule id                                  *
@@ -170,8 +162,6 @@ void	zbx_lld_process_agent_result(zbx_uint64_t itemid, zbx_uint64_t hostid, AGEN
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_lld_get_queue_size                                           *
  *                                                                            *
  * Purpose: get queue size (enqueued value count) of LLD manager              *
  *                                                                            *

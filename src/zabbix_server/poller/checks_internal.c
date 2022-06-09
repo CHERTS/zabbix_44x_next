@@ -57,8 +57,6 @@ static int	compare_interfaces(const void *p1, const void *p2)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_host_interfaces_discovery                                    *
- *                                                                            *
  * Purpose: get data of all network interfaces for a host from configuration  *
  *          cache and pack into JSON for LLD                                  *
  *                                                                            *
@@ -153,8 +151,6 @@ static int	zbx_host_interfaces_discovery(zbx_uint64_t hostid, struct zbx_json *j
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: get_value_internal                                               *
  *                                                                            *
  * Purpose: retrieve data from Zabbix server (internally supported items)     *
  *                                                                            *

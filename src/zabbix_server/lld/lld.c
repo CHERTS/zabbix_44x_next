@@ -48,8 +48,6 @@ lld_filter_t;
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_condition_free                                               *
- *                                                                            *
  * Purpose: release resources allocated by filter condition                   *
  *                                                                            *
  * Parameters: condition  - [IN] the filter condition                         *
@@ -67,8 +65,6 @@ static void	lld_condition_free(lld_condition_t *condition)
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_conditions_free                                              *
- *                                                                            *
  * Purpose: release resources allocated by filter conditions                  *
  *                                                                            *
  * Parameters: conditions - [IN] the filter conditions                        *
@@ -81,8 +77,6 @@ static void	lld_conditions_free(zbx_vector_ptr_t *conditions)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_condition_compare_by_macro                                   *
  *                                                                            *
  * Purpose: compare two filter conditions by their macros                     *
  *                                                                            *
@@ -100,8 +94,6 @@ static int	lld_condition_compare_by_macro(const void *item1, const void *item2)
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_filter_init                                                  *
- *                                                                            *
  * Purpose: initializes lld filter                                            *
  *                                                                            *
  * Parameters: filter  - [IN] the lld filter                                  *
@@ -116,8 +108,6 @@ static void	lld_filter_init(lld_filter_t *filter)
 
 /******************************************************************************
  *                                                                            *
- * Function: lld_filter_clean                                                 *
- *                                                                            *
  * Purpose: releases resources allocated by lld filter                        *
  *                                                                            *
  * Parameters: filter  - [IN] the lld filter                                  *
@@ -130,8 +120,6 @@ static void	lld_filter_clean(lld_filter_t *filter)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_filter_load                                                  *
  *                                                                            *
  * Purpose: loads lld filter data                                             *
  *                                                                            *
@@ -212,8 +200,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: filter_condition_match                                           *
- *                                                                            *
  * Purpose: check if the lld data passes filter evaluation                    *
  *                                                                            *
  * Parameters: filter          - [IN] the lld filter                          *
@@ -251,8 +237,6 @@ static int	filter_condition_match(const struct zbx_json_parse *jp_row, const zbx
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: filter_evaluate_and_or                                           *
  *                                                                            *
  * Purpose: check if the lld data passes filter evaluation by and/or rule     *
  *                                                                            *
@@ -304,8 +288,6 @@ static int	filter_evaluate_and_or(const lld_filter_t *filter, const struct zbx_j
 
 /******************************************************************************
  *                                                                            *
- * Function: filter_evaluate_and                                              *
- *                                                                            *
  * Purpose: check if the lld data passes filter evaluation by and rule        *
  *                                                                            *
  * Parameters: filter          - [IN] the lld filter                          *
@@ -340,8 +322,6 @@ static int	filter_evaluate_and(const lld_filter_t *filter, const struct zbx_json
 
 /******************************************************************************
  *                                                                            *
- * Function: filter_evaluate_or                                               *
- *                                                                            *
  * Purpose: check if the lld data passes filter evaluation by or rule         *
  *                                                                            *
  * Parameters: filter          - [IN] the lld filter                          *
@@ -375,8 +355,6 @@ static int	filter_evaluate_or(const lld_filter_t *filter, const struct zbx_json_
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: filter_evaluate_expression                                       *
  *                                                                            *
  * Purpose: check if the lld data passes filter evaluation by custom          *
  *          expression                                                        *
@@ -435,8 +413,6 @@ static int	filter_evaluate_expression(const lld_filter_t *filter, const struct z
 
 /******************************************************************************
  *                                                                            *
- * Function: filter_evaluate                                                  *
- *                                                                            *
  * Purpose: check if the lld data passes filter evaluation                    *
  *                                                                            *
  * Parameters: filter          - [IN] the lld filter                          *
@@ -466,8 +442,6 @@ static int	filter_evaluate(const lld_filter_t *filter, const struct zbx_json_par
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_check_received_data_for_filter                               *
  *                                                                            *
  * Purpose: Check if the LLD data contains a values for macros used in filter.*
  *          Create an informative warning for every macro that has not        *
@@ -582,8 +556,6 @@ static void	lld_row_free(zbx_lld_row_t *lld_row)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: lld_process_discovery_rule                                       *
  *                                                                            *
  * Purpose: add or update items, triggers and graphs for discovery item       *
  *                                                                            *

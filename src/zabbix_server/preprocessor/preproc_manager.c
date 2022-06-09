@@ -148,8 +148,6 @@ static void	request_free_steps(zbx_preprocessing_request_t *request)
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_sync_configuration                                  *
- *                                                                            *
  * Purpose: synchronize preprocessing manager with configuration cache data   *
  *                                                                            *
  * Parameters: manager - [IN] the manager to be synchronized                  *
@@ -206,8 +204,6 @@ static void	preprocessor_sync_configuration(zbx_preprocessing_manager_t *manager
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_create_task                                         *
- *                                                                            *
  * Purpose: create preprocessing task for request                             *
  *                                                                            *
  * Parameters: manager - [IN] preprocessing manager                           *
@@ -249,8 +245,6 @@ static zbx_uint32_t	preprocessor_create_task(zbx_preprocessing_manager_t *manage
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_set_request_state_done                              *
  *                                                                            *
  * Purpose: set request state to done and handle linked items                 *
  *                                                                            *
@@ -307,8 +301,6 @@ static	void	preprocessor_set_request_state_done(zbx_preprocessing_manager_t *man
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_get_next_task                                       *
  *                                                                            *
  * Purpose: gets next task to be sent to worker                               *
  *                                                                            *
@@ -376,8 +368,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_get_worker_by_client                                *
- *                                                                            *
  * Purpose: get worker data by IPC client                                     *
  *                                                                            *
  * Parameters: manager - [IN] preprocessing manager                           *
@@ -412,8 +402,6 @@ static zbx_preprocessing_worker_t	*preprocessor_get_worker_by_client(zbx_preproc
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_get_free_worker                                     *
- *                                                                            *
  * Purpose: get worker without active preprocessing task                      *
  *                                                                            *
  * Parameters: manager - [IN] preprocessing manager                           *
@@ -435,8 +423,6 @@ static zbx_preprocessing_worker_t	*preprocessor_get_free_worker(zbx_preprocessin
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_assign_tasks                                        *
  *                                                                            *
  * Purpose: assign available queued preprocessing tasks to free workers       *
  *                                                                            *
@@ -485,8 +471,6 @@ static void	preproc_item_result_free(zbx_preproc_item_value_t *value)
 
 /******************************************************************************
  *                                                                            *
- * Function: preproc_item_value_clear                                         *
- *                                                                            *
  * Purpose: frees resources allocated by preprocessor item value              *
  *                                                                            *
  * Parameters: value - [IN] value to be freed                                 *
@@ -500,8 +484,6 @@ static void	preproc_item_value_clear(zbx_preproc_item_value_t *value)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_free_request                                        *
  *                                                                            *
  * Purpose: free preprocessing request                                        *
  *                                                                            *
@@ -520,8 +502,6 @@ static void	preprocessor_free_request(zbx_preprocessing_request_t *request)
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_free_direct_request                                 *
- *                                                                            *
  * Purpose: free preprocessing direct request                                 *
  *                                                                            *
  * Parameters: forward - [IN] forward data to be freed                        *
@@ -535,8 +515,6 @@ static void	preprocessor_free_direct_request(zbx_preprocessing_direct_request_t 
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_flush_value                                         *
  *                                                                            *
  * Purpose: add new value to the local history cache or send to LLD manager   *
  *                                                                            *
@@ -575,8 +553,6 @@ static void	preprocessing_flush_request(zbx_preprocessing_manager_t *manager, zb
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessing_flush_queue                                        *
- *                                                                            *
  * Purpose: add all sequential processed values from beginning of the queue   *
  *          to the local history cache                                        *
  *                                                                            *
@@ -607,8 +583,6 @@ static void	preprocessing_flush_queue(zbx_preprocessing_manager_t *manager)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_link_items                                          *
  *                                                                            *
  * Purpose: create relation between item values within value queue            *
  *                                                                            *
@@ -664,8 +638,6 @@ static void	preprocessor_link_items(zbx_preprocessing_manager_t *manager, zbx_li
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_copy_value                                          *
- *                                                                            *
  * Purpose: create a copy of existing item value                              *
  *                                                                            *
  * Parameters: target  - [OUT] created copy                                   *
@@ -687,8 +659,6 @@ static void	preprocessor_copy_value(zbx_preproc_item_value_t *target, zbx_prepro
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_enqueue                                             *
  *                                                                            *
  * Purpose: enqueue preprocessing request                                     *
  *                                                                            *
@@ -802,8 +772,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_enqueue_dependent                                   *
- *                                                                            *
  * Purpose: enqueue dependent items (if any)                                  *
  *                                                                            *
  * Parameters: manager      - [IN] preprocessing manager                      *
@@ -848,8 +816,6 @@ static void	preprocessor_enqueue_dependent(zbx_preprocessing_manager_t *manager,
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_add_request                                         *
- *                                                                            *
  * Purpose: handle new preprocessing request                                  *
  *                                                                            *
  * Parameters: manager - [IN] preprocessing manager                           *
@@ -879,8 +845,6 @@ static void	preprocessor_add_request(zbx_preprocessing_manager_t *manager, zbx_i
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_add_test_request                                    *
- *                                                                            *
  * Purpose: handle new preprocessing test request                             *
  *                                                                            *
  * Parameters: manager - [IN] preprocessing manager                           *
@@ -908,8 +872,6 @@ static void	preprocessor_add_test_request(zbx_preprocessing_manager_t *manager, 
 
 /******************************************************************************
  *                                                                            *
- * Function: create_result_with_meta                                          *
- *                                                                            *
  * Purpose: create new result and copy meta information from previous result  *
  *                                                                            *
  * Parameters: result_old - [IN] result that can contain meta information     *
@@ -936,8 +898,6 @@ static AGENT_RESULT	*create_result_with_meta(const AGENT_RESULT *result_old)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_set_variant_result                                  *
  *                                                                            *
  * Purpose: get result data from variant and error message                    *
  *                                                                            *
@@ -1053,8 +1013,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_add_result                                          *
- *                                                                            *
  * Purpose: handle preprocessing result                                       *
  *                                                                            *
  * Parameters: manager - [IN] preprocessing manager                           *
@@ -1132,8 +1090,6 @@ static void	preprocessor_add_result(zbx_preprocessing_manager_t *manager, zbx_ip
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_flush_test_result                                   *
- *                                                                            *
  * Purpose: handle preprocessing result                                       *
  *                                                                            *
  * Parameters: manager - [IN] preprocessing manager                           *
@@ -1170,8 +1126,6 @@ static void	preprocessor_flush_test_result(zbx_preprocessing_manager_t *manager,
 
 /******************************************************************************
  *                                                                            *
- * Function: preprocessor_init_manager                                        *
- *                                                                            *
  * Purpose: initializes preprocessing manager                                 *
  *                                                                            *
  * Parameters: manager - [IN] the manager to initialize                       *
@@ -1198,8 +1152,6 @@ static void	preprocessor_init_manager(zbx_preprocessing_manager_t *manager)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_register_worker                                     *
  *                                                                            *
  * Purpose: registers preprocessing worker                                    *
  *                                                                            *
@@ -1241,8 +1193,6 @@ static void preprocessor_register_worker(zbx_preprocessing_manager_t *manager, z
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: preprocessor_destroy_manager                                     *
  *                                                                            *
  * Purpose: destroy preprocessing manager                                     *
  *                                                                            *

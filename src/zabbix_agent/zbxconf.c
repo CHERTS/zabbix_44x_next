@@ -31,8 +31,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: load_aliases                                                     *
- *                                                                            *
  * Purpose: load aliases from configuration                                   *
  *                                                                            *
  * Parameters: lines - aliase entries from configuration file                 *
@@ -75,8 +73,6 @@ void	load_aliases(char **lines)
 
 /******************************************************************************
  *                                                                            *
- * Function: load_user_parameters                                             *
- *                                                                            *
  * Purpose: load user parameters from configuration                           *
  *                                                                            *
  * Parameters: lines - user parameter entries from configuration file         *
@@ -111,8 +107,6 @@ void	load_user_parameters(char **lines)
 
 #ifdef _WINDOWS
 /******************************************************************************
- *                                                                            *
- * Function: load_perf_counters                                               *
  *                                                                            *
  * Purpose: load performance counters from configuration                      *
  *                                                                            *

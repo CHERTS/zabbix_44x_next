@@ -27,8 +27,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: es_zabbix_dtor                                              *
- *                                                                            *
  * Purpose: Curlzabbix destructor                                        *
  *                                                                            *
  ******************************************************************************/
@@ -39,8 +37,6 @@ static duk_ret_t	es_zabbix_dtor(duk_context *ctx)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: es_zabbix_ctor                                              *
  *                                                                            *
  * Purpose: Curlzabbix constructor                                       *
  *                                                                            *
@@ -58,8 +54,6 @@ static duk_ret_t	es_zabbix_ctor(duk_context *ctx)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: es_zabbix_status                                                 *
  *                                                                            *
  * Purpose: Curlzabbix.Status method                                          *
  *                                                                            *

@@ -34,8 +34,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_process_trigger                                              *
- *                                                                            *
  * Purpose: 1) calculate changeset of trigger fields to be updated            *
  *          2) generate events                                                *
  *                                                                            *
@@ -144,8 +142,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_db_save_trigger_changes                                      *
- *                                                                            *
  * Purpose: save the trigger changes to database                              *
  *                                                                            *
  * Parameters: trigger_diff - [IN] the trigger changeset                      *
@@ -217,8 +213,6 @@ void	zbx_db_save_trigger_changes(const zbx_vector_ptr_t *trigger_diff)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_trigger_diff_free                                            *
- *                                                                            *
  * Purpose: frees trigger changeset                                           *
  *                                                                            *
  ******************************************************************************/
@@ -244,8 +238,6 @@ static int	zbx_trigger_topoindex_compare(const void *d1, const void *d2)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_process_triggers                                             *
  *                                                                            *
  * Purpose: process triggers - calculates property changeset and generates    *
  *          events                                                            *
@@ -278,8 +270,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_append_trigger_diff                                          *
  *                                                                            *
  * Purpose: Adds a new trigger diff to trigger changeset vector               *
  *                                                                            *

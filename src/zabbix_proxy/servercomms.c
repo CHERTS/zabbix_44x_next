@@ -111,8 +111,6 @@ void	disconnect_server(zbx_socket_t *sock)
 
 /******************************************************************************
  *                                                                            *
- * Function: get_data_from_server                                             *
- *                                                                            *
  * Purpose: get configuration and other data from server                      *
  *                                                                            *
  * Return value: SUCCEED - processed successfully                             *
@@ -155,8 +153,6 @@ exit:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: put_data_to_server                                               *
  *                                                                            *
  * Purpose: send data to server                                               *
  *                                                                            *

@@ -96,8 +96,6 @@ zbx_itservices_t;
 
 /******************************************************************************
  *                                                                            *
- * Function: its_itservices_init                                              *
- *                                                                            *
  * Purpose: initializes services data set to store services during update     *
  *          session                                                           *
  *                                                                            *
@@ -111,8 +109,6 @@ static void	its_itservices_init(zbx_itservices_t *itservices)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: its_itservices_clean                                             *
  *                                                                            *
  * Purpose: cleans services data set by releasing allocated memory            *
  *                                                                            *
@@ -144,8 +140,6 @@ static void	its_itservices_clean(zbx_itservices_t *itservices)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: its_itservice_create                                             *
  *                                                                            *
  * Purpose: creates a new service node                                        *
  *                                                                            *
@@ -189,8 +183,6 @@ static zbx_itservice_t	*its_itservice_create(zbx_itservices_t *itservices, zbx_u
 
 /******************************************************************************
  *                                                                            *
- * Function: its_updates_append                                               *
- *                                                                            *
  * Purpose: adds an update to the queue                                       *
  *                                                                            *
  * Parameters: updates   - [OUT] the update queue                             *
@@ -218,8 +210,6 @@ static void	zbx_status_update_free(zbx_status_update_t *update)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: its_itservices_load_children                                     *
  *                                                                            *
  * Purpose: loads all missing children of the specified services              *
  *                                                                            *
@@ -293,8 +283,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: its_itservices_load_parents                                      *
- *                                                                            *
  * Purpose: recursively loads parent nodes of the specified service until the *
  *          root node                                                         *
  *                                                                            *
@@ -364,8 +352,6 @@ static void	its_itservices_load_parents(zbx_itservices_t *itservices, zbx_vector
 
 /******************************************************************************
  *                                                                            *
- * Function: its_load_services_by_triggerids                                  *
- *                                                                            *
  * Purpose: loads services that might be affected by the specified triggerid  *
  *          or are required to calculate status of loaded services            *
  *                                                                            *
@@ -420,8 +406,6 @@ static void	its_load_services_by_triggerids(zbx_itservices_t *itservices, const 
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: its_itservice_update_status                                      *
  *                                                                            *
  * Purpose: updates service and its parents statuses                          *
  *                                                                            *
@@ -485,8 +469,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: its_updates_compare                                              *
- *                                                                            *
  * Purpose: used to sort service updates by source id                         *
  *                                                                            *
  ******************************************************************************/
@@ -498,8 +480,6 @@ static int	its_updates_compare(const zbx_status_update_t **update1, const zbx_st
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: its_write_status_and_alarms                                      *
  *                                                                            *
  * Purpose: writes service status changes and generated service alarms into   *
  *          database                                                          *
@@ -596,8 +576,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: its_flush_updates                                                *
  *                                                                            *
  * Purpose: processes the service update queue                                *
  *                                                                            *
@@ -702,8 +680,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: DBupdate_itservices                                              *
- *                                                                            *
  * Purpose: updates services by applying event list                           *
  *                                                                            *
  * Return value: SUCCEED - the services were updated successfully             *
@@ -757,8 +733,6 @@ int	DBupdate_itservices(const zbx_vector_ptr_t *trigger_diff)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBremove_itservice_triggers                                      *
  *                                                                            *
  * Purpose: removes specified trigger ids from dependent services and reset   *
  *          the status of those services to the default value (0)             *

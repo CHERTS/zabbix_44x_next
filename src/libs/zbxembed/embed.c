@@ -41,8 +41,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: es_handle_error                                                  *
- *                                                                            *
  * Purpose: fatal error handler                                               *
  *                                                                            *
  ******************************************************************************/
@@ -124,8 +122,6 @@ static void	es_free(void *udata, void *ptr)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_es_check_timeout                                             *
- *                                                                            *
  * Purpose: timeout checking callback                                         *
  *                                                                            *
  ******************************************************************************/
@@ -141,8 +137,6 @@ int	zbx_es_check_timeout(void *udata)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_es_init                                                      *
- *                                                                            *
  * Purpose: initializes embedded scripting engine                             *
  *                                                                            *
  ******************************************************************************/
@@ -152,8 +146,6 @@ void	zbx_es_init(zbx_es_t *es)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_es_destroy                                                   *
  *                                                                            *
  * Purpose: destroys embedded scripting engine                                *
  *                                                                            *
@@ -169,8 +161,6 @@ void	zbx_es_destroy(zbx_es_t *es)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_es_init_env                                                  *
  *                                                                            *
  * Purpose: initializes embedded scripting engine environment                 *
  *                                                                            *
@@ -243,8 +233,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_es_destroy_env                                               *
- *                                                                            *
  * Purpose: destroys initialized embedded scripting engine environment        *
  *                                                                            *
  * Parameters: es    - [IN] the embedded scripting engine                     *
@@ -281,8 +269,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_es_ready                                                     *
- *                                                                            *
  * Purpose: checks if the scripting engine environment is initialized         *
  *                                                                            *
  * Parameters: es    - [IN] the embedded scripting engine                     *
@@ -297,8 +283,6 @@ int	zbx_es_is_env_initialized(zbx_es_t *es)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_es_fatal_error                                               *
  *                                                                            *
  * Purpose: checks if fatal error has occurred                                *
  *                                                                            *
@@ -322,8 +306,6 @@ int	zbx_es_fatal_error(zbx_es_t *es)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_es_compile                                                   *
  *                                                                            *
  * Purpose: compiles script into bytecode                                     *
  *                                                                            *
@@ -406,8 +388,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_es_execute                                                   *
  *                                                                            *
  * Purpose: executes script                                                   *
  *                                                                            *
@@ -510,8 +490,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_es_set_timeout                                               *
  *                                                                            *
  * Purpose: sets script execution timeout                                     *
  *                                                                            *

@@ -28,8 +28,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: execute_remote_script                                            *
- *                                                                            *
  * Purpose: execute remote command and wait for the result                    *
  *                                                                            *
  * Return value:  SUCCEED - the remote command was executed successfully      *
@@ -82,8 +80,6 @@ static int	execute_remote_script(zbx_script_t *script, DC_HOST *host, char **inf
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: execute_script                                                   *
  *                                                                            *
  * Purpose: executing command                                                 *
  *                                                                            *
@@ -140,8 +136,6 @@ fail:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: node_process_command                                             *
  *                                                                            *
  * Purpose: process command received from the frontend                        *
  *                                                                            *

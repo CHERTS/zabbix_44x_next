@@ -40,8 +40,6 @@ zbx_es_t	es_engine;
 
 /******************************************************************************
  *                                                                            *
- * Function: worker_format_value                                              *
- *                                                                            *
  * Purpose: formats value in text format                                      *
  *                                                                            *
  * Parameters: value     - [IN] the value to format                           *
@@ -82,8 +80,6 @@ static void	worker_format_value(const zbx_variant_t *value, char **value_str)
 
 /******************************************************************************
  *                                                                            *
- * Function: worker_format_result                                             *
- *                                                                            *
  * Purpose: formats one preprocessing step result                             *
  *                                                                            *
  * Parameters: step   - [IN] the preprocessing step number                    *
@@ -112,8 +108,6 @@ static void	worker_format_result(int step, const zbx_preproc_result_t *result, c
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: worker_format_error                                              *
  *                                                                            *
  * Purpose: formats preprocessing error message                               *
  *                                                                            *
@@ -191,8 +185,6 @@ static void	worker_format_error(const zbx_variant_t *value, zbx_preproc_result_t
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: worker_item_preproc_execute                                      *
  *                                                                            *
  * Purpose: execute preprocessing steps                                       *
  *                                                                            *
@@ -275,8 +267,6 @@ static int	worker_item_preproc_execute(unsigned char value_type, zbx_variant_t *
 
 /******************************************************************************
  *                                                                            *
- * Function: worker_preprocess_value                                          *
- *                                                                            *
  * Purpose: handle item value preprocessing task                              *
  *                                                                            *
  * Parameters: socket  - [IN] IPC socket                                      *
@@ -357,8 +347,6 @@ static void	worker_preprocess_value(zbx_ipc_socket_t *socket, zbx_ipc_message_t 
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: worker_test_value                                                *
  *                                                                            *
  * Purpose: handle item value test preprocessing task                         *
  *                                                                            *

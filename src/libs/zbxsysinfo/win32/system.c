@@ -25,8 +25,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: read_registry_value                                              *
- *                                                                            *
  * Purpose: read value from Windows registry                                  *
  *                                                                            *
  ******************************************************************************/
@@ -46,8 +44,6 @@ static wchar_t	*read_registry_value(HKEY hKey, LPCTSTR name)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_win_getversion                                               *
  *                                                                            *
  * Purpose: get Windows version information                                   *
  *                                                                            *

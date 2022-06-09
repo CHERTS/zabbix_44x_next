@@ -54,8 +54,6 @@ static volatile sig_atomic_t	snmp_cache_reload_requested;
 
 /******************************************************************************
  *                                                                            *
- * Function: db_host_update_availability                                      *
- *                                                                            *
  * Purpose: write host availability changes into database                     *
  *                                                                            *
  * Parameters: ha    - [IN] the host availability data                        *
@@ -84,8 +82,6 @@ static int	db_host_update_availability(const zbx_host_availability_t *ha)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: host_get_availability                                            *
  *                                                                            *
  * Purpose: get host availability data based on the specified agent type      *
  *                                                                            *
@@ -141,8 +137,6 @@ static int	host_get_availability(const DC_HOST *dc_host, unsigned char agent, zb
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: host_set_availability                                            *
  *                                                                            *
  * Purpose: sets host availability data based on the specified agent type     *
  *                                                                            *
@@ -485,8 +479,6 @@ static int	parse_query_fields(const DC_ITEM *item, char **query_fields)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: get_values                                                       *
  *                                                                            *
  * Purpose: retrieve values of metrics from monitored hosts                   *
  *                                                                            *

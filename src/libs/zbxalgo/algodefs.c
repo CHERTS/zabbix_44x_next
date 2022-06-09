@@ -382,8 +382,6 @@ int	next_prime(int n)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_isqrt32                                                      *
- *                                                                            *
  * Purpose: calculate integer part of square root of a 32 bit integer value   *
  *                                                                            *
  * Parameters: value     - [IN] the value to calculate square root for        *

@@ -310,8 +310,6 @@ void	zbx_script_clean(zbx_script_t *script)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_script_prepare                                               *
- *                                                                            *
  * Purpose: prepares user script                                              *
  *                                                                            *
  * Parameters: host          - [IN] the host the script will be executed on   *
@@ -416,8 +414,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_script_execute                                               *
- *                                                                            *
  * Purpose: executing user scripts or remote commands                         *
  *                                                                            *
  * Return value:  SUCCEED - processed successfully                            *
@@ -495,8 +491,6 @@ int	zbx_script_execute(const zbx_script_t *script, const DC_HOST *host, char **r
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_script_create_task                                           *
  *                                                                            *
  * Purpose: creates remote command task from a script                         *
  *                                                                            *

@@ -141,8 +141,6 @@ static void	DBget_interfaces_by_hostid(zbx_uint64_t hostid, zbx_uint64_t *interf
 
 /******************************************************************************
  *                                                                            *
- * Function: get_template_items                                               *
- *                                                                            *
  * Purpose: read template items from database                                 *
  *                                                                            *
  * Parameters: hostid      - [IN] host id                                     *
@@ -292,8 +290,6 @@ static void	get_template_items(zbx_uint64_t hostid, const zbx_vector_uint64_t *t
 
 /******************************************************************************
  *                                                                            *
- * Function: get_template_lld_rule_map                                        *
- *                                                                            *
  * Purpose: reads template lld rule conditions and host lld_rule identifiers  *
  *          from database                                                     *
  *                                                                            *
@@ -402,8 +398,6 @@ static void	get_template_lld_rule_map(const zbx_vector_ptr_t *items, zbx_vector_
 
 /******************************************************************************
  *                                                                            *
- * Function: calculate_template_lld_rule_conditionids                         *
- *                                                                            *
  * Purpose: calculate identifiers for new item conditions                     *
  *                                                                            *
  * Parameters: rules - [IN] the ldd rule mapping                              *
@@ -447,8 +441,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: update_template_lld_rule_formulas                                *
  *                                                                            *
  * Purpose: translate template item condition identifiers in expression type  *
  *          discovery rule formulas to refer the host item condition          *
@@ -517,8 +509,6 @@ static void	update_template_lld_rule_formulas(zbx_vector_ptr_t *items, zbx_vecto
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: save_template_item                                               *
  *                                                                            *
  * Purpose: save (insert or update) template item                             *
  *                                                                            *
@@ -732,8 +722,6 @@ static void	save_template_item(zbx_uint64_t hostid, zbx_uint64_t *itemid, zbx_te
 
 /******************************************************************************
  *                                                                            *
- * Function: save_template_items                                              *
- *                                                                            *
  * Purpose: saves template items to the target host in database               *
  *                                                                            *
  * Parameters:  hostid - [IN] the target host                                 *
@@ -821,8 +809,6 @@ static void	save_template_items(zbx_uint64_t hostid, zbx_vector_ptr_t *items)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: save_template_lld_rules                                          *
  *                                                                            *
  * Purpose: saves template lld rule item conditions to the target host in     *
  *          database                                                          *
@@ -957,8 +943,6 @@ static void	save_template_lld_rules(zbx_vector_ptr_t *items, zbx_vector_ptr_t *r
 
 /******************************************************************************
  *                                                                            *
- * Function: save_template_item_applications                                  *
- *                                                                            *
  * Purpose: saves new item applications links in database                     *
  *                                                                            *
  * Parameters:  items   - [IN] the template items                             *
@@ -1047,8 +1031,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: save_template_discovery_prototypes                               *
  *                                                                            *
  * Purpose: saves host item prototypes in database                            *
  *                                                                            *
@@ -1144,8 +1126,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: free_template_item                                               *
- *                                                                            *
  * Purpose: frees template item                                               *
  *                                                                            *
  * Parameters:  item  - [IN] the template item                                *
@@ -1196,8 +1176,6 @@ static void	free_template_item(zbx_template_item_t *item)
 
 /******************************************************************************
  *                                                                            *
- * Function: free_lld_rule_condition                                          *
- *                                                                            *
  * Purpose: frees lld rule condition                                          *
  *                                                                            *
  * Parameters:  item  - [IN] the lld rule condition                           *
@@ -1211,8 +1189,6 @@ static void	free_lld_rule_condition(zbx_lld_rule_condition_t *condition)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: free_lld_rule_map                                                *
  *                                                                            *
  * Purpose: frees lld rule mapping                                            *
  *                                                                            *
@@ -1246,8 +1222,6 @@ static int	template_item_compare_func(const void *d1, const void *d2)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: copy_template_items_preproc                                      *
  *                                                                            *
  * Purpose: copy template item preprocessing options                          *
  *                                                                            *
@@ -1335,8 +1309,6 @@ static void	copy_template_items_preproc(const zbx_vector_uint64_t *templateids, 
 
 /******************************************************************************
  *                                                                            *
- * Function: copy_template_lld_macro_paths                                    *
- *                                                                            *
  * Purpose: copy template discovery item lld macro paths                      *
  *                                                                            *
  * Parameters: templateids - [IN] array of template IDs                       *
@@ -1423,8 +1395,6 @@ static void	copy_template_lld_macro_paths(const zbx_vector_uint64_t *templateids
 
 /******************************************************************************
  *                                                                            *
- * Function: compare_template_items                                           *
- *                                                                            *
  * Purpose: compare templateid of two template items                          *
  *                                                                            *
  * Parameters: d1 - [IN] first template item                                  *
@@ -1442,8 +1412,6 @@ static int	compare_template_items(const void *d1, const void *d2)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: link_template_dependent_items                                    *
  *                                                                            *
  * Purpose: create dependent item index in master item data                   *
  *                                                                            *
@@ -1490,8 +1458,6 @@ static void	link_template_dependent_items(zbx_vector_ptr_t *items)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: DBcopy_template_items                                            *
  *                                                                            *
  * Purpose: copy template items to host                                       *
  *                                                                            *

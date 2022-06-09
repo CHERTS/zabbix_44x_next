@@ -50,8 +50,6 @@ static void	zbx_housekeeper_sigusr_handler(int flags)
 
 /******************************************************************************
  *                                                                            *
- * Function: delete_history                                                   *
- *                                                                            *
  * Purpose: remove outdated information from historical table                 *
  *                                                                            *
  * Parameters: now - current timestamp                                        *
@@ -128,8 +126,6 @@ rollback:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: housekeeping_history                                             *
  *                                                                            *
  * Purpose: remove outdated information from history                          *
  *                                                                            *

@@ -234,8 +234,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: mode_parameter_is_skip                                           *
- *                                                                            *
  * Purpose: test log[] or log.count[] item key if <mode> parameter is set to  *
  *          'skip'                                                            *
  *                                                                            *
@@ -269,8 +267,6 @@ static int	mode_parameter_is_skip(unsigned char flags, const char *itemkey)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: parse_list_of_checks                                             *
  *                                                                            *
  * Purpose: Parse list of active checks received from server                  *
  *                                                                            *
@@ -493,8 +489,6 @@ out:
 
 /*********************************************************************************
  *                                                                               *
- * Function: process_config_item                                                 *
- *                                                                               *
  * Purpose: process configuration item and set it value to respective parameter  *
  *                                                                               *
  * Parameters: json   - pointer to JSON structure where to put resulting value   *
@@ -556,8 +550,6 @@ static void process_config_item(struct zbx_json *json, char *config, size_t leng
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: refresh_active_checks                                            *
  *                                                                            *
  * Purpose: Retrieve from Zabbix server list of active checks                 *
  *                                                                            *
@@ -686,8 +678,6 @@ out:
 
 /******************************************************************************
  *                                                                            *
- * Function: check_response                                                   *
- *                                                                            *
  * Purpose: Check whether JSON response is SUCCEED                            *
  *                                                                            *
  * Parameters: JSON response from Zabbix trapper                              *
@@ -726,8 +716,6 @@ static int	check_response(char *response)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: send_buffer                                                      *
  *                                                                            *
  * Purpose: Send value stored in the buffer to Zabbix server                  *
  *                                                                            *
@@ -913,8 +901,6 @@ ret:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: process_value                                                    *
  *                                                                            *
  * Purpose: Buffer new value or send the whole buffer to the server           *
  *                                                                            *
@@ -1251,8 +1237,6 @@ static void	process_active_checks(char *server, unsigned short port)
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: update_schedule                                                  *
  *                                                                            *
  * Purpose: update active check and send buffer schedule by the specified     *
  *          time delta                                                        *

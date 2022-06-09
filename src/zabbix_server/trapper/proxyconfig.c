@@ -28,8 +28,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: send_proxyconfig                                                 *
- *                                                                            *
  * Purpose: send configuration tables to the proxy from server                *
  *          (for active proxies)                                              *
  *                                                                            *
@@ -93,8 +91,6 @@ out:
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: recv_proxyconfig                                                 *
  *                                                                            *
  * Purpose: receive configuration tables from server (passive proxies)        *
  *                                                                            *

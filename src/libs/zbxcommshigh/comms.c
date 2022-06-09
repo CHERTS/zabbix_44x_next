@@ -24,8 +24,6 @@
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_send_response                                                *
- *                                                                            *
  * Purpose: send json SUCCEED or FAIL to socket along with an info message    *
  *                                                                            *
  * Parameters: sock     - [IN] socket descriptor                              *
@@ -80,8 +78,6 @@ int	zbx_send_response_ext(zbx_socket_t *sock, int result, const char *info, cons
 }
 
 /******************************************************************************
- *                                                                            *
- * Function: zbx_recv_response                                                *
  *                                                                            *
  * Purpose: read a response message (in JSON format) from socket, optionally  *
  *          extract "info" value.                                             *

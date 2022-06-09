@@ -46,8 +46,6 @@ static void	zbx_dbconfig_sigusr_handler(int flags)
 
 /******************************************************************************
  *                                                                            *
- * Function: main_dbconfig_loop                                               *
- *                                                                            *
  * Purpose: periodically synchronises database data with memory cache         *
  *                                                                            *
  * Parameters:                                                                *

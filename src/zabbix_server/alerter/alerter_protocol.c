@@ -41,8 +41,6 @@ void	zbx_am_db_mediatype_clear(zbx_am_db_mediatype_t *mediatype)
 
 /******************************************************************************
  *                                                                            *
- * Function: zbx_am_db_alert_free                                             *
- *                                                                            *
  * Purpose: frees the alert object                                            *
  *                                                                            *
  * Parameters: alert - [IN] the alert object                                  *
