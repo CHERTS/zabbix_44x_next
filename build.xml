@@ -28,7 +28,7 @@
 		<copy overwrite="true" file="frontends/php/tests/templates/zabbix.conf.php" tofile="frontends/php/conf/zabbix.conf.php"/>
 		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBTYPE}" value="${dbtype}"/>
 		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBHOST}" value="${dbhost}"/>
-		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBPORT}" value="${dbport}"/>
+		<replace file="frontends/php/conf/zabbix.conf.php" token="'{DBPORT}'" value="${dbport}"/>
 		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBNAME}" value="${dbname}"/>
 		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBUSER}" value="${dbuser}"/>
 		<replace file="frontends/php/conf/zabbix.conf.php" token="{DBPASSWORD}" value="${dbpassword}"/>
