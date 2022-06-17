@@ -22,6 +22,7 @@ Bug fixes:
 ...G...... [ZBX-20886] fixed handle leak on Zabbix agent 2 in vfs.fs.get (vso)
 ...G...... [ZBX-20911] added process state check in PROC_NUM() for Oracle Solaris (Andris)
 ..F.....S. [ZBX-20994] fixed access limitation for Oracle DB to list tables accessible to the user (asestakovs)
+.......PS. [ZBX-21123] fixed crash when vmware vc was not available at the first moment when starting zabbix_server (MVekslers)
 .......PS. [ZBX-21137] fixed vmware collector crash related to datastore state disconnected from all HVs (MVekslers)
 
 --------------------------------------------------------------------------------

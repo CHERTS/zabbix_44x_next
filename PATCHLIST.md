@@ -259,6 +259,7 @@
 [ZBX-20886] fixed handle leak on Zabbix agent 2 in vfs.fs.get (https://support.zabbix.com/browse/ZBX-20886)
 [ZBX-20911] added process state check in PROC_NUM() for Oracle Solaris (https://support.zabbix.com/browse/ZBX-20911)
 [ZBX-20994] fixed access limitation for Oracle DB to list tables accessible to the user (https://support.zabbix.com/browse/ZBX-20994)
+[ZBX-21123] fixed crash when vmware vc was not available at the first moment when starting zabbix_server (https://support.zabbix.com/browse/ZBX-21123)
 [ZBX-21137] fixed vmware collector crash related to datastore state disconnected from all HVs (https://support.zabbix.com/browse/ZBX-21137)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
