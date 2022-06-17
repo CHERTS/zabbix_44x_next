@@ -1831,9 +1831,8 @@ int	DBtable_exists(const char *table_name)
 #elif defined(HAVE_ORACLE)
 	result = DBselect(
 			"select 1"
-			" from tab"
-			" where tabtype='TABLE'"
-				" and lower(tname)='%s'",
+			" from all_tables"
+			" where lower(table_name)='%s'",
 			table_name_esc);
 #elif defined(HAVE_POSTGRESQL)
 	table_schema_esc = DBdyn_escape_string(NULL == CONFIG_DBSCHEMA || '\0' == *CONFIG_DBSCHEMA ?
