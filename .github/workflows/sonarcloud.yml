@@ -5,6 +5,20 @@ on:
     branches:
      - 'master'
      - 'release/*'
+    paths-ignore:
+      - ".github/**"
+      - "bin/**"
+      - "build/**"
+      - "conf/**"
+      - "create/**"
+      - "database/**"
+      - "man/**"
+      - "misc/**"
+      - "packages/**"
+      - "sass/**"
+      - "templates/**"
+      - "tests/**"
+      - "frontends/**"
 
 jobs:
   SonarCloud-C:
