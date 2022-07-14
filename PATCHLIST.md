@@ -254,6 +254,7 @@
 [ZBX-20487] fixed agent handling of invalid time intervals (https://support.zabbix.com/browse/ZBX-20487)
 [ZBX-20567] improved preprocessor queue performance with items taking long time to preprocess (https://support.zabbix.com/browse/ZBX-20567)
 [ZBX-20570] fixed --with-libevent option on FreeBSD (https://support.zabbix.com/browse/ZBX-20570)
+[ZBX-20586] free tls C resources when closing tls connection on agent2 (https://support.zabbix.com/browse/ZBX-20586)
 [ZBX-20600] fixed vmware hv.datastore.latency item when multiple datastores with duplicate name (https://support.zabbix.com/browse/ZBX-20600)
 [ZBX-20634] fixed handling of multiline FTP response (https://support.zabbix.com/browse/ZBX-20634)
 [ZBX-20680] fixed reflected XSS issues (https://support.zabbix.com/browse/ZBX-20680)

@@ -16,6 +16,7 @@ Bug fixes:
 ...G...PS. [ZBX-20398] added mitigation for pid file not being created in time (MVekslers, yurii)
 ...G...... [ZBX-20487] fixed agent handling of invalid time intervals (wiper)
 .......PS. [ZBX-20567] improved preprocessor queue performance with items taking long time to preprocess (wiper)
+...G...... [ZBX-20586] free tls C resources when closing tls connection on agent2 (wiper)
 .......PS. [ZBX-20600] fixed vmware hv.datastore.latency item when multiple datastores with duplicate name (MVekslers)
 ...G...... [ZBX-20634] fixed handling of multiline FTP response (ssimonenko)
 ...G...... [ZBX-20667] fixed timeout issue for Agent 2 checks in test run mode (ssimonenko)
