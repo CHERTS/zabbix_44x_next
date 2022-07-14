@@ -23,7 +23,6 @@ import (
 	"fmt"
 	"time"
 
-	"zabbix.com/internal/agent"
 	"zabbix.com/internal/agent/scheduler"
 )
 
