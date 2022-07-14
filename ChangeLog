@@ -14,6 +14,7 @@ Bug fixes:
 ...G...... [ZBX-20356] fixed perfomance counters not working when removed and added again on Zabbix agent2 (vso)
 ...G...... [ZBX-20390] fixed Oracle Solaris vm.memory.size[available] item kstats memory read (arimdjonoks)
 ...G...PS. [ZBX-20398] added mitigation for pid file not being created in time (MVekslers, yurii)
+...G...... [ZBX-20448] improved error message when failed to accept incoming connection (vso)
 ...G...... [ZBX-20487] fixed agent handling of invalid time intervals (wiper)
 .......PS. [ZBX-20567] improved preprocessor queue performance with items taking long time to preprocess (wiper)
 ...G...... [ZBX-20586] free tls C resources when closing tls connection on agent2 (wiper)
