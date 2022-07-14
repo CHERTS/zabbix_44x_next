@@ -142,6 +142,7 @@
 [ZBX-18957] fixed not displaying years on X axis of classic graphs (https://support.zabbix.com/browse/ZBX-18957)
 [ZBX-18966] fixed interface related errors when changing proxy type from passive to active (https://support.zabbix.com/browse/ZBX-18966)
 [ZBX-18975] fixed item value being truncated in item test form (https://support.zabbix.com/browse/ZBX-18975)
+[ZBX-19001] fixed wmi.getall[] and wmi.get[] to report invalid queries (https://support.zabbix.com/browse/ZBX-19001)
 [ZBX-19012] fixed {HOST.NAME} macros substitution (https://support.zabbix.com/browse/ZBX-19012)
 [ZBX-19017] fixed massupdate form of discovered hosts with enabled inventory mode (https://support.zabbix.com/browse/ZBX-19017)
 [ZBX-19023] fixed inheritance of the permissions and tag filters for new host groups (https://support.zabbix.com/browse/ZBX-19023)

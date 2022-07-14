@@ -6,6 +6,7 @@ New features:
 Bug fixes:
 ..F....... [ZBX-18520] fixed showing of fields that do not belong to selected item type in item edit form (miks)
 ..F....... [ZBX-18957] fixed not displaying years on X axis of classic graphs (averza)
+...G...... [ZBX-19001] fixed wmi.getall[] and wmi.get[] to report invalid queries (vso)
 ..F....... [ZBX-19223] fixed disabled hosts not listed in latest data view (averza)
 ...G...... [ZBX-19407] removed redundant encoding check in get_codepage() for Windows (arimdjonoks)
 ...G...... [ZBX-20203] fixed agent2 log* item large file support on windows (wiper)
