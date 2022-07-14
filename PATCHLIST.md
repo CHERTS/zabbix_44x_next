@@ -26,6 +26,7 @@
 [ZBX-17295] fixed IPMI sensor LLD JSON output (https://support.zabbix.com/browse/ZBX-17295)
 [ZBX-17347] fixed order of setting the Severity in the columns in the filters to vertical (https://support.zabbix.com/browse/ZBX-17347)
 [ZBX-17369] fixed retrieval of decimal values from WMI (https://support.zabbix.com/browse/ZBX-17369)
+[ZBX-17450] added check for minimal amount of data with forecast/timeleft functions and polynomial fit (https://support.zabbix.com/browse/ZBX-17450)
 [ZBX-17468] fixed excess audit log record being added on host status update (https://support.zabbix.com/browse/ZBX-17468)
 [ZBX-17469] fixed kiosk button margin in history/graph view of the latest data (https://support.zabbix.com/browse/ZBX-17469)
 [ZBX-17493] added discarding of incoming values outside history/trends storage periods on server (https://support.zabbix.com/browse/ZBX-17493)
