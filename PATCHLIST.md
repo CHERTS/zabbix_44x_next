@@ -116,6 +116,7 @@
 [ZBX-18650] fixed logic for processing LLD rule duplicates after reconnecting to proxy (https://support.zabbix.com/browse/ZBX-18650)
 [ZBX-18660] fixed SNMP index returning as a number instead of string if there is a backslash (https://support.zabbix.com/browse/ZBX-18660)
 [ZBX-18662] improved pollers, unreachable pollers, Java pollers and pingers to use less memory (https://support.zabbix.com/browse/ZBX-18662)
+[ZBX-20667] fixed timeout issue for Agent 2 checks in test run mode (https://support.zabbix.com/browse/ZBX-18667)
 [ZBX-18688] fixed schema name didnt show when available only postgresql (https://support.zabbix.com/browse/ZBX-18688)
 [ZBX-18694] fixed crash when PSK connection is configured but PSK or PSK identity is empty (https://support.zabbix.com/browse/ZBX-18694)
 [ZBX-18695] fixed file_put_contents() runtime error if web server has no write permissions for zabbix.conf.php (https://support.zabbix.com/browse/ZBX-18695)

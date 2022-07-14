@@ -15,6 +15,7 @@ Bug fixes:
 .......PS. [ZBX-20567] improved preprocessor queue performance with items taking long time to preprocess (wiper)
 .......PS. [ZBX-20600] fixed vmware hv.datastore.latency item when multiple datastores with duplicate name (MVekslers)
 ...G...... [ZBX-20634] fixed handling of multiline FTP response (ssimonenko)
+...G...... [ZBX-20667] fixed timeout issue for Agent 2 checks in test run mode (ssimonenko)
 ..F....... [ZBX-20680] fixed reflected XSS issues (averza)
 ..F....... [ZBX-20746] fixed auto-suggest in graph widget configuration not showing discovered item names (agriscenko)
 .D........ [ZBX-20762] fixed StartAlerters and StartEscalators range in configuration file comments (akozlovs)
