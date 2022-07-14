@@ -29,6 +29,7 @@ Bug fixes:
 ..F.....S. [ZBX-20994] fixed access limitation for Oracle DB to list tables accessible to the user (asestakovs)
 .......PS. [ZBX-21123] fixed crash when vmware vc was not available at the first moment when starting zabbix_server (MVekslers)
 .......PS. [ZBX-21137] fixed vmware collector crash related to datastore state disconnected from all HVs (MVekslers)
+........S. [ZBX-21218] fixed deadloks betwen server and frontend when discovering items with LLD (wiper)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.27
