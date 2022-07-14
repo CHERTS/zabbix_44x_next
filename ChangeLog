@@ -22,6 +22,7 @@ Bug fixes:
 .D........ [ZBX-20762] fixed StartAlerters and StartEscalators range in configuration file comments (akozlovs)
 ........S. [ZBX-20823] fixed inability to update hosts that were created by LLD on aarch64 (vso)
 .......PS. [ZBX-20844] fixed external check becoming unsupported when Zabbix server or Zabbix proxy is stopped (vso)
+........S. [ZBX-20868] fixed count function pattern to support whole numeric unsigned number in decimal and scientific notation (vso)
 ...G...... [ZBX-20886] fixed handle leak on Zabbix agent 2 in vfs.fs.get (vso)
 ...G...... [ZBX-20911] added process state check in PROC_NUM() for Oracle Solaris (Andris)
 ..F.....S. [ZBX-20994] fixed access limitation for Oracle DB to list tables accessible to the user (asestakovs)
