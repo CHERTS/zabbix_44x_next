@@ -138,6 +138,7 @@
 [ZBX-18887] fixed user session expiration when notification checks are performed in background (https://support.zabbix.com/browse/ZBX-18887)
 [ZBX-18892] fixed preprocessing steps wrapping (https://support.zabbix.com/browse/ZBX-18892)
 [ZBX-18912] fixed escalation message is using template message instead of custom message in actions (https://support.zabbix.com/browse/ZBX-18912)
+[ZBX-18957] fixed not displaying years on X axis of classic graphs (https://support.zabbix.com/browse/ZBX-18957)
 [ZBX-18966] fixed interface related errors when changing proxy type from passive to active (https://support.zabbix.com/browse/ZBX-18966)
 [ZBX-18975] fixed item value being truncated in item test form (https://support.zabbix.com/browse/ZBX-18975)
 [ZBX-19012] fixed {HOST.NAME} macros substitution (https://support.zabbix.com/browse/ZBX-19012)
