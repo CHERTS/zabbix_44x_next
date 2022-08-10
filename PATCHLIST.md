@@ -2,6 +2,7 @@
 
 ~~~~
 [ZBX-402] fixed latest data reloading to updating asynchronously (https://support.zabbix.com/browse/ZBX-402)
+[ZBX-4646] fixed month abbreviation with capital "M" (https://support.zabbix.com/browse/ZBX-4646)
 [ZBX-5842] fixed ability to detect username existence from unsuccessful login message (https://support.zabbix.com/browse/ZBX-5842)
 [ZBX-7933] added configurable parameter for TCP queue maximum size (https://support.zabbix.com/browse/ZBX-7933)
 [ZBX-8081] fixed 'cmdline' parameter truncation on Solaris 11.3 and later (https://support.zabbix.com/browse/ZBX-8081)
