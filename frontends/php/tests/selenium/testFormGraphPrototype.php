@@ -630,26 +630,22 @@ class testFormGraphPrototype extends CLegacyWebTest {
 					$this->zbxTestAssertAttribute("//input[@id='yaxismin']", 'size', 20);
 					$this->zbxTestAssertElementValue('yaxismin', 0);
 
-					$this->zbxTestAssertElementNotPresentId('ymin_name');
-					$this->zbxTestAssertElementNotPresentId('yaxis_min');
+					$this->zbxTestAssertElementNotPresentId('ymin_itemid');
 				break;
 			case 'Calculated':
-				$this->zbxTestAssertElementNotPresentId('ymin_name');
-				$this->zbxTestAssertElementNotPresentId('yaxis_min');
+				$this->zbxTestAssertElementNotPresentId('ymin_itemid');
 				$this->zbxTestAssertNotVisibleId('yaxismin');
 				break;
 			case 'Item':
-				$this->zbxTestAssertElementPresentId('ymin_name');
-				$this->zbxTestAssertElementPresentId('yaxis_min');
-				$this->zbxTestAssertElementText("//button[@id='yaxis_min']", 'Select');
+				$this->zbxTestAssertElementPresentId('ymin_itemid');
+				$this->zbxTestAssertElementText('//div[@id="ymin_itemid"]//following-sibling::div/button', 'Select');
 				$this->zbxTestAssertElementPresentId('yaxis_min_prototype');
 				$this->zbxTestAssertElementText("//button[@id='yaxis_min_prototype']", 'Select prototype');
 				$this->zbxTestAssertNotVisibleId('yaxismin');
 				break;
 			default:
 				$this->zbxTestTextNotPresent('Add graph items first');
-				$this->zbxTestAssertElementNotPresentId('ymin_name');
-				$this->zbxTestAssertElementNotPresentId('yaxis_min');
+				$this->zbxTestAssertElementNotPresentId('ymin_itemid');
 				$this->zbxTestAssertElementNotPresentId('yaxismin');
 				break;
 		}
@@ -661,26 +657,22 @@ class testFormGraphPrototype extends CLegacyWebTest {
 					$this->zbxTestAssertAttribute("//input[@id='yaxismax']", 'size', 20);
 					$this->zbxTestAssertElementValue('yaxismax', 100);
 
-					$this->zbxTestAssertElementNotPresentId('ymax_name');
-					$this->zbxTestAssertElementNotPresentId('yaxis_max');
+					$this->zbxTestAssertElementNotPresentId('ymax_itemid');
 				break;
 			case 'Calculated':
-				$this->zbxTestAssertElementNotPresentId('ymax_name');
-				$this->zbxTestAssertElementNotPresentId('yaxis_max');
+				$this->zbxTestAssertElementNotPresentId('ymax_itemid');
 				$this->zbxTestAssertNotVisibleId('yaxismax');
 				break;
 			case 'Item':
-				$this->zbxTestAssertElementPresentId('ymax_name');
-				$this->zbxTestAssertElementPresentId('yaxis_max');
-				$this->zbxTestAssertElementText("//button[@id='yaxis_max']", 'Select');
+				$this->zbxTestAssertElementPresentId('ymax_itemid');
+				$this->zbxTestAssertElementText('//div[@id="ymax_itemid"]//following-sibling::div/button', 'Select');
 				$this->zbxTestAssertElementPresentId('yaxis_max_prototype');
 				$this->zbxTestAssertElementText("//button[@id='yaxis_max_prototype']", 'Select prototype');
 				$this->zbxTestAssertNotVisibleId('yaxismax');
 				break;
 			default:
 				$this->zbxTestTextNotPresent('Add graph items first');
-				$this->zbxTestAssertElementNotPresentId('ymax_name');
-				$this->zbxTestAssertElementNotPresentId('yaxis_max');
+				$this->zbxTestAssertElementNotPresentId('ymax_itemid');
 				$this->zbxTestAssertElementNotPresentId('yaxismax');
 				break;
 		}
@@ -992,9 +984,9 @@ class testFormGraphPrototype extends CLegacyWebTest {
 					'noAxisItem' => true,
 					'ymin_type' => 'Item',
 					'ymax_type' => 'Fixed',
-					'error-msg' => 'Cannot add graph prototype',
+					'error-msg' => 'Page received incorrect data',
 					'errors' => [
-						'Invalid parameter "ymin_itemid": cannot be empty.'
+						'Field "ymin_itemid" is mandatory.'
 					]
 				]
 			],
@@ -1006,9 +998,9 @@ class testFormGraphPrototype extends CLegacyWebTest {
 					'noAxisItem' => true,
 					'ymin_type' => 'Fixed',
 					'ymax_type' => 'Item',
-					'error-msg' => 'Cannot add graph prototype',
+					'error-msg' => 'Page received incorrect data',
 					'errors' => [
-						'Invalid parameter "ymax_itemid": cannot be empty.'
+						'Field "ymax_itemid" is mandatory.'
 					]
 				]
 			],

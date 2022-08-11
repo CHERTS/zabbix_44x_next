@@ -4,6 +4,7 @@ New features:
 ...G...PS. [ZBXNEXT-5839] added SNI in encrypted TCP connections (yurii)
 
 Bug fixes:
+A.F....... [ZBX-7706] removed permission checks for ymin_itemid and ymax_itemid (acikuns, rlataria)
 ........S. [ZBX-17450] added check for minimal amount of data with forecast/timeleft functions and polynomial fit (wiper)
 ..F....... [ZBX-18520] fixed showing of fields that do not belong to selected item type in item edit form (miks)
 ..F....... [ZBX-18957] fixed not displaying years on X axis of classic graphs (averza)
