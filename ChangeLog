@@ -34,6 +34,7 @@ A.F....... [ZBX-7706] removed permission checks for ymin_itemid and ymax_itemid 
 ..F.....S. [ZBX-20994] fixed access limitation for Oracle DB to list tables accessible to the user (asestakovs)
 .......PS. [ZBX-21123] fixed crash when vmware vc was not available at the first moment when starting zabbix_server (MVekslers)
 .......PS. [ZBX-21137] fixed vmware collector crash related to datastore state disconnected from all HVs (MVekslers)
+.......PS. [ZBX-21153] fixed info collection about access to vmware DS for HV with large number of connected DS (MVekslers)
 ........S. [ZBX-21218] fixed deadloks betwen server and frontend when discovering items with LLD (wiper)
 
 --------------------------------------------------------------------------------
