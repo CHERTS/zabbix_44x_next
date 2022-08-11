@@ -3147,7 +3147,7 @@ static int	vmware_service_get_hv_data(const zbx_vmware_service_t *service, CURL 
 					"<ns0:pathSet>summary.managementServerIp</ns0:pathSet>"		\
 					"<ns0:pathSet>config.storageDevice.scsiTopology</ns0:pathSet>"	\
 					"%s"								\
-				"</ns0:propSet>"							\							\
+				"</ns0:propSet>"							\
 				"<ns0:objectSet>"							\
 					"<ns0:obj type=\"HostSystem\">%s</ns0:obj>"			\
 					"<ns0:skip>false</ns0:skip>"					\
