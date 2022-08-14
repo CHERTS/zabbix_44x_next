@@ -7,6 +7,7 @@ Bug fixes:
 A.F....... [ZBX-7706] removed permission checks for ymin_itemid and ymax_itemid (acikuns, rlataria)
 ........S. [ZBX-17450] added check for minimal amount of data with forecast/timeleft functions and polynomial fit (wiper)
 ..F....... [ZBX-18520] fixed showing of fields that do not belong to selected item type in item edit form (miks)
+...G...... [ZBX-18573] improved performance of directory scanning by Agent on Windows (dgoloscapov)
 ..F....... [ZBX-18957] fixed not displaying years on X axis of classic graphs (averza)
 ...G...... [ZBX-19001] fixed wmi.getall[] and wmi.get[] to report invalid queries (vso)
 ..F....... [ZBX-19223] fixed disabled hosts not listed in latest data view (averza)
