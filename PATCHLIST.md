@@ -273,6 +273,7 @@
 [ZBX-21137] fixed vmware collector crash related to datastore state disconnected from all HVs (https://support.zabbix.com/browse/ZBX-21137)
 [ZBX-21153] fixed info collection about access to vmware DS for HV with large number of connected DS (https://support.zabbix.com/browse/ZBX-21153)
 [ZBX-21218] fixed deadloks betwen server and frontend when discovering items with LLD (https://support.zabbix.com/browse/ZBX-21218)
+[ZBX-21295] changed system.cpu.load[percpu] to split based on online cpus in Zabbix agent 2 (https://support.zabbix.com/browse/ZBX-21295)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
