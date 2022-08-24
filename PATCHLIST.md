@@ -275,6 +275,7 @@
 [ZBX-21153] fixed info collection about access to vmware DS for HV with large number of connected DS (https://support.zabbix.com/browse/ZBX-21153)
 [ZBX-21218] fixed deadloks betwen server and frontend when discovering items with LLD (https://support.zabbix.com/browse/ZBX-21218)
 [ZBX-21295] changed system.cpu.load[percpu] to split based on online cpus in Zabbix agent 2 (https://support.zabbix.com/browse/ZBX-21295)
+[ZBX-21328] fixed Zabbix agent 2 log and eventlog items behavior to match Zabbix agent when key has been updated (https://support.zabbix.com/browse/ZBX-21328)
 [ZBX-21445] improved performance by only calling res_init() on changed resolv.conf if glibc lower than 2.26 is used (https://support.zabbix.com/browse/ZBX-21445)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
