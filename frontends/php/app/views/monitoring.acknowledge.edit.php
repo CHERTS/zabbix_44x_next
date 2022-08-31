@@ -93,7 +93,7 @@ $footer_buttons = makeFormFooter(
 	->addItem(
 		(new CForm())
 			->setId('acknowledge_form')
-			->setAttribute('aria-labeledby', ZBX_STYLE_PAGE_TITLE)
+			->setAttribute('aria-labelledby', ZBX_STYLE_PAGE_TITLE)
 			->addVar('eventids', $data['eventids'])
 			->addVar('backurl', $data['backurl'])
 			->addItem(
