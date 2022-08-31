@@ -1325,7 +1325,7 @@ jQuery(function($) {
 			link.attr({
 				'aria-haspopup': 'true',
 				'aria-expanded': 'false',
-				'area-hidden': 'true'
+				'aria-hidden': 'true'
 			});
 		}
 

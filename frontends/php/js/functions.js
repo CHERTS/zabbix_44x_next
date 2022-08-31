@@ -546,7 +546,7 @@ function overlayDialogue(params, trigger_elmnt, xhr) {
 			'data-dialogueid': params.dialogueid,
 			'role': 'dialog',
 			'aria-modal': 'true',
-			'aria-labeledby': headerid
+			'aria-labelledby': headerid
 		});
 
 		overlay_bg = jQuery('<div>', {
@@ -657,7 +657,7 @@ function overlayDialogue(params, trigger_elmnt, xhr) {
 					body_mutation_observer.observe(this, {childList: true, subtree: true});
 				})
 				.find('form')
-					.attr('aria-labeledby', headerid)
+					.attr('aria-labelledby', headerid)
 				.end()
 		)
 		.append(overlay_dialogue_footer)
