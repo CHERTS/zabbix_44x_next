@@ -35,7 +35,7 @@ jobs:
     - name: Installing Golang
       uses: actions/setup-go@v2
       with:
-        go-version: 1.17.1
+        go-version: 1.17.13
       id: go
     - name: Install base dependencies
       run: |
@@ -48,7 +48,7 @@ jobs:
         apt-get install -q -y autoconf automake gcc make wget unzip gettext libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev openjdk-8-jdk libxml2-dev libpcre3-dev libevent-dev libssl-dev
         apt-get install -q -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
         apt-get install -q -y libmysqlclient-dev libpq-dev libsqlite3-dev
-        sudo wget https://github.com/sass/dart-sass/releases/download/1.49.7/dart-sass-1.49.7-linux-x64.tar.gz -O /tmp/dart-sass-linux-x64.tar.gz
+        sudo wget https://github.com/sass/dart-sass/releases/download/1.54.5/dart-sass-1.54.5-linux-x64.tar.gz -O /tmp/dart-sass-linux-x64.tar.gz
         sudo tar -zxf /tmp/dart-sass-linux-x64.tar.gz -C /tmp && yes | sudo cp /tmp/dart-sass/sass /usr/local/sbin && sudo rm -rf /tmp/dart-sass dart-sass-linux-x64.tar.gz
     - name: Code checkout
       uses: actions/checkout@v2
@@ -62,9 +62,7 @@ jobs:
         make dist
     - name: Set variables
       run: |
-        echo "ZABBIX_ORIG_VERSION=4.4.10" >> $GITHUB_ENV
         echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
-        echo "ZABBIX_VERSION_SHORT=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \' | awk -F. '{print $1"."$2}')" >> $GITHUB_ENV
         echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-7)" >> $GITHUB_ENV
     - name: Extract distr
       run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
@@ -77,7 +75,7 @@ jobs:
         mv src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java
         cat src/go/pkg/version/version.go | sed "s@ZABBIX_VERSION_REVISION = \".*\"@ZABBIX_VERSION_REVISION = \"${GITHUB_SHA_SHORT}\"@g" > src/go/pkg/version/version.go.new
         mv src/go/pkg/version/version.go.new src/go/pkg/version/version.go
-        wget "https://repo.zabbix.com/zabbix/${{ env.ZABBIX_VERSION_SHORT }}/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/pool/main/z/zabbix/zabbix_${{ env.ZABBIX_ORIG_VERSION }}-1+$(lsb_release -c -s).debian.tar.xz" -O debian.tar.xz
+        wget "https://github.com/CHERTS/zabbix_44x_next/raw/master/packages/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s).tar.gz" -O debian.tar.xz
         tar -xf debian.tar.xz
         dch -v "1:${{ env.ZABBIX_VERSION }}-${{ secrets.REPO_DEB_SUB_VER }}+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}-${{ secrets.REPO_DEB_SUB_VER }}"
     - name: Build DEB

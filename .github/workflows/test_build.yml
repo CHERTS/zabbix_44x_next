@@ -69,9 +69,13 @@ jobs:
       run: |
         ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-agent2 --enable-java --sysconfdir=/etc/zabbix --with-mysql
         make
+        echo ----------------------------------------------
         ./src/zabbix_server/zabbix_server -V
+        echo ----------------------------------------------
         ./src/zabbix_proxy/zabbix_proxy -V
+        echo ----------------------------------------------
         ./src/zabbix_agent/zabbix_agentd -V
+        echo ----------------------------------------------
         ./src/go/bin/zabbix_agent2 -V
   github-job-ubuntu-bionic-pgsql:
     name: Ubuntu 18.04 (PgSQL)
@@ -109,9 +113,13 @@ jobs:
       run: |
         ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-agent2 --enable-java --sysconfdir=/etc/zabbix --with-postgresql
         make
+        echo ----------------------------------------------
         ./src/zabbix_server/zabbix_server -V
+        echo ----------------------------------------------
         ./src/zabbix_proxy/zabbix_proxy -V
+        echo ----------------------------------------------
         ./src/zabbix_agent/zabbix_agentd -V
+        echo ----------------------------------------------
         ./src/go/bin/zabbix_agent2 -V
   github-job-ubuntu-focal-mysql:
     name: Ubuntu 20.04 (MySQL)
@@ -149,9 +157,13 @@ jobs:
       run: |
         ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-agent2 --enable-java --sysconfdir=/etc/zabbix --with-mysql
         make
+        echo ----------------------------------------------
         ./src/zabbix_server/zabbix_server -V
+        echo ----------------------------------------------
         ./src/zabbix_proxy/zabbix_proxy -V
+        echo ----------------------------------------------
         ./src/zabbix_agent/zabbix_agentd -V
+        echo ----------------------------------------------
         ./src/go/bin/zabbix_agent2 -V
   github-job-ubuntu-focal-pgsql:
     name: Ubuntu 20.04 (PgSQL)
@@ -189,9 +201,13 @@ jobs:
       run: |
         ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-agent2 --enable-java --sysconfdir=/etc/zabbix --with-postgresql
         make
+        echo ----------------------------------------------
         ./src/zabbix_server/zabbix_server -V
+        echo ----------------------------------------------
         ./src/zabbix_proxy/zabbix_proxy -V
+        echo ----------------------------------------------
         ./src/zabbix_agent/zabbix_agentd -V
+        echo ----------------------------------------------
         ./src/go/bin/zabbix_agent2 -V
   github-job-ubuntu-jammy-mysql:
     name: Ubuntu 22.04 (MySQL)
@@ -229,9 +245,13 @@ jobs:
       run: |
         ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-agent2 --enable-java --sysconfdir=/etc/zabbix --with-mysql
         make
+        echo ----------------------------------------------
         ./src/zabbix_server/zabbix_server -V
+        echo ----------------------------------------------
         ./src/zabbix_proxy/zabbix_proxy -V
+        echo ----------------------------------------------
         ./src/zabbix_agent/zabbix_agentd -V
+        echo ----------------------------------------------
         ./src/go/bin/zabbix_agent2 -V
   github-job-ubuntu-jammy-pgsql:
     name: Ubuntu 22.04 (PgSQL)
@@ -269,7 +289,11 @@ jobs:
       run: |
         ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-agent2 --enable-java --sysconfdir=/etc/zabbix --with-postgresql
         make
+        echo ----------------------------------------------
         ./src/zabbix_server/zabbix_server -V
+        echo ----------------------------------------------
         ./src/zabbix_proxy/zabbix_proxy -V
+        echo ----------------------------------------------
         ./src/zabbix_agent/zabbix_agentd -V
+        echo ----------------------------------------------
         ./src/go/bin/zabbix_agent2 -V
