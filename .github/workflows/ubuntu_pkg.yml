@@ -40,6 +40,7 @@ jobs:
     - name: Install base dependencies
       run: |
         apt-get update
+        apt-get install -q -y sudo
         echo "tzdata tzdata/Areas select Europe" | debconf-set-selections
         echo "tzdata tzdata/Zones/Europe select Moscow" | debconf-set-selections
         rm -f /etc/localtime /etc/timezone
