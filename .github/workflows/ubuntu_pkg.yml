@@ -92,4 +92,11 @@ jobs:
         key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
         known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
     - name: Upload deb from dev server
-      run: scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s)/
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
+      run: |
+        echo ----------------------------------------------
+        ls -la
+        echo ----------------------------------------------
+        ls -la ../
+        echo ----------------------------------------------
+        scp *.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s)/
