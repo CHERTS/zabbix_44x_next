@@ -232,6 +232,6 @@ return (new CWidget())
 	->setWebLayoutMode(CView::getLayoutMode())
 	->setControls((new CList())->addItem(get_icon('fullscreen')))
 	->addItem((new CForm())
-		->setAttribute('aria-labeledby', ZBX_STYLE_PAGE_TITLE)
+		->setAttribute('aria-labelledby', ZBX_STYLE_PAGE_TITLE)
 		->addItem($hostInventoriesTab)
 	);

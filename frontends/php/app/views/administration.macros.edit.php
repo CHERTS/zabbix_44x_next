@@ -96,7 +96,7 @@ $tab_view->setFooter(makeFormFooter($save_button));
 $form = (new CForm())
 	->setName('macrosForm')
 	->setAction((new CUrl('zabbix.php'))->setArgument('action', 'macros.update')->getUrl())
-	->setAttribute('aria-labeledby', ZBX_STYLE_PAGE_TITLE)
+	->setAttribute('aria-labelledby', ZBX_STYLE_PAGE_TITLE)
 	->addItem($tab_view);
 
 $widget->addItem($form)->show();
