@@ -46,6 +46,7 @@ jobs:
         rm -f /etc/localtime /etc/timezone
         apt-get install -q -y tzdata
         dpkg-reconfigure -f noninteractive tzdata
+        apt-get install -q -y software-properties-common
         add-apt-repository -y -u ppa:openjdk-r/ppa
         apt-get install -q -y openjdk-7-jdk 
         apt-get install -q -y autoconf automake gcc make wget unzip gettext libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev libxml2-dev libpcre3-dev libevent-dev libssl-dev
