@@ -1,0 +1,100 @@
+name: CreateUbuntuDEBTrusty
+
+on:
+#  push:
+#    branches:
+#      - master
+#    paths-ignore:
+#      - ".github/**"
+#      - "bin/**"
+#      - "build/**"
+#      - "conf/**"
+#      - "create/**"
+#      - "database/**"
+#      - "man/**"
+#      - "misc/**"
+#      - "packages/**"
+#      - "sass/**"
+#      - "templates/**"
+#      - "tests/**"
+#      - "frontends/**"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Create Ubuntu packages'
+
+jobs:
+  github-job-trusty:
+    name: Ubuntu 14.04 (Trusty)
+    runs-on: [ubuntu-22.04]
+    container:
+      image: ubuntu:14.04
+    steps:
+    - name: Installing Golang
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17.13
+      id: go
+    - name: Install base dependencies
+      run: |
+        apt-get update
+        apt-get install -q -y sudo
+        echo "tzdata tzdata/Areas select Europe" | debconf-set-selections
+        echo "tzdata tzdata/Zones/Europe select Moscow" | debconf-set-selections
+        rm -f /etc/localtime /etc/timezone
+        apt-get install -q -y tzdata
+        dpkg-reconfigure -f noninteractive tzdata
+        apt-get install -q -y software-properties-common
+        add-apt-repository -y -u ppa:openjdk-r/ppa
+        apt-get install -q -y openjdk-7-jdk 
+        apt-get install -q -y autoconf automake gcc make wget unzip gettext libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev libxml2-dev libpcre3-dev libevent-dev libssl-dev
+        apt-get install -q -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
+        apt-get install -q -y libmysqlclient-dev libpq-dev libsqlite3-dev
+        sudo wget https://github.com/sass/dart-sass/releases/download/1.54.5/dart-sass-1.54.5-linux-x64.tar.gz -O /tmp/dart-sass-linux-x64.tar.gz
+        sudo tar -zxf /tmp/dart-sass-linux-x64.tar.gz -C /tmp && yes | sudo cp /tmp/dart-sass/sass /usr/local/sbin && sudo rm -rf /tmp/dart-sass dart-sass-linux-x64.tar.gz
+    - name: Code checkout
+      uses: actions/checkout@v2
+    - name: Build zabbix distr
+      run: |
+        ./bootstrap.sh
+        ./configure
+        make dbschema
+        make gettext
+        make css
+        make dist
+    - name: Set variables
+      run: |
+        echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
+        echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-7)" >> $GITHUB_ENV
+    - name: Extract distr
+      run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
+    - name: Prepare build DEB
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
+      run: |
+        cat include/version.h | sed "s@define ZABBIX_VERSION_REVISION.*@define ZABBIX_VERSION_REVISION ${GITHUB_SHA_SHORT}@g" > include/version.h.new
+        mv include/version.h.new include/version.h
+        cat src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java | sed "s@REVISION = \".*\";@REVISION = \"${GITHUB_SHA_SHORT}\";@g" > src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new
+        mv src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java
+        cat src/go/pkg/version/version.go | sed "s@ZABBIX_VERSION_REVISION = \".*\"@ZABBIX_VERSION_REVISION = \"${GITHUB_SHA_SHORT}\"@g" > src/go/pkg/version/version.go.new
+        mv src/go/pkg/version/version.go.new src/go/pkg/version/version.go
+        wget "https://github.com/CHERTS/zabbix_44x_next/raw/master/packages/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s).tar.gz" -O debian.tar.xz
+        tar -xf debian.tar.xz
+        dch -v "1:${{ env.ZABBIX_VERSION }}-${{ secrets.REPO_DEB_SUB_VER }}+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}-${{ secrets.REPO_DEB_SUB_VER }}"
+    - name: Build DEB
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
+      env:
+        GO111MODULE: on
+      run: |
+        export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
+        dpkg-buildpackage -b -k${{ secrets.GPG_KEYID }}
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
+        known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
+    - name: Upload deb from dev server
+      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
+      run: |
+        scp ../*.deb ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s)/
