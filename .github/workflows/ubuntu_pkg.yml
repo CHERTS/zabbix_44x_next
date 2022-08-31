@@ -47,8 +47,9 @@ jobs:
         apt-get install -q -y tzdata
         dpkg-reconfigure -f noninteractive tzdata
         apt-get install -q -y software-properties-common
-        add-apt-repository ppa:openjdk-r/ppa -y -u
-        apt-get install -q -y openjdk-7-jdk 
+        add-apt-repository ppa:openjdk-r/ppa
+        apt-get update
+        apt-get install -q -y openjdk-7-jdk
         apt-get install -q -y autoconf automake gcc make wget unzip gettext libsnmp-dev libcurl4-openssl-dev libldap2-dev libiksemel-dev libopenipmi-dev libssh2-1-dev unixodbc-dev libxml2-dev libpcre3-dev libevent-dev libssl-dev
         apt-get install -q -y dpkg-dev devscripts git dh-make build-essential autoconf autotools-dev quilt pkg-config tar xz-utils curl
         apt-get install -q -y libmysqlclient-dev libpq-dev libsqlite3-dev
