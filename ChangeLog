@@ -2,6 +2,7 @@ Changes for 4.4.28rc1
 
 New features:
 ...G...PS. [ZBXNEXT-5839] added SNI in encrypted TCP connections (yurii)
+...G...PS. [ZBXNEXT-7120] added support of OpenSSL 3.0 (Andris)
 
 Bug fixes:
 ..F....... [ZBX-4646] fixed month abbreviation with capital "M" (Sasha)

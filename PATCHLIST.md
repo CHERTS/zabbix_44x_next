@@ -355,6 +355,7 @@
 [ZBXNEXT-6784] removed item being unsupported when swap is not configured (https://support.zabbix.com/browse/ZBXNEXT-6784)
 [ZBXNEXT-6809] changed behavior of the vmware event log, the 'skip' option of the new item resets the VMware event cache (https://support.zabbix.com/browse/ZBXNEXT-6809)
 [ZBXNEXT-7100] added new LLD macro HV.NETNAME to vmware.hv.discovery (https://support.zabbix.com/browse/ZBXNEXT-7100)
+[ZBXNEXT-7120] added support of OpenSSL 3.0 (https://support.zabbix.com/browse/ZBXNEXT-7120)
 ~~~~
 
 # List of my patches (English)
