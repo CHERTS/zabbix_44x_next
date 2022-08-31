@@ -551,7 +551,7 @@ function convertUnitsS($value, $ignore_millisec = false) {
 		$str = '';
 	}
 
-	$values = ['y' => null, 'm' => null, 'd' => null, 'h' => null, 'mm' => null, 's' => null, 'ms' => null];
+	$values = ['y' => null, 'M' => null, 'd' => null, 'h' => null, 'mm' => null, 's' => null, 'ms' => null];
 
 	/*
 	 * $n_unit == 4,	(#y #m #d)
@@ -578,7 +578,7 @@ function convertUnitsS($value, $ignore_millisec = false) {
 	}
 	else {
 		if ($n != 0) {
-			$values['m'] = $n;
+			$values['M'] = $n;
 			if ($n_unit == 0) {
 				$n_unit = 3;
 			}
@@ -630,7 +630,7 @@ function convertUnitsS($value, $ignore_millisec = false) {
 
 	$units = [
 		'y' => _x('y', 'year short'),
-		'm' => _x('m', 'month short'),
+		'M' => _x('M', 'month short'),
 		'd' => _x('d', 'day short'),
 		'h' => _x('h', 'hour short'),
 		'mm' => _x('m', 'minute short'),
