@@ -1,4 +1,4 @@
-name: CreateRPM
+name: CreateRPM8
 
 on:
 #  push:
@@ -26,76 +26,6 @@ on:
         default: 'Create RPM packages'
 
 jobs:
-  github-job-centos7:
-    name: CentOS 7
-    runs-on: [ubuntu-22.04]
-    container:
-      image: centos:7
-    steps:
-    - name: Installing Golang
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.17.13
-      id: go
-    - name: Install base dependencies
-      run: |
-        yum update -y
-        yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-        yum group install "Development Tools" -y
-        yum install -y sudo rpm-build yum-utils xz wget unzip gettext OpenIPMI-devel libxml2-devel openssl-devel libcurl-devel pcre-devel libssh2-devel libevent-devel
-        yum install -y mysql-devel postgresql-devel postgresql-libs
-        wget https://github.com/sass/dart-sass/releases/download/1.54.5/dart-sass-1.54.5-linux-x64.tar.gz -O /tmp/dart-sass-linux-x64.tar.gz
-        tar -zxf /tmp/dart-sass-linux-x64.tar.gz -C /tmp && yes | sudo cp /tmp/dart-sass/sass /usr/local/sbin && sudo rm -rf /tmp/dart-sass dart-sass-linux-x64.tar.gz
-    - name: Code checkout
-      uses: actions/checkout@v2
-    - name: Build zabbix distr
-      run: |
-        ./bootstrap.sh
-        ./configure
-        make dbschema
-        make gettext
-        make css
-        make dist
-    - name: Set variables
-      run: |
-        echo "ZABBIX_VERSION=$(cat configure | grep PACKAGE_VERSION= | cut -d = -f2 | tr -d \')" >> $GITHUB_ENV
-        echo "GITHUB_SHA_SHORT=$(echo $GITHUB_SHA | cut -c 1-7)" >> $GITHUB_ENV
-    - name: Extract distr
-      run: tar -zxf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
-    - name: Prepare source distr
-      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
-      run: |
-        cat include/version.h | sed "s@define ZABBIX_VERSION_REVISION.*@define ZABBIX_VERSION_REVISION ${GITHUB_SHA_SHORT}@g" > include/version.h.new
-        mv include/version.h.new include/version.h
-        cat src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java | sed "s@REVISION = \".*\";@REVISION = \"${GITHUB_SHA_SHORT}\";@g" > src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new
-        mv src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java
-        cat src/go/pkg/version/version.go | sed "s@ZABBIX_VERSION_REVISION = \".*\"@ZABBIX_VERSION_REVISION = \"${GITHUB_SHA_SHORT}\"@g" > src/go/pkg/version/version.go.new
-        mv src/go/pkg/version/version.go.new src/go/pkg/version/version.go
-    - name: Repack new distr
-      run: |
-        rm -f zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
-        tar -zcf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz ./zabbix-${{ env.ZABBIX_VERSION }} && rm -rf ./zabbix-${{ env.ZABBIX_VERSION }}
-        cp packages/rhel/rhel.tar.gz .
-        tar -zxf rhel.tar.gz
-        cp zabbix-${{ env.ZABBIX_VERSION }}.tar.gz SOURCES/
-        sed -i "s@Version:.*@Version:\t${{ env.ZABBIX_VERSION }}@g" SPECS/zabbix.spec
-        mkdir ./{SRPMS,RPMS,BUILD,BUILDROOT}
-    - name: Build RPM
-      env:
-        GO111MODULE: on
-      run: |
-        export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
-        yum-builddep -y SPECS/zabbix.spec
-        rpmbuild --define "_topdir $PWD" --define "_sourcedir $PWD/SOURCES" -bb SPECS/zabbix.spec
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v2
-      with:
-        key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
-        known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
-    - name: Upload rpm from dev server
-      run: |
-        scp RPMS/noarch/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
-        scp RPMS/x86_64/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
   github-job-rockylinux:
     name: RockyLinux 8
     runs-on: [ubuntu-22.04]
