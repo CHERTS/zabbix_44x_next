@@ -110,10 +110,13 @@ jobs:
     - name: Install base dependencies
       run: |
         dnf update -y
+        dnf install -y dnf-plugins-core
         dnf -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+        dnf config-manager --set-enabled powertools -y
+        dnf update -y
         dnf group install "Development Tools" -y
         dnf install -y sudo rpm-build yum-utils xz wget unzip gettext OpenIPMI-devel libxml2-devel openssl-devel libcurl-devel pcre-devel libssh2-devel libevent-devel
-        dnf install -y mysql-devel postgresql-devel postgresql-libs
+        dnf install -y mariadb-connector-c-devel postgresql-devel postgresql-libs
         wget https://github.com/sass/dart-sass/releases/download/1.54.5/dart-sass-1.54.5-linux-x64.tar.gz -O /tmp/dart-sass-linux-x64.tar.gz
         tar -zxf /tmp/dart-sass-linux-x64.tar.gz -C /tmp && yes | sudo cp /tmp/dart-sass/sass /usr/local/sbin && sudo rm -rf /tmp/dart-sass dart-sass-linux-x64.tar.gz
     - name: Code checkout
