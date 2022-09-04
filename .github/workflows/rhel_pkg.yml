@@ -42,9 +42,8 @@ jobs:
         yum update -y
         yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
         yum group install "Development Tools" -y
-        yum install -y rpm-build yum-utils xz wget unzip gettext OpenIPMI-devel libxml2-devel openssl-devel libcurl-devel pcre-devel libssh2-devel libevent-devel
-        yum install -y mysql-devel
-        yum install -y postgresql-devel postgresql-libs
+        yum install -y sudo rpm-build yum-utils xz wget unzip gettext OpenIPMI-devel libxml2-devel openssl-devel libcurl-devel pcre-devel libssh2-devel libevent-devel
+        yum install -y mysql-devel postgresql-devel postgresql-libs
         wget https://github.com/sass/dart-sass/releases/download/1.54.5/dart-sass-1.54.5-linux-x64.tar.gz -O /tmp/dart-sass-linux-x64.tar.gz
         tar -zxf /tmp/dart-sass-linux-x64.tar.gz -C /tmp && yes | sudo cp /tmp/dart-sass/sass /usr/local/sbin && sudo rm -rf /tmp/dart-sass dart-sass-linux-x64.tar.gz
     - name: Code checkout
