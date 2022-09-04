@@ -78,7 +78,7 @@ jobs:
         cp packages/rhel/rhel.tar.gz .
         tar -zxf rhel.tar.gz
         cp zabbix-${{ env.ZABBIX_VERSION }}.tar.gz SOURCES/
-        sed "s@Version:.*@Version:\t${{ env.ZABBIX_VERSION }}@g" SPECS/zabbix.spec
+        sed -i "s@Version:.*@Version:\t${{ env.ZABBIX_VERSION }}@g" SPECS/zabbix.spec
         mkdir ./{SRPMS,RPMS,BUILD,BUILDROOT}
     - name: Build RPM
       env:
