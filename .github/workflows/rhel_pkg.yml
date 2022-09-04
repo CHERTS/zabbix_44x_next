@@ -23,7 +23,7 @@ on:
       reason:
         description: 'Launch reason'
         required: true
-        default: 'Create CentOS 7 packages'
+        default: 'Create RPM packages'
 
 jobs:
   github-job-centos:
