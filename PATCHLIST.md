@@ -279,6 +279,7 @@
 [ZBX-21328] fixed Zabbix agent 2 log and eventlog items behavior to match Zabbix agent when key has been updated (https://support.zabbix.com/browse/ZBX-21328)
 [ZBX-21445] improved performance by only calling res_init() on changed resolv.conf if glibc lower than 2.26 is used (https://support.zabbix.com/browse/ZBX-21445)
 [ZBX-21449] fixed accessibility attributes (https://support.zabbix.com/browse/ZBX-21449)
+[ZBX-21454] added blocking of rtc signals during script execution (https://support.zabbix.com/browse/ZBX-21454)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
