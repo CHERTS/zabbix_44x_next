@@ -93,10 +93,10 @@ jobs:
         key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
         known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
     - name: Upload rpm from dev server
-      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
       run: |
         scp RPMS/noarch/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
         scp RPMS/x86_64/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
+        scp SOURCES/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
   github-job-centos8:
     name: CentOS 8
     runs-on: [ubuntu-22.04]
@@ -164,7 +164,7 @@ jobs:
         key: ${{ secrets.REPO_SERVER_PRIVATE_KEY }}
         known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
     - name: Upload rpm from dev server
-      working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
       run: |
         scp RPMS/noarch/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/8
         scp RPMS/x86_64/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/8
+        scp SOURCES/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/8
