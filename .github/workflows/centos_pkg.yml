@@ -26,8 +26,8 @@ on:
         default: 'Create CentOS 7 packages'
 
 jobs:
-  github-job-trusty:
-    name: Ubuntu 14.04 (Trusty)
+  github-job-centos:
+    name: CentOS 7
     runs-on: [ubuntu-22.04]
     container:
       image: centos:7
@@ -39,7 +39,7 @@ jobs:
       id: go
     - name: Install base dependencies
       run: |
-        yum update
+        yum update -y
         yum -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
         yum group install "Development Tools" -y
         yum install -y rpm-build yum-utils xz wget unzip gettext OpenIPMI-devel libxml2-devel openssl-devel libcurl-devel pcre-devel libssh2-devel
