@@ -27,10 +27,10 @@ on:
 
 jobs:
   github-job-rockylinux:
-    name: RockyLinux 8
+    name: RockyLinux 9
     runs-on: [ubuntu-22.04]
     container:
-      image: rockylinux:8
+      image: rockylinux:9
     steps:
     - name: Installing Golang
       uses: actions/setup-go@v2
@@ -41,7 +41,7 @@ jobs:
       run: |
         dnf update -y
         dnf install -y dnf-plugins-core
-        dnf -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+        dnf -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
         dnf config-manager --set-enabled powertools -y
         dnf update -y
         dnf group install "Development Tools" -y
@@ -97,5 +97,5 @@ jobs:
         known_hosts: ${{ secrets.REPO_SERVER_KNOWN_HOSTS }}
     - name: Upload rpm from dev server
       run: |
-        scp RPMS/noarch/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/8
-        scp RPMS/x86_64/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/8
+        scp RPMS/noarch/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/9
+        scp RPMS/x86_64/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/9
