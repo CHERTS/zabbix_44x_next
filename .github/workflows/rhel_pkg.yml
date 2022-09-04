@@ -87,12 +87,6 @@ jobs:
         export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
         yum-builddep -y SPECS/zabbix.spec
         rpmbuild --define "_topdir $PWD" --define "_sourcedir $PWD/SOURCES" -bb SPECS/zabbix.spec
-        echo ----------------------------------------------
-        ls -la BUILD/
-        echo ----------------------------------------------
-        ls -la RPMS/
-        echo ----------------------------------------------
-        ls -la SRPMS/
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2
       with:
@@ -101,4 +95,6 @@ jobs:
     - name: Upload rpm from dev server
       working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
       run: |
-        scp BUILD/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
+        scp SOURCES/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
+        scp RPMS/noarch/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
+        scp RPMS/x86_64/*.rpm ${{ secrets.REPO_SERVER_USER }}@${{ secrets.REPO_SERVER }}:zabbix-next-docker/rhel/7
