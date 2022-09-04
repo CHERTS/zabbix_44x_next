@@ -41,7 +41,9 @@ jobs:
       run: |
         dnf update -y
         dnf install -y dnf-plugins-core
+        dnf config-manager --set-enabled crb
         dnf -y localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm
+        dnf -y localinstall https://dl.fedoraproject.org/pub/epel/epel-next-release-latest-9.noarch.rpm
         dnf config-manager --set-enabled powertools -y
         dnf update -y
         dnf group install "Development Tools" -y
