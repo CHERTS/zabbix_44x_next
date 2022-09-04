@@ -74,7 +74,7 @@ jobs:
     - name: Repack new distr
       run: |
         rm -f zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
-        tar -zcf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz ./zabbix-${{ env.ZABBIX_VERSION }}
+        tar -zcf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz ./zabbix-${{ env.ZABBIX_VERSION }} && rm -rf ./zabbix-${{ env.ZABBIX_VERSION }}
         cp packages/rhel/rhel.tar.gz .
         tar -zxf rhel.tar.gz
         cp zabbix-${{ env.ZABBIX_VERSION }}.tar.gz SOURCES/
@@ -145,7 +145,7 @@ jobs:
     - name: Repack new distr
       run: |
         rm -f zabbix-${{ env.ZABBIX_VERSION }}.tar.gz
-        tar -zcf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz ./zabbix-${{ env.ZABBIX_VERSION }}
+        tar -zcf zabbix-${{ env.ZABBIX_VERSION }}.tar.gz ./zabbix-${{ env.ZABBIX_VERSION }} && rm -rf ./zabbix-${{ env.ZABBIX_VERSION }}
         cp packages/rhel/rhel.tar.gz .
         tar -zxf rhel.tar.gz
         cp zabbix-${{ env.ZABBIX_VERSION }}.tar.gz SOURCES/
