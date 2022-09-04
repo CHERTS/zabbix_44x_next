@@ -23,7 +23,7 @@ on:
 jobs:
   SonarCloud-C:
     name: SonarCloud-C
-    runs-on: ubuntu-latest
+    runs-on: [ubuntu-22.04]
     env:
       SONAR_SCANNER_VERSION: 4.7.0.2747
       SONAR_SERVER_URL: "https://sonarcloud.io"
