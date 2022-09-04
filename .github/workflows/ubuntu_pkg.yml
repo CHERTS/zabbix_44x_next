@@ -356,8 +356,8 @@ jobs:
         mv src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java.new src/zabbix_java/src/com/zabbix/gateway/GeneralInformation.java
         cat src/go/pkg/version/version.go | sed "s@ZABBIX_VERSION_REVISION = \".*\"@ZABBIX_VERSION_REVISION = \"${GITHUB_SHA_SHORT}\"@g" > src/go/pkg/version/version.go.new
         mv src/go/pkg/version/version.go.new src/go/pkg/version/version.go
-        wget "https://github.com/CHERTS/zabbix_44x_next/raw/master/packages/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s).tar.gz" -O debian.tar.xz
-        tar -xf debian.tar.xz
+        wget "https://github.com/CHERTS/zabbix_44x_next/raw/master/packages/$(lsb_release -i -s | tr '[:upper:]' '[:lower:]')/$(lsb_release -c -s).tar.gz" -O debian.tar.gz
+        tar -xf debian.tar.gz
         dch -v "1:${{ env.ZABBIX_VERSION }}-${{ secrets.REPO_DEB_SUB_VER }}+$(lsb_release -c -s)" --distribution "$(lsb_release -c -s)" "Release ${{ env.ZABBIX_VERSION }}-${{ secrets.REPO_DEB_SUB_VER }}"
     - name: Build DEB
       working-directory: ./zabbix-${{ env.ZABBIX_VERSION }}
