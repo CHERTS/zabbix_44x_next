@@ -277,6 +277,7 @@
 [ZBX-21218] fixed deadloks betwen server and frontend when discovering items with LLD (https://support.zabbix.com/browse/ZBX-21218)
 [ZBX-21295] changed system.cpu.load[percpu] to split based on online cpus in Zabbix agent 2 (https://support.zabbix.com/browse/ZBX-21295)
 [ZBX-21328] fixed Zabbix agent 2 log and eventlog items behavior to match Zabbix agent when key has been updated (https://support.zabbix.com/browse/ZBX-21328)
+[ZBX-21332] fixed runtime errors when linking items from two templates that populate same inventory field (https://support.zabbix.com/browse/ZBX-21332)
 [ZBX-21445] improved performance by only calling res_init() on changed resolv.conf if glibc lower than 2.26 is used (https://support.zabbix.com/browse/ZBX-21445)
 [ZBX-21449] fixed accessibility attributes (https://support.zabbix.com/browse/ZBX-21449)
 [ZBX-21454] added blocking of rtc signals during script execution (https://support.zabbix.com/browse/ZBX-21454)
