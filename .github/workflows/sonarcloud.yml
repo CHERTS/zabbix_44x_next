@@ -1,24 +1,8 @@
 name: SonarCloud C Build
 
 on:
-  push:
-    branches:
-     - 'master'
-     - 'release/*'
-    paths-ignore:
-      - ".github/**"
-      - "bin/**"
-      - "build/**"
-      - "conf/**"
-      - "create/**"
-      - "database/**"
-      - "man/**"
-      - "misc/**"
-      - "packages/**"
-      - "sass/**"
-      - "templates/**"
-      - "tests/**"
-      - "frontends/**"
+  schedule:
+    - cron: "0 0 * * *"
 
 jobs:
   SonarCloud-C:
