@@ -261,7 +261,7 @@ static int	vfs_fs_get(AGENT_REQUEST *request, AGENT_RESULT *result)
 		mntpoint->inodes.not_used = inot_used;
 		mntpoint->inodes.pfree = ipfree;
 		mntpoint->inodes.pused = ipused;
-		mntpoint->options = zbx_strdup(NULL, mntopts)
+		mntpoint->options = zbx_strdup(NULL, mntopts);
 
 		zbx_vector_ptr_append(&mntpoints, mntpoint);
 	}
