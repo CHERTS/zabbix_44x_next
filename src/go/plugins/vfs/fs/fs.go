@@ -52,6 +52,7 @@ type FsInfo struct {
 	DriveType *string  `json:"{#FSDRIVETYPE},omitempty"`
 	Bytes     *FsStats `json:"bytes,omitempty"`
 	Inodes    *FsStats `json:"inodes,omitempty"`
+	FsOptions *string  `json:"{#FSOPTIONS},omitempty"`
 }
 
 type FsInfoNew struct {
@@ -60,6 +61,7 @@ type FsInfoNew struct {
 	DriveType *string  `json:"fsdrivetype,omitempty"`
 	Bytes     *FsStats `json:"bytes,omitempty"`
 	Inodes    *FsStats `json:"inodes,omitempty"`
+	FsOptions *string  `json:"options",omitempty"`
 }
 
 type Plugin struct {
