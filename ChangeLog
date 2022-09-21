@@ -1,6 +1,7 @@
 Changes for 4.4.28rc1
 
 New features:
+...G...... [ZBXNEXT-1616] added monitoring of mount point options for Unix-like OSes (ssimonenko)
 ...G...PS. [ZBXNEXT-5839] added SNI in encrypted TCP connections (yurii)
 ...G...... [ZBXNEXT-6666] added listen socket security fix for Agent 2 on Windows (ssimonenko)
 ...G...PS. [ZBXNEXT-7120] added support of OpenSSL 3.0 (Andris)

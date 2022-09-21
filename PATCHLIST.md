@@ -288,6 +288,7 @@
 [ZBXNEXT-686] removed trailing commas after the last element of the arrays (https://support.zabbix.com/browse/ZBXNEXT-686)
 [ZBXNEXT-1423] added ipmi.get item for IPMI sensor LLD (https://support.zabbix.com/browse/ZBXNEXT-1423)
 [ZBXNEXT-1578] added ability to use user macros for IPMI user and password (https://support.zabbix.com/browse/ZBXNEXT-1578)
+[ZBXNEXT-1616] added monitoring of mount point options for Unix-like OSes (https://support.zabbix.com/browse/ZBXNEXT-1616)
 [ZBXNEXT-1797] added HOST.ID macro support to notifications (https://support.zabbix.com/browse/ZBXNEXT-1797)
 [ZBXNEXT-1839] added LLD for perf_counter; thanks to Ryan Armstrong for the patch (https://support.zabbix.com/browse/ZBXNEXT-1839)
 [ZBXNEXT-1867] added file type include and exclude parameters to item 'vfs.file.exist' (https://support.zabbix.com/browse/ZBXNEXT-1867)
