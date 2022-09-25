@@ -1,12 +1,12 @@
 name: SonarCloud Others Build
 
 on:
-  push:
-    branches:
-     - 'master'
-     - 'release/*'
-  pull_request:
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Run SonarCloud Others Build'
 
 jobs:
   SonarCloud-others:
