@@ -27,7 +27,7 @@ import (
 
 const timeout = 1
 
-var stuckMounts map[string]bool
+var stuckMounts map[string]int
 var stuckMux sync.Mutex
 
 type fsCaller struct {
@@ -51,24 +51,17 @@ func (f *fsCaller) run(path string) (stat *FsStats, err error) {
 		return nil, err
 	case <-time.After(timeout * time.Second):
 		stuckMux.Lock()
-		stuckMounts[path] = true
+		stuckMounts[path]++
 		stuckMux.Unlock()
-
 		return nil, fmt.Errorf("operation on mount '%s' timed out", path)
 	}
 }
 
 func (f *fsCaller) execute(path string) {
 	stats, err := f.fsFunc(path)
-
-	if isStuck(path) {
-		f.p.Debugf("mount '%s' has become available", path)
-		stuckMux.Lock()
-		stuckMounts[path] = false
-		stuckMux.Unlock()
-		return
-	}
-
+	stuckMux.Lock()
+	stuckMounts[path] = 0
+	stuckMux.Unlock()
 	if err != nil {
 		f.errChan <- err
 		return
@@ -80,16 +73,7 @@ func (f *fsCaller) execute(path string) {
 func isStuck(path string) bool {
 	stuckMux.Lock()
 	defer stuckMux.Unlock()
-	if stuckMounts[path] {
-		return true
-	}
-
-	return false
-}
-
-func (fc *fsCaller) close() {
-	close(fc.errChan)
-	close(fc.outChan)
+	return stuckMounts[path] > 0
 }
 
 func (p *Plugin) newFSCaller(fsFunc func(path string) (stats *FsStats, err error), fsLen int) *fsCaller {
@@ -103,5 +87,5 @@ func (p *Plugin) newFSCaller(fsFunc func(path string) (stats *FsStats, err error
 }
 
 func init() {
-	stuckMounts = make(map[string]bool)
+	stuckMounts = make(map[string]int)
 }
