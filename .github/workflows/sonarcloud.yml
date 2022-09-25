@@ -21,6 +21,12 @@ on:
       - "frontends/**"
   pull_request:
     types: [opened, synchronize, reopened]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Launch reason'
+        required: true
+        default: 'Run SonarCloud C Build'
 
 jobs:
   SonarCloud-C:
