@@ -6,7 +6,7 @@ on:
       reason:
         description: 'Launch reason'
         required: true
-        default: 'Run SonarCloud Others Build'
+        default: 'Run SonarCloud Build'
 
 jobs:
   SonarCloud-others:
