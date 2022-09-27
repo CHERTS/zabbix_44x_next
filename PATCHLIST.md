@@ -20,6 +20,7 @@
 [ZBX-16803] fixed ability to use Interface Guid in network interface LLD (https://support.zabbix.com/browse/ZBX-16803)
 [ZBX-16822] fixed performance issues for installations with a lot of historical alerts (https://support.zabbix.com/browse/ZBX-16822)
 [ZBX-16928] upgraded Duktape version from 2.3.0 to 2.4.0 (https://support.zabbix.com/browse/ZBX-16928)
+[ZBX-17060] fixed unexpected interface connection mode change during autoregistration (https://support.zabbix.com/browse/ZBX-17060)
 [ZBX-17178] fixed multi-line value truncation in snmp lld (https://support.zabbix.com/browse/ZBX-17178)
 [ZBX-17222] fixed unlimited data selection in Latest data view (https://support.zabbix.com/browse/ZBX-17222)
 [ZBX-17245] fixed agent2 not logging to system log code (https://support.zabbix.com/browse/ZBX-17245)
