@@ -18,6 +18,8 @@ on:
       - "templates/**"
       - "tests/**"
       - "frontends/**"
+  pull_request:
+    types: [opened, synchronize, reopened]
 #  schedule:
 #    - cron: "0 18 * * 1-5"
 #  push:
