@@ -42,6 +42,7 @@ A.F....... [ZBX-7706] removed permission checks for ymin_itemid and ymax_itemid 
 .......PS. [ZBX-21137] fixed vmware collector crash related to datastore state disconnected from all HVs (MVekslers)
 .......PS. [ZBX-21153] fixed info collection about access to vmware DS for HV with large number of connected DS (MVekslers)
 ........S. [ZBX-21218] fixed deadloks betwen server and frontend when discovering items with LLD (wiper)
+...G...... [ZBX-21227] fixed Zabbix agent to log received service control commands (vso)
 ...G...... [ZBX-21295] changed system.cpu.load[percpu] to split based on online cpus in Zabbix agent 2 (esneiders)
 ...G...... [ZBX-21328] fixed Zabbix agent 2 log and eventlog items behavior to match Zabbix agent when key has been updated (vso)
 A......... [ZBX-21332] fixed runtime errors when linking items from two templates that populate same inventory field (Ivo)
