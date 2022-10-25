@@ -282,6 +282,7 @@
 [ZBX-21332] fixed runtime errors when linking items from two templates that populate same inventory field (https://support.zabbix.com/browse/ZBX-21332)
 [ZBX-21445] improved performance by only calling res_init() on changed resolv.conf if glibc lower than 2.26 is used (https://support.zabbix.com/browse/ZBX-21445)
 [ZBX-21449] fixed accessibility attributes (https://support.zabbix.com/browse/ZBX-21449)
+[ZBX-21452] fixed wmi.get* crash of zabbix_agentd for windows (https://support.zabbix.com/browse/ZBX-21452)
 [ZBX-21454] added blocking of rtc signals during script execution (https://support.zabbix.com/browse/ZBX-21454)
 [ZBX-21466] fixed race condition in Zabbix agent 2 leading to permanently stuck mount reads (https://support.zabbix.com/browse/ZBX-21466)
 [ZBX-21474] fixed shortened tag names with multibyte symbols (https://support.zabbix.com/browse/ZBX-21474)

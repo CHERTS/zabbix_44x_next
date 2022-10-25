@@ -48,6 +48,7 @@ A.F....... [ZBX-7706] removed permission checks for ymin_itemid and ymax_itemid 
 A......... [ZBX-21332] fixed runtime errors when linking items from two templates that populate same inventory field (Ivo)
 ...G...PS. [ZBX-21445] improved performance by only calling res_init() on changed resolv.conf if glibc lower than 2.26 is used (vso)
 ..F....... [ZBX-21449] fixed accessibility attributes (Sasha)
+...G...... [ZBX-21452] fixed wmi.get* crash of zabbix_agentd for windows (MVekslers)
 .......PS. [ZBX-21454] added blocking of rtc signals during script execution (dgoloscapov)
 ...G...... [ZBX-21466] fixed race condition in Zabbix agent 2 leading to permanently stuck mount reads (arimdjonoks)
 ..F....... [ZBX-21474] fixed shortened tag names with multibyte symbols (dpetra)
