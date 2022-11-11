@@ -55,7 +55,7 @@ func (p *Plugin) getFsInfoStats() (data []*FsInfoNew, err error) {
 			continue
 		}
 
-		fsmap[*info.FsName] = &FsInfoNew{info.FsName, info.FsType, nil, bytes, inodes}
+		fsmap[*info.FsName] = &FsInfoNew{info.FsName, info.FsType, nil, bytes, inodes, info.FsOptions}
 	}
 
 	allData, err = p.getFsInfo()
