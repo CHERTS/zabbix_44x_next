@@ -290,6 +290,7 @@
 [ZBX-21610] fixed problem with sysctl() kern.proc.args API bug on FreeBSD <= 8.2 (https://support.zabbix.com/browse/ZBX-21610)
 [ZBX-21655] fixed VMware datastore discovery to not return same datastore multiple times (https://support.zabbix.com/browse/ZBX-21655)
 [ZBX-21823] fixed vfs.fs.inode and vfs.fs.get to handle file systems with zero total inodes count (https://support.zabbix.com/browse/ZBX-21823)
+[ZBX-21927] fixed crash on Oracle database when connection is lost (https://support.zabbix.com/browse/ZBX-21927)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
