@@ -290,6 +290,7 @@
 [ZBX-21537] fixed history syncers being stuck waiting on system information being collected (https://support.zabbix.com/browse/ZBX-21537)
 [ZBX-21610] fixed problem with sysctl() kern.proc.args API bug on FreeBSD <= 8.2 (https://support.zabbix.com/browse/ZBX-21610)
 [ZBX-21655] fixed VMware datastore discovery to not return same datastore multiple times (https://support.zabbix.com/browse/ZBX-21655)
+[ZBX-21563] changed the order in which escalation steps and recovery operations are executed (https://support.zabbix.com/browse/ZBX-21563)
 [ZBX-21823] fixed vfs.fs.inode and vfs.fs.get to handle file systems with zero total inodes count (https://support.zabbix.com/browse/ZBX-21823)
 [ZBX-21927] fixed crash on Oracle database when connection is lost (https://support.zabbix.com/browse/ZBX-21927)
 [ZBX-22215] fixed incorrectly quoted function parameter parsing (https://support.zabbix.com/browse/ZBX-22215)
