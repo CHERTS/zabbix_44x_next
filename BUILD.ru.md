@@ -29,9 +29,9 @@ yum install -y MariaDB-client MariaDB-devel MariaDB-shared
 ### 2. Скачать и распаковать свежую версию исходного кода:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.16/zabbix-4.4.16.tar.gz
-tar -zxf zabbix-4.4.16.tar.gz
-cd zabbix-4.4.16
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.27/zabbix-4.4.27.tar.gz
+tar -zxf zabbix-4.4.27.tar.gz
+cd zabbix-4.4.27
 ~~~~
 
 ### 3. Сборка всех компонентов Zabbix с поддержкой (MariaDB) MySQL:
@@ -45,22 +45,22 @@ make gettext
 ### 4. После успешной сборки на шаге 3 можно использовать бинарные файлы zabbix, скопируем их в текущий каталог:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.16
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.16
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.16
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.16
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.16
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.27
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.27
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.27
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.27
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 ~~~~
 
 Проверим наличие бинарных файлов:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.16
--rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.16
--rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.16
--rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.16
--rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.16
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.27
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.27
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.27
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.27
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.27
 ~~~~
 
 Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
@@ -82,9 +82,9 @@ yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient
 ### 2. Скачать и распаковать свежую версию исходного кода:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.16/zabbix-4.4.16.tar.gz
-tar -zxf zabbix-4.4.16.tar.gz
-cd zabbix-4.4.16
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.27/zabbix-4.4.27.tar.gz
+tar -zxf zabbix-4.4.27.tar.gz
+cd zabbix-4.4.27
 ~~~~
 
 ### 3. Сборка всех компонентов Zabbix с поддержкой Oracle 19c:
@@ -98,22 +98,22 @@ make gettext
 ### 4. После успешной сборки на шаге 3 можно использовать бинарные файлы zabbix, скопируем их в текущий каталог:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_oracle_v4.4.16
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_oracle_v4.4.16
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.16
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.16
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.16
+cp src/zabbix_server/zabbix_server zabbix_server_oracle_v4.4.27
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_oracle_v4.4.27
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.27
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.27
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 ~~~~
 
 Проверим наличие бинарных файлов:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root 1894312 Aug 10 16:02 zabbix_agentd_v4.4.16
--rwxr-xr-x  1 root root  629984 Aug 10 16:02 zabbix_get_v4.4.16
--rwxr-xr-x  1 root root 8351184 Aug 10 16:02 zabbix_proxy_oracle_v4.4.16
--rwxr-xr-x  1 root root  963680 Aug 10 16:02 zabbix_sender_v4.4.16
--rwxr-xr-x  1 root root 9835920 Aug 10 16:02 zabbix_server_oracle_v4.4.16
+-rwxr-xr-x  1 root root 1894312 Aug 10 16:02 zabbix_agentd_v4.4.27
+-rwxr-xr-x  1 root root  629984 Aug 10 16:02 zabbix_get_v4.4.27
+-rwxr-xr-x  1 root root 8351184 Aug 10 16:02 zabbix_proxy_oracle_v4.4.27
+-rwxr-xr-x  1 root root  963680 Aug 10 16:02 zabbix_sender_v4.4.27
+-rwxr-xr-x  1 root root 9835920 Aug 10 16:02 zabbix_server_oracle_v4.4.27
 ~~~~
 
 Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
@@ -135,9 +135,9 @@ dnf install -y libssh2-devel OpenIPMI-devel
 ### 2. Скачать и распаковать свежую версию исходного кода:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.16/zabbix-4.4.16.tar.gz
-tar -zxf zabbix-4.4.16.tar.gz
-cd zabbix-4.4.16
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.27/zabbix-4.4.27.tar.gz
+tar -zxf zabbix-4.4.27.tar.gz
+cd zabbix-4.4.27
 ~~~~
 
 ### 3. Сборка всех компонентов Zabbix с поддержкой (MariaDB) MySQL:
@@ -151,22 +151,22 @@ make gettext
 ### 4. После успешной сборки на шаге 3 можно использовать бинарные файлы zabbix, скопируем их в текущий каталог:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.16
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.16
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.16
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.16
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.16
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.27
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.27
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.27
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.27
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 ~~~~
 
 Проверим наличие бинарных файлов:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.16
--rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.16
--rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.16
--rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.16
--rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.16
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.27
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.27
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.27
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.27
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.27
 ~~~~
 
 Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
@@ -184,9 +184,9 @@ sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jd
 ### 2. Скачать и распаковать свежую версию исходного кода:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.16/zabbix-4.4.16.tar.gz
-tar -zxf zabbix-4.4.16.tar.gz
-cd zabbix-4.4.16
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.27/zabbix-4.4.27.tar.gz
+tar -zxf zabbix-4.4.27.tar.gz
+cd zabbix-4.4.27
 ~~~~
 
 ### 3. Сборка всех компонентов Zabbix с поддержкой (MariaDB) MySQL:
@@ -200,22 +200,22 @@ make gettext
 ### 4. После успешной сборки на шаге 3 можно использовать бинарные файлы zabbix, скопируем их в текущий каталог:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.16
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.16
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.16
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.16
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.16
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.27
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.27
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.27
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.27
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 ~~~~
 
 Проверим наличие бинарных файлов:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.16
--rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.16
--rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.16
--rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.16
--rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.16
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.27
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.27
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.27
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.27
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.27
 ~~~~
 
 Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
@@ -234,9 +234,9 @@ sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jd
 ### 2. Скачать и распаковать свежую версию исходного кода:
 
 ~~~~
-wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.16/zabbix-4.4.16.tar.gz
-tar -zxf zabbix-4.4.16.tar.gz
-cd zabbix-4.4.16
+wget https://github.com/CHERTS/zabbix_44x_next/releases/download/v4.4.27/zabbix-4.4.27.tar.gz
+tar -zxf zabbix-4.4.27.tar.gz
+cd zabbix-4.4.27
 ~~~~
 
 ### 3. Сборка всех компонентов Zabbix с поддержкой (MariaDB) MySQL:
@@ -250,22 +250,22 @@ make gettext
 ### 4. После успешной сборки на шаге 3 можно использовать бинарные файлы zabbix, скопируем их в текущий каталог:
 
 ~~~~
-cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.16
-cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.16
-cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.16
-cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.16
-cp src/zabbix_get/zabbix_get zabbix_get_v4.4.16
+cp src/zabbix_server/zabbix_server zabbix_server_mysql_v4.4.27
+cp src/zabbix_proxy/zabbix_proxy zabbix_proxy_mysql_v4.4.27
+cp src/zabbix_agent/zabbix_agentd zabbix_agentd_v4.4.27
+cp src/zabbix_sender/zabbix_sender zabbix_sender_v4.4.27
+cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 ~~~~
 
 Проверим наличие бинарных файлов:
 
 ~~~~
 # ls -l | grep 'zabbix_'
--rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.16
--rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.16
--rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.16
--rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.16
--rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.16
+-rwxr-xr-x  1 root root  2268672 Aug  7 10:42 zabbix_agentd_v4.4.27
+-rwxr-xr-x  1 root root   730264 Aug  7 10:42 zabbix_get_v4.4.27
+-rwxr-xr-x  1 root root 10445416 Aug  7 10:42 zabbix_proxy_mysql_v4.4.27
+-rwxr-xr-x  1 root root  1149216 Aug  7 10:42 zabbix_sender_v4.4.27
+-rwxr-xr-x  1 root root 12096144 Aug  7 10:42 zabbix_server_mysql_v4.4.27
 ~~~~
 
 Теперь Вы можете остановить свои компоненты zabbix версии 4.4.x и заменить их данной сборкой.
