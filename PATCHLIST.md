@@ -296,6 +296,7 @@
 [ZBX-21927] fixed crash on Oracle database when connection is lost (https://support.zabbix.com/browse/ZBX-21927)
 [ZBX-22032] added cookie engine to HTTP check (https://support.zabbix.com/browse/ZBX-22032)
 [ZBX-22215] fixed incorrectly quoted function parameter parsing (https://support.zabbix.com/browse/ZBX-22215)
+[ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (https://support.zabbix.com/browse/ZBX-22452)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
