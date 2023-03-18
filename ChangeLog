@@ -63,6 +63,7 @@ A......... [ZBX-21332] fixed runtime errors when linking items from two template
 .......PS. [ZBX-22032] added cookie engine to HTTP check (askolmeisters)
 ........S. [ZBX-22215] fixed incorrectly quoted function parameter parsing (wiper)
 ...G...... [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (akozlovs)
+.......PS. [ZBX-22490] fixed HttpRequest limit in javascript being reached even if all objects are destroyed (vso)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.27

@@ -297,6 +297,7 @@
 [ZBX-22032] added cookie engine to HTTP check (https://support.zabbix.com/browse/ZBX-22032)
 [ZBX-22215] fixed incorrectly quoted function parameter parsing (https://support.zabbix.com/browse/ZBX-22215)
 [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (https://support.zabbix.com/browse/ZBX-22452)
+[ZBX-22490] fixed HttpRequest limit in javascript being reached even if all objects are destroyed (https://support.zabbix.com/browse/ZBX-22490)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
