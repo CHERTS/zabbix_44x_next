@@ -60,6 +60,7 @@ A......... [ZBX-21332] fixed runtime errors when linking items from two template
 ........S. [ZBX-21754] improved value cache warmup when retrieving two last values with 1 day update interval (vso)
 ...G...... [ZBX-21823] fixed vfs.fs.inode and vfs.fs.get to handle file systems with zero total inodes count (asestakovs)
 .......PS. [ZBX-21927] fixed crash on Oracle database when connection is lost (vso)
+.......PS. [ZBX-22026] fixed SNMP agent item going to unsupported state on NULL result (vso)
 .......PS. [ZBX-22032] added cookie engine to HTTP check (askolmeisters)
 ........S. [ZBX-22215] fixed incorrectly quoted function parameter parsing (wiper)
 ...G...... [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (akozlovs)

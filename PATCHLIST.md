@@ -294,6 +294,7 @@
 [ZBX-21754] improved value cache warmup when retrieving two last values with 1 day update interval (https://support.zabbix.com/browse/ZBX-21754)
 [ZBX-21823] fixed vfs.fs.inode and vfs.fs.get to handle file systems with zero total inodes count (https://support.zabbix.com/browse/ZBX-21823)
 [ZBX-21927] fixed crash on Oracle database when connection is lost (https://support.zabbix.com/browse/ZBX-21927)
+[ZBX-22026] fixed SNMP agent item going to unsupported state on NULL result (https://support.zabbix.com/browse/ZBX-22026)
 [ZBX-22032] added cookie engine to HTTP check (https://support.zabbix.com/browse/ZBX-22032)
 [ZBX-22215] fixed incorrectly quoted function parameter parsing (https://support.zabbix.com/browse/ZBX-22215)
 [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (https://support.zabbix.com/browse/ZBX-22452)
