@@ -297,6 +297,7 @@
 [ZBX-22026] fixed SNMP agent item going to unsupported state on NULL result (https://support.zabbix.com/browse/ZBX-22026)
 [ZBX-22032] added cookie engine to HTTP check (https://support.zabbix.com/browse/ZBX-22032)
 [ZBX-22215] fixed incorrectly quoted function parameter parsing (https://support.zabbix.com/browse/ZBX-22215)
+[ZBX-22304] fixed duplication in web scenario error message, when curl could not resolve host (https://support.zabbix.com/browse/ZBX-22304)
 [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (https://support.zabbix.com/browse/ZBX-22452)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
