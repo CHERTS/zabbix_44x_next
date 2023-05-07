@@ -58,6 +58,7 @@ A......... [ZBX-21332] fixed runtime errors when linking items from two template
 ...G...... [ZBX-21610] fixed problem with sysctl() kern.proc.args API bug on FreeBSD <= 8.2 (ssimonenko)
 ........S. [ZBX-21655] fixed VMware datastore discovery to not return same datastore multiple times (asestakovs)
 ........S. [ZBX-21754] improved value cache warmup when retrieving two last values with 1 day update interval (vso)
+...G...PS. [ZBX-21795] fixed unhandled timeout in telnet (askolmeisters)
 ...G...... [ZBX-21823] fixed vfs.fs.inode and vfs.fs.get to handle file systems with zero total inodes count (asestakovs)
 .......PS. [ZBX-21927] fixed crash on Oracle database when connection is lost (vso)
 .......PS. [ZBX-22026] fixed SNMP agent item going to unsupported state on NULL result (vso)
