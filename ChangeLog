@@ -66,6 +66,7 @@ A......... [ZBX-21332] fixed runtime errors when linking items from two template
 ........S. [ZBX-22215] fixed incorrectly quoted function parameter parsing (wiper)
 .......PS. [ZBX-22304] fixed duplication in web scenario error message, when curl could not resolve host (mprihodko)
 ...G...... [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (akozlovs)
+...G...... [ZBX-22521] added debug logging for process selection in proc.mem[] on AIX (Andris)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.27
