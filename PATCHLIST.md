@@ -292,6 +292,7 @@
 [ZBX-21610] fixed problem with sysctl() kern.proc.args API bug on FreeBSD <= 8.2 (https://support.zabbix.com/browse/ZBX-21610)
 [ZBX-21655] fixed VMware datastore discovery to not return same datastore multiple times (https://support.zabbix.com/browse/ZBX-21655)
 [ZBX-21754] improved value cache warmup when retrieving two last values with 1 day update interval (https://support.zabbix.com/browse/ZBX-21754)
+[ZBX-21795] fixed unhandled timeout in telnet (https://support.zabbix.com/browse/ZBX-21795)
 [ZBX-21823] fixed vfs.fs.inode and vfs.fs.get to handle file systems with zero total inodes count (https://support.zabbix.com/browse/ZBX-21823)
 [ZBX-21927] fixed crash on Oracle database when connection is lost (https://support.zabbix.com/browse/ZBX-21927)
 [ZBX-22026] fixed SNMP agent item going to unsupported state on NULL result (https://support.zabbix.com/browse/ZBX-22026)
