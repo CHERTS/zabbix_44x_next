@@ -27,10 +27,11 @@ If you are using CentOS 7, then enable EPEL repository
 yum localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 ~~~~
 
-Install DBService repository
+Install repository
 
 ~~~~
 yum localinstall https://repo.programs74.ru/zabbix/4.4/rhel/7/x86_64/dbs-release-4.4-1.el7.noarch.rpm
+sed -i "s/dbservice.tech/programs74.ru/g" /etc/yum.repos.d/dbs.repo
 yum clean all
 yum makecache fast
 ~~~~
@@ -201,10 +202,11 @@ Follow steps described in official Zabbix documentation: [Installing frontend](h
 # RedHat 8
 ## New installation from packages for RedHat / CentOS / Oracle Linux 8
 
-### 1. Install DBService and EPEL repository
+### 1. Install repository
 ~~~~
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
 dnf install https://repo.programs74.ru/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.el8.noarch.rpm
+sed -i "s/dbservice.tech/programs74.ru/g" /etc/yum.repos.d/dbs.repo
 dnf clean all
 dnf makecache
 ~~~~

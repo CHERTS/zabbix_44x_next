@@ -12,21 +12,24 @@ yum-config-manager --disable zabbix-debuginfo
 yum-config-manager --disable zabbix-non-supported
 ~~~~
 
-### 2. Установка репозитория DBService
+### 2. Установка репозитория
 
 Для RHEL/CentOS/OracleLinux 6
 ~~~~
 rpm -Uvh https://repo.programs74.ru/zabbix/4.4/rhel/6/x86_64/dbs-release-4.4-1.el6.noarch.rpm
+sed -i "s/dbservice.tech/programs74.ru/g" /etc/yum.repos.d/dbs.repo
 ~~~~
 
 Для RHEL/CentOS/OracleLinux 7
 ~~~~
 rpm -Uvh https://repo.programs74.ru/zabbix/4.4/rhel/7/x86_64/dbs-release-4.4-1.el7.noarch.rpm
+sed -i "s/dbservice.tech/programs74.ru/g" /etc/yum.repos.d/dbs.repo
 ~~~~
 
 Для RHEL/CentOS/OracleLinux 8
 ~~~~
 rpm -Uvh https://repo.programs74.ru/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.el8.noarch.rpm
+sed -i "s/dbservice.tech/programs74.ru/g" /etc/yum.repos.d/dbs.repo
 ~~~~
 
 ### 3. Обновление пакетов zabbix
