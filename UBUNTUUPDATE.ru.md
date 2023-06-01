@@ -14,12 +14,12 @@ apt-get --purge -y remove zabbix-release
 
 Устанавливаем GPG ключ
 ~~~~
-wget -q -O - https://repo.dbservice.tech/dbservice-official-repo.key | apt-key add -
+wget -q -O - https://repo.programs74.ru/dbservice-official-repo.key | apt-key add -
 ~~~~
 
 Установка репозитария
 ~~~~
-echo "deb [arch=$(dpkg --print-architecture)] https://repo.dbservice.tech/zabbix/4.4/ubuntu $(lsb_release -c -s) main" > /etc/apt/sources.list.d/dbs.list
+echo "deb [arch=$(dpkg --print-architecture)] https://repo.programs74.ru/zabbix/4.4/ubuntu $(lsb_release -c -s) main" > /etc/apt/sources.list.d/dbs.list
 ~~~~
 
 ### 3. Обновление пакетов zabbix

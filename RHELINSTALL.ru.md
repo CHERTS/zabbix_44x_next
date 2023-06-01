@@ -33,7 +33,7 @@ yum localinstall https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noa
 Установка репозитория DBService
 
 ~~~~
-yum localinstall https://repo.dbservice.tech/zabbix/4.4/rhel/7/x86_64/dbs-release-4.4-1.el7.noarch.rpm
+yum localinstall https://repo.programs74.ru/zabbix/4.4/rhel/7/x86_64/dbs-release-4.4-1.el7.noarch.rpm
 yum clean all
 yum makecache fast
 ~~~~
@@ -209,7 +209,7 @@ systemctl restart zabbix-server zabbix-agent
 
 ~~~~
 dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-dnf install https://repo.dbservice.tech/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.el8.noarch.rpm
+dnf install https://repo.programs74.ru/zabbix/4.4/rhel/8/x86_64/dbs-release-4.4-1.el8.noarch.rpm
 dnf clean all
 dnf makecache
 ~~~~
