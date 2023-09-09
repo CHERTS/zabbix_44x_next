@@ -302,6 +302,7 @@
 [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (https://support.zabbix.com/browse/ZBX-22452)
 [ZBX-22521] added debug logging for process selection in proc.mem[] on AIX (https://support.zabbix.com/browse/ZBX-22521)
 [ZBX-22772] added trends cleanup for non-numeric value types (wiper)
+[ZBX-23221] fixed memory leaks when using certificate-based encryption in Zabbix Agent 1 and Agent 2; thanks to Masato Hirahata for the patch (akozlovs, Andris)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
