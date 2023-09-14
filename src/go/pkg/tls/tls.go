@@ -1206,7 +1206,8 @@ func NewClient(nc net.Conn, args ...interface{}) (conn net.Conn, err error) {
 		return
 	}
 
-	log.Debugf("connection established using %s", c)
+	// explicit conversion needed to avoid nested calls to logging
+	log.Debugf("connection established using %s", c.String())
 
 	return c, nil
 }
@@ -1338,7 +1339,7 @@ func NewServer(nc net.Conn, args ...interface{}) (conn net.Conn, err error) {
 		return
 	}
 
-	log.Debugf("connection established using %s", s)
+	log.Debugf("connection established using %s", s.String())
 
 	return s, nil
 }
