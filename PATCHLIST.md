@@ -301,6 +301,7 @@
 [ZBX-22215] fixed incorrectly quoted function parameter parsing (https://support.zabbix.com/browse/ZBX-22215)
 [ZBX-22304] fixed duplication in web scenario error message, when curl could not resolve host (https://support.zabbix.com/browse/ZBX-22304)
 [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (https://support.zabbix.com/browse/ZBX-22452)
+[ZBX-22470] fixed hang on logging when establishing an encrypted connection in Zabbix agent 2 (https://support.zabbix.com/browse/ZBX-22470)
 [ZBX-22521] added debug logging for process selection in proc.mem[] on AIX (https://support.zabbix.com/browse/ZBX-22521)
 [ZBX-22695] fixed eventlog duplicate timestamps (https://support.zabbix.com/browse/ZBX-22695)
 [ZBX-22772] added trends cleanup for non-numeric value types (https://support.zabbix.com/browse/ZBX-22772)
