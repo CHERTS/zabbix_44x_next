@@ -299,6 +299,7 @@
 [ZBX-22026] fixed SNMP agent item going to unsupported state on NULL result (https://support.zabbix.com/browse/ZBX-22026)
 [ZBX-22032] added cookie engine to HTTP check (https://support.zabbix.com/browse/ZBX-22032)
 [ZBX-22215] fixed incorrectly quoted function parameter parsing (https://support.zabbix.com/browse/ZBX-22215)
+[ZBX-22234] fixed incorrect SNMPINDEX offset retrieval in SNMP discovery (https://support.zabbix.com/browse/ZBX-22234)
 [ZBX-22304] fixed duplication in web scenario error message, when curl could not resolve host (https://support.zabbix.com/browse/ZBX-22304)
 [ZBX-22452] fixed Windows Zabbix agent web.page.* unsupported item keys (https://support.zabbix.com/browse/ZBX-22452)
 [ZBX-22470] fixed hang on logging when establishing an encrypted connection in Zabbix agent 2 (https://support.zabbix.com/browse/ZBX-22470)
