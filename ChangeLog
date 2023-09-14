@@ -5,6 +5,7 @@ New features:
 ...G...PS. [ZBXNEXT-5839] added SNI in encrypted TCP connections (yurii)
 ...G...... [ZBXNEXT-6666] added listen socket security fix for Agent 2 on Windows (ssimonenko)
 ...G...PS. [ZBXNEXT-7120] added support of OpenSSL 3.0 (Andris)
+...G...PS. [ZBXNEXT-8273] fixed failures to read relative paths based on current working directory from Include directives in Zabbix Agent config (dgoloscapov)
 
 Bug fixes:
 ..F....... [ZBX-4646] fixed month abbreviation with capital "M" (Sasha)

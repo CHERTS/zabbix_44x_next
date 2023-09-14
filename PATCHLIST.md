@@ -384,6 +384,7 @@
 [ZBXNEXT-6809] changed behavior of the vmware event log, the 'skip' option of the new item resets the VMware event cache (https://support.zabbix.com/browse/ZBXNEXT-6809)
 [ZBXNEXT-7100] added new LLD macro HV.NETNAME to vmware.hv.discovery (https://support.zabbix.com/browse/ZBXNEXT-7100)
 [ZBXNEXT-7120] added support of OpenSSL 3.0 (https://support.zabbix.com/browse/ZBXNEXT-7120)
+[ZBXNEXT-8273] fixed failures to read relative paths based on current working directory from Include directives in Zabbix Agent config  (https://support.zabbix.com/browse/ZBXNEXT-8273)
 ~~~~
 
 # List of my patches (English)
