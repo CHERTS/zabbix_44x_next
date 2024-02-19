@@ -307,6 +307,7 @@
 [ZBX-22695] fixed eventlog duplicate timestamps (https://support.zabbix.com/browse/ZBX-22695)
 [ZBX-22772] added trends cleanup for non-numeric value types (https://support.zabbix.com/browse/ZBX-22772)
 [ZBX-23221] fixed memory leaks when using certificate-based encryption in Zabbix Agent 1 and Agent 2; thanks to Masato Hirahata for the patch (https://support.zabbix.com/browse/ZBX-23221)
+[ZBX-23890] removed non-existing headers from compiler checks: mtent.h and knlist.h (https://support.zabbix.com/browse/ZBX-23890)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
 [ZBXNEXT-284] added timeout parameter to zabbix_sender and zabbix_get (https://support.zabbix.com/browse/ZBXNEXT-284)
 [ZBXNEXT-435] Add Oracle TNSNAMES connect support (https://support.zabbix.com/browse/ZBXNEXT-435)
