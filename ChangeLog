@@ -73,6 +73,7 @@ A......... [ZBX-21332] fixed runtime errors when linking items from two template
 ...G...... [ZBX-22695] fixed eventlog duplicate timestamps (asestakovs)
 ........S. [ZBX-22772] added trends cleanup for non-numeric value types (wiper)
 ...G...PS. [ZBX-23221] fixed memory leaks when using certificate-based encryption in Zabbix Agent 1 and Agent 2; thanks to Masato Hirahata for the patch (akozlovs, Andris)
+...G...... [ZBX-23890] removed non-existing headers from compiler checks: mtent.h and knlist.h (arimdjonoks)
 
 --------------------------------------------------------------------------------
 Changes for 4.4.27
