@@ -306,6 +306,7 @@
 [ZBX-22521] added debug logging for process selection in proc.mem[] on AIX (https://support.zabbix.com/browse/ZBX-22521)
 [ZBX-22695] fixed eventlog duplicate timestamps (https://support.zabbix.com/browse/ZBX-22695)
 [ZBX-22772] added trends cleanup for non-numeric value types (https://support.zabbix.com/browse/ZBX-22772)
+[ZBX-22783] added automatic detection of Oracle instant client installed from RPM (https://support.zabbix.com/browse/ZBX-22783)
 [ZBX-23221] fixed memory leaks when using certificate-based encryption in Zabbix Agent 1 and Agent 2; thanks to Masato Hirahata for the patch (https://support.zabbix.com/browse/ZBX-23221)
 [ZBX-23890] removed non-existing headers from compiler checks: mtent.h and knlist.h (https://support.zabbix.com/browse/ZBX-23890)
 [ZBXNEXT-170] implemented possibility to "unlink" specific templates in hosts and templates massupdate (https://support.zabbix.com/browse/ZBXNEXT-170)
