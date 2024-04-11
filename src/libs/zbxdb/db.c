@@ -96,7 +96,6 @@ static ub4	OCI_DBserver_status(void);
 
 #elif defined(HAVE_POSTGRESQL)
 static PGconn			*conn = NULL;
-static unsigned int		ZBX_PG_BYTEAOID = 0;
 static int			ZBX_PG_SVERSION = 0;
 char				ZBX_PG_ESCAPE_BACKSLASH = 1;
 #elif defined(HAVE_SQLITE3)
@@ -587,18 +586,6 @@ int	zbx_db_connect(char *host, char *user, char *password, char *dbname, char *d
 
 	if (ZBX_DB_FAIL == ret || ZBX_DB_DOWN == ret)
 		goto out;
-
-	result = zbx_db_select("select oid from pg_type where typname='bytea'");
-
-	if ((DB_RESULT)ZBX_DB_DOWN == result || NULL == result)
-	{
-		ret = (NULL == result) ? ZBX_DB_FAIL : ZBX_DB_DOWN;
-		goto out;
-	}
-
-	if (NULL != (row = zbx_db_fetch(result)))
-		ZBX_PG_BYTEAOID = atoi(row[0]);
-	DBfree_result(result);
 
 	ZBX_PG_SVERSION = PQserverVersion(conn);
 	zabbix_log(LOG_LEVEL_DEBUG, "PostgreSQL Server version: %d", ZBX_PG_SVERSION);
@@ -1667,56 +1654,6 @@ DB_RESULT	zbx_db_select_n(const char *query, int n)
 #endif
 }
 
-#ifdef HAVE_POSTGRESQL
-/******************************************************************************
- *                                                                            *
- * Purpose: converts the null terminated string into binary buffer            *
- *                                                                            *
- * Transformations:                                                           *
- *      \ooo == a byte whose value = ooo (ooo is an octal number)             *
- *      \\   == \                                                             *
- *                                                                            *
- * Parameters:                                                                *
- *      io - [IN/OUT] null terminated string / binary data                    *
- *                                                                            *
- * Return value: length of the binary buffer                                  *
- *                                                                            *
- ******************************************************************************/
-static size_t	zbx_db_bytea_unescape(u_char *io)
-{
-	const u_char	*i = io;
-	u_char		*o = io;
-
-	while ('\0' != *i)
-	{
-		switch (*i)
-		{
-			case '\\':
-				i++;
-				if ('\\' == *i)
-				{
-					*o++ = *i++;
-				}
-				else
-				{
-					if (0 != isdigit(i[0]) && 0 != isdigit(i[1]) && 0 != isdigit(i[2]))
-					{
-						*o = (*i++ - 0x30) << 6;
-						*o += (*i++ - 0x30) << 3;
-						*o++ += *i++ - 0x30;
-					}
-				}
-				break;
-
-			default:
-				*o++ = *i++;
-		}
-	}
-
-	return o - io;
-}
-#endif
-
 DB_ROW	zbx_db_fetch(DB_RESULT result)
 {
 #if defined(HAVE_ORACLE)
@@ -1822,35 +1759,27 @@ DB_ROW	zbx_db_fetch(DB_RESULT result)
 
 	return result->values;
 #elif defined(HAVE_POSTGRESQL)
-	/* free old data */
-	if (NULL != result->values)
-		zbx_free(result->values);
-
 	/* EOF */
 	if (result->cursor == result->row_num)
 		return NULL;
 
 	/* init result */
-	result->fld_num = PQnfields(result->pg_result);
+	if (0 == result->cursor)
+		result->fld_num = PQnfields(result->pg_result);
 
 	if (result->fld_num > 0)
 	{
 		int	i;
 
-		result->values = zbx_malloc(result->values, sizeof(char *) * result->fld_num);
+		if (NULL == result->values)
+			result->values = zbx_malloc(result->values, sizeof(char *) * result->fld_num);
 
 		for (i = 0; i < result->fld_num; i++)
 		{
-			if (PQgetisnull(result->pg_result, result->cursor, i))
-			{
-				result->values[i] = NULL;
-			}
-			else
-			{
-				result->values[i] = PQgetvalue(result->pg_result, result->cursor, i);
-				if (PQftype(result->pg_result, i) == ZBX_PG_BYTEAOID)	/* binary data type BYTEAOID */
-					zbx_db_bytea_unescape((u_char *)result->values[i]);
-			}
+			result->values[i] = PQgetvalue(result->pg_result, result->cursor, i);
+
+			if ('\0' == *result->values[i] && PQgetisnull(result->pg_result, result->cursor, i))
+					result->values[i] = NULL;
 		}
 	}
 
