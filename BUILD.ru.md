@@ -80,8 +80,11 @@ yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel
 ~~~~
 
 Установите нужную версию oracle-instantclient
+
 По командам ниже будет установлена последняя актуальная версия, она может меняться от года к году.
+
 В 2025 году будет установлена 21 версия oracle-instantclient.
+
 Поэтому [посмотрите на этой странице](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html) нужную Вам версию и скорректируйте URL адреса.
 
 ~~~~
