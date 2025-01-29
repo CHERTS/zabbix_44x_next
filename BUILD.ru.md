@@ -91,7 +91,7 @@ cd zabbix-4.4.27
 
 ### 3. Сборка всех компонентов Zabbix с поддержкой Oracle 19c:
 
-По результатам шага 1 проверьте какая версия oracle-instantclient установилась в каталог /usr/lib/oracle и исправьте в каманде ниже версию 19.8 на ту что установилась у Вас.
+По результатам шага 1 проверьте какая версия oracle-instantclient установилась в каталог /usr/lib/oracle и исправьте в команде ниже версию 19.8 на ту, что установилась у Вас.
 
 ~~~~
 ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp \
