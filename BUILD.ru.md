@@ -22,7 +22,8 @@
 yum group install "Development Tools"
 yum-config-manager --enable ol7_optional_latest
 yum-config-manager --enable ol7_developer
-yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
+yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel \
+net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
 yum install -y MariaDB-client MariaDB-devel MariaDB-shared
 ~~~~
 
@@ -76,7 +77,8 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 yum group install "Development Tools"
 yum-config-manager --enable ol7_optional_latest
 yum-config-manager --enable ol7_developer
-yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
+yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel \
+net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
 ~~~~
 
 Установите нужную версию oracle-instantclient
@@ -143,7 +145,8 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 
 ~~~~
 dnf group install "Development Tools"
-dnf install -y wget unzip gettext java-1.8.0-openjdk java-1.8.0-openjdk-devel libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel unixODBC-devel openldap-devel
+dnf install -y wget unzip gettext java-1.8.0-openjdk java-1.8.0-openjdk-devel libxml2-devel \
+openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel unixODBC-devel openldap-devel
 dnf install -y mariadb-devel
 subscription-manager repos --enable=codeready-builder-for-rhel-8-x86_64-rpms 
 yum module enable -y virt-devel 
@@ -198,7 +201,9 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 
 ~~~~
 sudo apt-get update
-sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libiksemel-dev libmariadbclient-dev-compat libopenipmi-dev unixodbc-dev libldap2-dev
+sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev \
+libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre2-dev libssh2-1-dev libiksemel-dev \
+libmariadbclient-dev-compat libopenipmi-dev unixodbc-dev libldap2-dev
 ~~~~
 
 ### 2. Скачать и распаковать свежую версию исходного кода:
@@ -250,7 +255,9 @@ cp src/zabbix_get/zabbix_get zabbix_get_v4.4.27
 
 ~~~~
 sudo apt-get update
-sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre3-dev libssh2-1-dev libopenipmi-dev unixodbc-dev libldap2-dev libmariadbclient-dev-compat
+sudo apt-get install -y autoconf automake gcc make wget unzip gettext default-jdk libxml2-dev libssl-dev \
+libcurl4-openssl-dev libsnmp-dev libevent-dev libsqlite3-dev libpcre3-dev libssh2-1-dev libopenipmi-dev \
+unixodbc-dev libldap2-dev libmariadbclient-dev-compat
 ~~~~
 
 ### 2. Скачать и распаковать свежую версию исходного кода:
