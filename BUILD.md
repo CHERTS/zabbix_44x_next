@@ -36,7 +36,9 @@ cd zabbix-4.4.27
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl \
+--enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server \
+--enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
 make
 make gettext
 ~~~~
@@ -76,6 +78,14 @@ yum group install "Development Tools"
 yum-config-manager --enable ol7_optional_latest
 yum-config-manager --enable ol7_developer
 yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
+~~~~
+
+Install the required version of oracle-instantclient
+The commands below will install the latest current version, it may change from year to year.
+In 2025 year, version 21 of oracle-instantclient will be installed.
+[Look at this page](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html) for the version you need and adjust the URL addresses.
+
+~~~~
 yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
 yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-devel-linuxx64.rpm
 ~~~~
@@ -91,7 +101,10 @@ cd zabbix-4.4.27
 ### 3. Build all Zabbix components with Oracle 19c support:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-oracle --with-oracle-lib=/usr/lib/oracle/19.8/client64/lib --with-oracle-include=/usr/include/oracle/19.8/client64
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl \
+--enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy \
+--enable-agent --enable-java --sysconfdir=/etc/zabbix \
+--with-oracle --with-oracle-lib=/usr/lib/oracle/21/client64/lib --with-oracle-include=/usr/include/oracle/21/client64
 make
 make gettext
 ~~~~
@@ -144,7 +157,9 @@ cd zabbix-4.4.27
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl \
+--enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server \
+--enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
 make
 make gettext
 ~~~~
@@ -193,7 +208,9 @@ cd zabbix-4.4.27
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl \
+--enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server \
+--enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
 make
 make gettext
 ~~~~
@@ -242,7 +259,9 @@ cd zabbix-4.4.27
 ### 3. Build all Zabbix components with MySQL (MariaDB) support:
 
 ~~~~
-./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
+./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp --with-openssl \
+--enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap --enable-server \
+--enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix --with-mysql
 make
 make gettext
 ~~~~

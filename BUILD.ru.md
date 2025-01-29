@@ -77,6 +77,14 @@ yum group install "Development Tools"
 yum-config-manager --enable ol7_optional_latest
 yum-config-manager --enable ol7_developer
 yum install -y wget unzip gettext java-1.8.0-openjdk libxml2-devel openssl-devel libcurl-devel net-snmp-devel libevent-devel sqlite-devel pcre-devel libssh2-devel OpenIPMI-devel unixODBC-devel openldap-devel
+~~~~
+
+Установите нужную версию oracle-instantclient
+По командам ниже будет установлена последняя актуальная версия, она может меняться от года к году.
+В 2025 году будет установлена 21 версия oracle-instantclient.
+Поэтому [посмотрите на этой странице](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html) нужную Вам версию и скорректируйте URL адреса.
+
+~~~~
 yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-basic-linuxx64.rpm
 yum localinstall -y https://download.oracle.com/otn_software/linux/instantclient/oracle-instantclient-devel-linuxx64.rpm
 ~~~~
@@ -97,7 +105,7 @@ cd zabbix-4.4.27
 ./configure --with-libpthread --with-libpcre --with-libcurl --with-libxml2 --with-net-snmp \
 --with-openssl --enable-ipv6 --with-ssh2 --with-openipmi --with-unixodbc --with-ldap \
 --enable-server --enable-proxy --enable-agent --enable-java --sysconfdir=/etc/zabbix \
---with-oracle --with-oracle-lib=/usr/lib/oracle/19.8/client64/lib --with-oracle-include=/usr/include/oracle/19.8/client64
+--with-oracle --with-oracle-lib=/usr/lib/oracle/21/client64/lib --with-oracle-include=/usr/include/oracle/21/client64
 make
 make gettext
 ~~~~
